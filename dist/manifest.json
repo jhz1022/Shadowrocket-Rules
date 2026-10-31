@@ -1,5 +1,5 @@
 {
-  "config_sha256": "61848c3c66a466dfdf72cf679f013d6757e119d345e4ffa7fd233897fdc8dedc",
+  "config_sha256": "ea6d1498009c28b4f3b0b0671091124a544828b1a12be9c399821128d4b5590f",
   "conflicts": 754,
   "excluded_registry_direct": [
     "DOMAIN-SUFFIX,alibaba,DIRECT",
@@ -59,21 +59,21 @@
   ],
   "generator_sha256": "47076f9e0284b477bd64f545e780ed5f3bc85417e2b2b4c7695eaea7ad07d625",
   "ip_coverage": {
-    "china4": 344076032,
-    "china6": 5430297436658120360713663555829760
+    "china4": 344076288,
+    "china6": 5430376666029560444665886274486272
   },
   "output": {
     "dns_port_canaries": 6,
     "reviewed_route_canaries": 76,
     "routing_canaries": 31,
-    "rules": 148877,
+    "rules": 148880,
     "types": {
       "DOMAIN": 671,
       "DOMAIN-SUFFIX": 138543,
       "DST-PORT": 1,
       "FINAL": 1,
-      "IP-CIDR": 6182,
-      "IP-CIDR6": 3479
+      "IP-CIDR": 6183,
+      "IP-CIDR6": 3481
     }
   },
   "overrides_sha256": "e5c48329933fa814595095dc590f68c10b46bf9096b6c7bc682d0e9f719b82d9",
@@ -91,26 +91,26 @@
       "url": "https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/e8c869ef82e03f8cfb02f820f99e9f10e5b15e8a/apple-cn.txt"
     },
     "china4": {
-      "bytes": 95991,
+      "bytes": 96008,
       "duplicates": 0,
       "license": "MIT",
       "omitted_direct_regex": [],
-      "records": 6174,
-      "revision": "f7533065e164cbe0cf24b488a77ca75b8e897923",
-      "sha256": "06d0d2641932791e2007cd876642c942c4c0799c5fbc1961a63bb171fce12eae",
-      "unique": 6174,
-      "url": "https://raw.githubusercontent.com/gaoyifan/china-operator-ip/f7533065e164cbe0cf24b488a77ca75b8e897923/china.txt"
+      "records": 6175,
+      "revision": "aa3728d7070b52722ebb4f42ce373147250a2ab2",
+      "sha256": "9965b6ea3e7d245a97900d3b39d489090d123b40efd546abe50387104326c7e6",
+      "unique": 6175,
+      "url": "https://raw.githubusercontent.com/gaoyifan/china-operator-ip/aa3728d7070b52722ebb4f42ce373147250a2ab2/china.txt"
     },
     "china6": {
-      "bytes": 57888,
+      "bytes": 57922,
       "duplicates": 0,
       "license": "MIT",
       "omitted_direct_regex": [],
-      "records": 3475,
-      "revision": "f7533065e164cbe0cf24b488a77ca75b8e897923",
-      "sha256": "e36d56d758cdee79df5b7c542208a224260612627c59cf55af0f3960641c9e1b",
-      "unique": 3475,
-      "url": "https://raw.githubusercontent.com/gaoyifan/china-operator-ip/f7533065e164cbe0cf24b488a77ca75b8e897923/china6.txt"
+      "records": 3477,
+      "revision": "aa3728d7070b52722ebb4f42ce373147250a2ab2",
+      "sha256": "85647b2dc6a82fceace9c75bfa8e0fd2fd8cb24f7206c506389462149c2099d8",
+      "unique": 3477,
+      "url": "https://raw.githubusercontent.com/gaoyifan/china-operator-ip/aa3728d7070b52722ebb4f42ce373147250a2ab2/china6.txt"
     },
     "direct": {
       "bytes": 351133,
