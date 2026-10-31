@@ -1,174 +1,51 @@
-# Shadowrocket 自建分流规则
+# Shadowrocket 分流规则
 
-每日由 GitHub Actions 下载数据、清洗、检查并更新一份完整的 [`dist/Shadowrocket.conf`](dist/Shadowrocket.conf)。客户端只订阅这一份配置。采用增强版绕过大陆：已知可直连服务及批准的中国域名后缀直连，受保护服务、其余境外及未命中流量使用 `PROXY`，使用首页当前选择的节点。
+> 墙外有更广阔的信息，也有偏见、误解和未经证实的说法。多看一种声音，是为了多一份判断的依据。愿你始终保有独立思考的心：不因观点顺耳就全盘接受，也不因立场不同就急着否定。多查证、多思考，把判断留给自己。
 
-没有节点、订阅密码、地区策略组、广告拦截、MITM、脚本、重写或远程 RULE-SET。DNS 检测站没有人工添加的特殊规则。
+一份个人自用、公开分享的 Shadowrocket 配置。以「绕过大陆」为基础，让国内及适合直连的服务尽量直连，海外服务按规则走代理，未命中的流量默认代理。
 
-当前仓库：[jhz1022/Shadowrocket-Rules](https://github.com/jhz1022/Shadowrocket-Rules)。可直接订阅：
+## 使用
+
+在 Shadowrocket 的「配置」页从 URL 添加：
 
 ```text
 https://raw.githubusercontent.com/jhz1022/Shadowrocket-Rules/main/dist/Shadowrocket.conf
 ```
 
-GitHub 发布及 Mac 客户端验证状态见 [验证记录](docs/VALIDATION.md)和[本机修复验收](docs/MAC_DNS_FIX.md)。已在 macOS 26.7.1 / Shadowrocket 2.2.93 实测基础分流与 DNS 修复；iPhone 已补充一次 5G / Claude 连通与出口检查，网络切换、手机故障注入和物理接口抓包仍未验收，不承诺“零泄漏”。
+也可以在 Shadowrocket 的「配置」页扫码添加：
 
-2026-10-31 的增强白名单重构、全表覆盖与验收边界见 [ENHANCED_WHITELIST.md](docs/ENHANCED_WHITELIST.md)。此前三项缺陷修复、36 个上游候选调研的历史记录见 [本轮评估](docs/ASSESSMENT_2026-10-31.md)。对应提交的在线检查结果见 [GitHub Actions](https://github.com/jhz1022/Shadowrocket-Rules/actions)；客户端需刷新上述订阅并重新连接，才会使用下载后的新配置。
+<img src="docs/assets/config-qr.png" alt="Shadowrocket 配置订阅二维码" width="280" height="280">
 
-精确分流例外、全源审计及更新健康检查的交付记录见 [HARDENING.md](docs/HARDENING.md)。
+选择「使用配置」，首页的「全局路由」设为「配置」，再选择自己的节点并连接。
 
-本仓库已完成发布。直接使用上面的订阅地址即可；以下步骤用于自行 Fork 或部署另一份仓库。
+**这里只提供分流配置，不提供节点。** 配置计划每天北京时间 12:23 自动检查上游并更新；客户端需要刷新配置才能获取新版。更新情况可在 [Actions](https://github.com/jhz1022/Shadowrocket-Rules/actions) 查看。
 
-## 一次性部署
+## 分流方式
 
-1. 在自己的 GitHub 账户创建公开仓库，建议命名 `Shadowrocket-Rules`，默认分支 `main`。上传本工程所有文件，包含 `.github/`、`dist/inputs/` 和许可证。ZIP 本身不用上传；本地 `.git`、`.build` 不上传。
-2. Settings → Actions → General：允许 Actions。默认 Workflow permissions 可保持只读；本工程只为 `update` 任务显式申请 `contents: write`。工作流仅使用 GitHub 自动提供的 `GITHUB_TOKEN`，不用填写个人 PAT。
-3. Actions → **Update Shadowrocket rules** → **Run workflow**，在默认分支运行一次；确认 `verify`、`update` 都成功。
-4. 在 Shadowrocket 的配置页面从 URL 添加以下地址，把占位内容替换成自己的仓库；启用该配置，全局路由选“配置”，首页选择任意可用节点。节点或机场订阅仍单独保留在首页，禁止提交到本仓库。
+- 局域网、国内网站及上游收录的可直连服务优先直连。
+- 国外服务的中国站点和国内下载节点单独判断，例如 Bing 中国、iCloud 中国、Steam 国内下载，不按品牌一概代理。
+- Claude、OpenAI、Google、Copilot 等服务优先走代理。
+- 其余流量按域名和中国 IP 规则判断，最后由代理兜底。
 
-   ```text
-   https://raw.githubusercontent.com/<用户名>/<仓库名>/main/dist/Shadowrocket.conf
-   ```
+使用首页当前选择的代理节点，没有复杂的地区分组，也不包含广告拦截、MITM、脚本或重写。
 
-需要公开原始文件地址才能方便客户端匿名下载。私有仓库不要把含 PAT 的地址填进配置。若 GitHub Raw 在当前网络不可达，可先在已有可用代理下导入或导入本地 `.conf`，随后保留上述订阅地址。
+## 几点说明
 
-每天北京时间 **12:23（UTC 04:23）**计划运行。上游没变化就不提交；客户端自行决定何时刷新，没有客户端定时更新脚本。这里只把默认分支里的配置作为发布入口，不要求 GitHub Pages 或 GitHub Releases。
+- **DNS**：直连服务使用当前网络的系统 DNS，保留国内 CDN 和局域网解析；代理侧使用代理解析及经代理访问的加密 DNS。
+- **IPv6**：默认采用 IPv4 兼容设置。这不等于关闭手机或电脑的系统 IPv6；iPhone 建议开启小火箭「隧道 → 包括所有网络」，重连后检查实际出口。
+- **UDP**：节点不支持转发时拒绝请求，不回退到直连；部分游戏、语音等功能需要支持 UDP 的节点。
+- **体积**：完整规则内置在一份配置中。小火箭导入后显示的大小还包含数据库和索引，不等于 VPN 运行内存。保留覆盖范围，只做不改变分流结果的去重与合并。
 
-## DNS 设计
+规则会随上游更新，但无法保证所有地区、运营商和服务都始终适用。遇到异常，可先在小火箭的连接记录中查看命中的规则和出口；检查方法见 [客户端检查说明](docs/CLIENT_TEST.md)。
 
-| 查询用途 | 配置及预期路径 | 边界 |
-| --- | --- | --- |
-| 国内/LAN 直连域名 | `dns-direct-system = true`，使用当前网络的系统 DNS | 有意保留国内 CDN、企业 split DNS、路由器内网名称；可能是明文 DNS，可见国内解析器是正常现象 |
-| 代理/未命中域名 | 代理协议支持时交给节点解析；需要本地答案时使用 Cloudflare / Google 两个显式主 DoH（均 `#proxy`） | 通过首页当前节点；不同节点协议的远端解析能力不同，必须实测 |
-| DoH 容错与回退 | 两家 DoH 同列于 `dns-server`；保留显式 `fallback-dns-server` | 单家故障的正向 TXT 已交叉实测；不依赖备用字段自动切换。`dns-fallback = false` 保留，全部故障本轮无答案 |
-| 节点自身域名 | `proxy-dns-server`，直连阿里 IP 地址 DoH | 仅节点引导，阿里会知道节点域名和本地出口；不依赖代理先启动 |
+## 来源
 
-`proxy-dns-server` **不是代理网站使用的 DNS**。解析器使用 IP 地址 DoH URL，TLS 校验保持开启，不需要先查询解析器域名。国内直连使用系统 DNS 是本项目为局域网及 CDN 作出的明确选择，不是误配或检测规避。
+感谢这些持续维护的数据来源：
 
-直连采用可达性白名单，不把域名后缀或公司国籍当作服务器物理位置证明。明确允许 `.cn`、`.中国`、`.中國`（Punycode 为 `cn`、`xn--fiqs8s`、`xn--fiqz9s`）；需要代理的服务在此前优先匹配。其余顶级/注册后缀仍按固定 PSL 快照过滤，避免恢复 `in.th` 等无关区域的整段直连。对未列入代理保护的未知 `.cn` 域名，直连是有意选择，与 v2rayN 白名单使用习惯一致。
+- [Loyalsoldier/v2ray-rules-dat](https://github.com/Loyalsoldier/v2ray-rules-dat)：增强直连列表、Apple 中国服务。
+- [v2fly/domain-list-community](https://github.com/v2fly/domain-list-community)：国内域名及国外服务的中国节点分类。
+- [Loyalsoldier/clash-rules](https://github.com/Loyalsoldier/clash-rules)：代理域名列表。
+- [gaoyifan/china-operator-ip](https://github.com/gaoyifan/china-operator-ip)：中国 IPv4 / IPv6 地址段。
+- [Public Suffix List](https://github.com/publicsuffix/list)：域名边界校验。
 
-所有地址规则都带 `no-resolve`。未命中域名不会仅为匹配中国 IP 表而额外请求本地 DNS；已知国内 IP 直接连接可以命中 IP 表。未被白名单及允许后缀覆盖的国内域名仍可能走默认代理；不为“猜国内 IP”主动解析。受保护的代理服务不会因为中国后缀或中国 IP 而改成直连。
-
-`always-ip-address = false` 避免强迫所有域名本地解析。代理不能转发 UDP 时拒绝而不改走直连；这不是广告过滤，但不支持 UDP 的节点可能无法使用部分 QUIC/游戏/语音流量。选择可用节点并不意味着任意节点都能访问所有有地区限制的服务。
-
-本机 Shadowrocket **2.2.93** 的内置默认配置、提示文本和程序参数字符串已经只读核对。建议 Mac/iPhone 使用同版或更新版。`dns-fallback` 是本机可识别的回退键；不采用未经本机依据确认的 `dns-fallback-system`。参数识别与真实执行效果是两回事，导入后仍需按 [客户端验收](docs/CLIENT_TEST.md) 核对。
-
-默认采用 **IPv4 兼容模式**（`ipv6 = false`、`prefer-ipv6 = false`）。此前启用 IPv6 后，在本机物理网卡没有公网 IPv6 地址的网络上，微信图片请求持续尝试不可用的 IPv6，实际出口停在 SYN_SENT；关闭该配置选项后，用户确认头像和图片明显恢复。仅设置 IPv4 优先不能保证应用不再尝试 IPv6。国内 IPv6 数据保留供静态审计及后续经验证的 IPv6 部署使用，不代表当前默认启用了原生 IPv6。详情见 [微信修复记录](docs/WECHAT_IPV4_FIX.md)。
-
-这是客户端兼容设置，不是关闭 macOS/iPhone 系统 IPv6，也不是系统级 IPv6 防火墙。iPhone 打开“包括所有网络”并重连后，已在一次 5G 测试中观察到 Claude 请求选择代理、IPv4 出口符合预期、IPv6-only 测试不可达；本轮未发现蜂窝 IPv6 绕过证据。IPv6-only/NAT64、网络切换和断线恢复仍待分别验收。若以后确需原生 IPv6，应同时验证本地直连出口与节点出口，再配套调整模板和构建校验器。
-
-`hijack-dns = *:53` 已在上述 Mac 版本实测能接管 IPv4 UDP DNS。原来的裸 IP 名单、空地址 `:53` 写法没有达到预期，已移除。客户端未接管的外部端口 53 流量，由局域网规则之后、业务规则之前的 `DST-PORT,53,REJECT` 拒绝；本次 TCP 和 IPv6 DNS 探测没有获得上游答案。**这部分是拒绝兜底，不是把 TCP/IPv6 DNS 自动转换成 DoH**；应用自带的 TCP DNS 可能因此失败，应使用系统解析。
-
-局域网、链路本地及组播旁路得到保留，私网 DNS 仍可使用；因此不能把此规则称为系统级 DNS 防火墙。应用自带 DoH/DoT、私网旁路及未进入 Tunnel 的流量仍有独立边界。客户端内部的直连系统 DNS、代理 DoH 和节点 DoH 引导不由这条端口兜底代替。TUN、其他 VPN、系统路由、浏览器 DoH/Private Relay 也可能改变实际路径。
-
-## 上游与取舍
-
-地址、格式、阈值和许可证集中在 [`sources/sources.json`](sources/sources.json)。下载时先解析仓库分支的提交 SHA，再按固定 SHA 下载；同一仓库的多个文件使用同一 SHA，避免读取到两次发布之间的混合数据。
-
-| 用途 | 实际上游 | 格式及许可 |
-| --- | --- | --- |
-| 国内分类补充及本地例外依据 | [v2fly/domain-list-community](https://github.com/v2fly/domain-list-community)，固定提交的完整归档，入口 `data/cn` | 原生 `domain`/`full`/属性/`include`/`&affiliation`；MIT |
-| 增强直连表 | [Loyalsoldier/v2ray-rules-dat](https://github.com/Loyalsoldier/v2ray-rules-dat)，`release/direct-list.txt` | 裸后缀、`full:`、记录省略的正则；GPL-3.0 |
-| 国外服务的中国节点 | v2fly 同一固定归档的 `geolocation-!cn @cn`，自动递归全部所含类别 | 原生属性选择器；MIT |
-| Apple 中国节点 | Loyalsoldier 同一 release 提交的 `apple-cn.txt` | `full:` 精确主机，不扩大为后缀；GPL-3.0 数据链 |
-| 明确代理域名 | [Loyalsoldier/clash-rules](https://github.com/Loyalsoldier/clash-rules)，`release/proxy.txt` | `payload` 域名集；普通值是完整域名，`+.` 才是后缀；GPL-3.0 |
-| 国内 IPv4 / IPv6 | [gaoyifan/china-operator-ip](https://github.com/gaoyifan/china-operator-ip)，`ip-lists/china.txt`、`china6.txt` | 标准 CIDR；MIT |
-| 注册边界校验 | [publicsuffix/list](https://github.com/publicsuffix/list)，`main/public_suffix_list.dat` | ICANN 精确、通配、例外；保留完整原始 MPL-2.0 文件，不生成客户端路由 |
-
-完整采用增强直连表；保留原始国内分类作为补充，避免上游已用注册后缀压缩后再过滤时丢失具体业务。原 7 万条 / 3 MiB 是自设预算，不能作为舍弃覆盖的充分依据。新发布上限为 **20 万条 / 8 MiB**，超限停止发布；本轮产物约 14.7 万条 / 4.83 MiB，尚未实测新版在 iPhone 上的内存与加载耗时。
-
-Loyalsoldier 的代理域名集由候选 V2Ray 数据生成，其上游工作流明确排除 `regexp`/`keyword`，所以它**不等价于完整原始列表**。本项目不伪造正则转换；代理集未覆盖的流量仍由默认代理处理，增强白名单有意优先于普通代理分类；需要强制代理的服务必须进入独立保护层，不能依赖宽泛品牌分类。这是白名单策略的明确取舍。关键代理保护、精确局域网管理域名和经审查直连例外集中在 [`config/overrides.json`](config/overrides.json)，每组例外包含用途和 HTTPS 依据，不涉及 DNS 检测站。
-
-国内源的 `domain:` → `DOMAIN-SUFFIX`，`full:` → `DOMAIN`。属性、include 引用、affiliation 和类型名称按上游语义忽略大小写；原生分类中的 `@ads`、`@ADS`、`@!cn`、`@!CN` 条目不进入该来源的直连结果，**不会生成拦截策略**，仍继续匹配其他规则或 FINAL。增强发布表已扁平化，不保留所有原始属性，因此不承诺从所有来源排除这些域名；本项目不做广告拦截。直连正则没有可靠等价形式，明确省略并把原文记录进 manifest，优先让漏收请求走默认代理。直连 `keyword`、未知记录、异常 include 等直接报错；不静默降级。暂不引入 blackmatrix7，避免叠加另一套分类及许可范围。
-
-IP 表是 BGP/登记分类数据，不代表每个地址的实时物理位置，也不是全网准确性保证。细节和证据见 [技术审查](docs/REVIEW.md)。
-
-## 规则顺序与冲突
-
-局域网 / 本地保留命名空间 → DNS 端口 53 兜底 → 精确管理主机 → 受保护代理服务 → 本地直连例外 → 自动中国服务类别 → 增强直连白名单 → 普通国外规则 → 国内 IP → `FINAL,PROXY`。
-
-增强白名单优先于普通国外品牌、共享 CDN 分类。受保护的 Claude/OpenAI/Google/Copilot 等服务仍先匹配代理；中国节点例外不能覆盖它们。`bing.com` 不再整体列为强制代理，Bing 中国站随中国类别直连，Copilot/Sydney 单独保护。
-
-同策略域名按精确/后缀语义去重压缩；保护层单独输出，避免压缩进普通品牌规则后丢失优先级。`dist/conflicts.json` 记录保护层、区域类别和增强白名单的覆盖关系。审计独立解码全部来源，检查来源与产物的域名边界、地址集合，并列出直连来源仍代理的条目及原因。更新任务在 Actions 摘要显示策略变化统计，完整报告作为 artifact 保存；变化样例最多 100 条，统计覆盖全部检查边界，不等同于真实请求量。
-
-### 本地例外与自动类别
-
-本地例外保留路由器管理、联网检测、校时及已有经核实的主机。它们不再承担完整业务覆盖；上游的增强直连表、全部国外类别的 `@cn` 和 Apple 中国主机自动更新。旧例外的精确范围不代表最终路由仅限这些主机：完整上游可能提供更广的合法白名单，例如中国 NTP 池和阿里云服务。
-
-Apple 中国表仅代表一批精确主机，不等同于全部 iCloud 或整个 Apple。iCloud 中国域名通过中国后缀及 `@cn` 覆盖，全球 iCloud、Apple TV/News/Relay 等依据其他规则继续判定。所有最终结果以全表审计为准。
-
-这些是业务范围经过审查的路由选择，不保证每个 CDN IP 都在大陆或每个网络直连都更快。管理域名也放在 DNS 端口兜底之后；仅已知私网目的地址和本地保留命名空间继续允许 DNS，不因公共品牌域名而放开外部端口 53。
-
-带 `community_check` 的例外会在每次构建时，用同一个固定归档核查具体分类/`@cn` 属性；依据丢失即停止发布，防止静态白名单悄悄脱离上游。全部例外限制在 250 条以内，拒绝无理由、无 HTTPS 来源、非规范域名、宽泛平台后缀和代理保护域重叠。
-
-不使用内置 `GEOIP`：已经内嵌国内地址表，可避免另一份隐式 IP 数据库成为依赖。若以后使用 GEOIP，同样需要 `no-resolve`，并重新评估数据来源与规则优先级。
-
-## 本地构建与检查
-
-Python **3.9+**，仅标准库，不用安装 pip 依赖。
-
-```bash
-python3 scripts/build.py                      # 实际下载并构建
-python3 scripts/build.py --offline             # 从已提交源快照重建
-python3 scripts/build.py --offline --check     # 只读检查完整可复现性
-python3 -m unittest discover -s tests -v        # 转换、路由、异常输入与保留旧版测试
-python3 scripts/audit.py --output .build/policy-audit.json # 独立全表审计和覆盖报告
-# 可加 --compare previous.conf 对比上个版本的域名边界决策
-python3 scripts/probe_client_dns.py            # 仅在实际客户端 Mac 上运行；需要已启用配置
-python3 scripts/probe_client_services.py       # 可选 UDP/123、联网检测及公开业务/CDN 根路径探测
-python3 scripts/probe_client_dns.py --resolution success # 非 Fake-IP 的正向 TXT 控制
-python3 scripts/probe_apple_delivery.py         # 真正下载公开图片和 <=20 MiB 的签名包，绝不安装
-```
-
-修改模板、构建器或 sources 后，先离线重建、运行测试，再提交源码和 `dist/`。`--check` 会比较生成器、模板、源配置和产物哈希，因此故意修改源码却不重建会失败。`--check` 不模拟 Shadowrocket 原生解析器。
-
-`dist/manifest.json` 包含每份数据的来源提交、URL、SHA-256、输入数量、被省略正则、地址覆盖量和生成文件哈希；`dist/inputs/` 保留发布时的原始数据，是审计及离线重建材料，**客户端不需要下载它们**。报告没有每日时间戳；只有上游提交号变化、实际规则不变时，保留上一份已发布报告和快照，避免无意义提交。
-
-## 失败保护、权限与回滚
-
-- 下载 HTTPS、30 秒单次超时、最多 3 次重试；空文件、超限文件、错误页面、非 UTF-8、非法域名/CIDR/归档全部失败。
-- 每个源有绝对上下限；相比上一发布版本，唯一条目数以及 IP 地址覆盖量不得下降超过 20% 或增长超过 50%。重复输入超过 5%、正则省略比例异常也失败。阈值不是准确性的证明；异常时先审查上游，不自动放宽门槛。
-- 全部下载、转换、冲突处理、DNS 基线和路由哨兵通过后才写产物。配置文件通过临时文件原子替换。普通下载/解析/检查失败不会触碰旧版文件；突然断电或磁盘写错不构成整个目录的事务保证，但配置替换始终是原子的。
-- CI 先做离线测试，再在独立的有写权限任务中在线构建及复现候选；仅在成功后提交整个 `dist/`。不强推、不自动 rebase。并发人工提交导致推送拒绝时，下次重新构建，远端旧版保持不变。
-- 默认分支若要求 PR 或禁止 bot 推送，更新任务会明确失败。请为个人规则仓库允许 Actions 更新默认分支，或自行采用受保护分支的 PR 审核流程；本工程不会绕过分支保护。无需配置私人令牌。
-- 回滚使用 GitHub 历史中最后正常提交的整个 `dist/`，或 revert 对应更新提交；临时回滚模板/脚本时保持两者配套。也可暂停 Actions 防止下次正常更新覆盖回滚。在 Shadowrocket 手动刷新一次即可。
-- GitHub 定时任务只在默认分支运行，可能排队、延迟或被丢弃，不是严格的每日 SLA。公开仓库长期（通常 60 天）无活动可能自动停用 schedule；Fork 后也需确认 Actions 已启用。通过 Actions 页面检查运行状态，必要时手动 Run workflow。[GitHub 官方说明](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#schedule)
-
-## 更新健康检查
-
-除了每日北京时间 12:23 更新，`Check rule update health` 在北京时间次日 00:23（UTC 16:23）独立检查默认分支的更新执行记录，也支持手动运行。最近一次完成的更新失败、超过 36 小时没有成功、运行超过 1 小时或排队超过新鲜度上限时，检查明确失败并给出 Actions 错误标注。成功的 `NO_CHANGE` 也算新鲜，不能用最后一次规则提交日期判断是否停更。
-
-执行记录按当前尝试的更新时间排序，避免旧任务重跑被创建时间掩盖；检查所有未完成任务，避免新排队任务盖住旧超时任务。查询分页覆盖可重跑历史窗口，并额外查询任意年龄的未完成任务；历史超出 API 查询上限时明确报错，不把截断结果当健康。
-
-另外查询每个上游仓库的归档/停用状态及目标分支最新提交年龄：v2fly 分类及 PSL 为 14 天，其余每日产出数据源为 72 小时，超过预算即检查失败。预算是维护活动信号，不证明规则内容每日变化或归属准确；正常无变化不会制造提交。
-
-该检查只有 `contents: read` / `actions: read`，不创建 Issue、不发送私人日志、不制造每日提交。是否收到邮件取决于你的 GitHub 通知设置；检查失败不等于已经通知到手机。两个工作流都依赖 GitHub 调度，若整个仓库 Actions 被停用或 GitHub 不运行任务，仓库内部无法自我唤醒；不把它称为外部全天候监控。
-
-## 项目结构
-
-```text
-.github/workflows/update.yml   每日、手动、PR 检查及成功后提交
-.github/workflows/health.yml   独立更新失败/陈旧检查（只读）
-config/template.conf          固定 DNS / 局域网 / 模板
-config/overrides.json         审查过的本地管理、直连例外、海外保护及依据
-sources/sources.json          上游、类型、许可、质量阈值
-scripts/build.py              标准库构建器
-scripts/audit.py              独立全源边界与 IP 覆盖审计
-scripts/audit_sources.py      与构建器分离的源数据解码器
-scripts/probe_apple_delivery.py 可选真实内容下载及签名/摘要验证
-scripts/check_update_health.py 更新执行状态及陈旧检查
-scripts/probe_client_services.py 可选本机服务与 NTP 探测
-scripts/probe_client_dns.py   可选的本机实时 DNS 验收，不在 Actions 中冒充真机测试
-tests/test_build.py           解析、冲突、失败保护、可复现性测试
-dist/Shadowrocket.conf        唯一客户端订阅入口
-dist/manifest.json            来源与质量报告
-dist/conflicts.json           交叉规则及处理结果
-dist/inputs/                  发布对应原始快照
-docs/                         技术审查、客户端验收、交付验证记录
-licenses/                     MIT / MPL-2.0 上游许可原文
-LICENSE                       GPL-3.0 原文
-NOTICE.md                     数据来源及分发许可说明
-```
-
-工程及组合配置按 GPL-3.0 分发，MIT 数据保留原声明，独立 PSL 源文件保留 MPL-2.0；详情见 [NOTICE](NOTICE.md)。不要将私人节点、密码、机场订阅、DNS 日志或个人抓包提交到公开仓库。
-
-本轮注册后缀收紧、双主 DoH 故障实测及真实内容验证见 [PRECISION_FIX.md](docs/PRECISION_FIX.md)。
+构建与检查的详细记录保留在 [docs](docs/)。代码及组合配置按 [GPL-3.0](LICENSE) 分发，上游数据的许可与署名见 [NOTICE](NOTICE.md)。
