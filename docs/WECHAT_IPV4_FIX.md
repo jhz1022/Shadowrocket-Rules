@@ -1,3 +1,5 @@
+> 历史记录：本文描述先前的域名分流版本，不代表当前配置。当前按服务器目标 IP 分流，见 [IP_ROUTING.md](IP_ROUTING.md)。
+
 # 微信头像和图片慢：IPv4 兼容修复
 
 日期：2026-10-31，Asia/Shanghai。环境：macOS 26.7.1 / Shadowrocket 2.2.93，“配置”模式，原有首页节点。

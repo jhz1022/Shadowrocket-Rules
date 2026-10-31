@@ -1,175 +1,93 @@
 #!/usr/bin/env python3
-"""Independent domain-boundary and exact IP-union audit of the published snapshot."""
+"""Independent destination-IP source/output union audit; no DNS/TUN simulation."""
 import argparse
+import hashlib
 import ipaddress
 import json
+import os
 from pathlib import Path
 import sys
-import os
-from collections import Counter
-
 import build
-import audit_sources
 
 
-def domain_sets(rules):
-    return ({value for kind, value in rules if kind == 'DOMAIN'},
-            {value for kind, value in rules if kind == 'DOMAIN-SUFFIX'})
-
-
-def ancestors(host):
-    labels = host.split('.')
-    return {'.'.join(labels[index:]) for index in range(len(labels))}
+def intervals(networks):
+    result=[]
+    for lo,hi in sorted((int(n.network_address),int(n.broadcast_address)) for n in networks):
+        if result and lo <= result[-1][1]+1:
+            result[-1]=(result[-1][0],max(hi,result[-1][1]))
+        else: result.append((lo,hi))
+    return result
 
 
 def audit(root=build.ROOT, conf=None, previous=None):
-    root = Path(root)
-    conf = conf if conf is not None else (root / 'dist/Shadowrocket.conf').read_text()
-    specs = json.loads((root / 'sources/sources.json').read_text())
-    raw = audit_sources.read_sources(root, specs)
-    overrides = json.loads((root / 'config/overrides.json').read_text())
-    reviewed = {section: {(g['type'], audit_sources.hostname(h)) for g in overrides[section]
-                          for h in g['domains']} for section in ['lan_domains', 'direct_exceptions']}
-    protected = {('DOMAIN-SUFFIX', h) for h in overrides['proxy_suffix']}
-    proxy = raw['proxy']
-    allowed = set(specs['direct_allowed_registry_suffixes'])
-    direct = {(kind, name) for kind, name in raw['direct'] | raw['enhanced'] if name in allowed or not (kind == 'DOMAIN-SUFFIX'
-              and (audit_sources.registry_suffix(name, raw['registry'])
-                   or name in specs['direct_excluded_suffixes']))}
-    regional = {(kind, name) for kind, name in raw['regional'] | raw['apple_cn']
-                if name in allowed or not (kind == 'DOMAIN-SUFFIX' and
-                    audit_sources.registry_suffix(name, raw['registry']))}
-    local_exact = {'localhost'} | {name for _, name in reviewed['lan_domains']}
-    local_suffix = {'local', 'lan', 'home.arpa', 'in-addr.arpa', 'ip6.arpa'}
-    p_exact, p_suffix = domain_sets(proxy)
-    d_exact, d_suffix = domain_sets(direct)
-    r_exact, r_suffix = domain_sets(reviewed['direct_exceptions'])
-    s_exact, s_suffix = domain_sets(regional)
-    _, protected_suffix = domain_sets(protected)
-
-    def expected(host):
-        lineage = ancestors(host)
-        if host in local_exact or lineage & local_suffix:
-            return 'DIRECT'
-        if lineage & protected_suffix:
-            return 'PROXY'
-        if host in r_exact or lineage & r_suffix:
-            return 'DIRECT'
-        if host in s_exact or lineage & s_suffix:
-            return 'DIRECT'
-        if host in d_exact or lineage & d_suffix:
-            return 'DIRECT'
-        if host in p_exact or lineage & p_suffix:
-            return 'PROXY'
-        return 'PROXY'
-
-    # Actual decisions use output order, independently of generate/minimize/conflict code.
-    exact, suffix = {}, {}
-    rule_block = conf.split('[Rule]\n', 1)[1].split('[Host]', 1)[0]
-    for index, line in enumerate(rule_block.splitlines()):
-        parts = line.split(',')
-        if parts[0] == 'DOMAIN':
-            exact.setdefault(parts[1], (index, parts[2]))
-        elif parts[0] == 'DOMAIN-SUFFIX':
-            if (parts[2] == 'DIRECT' and parts[1] not in local_suffix | allowed
-                    and audit_sources.registry_suffix(parts[1], raw['registry'])):
-                raise build.BuildError('Full rule audit failed: registry-level DIRECT suffix')
-            suffix.setdefault(parts[1], (index, parts[2]))
-
-    def actual(host):
-        matches = [exact[host]] if host in exact else []
-        matches.extend(suffix[x] for x in ancestors(host) if x in suffix)
-        return min(matches)[1] if matches else 'PROXY'
-
-    samples = {'never-listed.example.invalid', 'localhost', 'nas.local', 'nas.home.arpa'}
-    # Include output-only boundaries too, so an injected rule cannot escape the
-    # oracle simply because its hostname is absent from all input lists.
-    boundaries = (proxy | protected | raw['direct'] | raw['enhanced'] | regional
-                  | set().union(*reviewed.values()) | {('DOMAIN', h) for h in exact}
-                  | {('DOMAIN-SUFFIX', h) for h in suffix})
-    for _, name in boundaries:
-        samples.update([name, 'sr-audit-subdomain.' + name,
-                        'sr-audit-not' + name, name + '.outside.invalid'])
-    old_exact, old_suffix = {}, {}
-    if previous is not None:
-        old_block = previous.split('[Rule]\n', 1)[1].split('[Host]', 1)[0]
-        for index, line in enumerate(old_block.splitlines()):
-            cells = line.split(',')
-            if cells[0] in ('DOMAIN', 'DOMAIN-SUFFIX'):
-                target = old_exact if cells[0] == 'DOMAIN' else old_suffix
-                target.setdefault(cells[1], (index, cells[2]))
-                samples.update([cells[1], 'sr-audit-subdomain.' + cells[1]])
-    transitions, changed_examples = Counter(), []
-    failures = []
-    for host in sorted(samples):
-        want, got = expected(host), actual(host)
-        if want != got:
-            failures.append({'host': host, 'expected': want, 'actual': got})
-        if previous is not None:
-            old_matches = [old_exact[host]] if host in old_exact else []
-            old_matches += [old_suffix[h] for h in ancestors(host) if h in old_suffix]
-            before = min(old_matches)[1] if old_matches else 'PROXY'
-            if before != got:
-                transitions[before + ' -> ' + got] += 1
-                if len(changed_examples) < 100:
-                    changed_examples.append({'host': host, 'before': before, 'after': got})
-    block = conf.split('# BEGIN CHINA IP\n')[1].split('# END CHINA IP')[0]
-    ip_equality = {}
-    for ident, kind in [('china4', 'IP-CIDR'), ('china6', 'IP-CIDR6')]:
-        before = list(ipaddress.collapse_addresses(raw[ident]))
-        after = list(ipaddress.collapse_addresses(ipaddress.ip_network(x.split(',')[1])
-                     for x in block.splitlines() if x.startswith(kind + ',')))
-        ip_equality[ident] = before == after
-    if failures or not all(ip_equality.values()):
-        raise build.BuildError('Full rule audit failed: ' + json.dumps(
-            {'domain_failures': failures[:5], 'ip_union_equal': ip_equality}, sort_keys=True))
-    coverage, exceptions = {}, []
-    for ident in ('enhanced', 'regional', 'apple_cn'):
-        counts = Counter()
-        for kind, host in sorted(raw[ident]):
-            route = actual(host)
-            reason = ('protected-service' if ancestors(host) & protected_suffix else
-                      'registry-filter' if kind == 'DOMAIN-SUFFIX' and host not in allowed
-                      and audit_sources.registry_suffix(host, raw['registry']) else
-                      'ordinary-proxy-priority' if route == 'PROXY' else 'direct')
-            counts[reason] += 1
-            if route != 'DIRECT':
-                exceptions.append({'source': ident, 'type': kind, 'host': host,
-                                   'decision': route, 'reason': reason})
-        coverage[ident] = dict(sorted(counts.items()))
-    return {'config_sha256': build.sha(conf.encode()), 'domain_boundary_cases': len(samples),
-            'previous_config_sha256': build.sha(previous.encode()) if previous is not None else None,
-            'boundary_policy_changes': dict(transitions),
-            'change_examples_first_100': changed_examples,
-            'source_policy_coverage': coverage, 'direct_source_exceptions': exceptions,
-            'domain_failures': 0, 'ip_union_equal': ip_equality,
-            'validation': build.validate(conf, overrides, raw['registry']),
-            'scope': 'Independent source decoders and static output model; not upstream truth or native DNS/TUN simulation'}
+    root=Path(root)
+    conf=conf if conf is not None else (root/'dist/Shadowrocket.conf').read_text()
+    specs=json.loads((root/'sources/sources.json').read_text())
+    manifest=json.loads((root/'dist/manifest.json').read_text())
+    # Deliberately do not call build.parse_source/generate/collapse_addresses.
+    raw={4:[],6:[]}
+    for spec in specs['sources']:
+        data=(root/'dist/inputs'/ (spec['id']+'.txt')).read_bytes()
+        if hashlib.sha256(data).hexdigest()!=manifest['sources'][spec['id']]['sha256']:
+            raise build.BuildError('Audit source hash mismatch')
+        version=int(spec['format'][-1])
+        for line in data.decode('utf-8-sig').splitlines():
+            if not line.strip() or line.startswith('#'): continue
+            n=ipaddress.ip_network(line,strict=True)
+            if n.version!=version or not n.is_global:
+                raise build.BuildError('Invalid audit source network')
+            raw[version].append(n)
+    block=conf.split('# BEGIN CHINA IP\n')[1].split('# END CHINA IP')[0]
+    actual={4:[],6:[]}
+    for line in block.splitlines():
+        if not line or line.startswith('#'): continue
+        fields=line.split(',')
+        if len(fields)!=3 or fields[0] not in ('IP-CIDR','IP-CIDR6') or fields[2]!='DIRECT':
+            raise build.BuildError('IP routing policy or resolution flag changed')
+        n=ipaddress.ip_network(fields[1],strict=True)
+        if n.version!=(4 if fields[0]=='IP-CIDR' else 6):
+            raise build.BuildError('Wrong IP family')
+        actual[n.version].append(n)
+    equality={str(v):intervals(raw[v])==intervals(actual[v]) for v in (4,6)}
+    if not all(equality.values()): raise build.BuildError('Source/output IP address sets differ')
+    validation=build.validate(conf)
+    # Exact interval equality covers all IP addresses, including gaps between ranges.
+    # Domain tests deliberately hold the destination constant across unrelated names.
+    cases=[]
+    for host in ('us.ip111.cn','cn.bing.com','claude.ai','gateway.icloud.com.cn','steamcommunity.com','www.baidu.com'):
+        for ip,want in [('162.222.90.70','PROXY'),('223.5.5.5','DIRECT'),('2606:4700:4700::1111','PROXY'),('2400:3200::1','DIRECT')]:
+            got=build.match_rules(build.rule_lines(conf),host,ip,443)
+            if got!=want: raise build.BuildError('Domain changed destination-IP decision')
+            cases.append({'host':host,'address':ip,'policy':got})
+    return {'config_sha256':hashlib.sha256(conf.encode()).hexdigest(),
+        'routing_mode':'destination-ip','ip_union_equal':equality,
+        'source_networks':{str(v):len(raw[v]) for v in (4,6)},
+        'output_networks':{str(v):len(actual[v]) for v in (4,6)},
+        'domain_independence_cases':len(cases),'validation':validation,
+        'previous_config_sha256':hashlib.sha256(previous.encode()).hexdigest() if previous else None,
+        'previous_business_domain_rules':sum(1 for x in build.rule_lines(previous) if x.startswith(('DOMAIN,','DOMAIN-SUFFIX,','DOMAIN-KEYWORD,')) and x not in build.LOCAL_RULES) if previous else None,
+        'scope':'Exact address-set equality, not physical geolocation accuracy or native DNS/TUN proof'}
 
 
 def main():
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--output', type=Path, help='Optional local audit JSON, not a daily commit')
-    parser.add_argument('--compare', type=Path, help='Previous config for boundary-policy change accounting')
-    args = parser.parse_args()
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--output',type=Path)
+    parser.add_argument('--compare',type=Path)
+    args=parser.parse_args()
     try:
-        result = audit(previous=args.compare.read_text() if args.compare else None)
+        result=audit(previous=args.compare.read_text() if args.compare else None)
+        report=json.dumps(result,indent=2,sort_keys=True)+'\n'
         if args.output:
-            args.output.parent.mkdir(parents=True, exist_ok=True)
-            args.output.write_text(json.dumps(result, indent=2, sort_keys=True) + '\n')
-        print('AUDIT_OK:', json.dumps({k: v for k, v in result.items()
-                                      if k not in {'direct_source_exceptions', 'change_examples_first_100'}}, sort_keys=True))
+            args.output.parent.mkdir(parents=True,exist_ok=True)
+            args.output.write_text(report)
+        print('AUDIT_OK:',report)
         if os.environ.get('GITHUB_STEP_SUMMARY'):
-            summary = {k: result[k] for k in ('config_sha256', 'domain_boundary_cases',
-                'domain_failures', 'source_policy_coverage', 'boundary_policy_changes')}
-            with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as stream:
-                stream.write('### Routing policy audit\n\n```json\n' +
-                             json.dumps(summary, indent=2) + '\n```\n')
-    except (build.BuildError, ValueError, KeyError, OSError) as exc:
-        print('AUDIT FAILED:', exc, file=sys.stderr)
+            with open(os.environ['GITHUB_STEP_SUMMARY'],'a') as f:
+                f.write('### Destination-IP policy audit\n\n```json\n'+report+'```\n')
+    except (build.BuildError,ValueError,KeyError,OSError,IndexError) as exc:
+        print('AUDIT FAILED:',exc,file=sys.stderr)
         return 1
     return 0
 
-
-if __name__ == '__main__':
+if __name__=='__main__':
     sys.exit(main())

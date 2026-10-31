@@ -43,7 +43,7 @@ def ntp_probe(host):
                  and (response[0] >> 3) & 7 in (3, 4) and response[0] >> 6 != 3
                  and 1 <= response[1] <= 15 and response[24:32] == request[40:48]
                  and any(response[40:48]))
-        row.update(valid_ntp_response=valid, rtt_ms=round((time.monotonic() - start) * 1000, 2),
+        row.update(destination_ip=peer[0], valid_ntp_response=valid, rtt_ms=round((time.monotonic() - start) * 1000, 2),
                    stratum=response[1] if len(response) >= 2 else None)
     except (OSError, OverflowError) as exc:
         row.update(valid_ntp_response=False, error=str(exc))
@@ -61,7 +61,7 @@ def http_probe(url):
         m = {}
     return {'url': url, 'curl_exit': result.returncode, 'error': result.stderr,
             **{k: m.get(k) for k in ['http_code', 'ssl_verify_result', 'time_appconnect',
-                                    'time_starttransfer', 'time_total']}}
+                                    'time_starttransfer', 'time_total', 'remote_ip', 'url_effective']}}
 
 
 def main():
@@ -78,11 +78,11 @@ def main():
         print('Client probe could not complete:', exc)
         return 2
     for row in ntp:
-        row['expected_policy'] = build.match_rules(rules, row['host'], port=123)
+        row['expected_policy'] = build.match_rules(rules, row['host'], row.get('destination_ip'), port=123) if row.get('destination_ip') else 'UNRESOLVED'
         print('NTP', row['host'], row['expected_policy'], row['valid_ntp_response'], row.get('rtt_ms'))
     for row in http:
-        host = row['url'].split('/')[2]
-        row['expected_policy'] = build.match_rules(rules, host, port=80 if row['url'].startswith('http:') else 443)
+        host = (row.get('url_effective') or row['url']).split('/')[2]
+        row['expected_policy'] = build.match_rules(rules, host, row.get('remote_ip'), port=80 if (row.get('url_effective') or row['url']).startswith('http:') else 443) if row.get('remote_ip') else 'UNRESOLVED'
         print('HTTP', host, row['expected_policy'], row['http_code'], row['curl_exit'], row['time_total'])
     report = {'timestamp': dt.datetime.now(dt.timezone.utc).isoformat(),
               'config_sha256': build.sha(conf.encode()), 'ntp': ntp, 'http': http,

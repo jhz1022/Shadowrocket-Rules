@@ -1,3 +1,5 @@
+> 历史记录：本文描述先前的域名分流版本，不代表当前配置。当前按服务器目标 IP 分流，见 [IP_ROUTING.md](IP_ROUTING.md)。
+
 # macOS DNS 修复与 IPv6 排查
 
 日期：2026-10-31（Asia/Shanghai）。环境：macOS 26.7.1，Shadowrocket 2.2.93，全局路由为“配置”，使用首页已选择的 VLESS 节点。未读取或发布节点凭据；未更改节点服务器。

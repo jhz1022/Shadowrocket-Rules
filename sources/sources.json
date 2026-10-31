@@ -7,42 +7,6 @@
   "max_output_bytes": 8388608,
   "sources": [
     {
-      "id": "registry",
-      "repository": "publicsuffix/list",
-      "ref": "main",
-      "path": "public_suffix_list.dat",
-      "format": "public-suffix",
-      "policy": "VALIDATE",
-      "license": "MPL-2.0",
-      "min_records": 5000,
-      "max_records": 15000,
-      "max_revision_age_hours": 336
-    },
-    {
-      "id": "direct",
-      "repository": "v2fly/domain-list-community",
-      "ref": "master",
-      "path": "data/cn",
-      "format": "v2fly-archive",
-      "policy": "DIRECT",
-      "license": "MIT",
-      "min_records": 3000,
-      "max_records": 50000,
-      "max_revision_age_hours": 336
-    },
-    {
-      "id": "proxy",
-      "repository": "Loyalsoldier/clash-rules",
-      "ref": "release",
-      "path": "proxy.txt",
-      "format": "clash-domain",
-      "policy": "PROXY",
-      "license": "GPL-3.0",
-      "min_records": 10000,
-      "max_records": 80000,
-      "max_revision_age_hours": 72
-    },
-    {
       "id": "china4",
       "repository": "gaoyifan/china-operator-ip",
       "ref": "ip-lists",
@@ -65,58 +29,7 @@
       "min_records": 1000,
       "max_records": 30000,
       "max_revision_age_hours": 72
-    },
-    {
-      "repository": "Loyalsoldier/v2ray-rules-dat",
-      "ref": "release",
-      "format": "loyal-direct",
-      "policy": "DIRECT",
-      "license": "GPL-3.0",
-      "max_revision_age_hours": 72,
-      "id": "enhanced",
-      "path": "direct-list.txt",
-      "min_records": 80000,
-      "max_records": 180000
-    },
-    {
-      "repository": "Loyalsoldier/v2ray-rules-dat",
-      "ref": "release",
-      "format": "loyal-direct",
-      "policy": "DIRECT",
-      "license": "GPL-3.0",
-      "max_revision_age_hours": 72,
-      "id": "apple_cn",
-      "path": "apple-cn.txt",
-      "min_records": 80,
-      "max_records": 1000
-    },
-    {
-      "id": "regional",
-      "repository": "v2fly/domain-list-community",
-      "ref": "master",
-      "path": "data/geolocation-!cn",
-      "format": "v2fly-archive",
-      "policy": "DIRECT",
-      "license": "MIT",
-      "min_records": 200,
-      "max_records": 10000,
-      "max_revision_age_hours": 336,
-      "attribute": "cn"
     }
   ],
-  "direct_excluded_suffixes": [
-    "cn",
-    "com.cn",
-    "net.cn",
-    "org.cn",
-    "ac.cn",
-    "edu.cn",
-    "gov.cn",
-    "mil.cn"
-  ],
-  "direct_allowed_registry_suffixes": [
-    "cn",
-    "xn--fiqs8s",
-    "xn--fiqz9s"
-  ]
+  "routing_mode": "destination-ip"
 }
