@@ -52,3 +52,12 @@ Mac 候选下，中国 NTP 的五个指定主机和 time.apple.com 均收到有�
 更新健康检查每天北京时间次日 00:23 运行，最近完成的更新失败、36 小时没有成功、运行超过 1 小时或长时间排队时显示失败；成功 NO_CHANGE 算作新鲜。邮件由 GitHub 账户通知设置决定。整个仓库 Actions 停用、GitHub 调度/平台故障无法靠仓库内部任务自行恢复，不宣传为外部全天候告警。
 
 本次没有取得 iPhone 的远程控制或逐项原生日志，未完成其新增例外、IPv6-only/NAT64、长期内存、真实公共 Wi-Fi 认证、特定路由器/NAS 或节点/DNS 全失败的故障注入验收。已知微信 IPv6 故障保持 IPv4 兼容修复，不擅自更改 VPS。
+
+## 正式发布验收
+
+- 修订提交：`21eef67bc4982fb8caf7af5452c1fadca79e84f4`。GitHub [完整更新工作流](https://github.com/jhz1022/Shadowrocket-Rules/actions/runs/41167255928) 已成功运行：40 项测试、在线下载、离线复现、全源审计和无变化跳过提交均通过。
+- 独立健康检查的 [push 运行](https://github.com/jhz1022/Shadowrocket-Rules/actions/runs/41167255925) 和 [手动运行](https://github.com/jhz1022/Shadowrocket-Rules/actions/runs/41167503549) 均成功。定时表达式已检查，未来每日运行仍取决于 GitHub 调度。
+- 匿名下载的正式配置与本机产物 SHA-256 相同：`e9fb1cdf880672f8a54e1c046708ea03497fb7646d04c787234978bfcbf6bc32`。
+- Mac 在 12:08:29 从正式 GitHub 订阅更新，原生编辑器解析出 42,502 条规则，已选中正式配置并保持全局“配置”模式连接。
+- 正式配置下 13 项公开 HTTP 探测均完成协议交换。NTP 首轮 5/6 应答有效，`cn.pool.ntp.org` 一次超时，单独复查有效（约 108 ms）；其余四个中国池主机和 Apple 校时成功。五个中国池主机的原生日志均为精确 DOMAIN / DIRECT，不将重试成功抹去原始超时。
+- 正式配置的 10 项实时 DNS 检查符合预期，三项公共 TCP/53 的原生日志明确命中 `DST-PORT,53,REJECT`。局域网网关 3/3 ping 应答。临时代理日志恢复关闭，本地候选下载服务器已停止。

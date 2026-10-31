@@ -74,7 +74,8 @@ e9fb1cdf880672f8a54e1c046708ea03497fb7646d04c787234978bfcbf6bc32
 - 40 项自动测试通过；每次构建/发布新增独立全源审计：当前 141,228 个域名边界样本无策略差异，IPv4/IPv6 精确集合相同。source @cn 证据失效、例外越界、DNS 兜底被绕过或受保护海外服务被直连均会拒绝构建。
 - 真实在线构建返回 NO_CHANGE，离线逐字节复现及 actionlint v1.7.12 检查两个工作流通过；未宣称运行 shellcheck/pyflakes。
 - 本机候选首轮 6 个 NTP 主机收到有效 UDP/123 应答；第二轮中国池五项均成功，Apple 校时有一次超时后单独复查成功。13 项公开 HTTP 探测均完成协议交换；下载根路径的 400/404 不等同完整下载通过。10 项实时 DNS 结果符合预期。
-- 独立只读健康检查已通过本机真实 GitHub API；监测最近更新失败和超过 36 小时没有成功，NO_CHANGE 算新鲜。GitHub 托管运行结果另附实际链接，不用本机检查冒充托管验证。
+- GitHub [完整更新运行](https://github.com/jhz1022/Shadowrocket-Rules/actions/runs/41167255928) 已成功：40 项测试、在线下载、离线复现和全源审计均通过，NO_CHANGE 未创建提交。独立只读健康检查的 [手动运行](https://github.com/jhz1022/Shadowrocket-Rules/actions/runs/41167503549) 也已成功。
+- Mac 已从正式 GitHub 订阅更新并启用 42,502 条规则；正式配置下 13 项 HTTP 协议交换、10 项 DNS 预期结果及局域网 3/3 ping 应答通过。NTP 首轮 5/6 成功，cn.pool.ntp.org 一次超时后复查成功，原生日志确认五个中国池主机精确 DIRECT。详情见 HARDENING 的正式验收记录，保留候选及正式轮次原始超时。
 - 详情及未实测边界见 [HARDENING.md](HARDENING.md)。原始请求和日志只保存在本机忽略目录。
 
 ## 待补充验收
