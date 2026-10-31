@@ -240,6 +240,15 @@ def minimize(rules):
     return result
 
 
+def precise_direct(rules, config):
+    """A TLD/registry suffix is not evidence about an individual business."""
+    excluded = set(config['direct_excluded_suffixes'])
+    if not {'cn', 'com.cn', 'net.cn', 'org.cn'} <= excluded:
+        raise BuildError('Missing registry-level DIRECT exclusions')
+    return {r for r in rules if not (r.kind == 'DOMAIN-SUFFIX'
+            and ('.' not in r.value or r.value in excluded))}
+
+
 def resolve_conflicts(proxy, direct):
     """PROXY wins, even a broader suffix vs a more specific DIRECT entry."""
     p_suffix = {r.value: r for r in proxy if r.kind == 'DOMAIN-SUFFIX'}
@@ -400,7 +409,7 @@ def validate(conf, overrides=None):
             raise BuildError('Duplicate General setting')
         settings[key] = value
     required = {
-        'dns-server': 'https://1.1.1.1/dns-query#proxy',
+        'dns-server': 'https://1.1.1.1/dns-query#proxy, https://8.8.8.8/dns-query#proxy',
         'fallback-dns-server': 'https://8.8.8.8/dns-query#proxy',
         'proxy-dns-server': 'https://223.5.5.5/dns-query, https://223.6.6.6/dns-query',
         'dns-fallback': 'false', 'dns-direct-system': 'true',
@@ -444,6 +453,10 @@ def validate(conf, overrides=None):
         if parts[0] in ('DOMAIN', 'DOMAIN-SUFFIX'):
             if len(parts) != 3 or domain(parts[1]) != parts[1]:
                 raise BuildError('Malformed domain rule')
+            excluded = {'cn', 'com.cn', 'net.cn', 'org.cn', 'ac.cn', 'edu.cn', 'gov.cn', 'mil.cn'}
+            if parts[2] == 'DIRECT' and parts[0] == 'DOMAIN-SUFFIX' and (
+                    ('.' not in parts[1] and parts[1] not in {'local', 'lan'}) or parts[1] in excluded):
+                raise BuildError('Registry-level DIRECT rule is forbidden')
         elif parts[0] in ('IP-CIDR', 'IP-CIDR6'):
             if len(parts) != 4 or parts[3] != 'no-resolve':
                 raise BuildError('IP rule without no-resolve')
@@ -466,6 +479,9 @@ def validate(conf, overrides=None):
                 ('github.com', None, 'PROXY'), ('chatgpt.com', None, 'PROXY'),
                 ('api.openai.com', None, 'PROXY'), ('www.google.cn', None, 'PROXY'),
                 ('fresh-unlisted.invalid', None, 'PROXY'),
+                ('fresh-unlisted.cn', None, 'PROXY'),
+                ('fresh-unlisted.com.cn', None, 'PROXY'),
+                ('fresh-unlisted.xn--fiqs8s', None, 'PROXY'),
                 ('printer.local', None, 'DIRECT'), ('nas.home.arpa', None, 'DIRECT'),
                 ('', '192.168.1.1', 'DIRECT'), ('', '223.5.5.5', 'DIRECT'),
                 ('', '2400:3200::1', 'DIRECT'), ('', '1.1.1.1', 'PROXY'),
@@ -568,7 +584,7 @@ def generate(config, template, overrides, inputs, metadata, baseline=None):
                           'bytes': len(data), 'license': spec['license']}
     reviewed, protected = reviewed_rules(overrides, inputs['direct'])
     proxy = all_rules['proxy'] | protected
-    proxy, direct = minimize(proxy), minimize(all_rules['direct'])
+    proxy, direct = minimize(proxy), minimize(precise_direct(all_rules['direct'], config))
     direct, conflicts = resolve_conflicts(proxy, direct)
     for item in conflicts:
         item['stage'] = 'ordinary-sources'
@@ -613,6 +629,8 @@ def generate(config, template, overrides, inputs, metadata, baseline=None):
     if stats['rules'] > config['max_output_rules'] or len(content.encode()) > config['max_output_bytes']:
         raise BuildError('Output exceeds reviewed client size budget')
     manifest = {'schema': 1, 'sources': sources, 'ip_coverage': coverage,
+                'excluded_registry_direct': sorted(r.line() for r in all_rules['direct']
+                    - precise_direct(all_rules['direct'], config)),
                 'config_sha256': sha(content.encode()),
                 'generator_sha256': sha(Path(__file__).read_bytes()),
                 'template_sha256': sha(template.encode()),

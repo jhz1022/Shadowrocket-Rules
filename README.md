@@ -36,11 +36,13 @@ GitHub 发布及 Mac 客户端验证状态见 [验证记录](docs/VALIDATION.md)
 | 查询用途 | 配置及预期路径 | 边界 |
 | --- | --- | --- |
 | 国内/LAN 直连域名 | `dns-direct-system = true`，使用当前网络的系统 DNS | 有意保留国内 CDN、企业 split DNS、路由器内网名称；可能是明文 DNS，可见国内解析器是正常现象 |
-| 代理/未命中域名 | 代理协议支持时交给节点解析；需要本地答案时使用 `https://1.1.1.1/dns-query#proxy` | 通过首页当前节点；不同节点协议的远端解析能力不同，必须实测 |
-| 加密 DNS 的备用路径 | `https://8.8.8.8/dns-query#proxy` | 备用也经代理；`dns-fallback = false` 要求禁用隐式系统 DNS 回退 |
+| 代理/未命中域名 | 代理协议支持时交给节点解析；需要本地答案时使用 Cloudflare / Google 两个显式主 DoH（均 `#proxy`） | 通过首页当前节点；不同节点协议的远端解析能力不同，必须实测 |
+| DoH 容错与回退 | 两家 DoH 同列于 `dns-server`；保留显式 `fallback-dns-server` | 单家故障的正向 TXT 已交叉实测；不依赖备用字段自动切换。`dns-fallback = false` 保留，全部故障本轮无答案 |
 | 节点自身域名 | `proxy-dns-server`，直连阿里 IP 地址 DoH | 仅节点引导，阿里会知道节点域名和本地出口；不依赖代理先启动 |
 
 `proxy-dns-server` **不是代理网站使用的 DNS**。解析器使用 IP 地址 DoH URL，TLS 校验保持开启，不需要先查询解析器域名。国内直连使用系统 DNS 是本项目为局域网及 CDN 作出的明确选择，不是误配或检测规避。
+
+直连源先移除所有顶级后缀及列明的注册级后缀（如 `.cn`、`.com.cn`），仅保留明确业务域名。未知 `.cn` 不再自动直连；现有百度、淘宝、微信等业务规则保留。域名归属仍依赖维护数据，不把“有收录”说成地理准确性的证明。
 
 所有地址规则都带 `no-resolve`。未命中域名不会仅为匹配中国 IP 表而额外请求本地 DNS；已知国内 IP 直接连接可以命中 IP 表。代价是**未收录的国内域名也可能走默认代理**，这是隐私优先的边界，不为“猜国内 IP”主动解析。已明确匹配代理的域名不会因为最终落在中国 IP 上而改成直连。
 
@@ -85,7 +87,7 @@ IP 表是 BGP/登记分类数据，不代表每个地址的实时物理位置，
 - 中国 NTP：`cn.pool.ntp.org` 和 `0`～`3.cn.pool.ntp.org` 五个精确主机；全球池及其他国家池仍走代理。
 - 国内业务：汇丰中国、汇丰人寿中国、汇丰前海的三个专属业务域族；仅 `account-cn.alibabacloud.com` 这一 Qoder CN 账户主机。其他国际银行域名、阿里国际入口继续代理。
 - 系统基础服务：精确放行 `captive.apple.com` 及三个 Apple 校时主机，避免公共 Wi-Fi 检测和校时依赖可用代理。
-- 下载：17 个指定 Apple 商店/更新/下载主机、4 个上游标记 `@cn` 的 Microsoft 下载主机。未放行整个 `apple.com`、`microsoft.com`、`akadns.net`、共享 CDN 或 Apple 全局 IP 块；Apple TV、News、Intelligence 和 Copilot 保留代理。
+- 下载：17 个既有指定 Apple 商店/更新/下载主机，加 15 个商店接口/图片/下载主机及 7 个更新主机、4 个上游标记 `@cn` 的 Microsoft 下载主机。未放行整个 `apple.com`、`microsoft.com`、`akadns.net`、共享 CDN 或 Apple 全局 IP 块；Apple TV、News、Intelligence 和 Copilot 保留代理。
 - 局域网管理：18 个有厂商用途依据的精确管理主机，包含 ASUS、TP-Link、NETGEAR/Orbi、Tenda、小米。保留本地 DNS 和私网地址规则；品牌域名仍需当前网络的本地 DNS 正确解析，不能凭规则修复错误 DHCP/DNS，也没有固定写死某个家庭网关。
 
 这些是业务范围经过审查的路由选择，不保证每个 CDN IP 都在大陆或每个网络直连都更快。管理域名也放在 DNS 端口兜底之后；仅已知私网目的地址和本地保留命名空间继续允许 DNS，不因公共品牌域名而放开外部端口 53。
@@ -103,9 +105,11 @@ python3 scripts/build.py                      # 实际下载并构建
 python3 scripts/build.py --offline             # 从已提交源快照重建
 python3 scripts/build.py --offline --check     # 只读检查完整可复现性
 python3 -m unittest discover -s tests -v        # 转换、路由、异常输入与保留旧版测试
-python3 scripts/audit.py                       # 全源域名边界模型及 CIDR 集合检查
+python3 scripts/audit.py                       # 独立源解码、域名边界模型及 CIDR 集合检查
 python3 scripts/probe_client_dns.py            # 仅在实际客户端 Mac 上运行；需要已启用配置
 python3 scripts/probe_client_services.py       # 可选 UDP/123、联网检测及公开业务/CDN 根路径探测
+python3 scripts/probe_client_dns.py --resolution success # 非 Fake-IP 的正向 TXT 控制
+python3 scripts/probe_apple_delivery.py         # 真正下载公开图片和 <=20 MiB 的签名包，绝不安装
 ```
 
 修改模板、构建器或 sources 后，先离线重建、运行测试，再提交源码和 `dist/`。`--check` 会比较生成器、模板、源配置和产物哈希，因此故意修改源码却不重建会失败。`--check` 不模拟 Shadowrocket 原生解析器。
@@ -126,6 +130,8 @@ python3 scripts/probe_client_services.py       # 可选 UDP/123、联网检测�
 
 除了每日北京时间 12:23 更新，`Check rule update health` 在北京时间次日 00:23（UTC 16:23）独立检查默认分支的更新执行记录，也支持手动运行。最近一次完成的更新失败、超过 36 小时没有成功、运行超过 1 小时或排队超过新鲜度上限时，检查明确失败并给出 Actions 错误标注。成功的 `NO_CHANGE` 也算新鲜，不能用最后一次规则提交日期判断是否停更。
 
+另外查询每个上游仓库的归档/停用状态及目标分支最新提交年龄：人工维护国内域名源为 14 天，三个每日产出源为 72 小时，超过预算即检查失败。预算是维护活动信号，不证明规则内容每日变化或归属准确；正常无变化不会制造提交。
+
 该检查只有 `contents: read` / `actions: read`，不创建 Issue、不发送私人日志、不制造每日提交。是否收到邮件取决于你的 GitHub 通知设置；检查失败不等于已经通知到手机。两个工作流都依赖 GitHub 调度，若整个仓库 Actions 被停用或 GitHub 不运行任务，仓库内部无法自我唤醒；不把它称为外部全天候监控。
 
 ## 项目结构
@@ -138,6 +144,8 @@ config/overrides.json         审查过的本地管理、直连例外、海外�
 sources/sources.json          上游、类型、许可、质量阈值
 scripts/build.py              标准库构建器
 scripts/audit.py              独立全源边界与 IP 覆盖审计
+scripts/audit_sources.py      与构建器分离的源数据解码器
+scripts/probe_apple_delivery.py 可选真实内容下载及签名/摘要验证
 scripts/check_update_health.py 更新执行状态及陈旧检查
 scripts/probe_client_services.py 可选本机服务与 NTP 探测
 scripts/probe_client_dns.py   可选的本机实时 DNS 验收，不在 Actions 中冒充真机测试
@@ -153,3 +161,5 @@ NOTICE.md                     数据来源及分发许可说明
 ```
 
 工程及组合配置按 GPL-3.0 分发，MIT 数据保留原声明；详情见 [NOTICE](NOTICE.md)。不要将私人节点、密码、机场订阅、DNS 日志或个人抓包提交到公开仓库。
+
+本轮注册后缀收紧、双主 DoH 故障实测及真实内容验证见 [PRECISION_FIX.md](docs/PRECISION_FIX.md)。

@@ -7,44 +7,53 @@ from pathlib import Path
 import sys
 
 import build
+import audit_sources
 
 
 def domain_sets(rules):
-    return ({r.value for r in rules if r.kind == 'DOMAIN'},
-            {r.value for r in rules if r.kind == 'DOMAIN-SUFFIX'})
+    return ({value for kind, value in rules if kind == 'DOMAIN'},
+            {value for kind, value in rules if kind == 'DOMAIN-SUFFIX'})
+
+
+def ancestors(host):
+    labels = host.split('.')
+    return {'.'.join(labels[index:]) for index in range(len(labels))}
 
 
 def audit(root=build.ROOT, conf=None):
     root = Path(root)
     conf = conf if conf is not None else (root / 'dist/Shadowrocket.conf').read_text()
     specs = json.loads((root / 'sources/sources.json').read_text())
-    inputs, _ = build.offline_inputs(root / 'dist', specs)
-    raw = {s['id']: build.parse_source(inputs[s['id']], s)[0] for s in specs['sources']}
+    raw = audit_sources.read_sources(root, specs)
     overrides = json.loads((root / 'config/overrides.json').read_text())
-    reviewed, protected = build.reviewed_rules(overrides, inputs['direct'])
+    reviewed = {section: {(g['type'], audit_sources.hostname(h)) for g in overrides[section]
+                          for h in g['domains']} for section in ['lan_domains', 'direct_exceptions']}
+    protected = {('DOMAIN-SUFFIX', h) for h in overrides['proxy_suffix']}
     proxy = raw['proxy'] | protected
-    direct = raw['direct']
-    local_exact = {'localhost'} | {r.value for r in reviewed['lan_domains']}
+    direct = {(kind, name) for kind, name in raw['direct'] if not (kind == 'DOMAIN-SUFFIX'
+              and ('.' not in name or name in specs['direct_excluded_suffixes']))}
+    local_exact = {'localhost'} | {name for _, name in reviewed['lan_domains']}
     local_suffix = {'local', 'lan', 'home.arpa', 'in-addr.arpa', 'ip6.arpa'}
     p_exact, p_suffix = domain_sets(proxy)
     d_exact, d_suffix = domain_sets(direct)
     r_exact, r_suffix = domain_sets(reviewed['direct_exceptions'])
 
     def expected(host):
-        ancestors = list(build.parents(host))
-        if host in local_exact or any(x in local_suffix for x in ancestors):
+        lineage = ancestors(host)
+        if host in local_exact or lineage & local_suffix:
             return 'DIRECT'
-        if host in r_exact or any(x in r_suffix for x in ancestors):
+        if host in r_exact or lineage & r_suffix:
             return 'DIRECT'
-        if host in p_exact or any(x in p_suffix for x in ancestors):
+        if host in p_exact or lineage & p_suffix:
             return 'PROXY'
-        if host in d_exact or any(x in d_suffix for x in ancestors):
+        if host in d_exact or lineage & d_suffix:
             return 'DIRECT'
         return 'PROXY'
 
     # Actual decisions use output order, independently of generate/minimize/conflict code.
     exact, suffix = {}, {}
-    for index, line in enumerate(build.rule_lines(conf)):
+    rule_block = conf.split('[Rule]\n', 1)[1].split('[Host]', 1)[0]
+    for index, line in enumerate(rule_block.splitlines()):
         parts = line.split(',')
         if parts[0] == 'DOMAIN':
             exact.setdefault(parts[1], (index, parts[2]))
@@ -53,13 +62,13 @@ def audit(root=build.ROOT, conf=None):
 
     def actual(host):
         matches = [exact[host]] if host in exact else []
-        matches.extend(suffix[x] for x in build.parents(host) if x in suffix)
+        matches.extend(suffix[x] for x in ancestors(host) if x in suffix)
         return min(matches)[1] if matches else 'PROXY'
 
     samples = {'never-listed.example.invalid', 'localhost', 'nas.local', 'nas.home.arpa'}
-    for rule in proxy | direct | set().union(*reviewed.values()):
-        samples.update([rule.value, 'sr-audit-subdomain.' + rule.value,
-                        'sr-audit-not' + rule.value, rule.value + '.outside.invalid'])
+    for _, name in proxy | raw['direct'] | set().union(*reviewed.values()):
+        samples.update([name, 'sr-audit-subdomain.' + name,
+                        'sr-audit-not' + name, name + '.outside.invalid'])
     failures = []
     for host in sorted(samples):
         want, got = expected(host), actual(host)
@@ -68,7 +77,7 @@ def audit(root=build.ROOT, conf=None):
     block = conf.split('# BEGIN CHINA IP\n')[1].split('# END CHINA IP')[0]
     ip_equality = {}
     for ident, kind in [('china4', 'IP-CIDR'), ('china6', 'IP-CIDR6')]:
-        before = list(ipaddress.collapse_addresses(ipaddress.ip_network(r.value) for r in raw[ident]))
+        before = list(ipaddress.collapse_addresses(raw[ident]))
         after = list(ipaddress.collapse_addresses(ipaddress.ip_network(x.split(',')[1])
                      for x in block.splitlines() if x.startswith(kind + ',')))
         ip_equality[ident] = before == after
@@ -78,7 +87,7 @@ def audit(root=build.ROOT, conf=None):
     return {'config_sha256': build.sha(conf.encode()), 'domain_boundary_cases': len(samples),
             'domain_failures': 0, 'ip_union_equal': ip_equality,
             'validation': build.validate(conf, overrides),
-            'scope': 'Static domain model and exact CIDR union; not native DNS/TUN simulation'}
+            'scope': 'Independent source decoders and static output model; not upstream truth or native DNS/TUN simulation'}
 
 
 def main():

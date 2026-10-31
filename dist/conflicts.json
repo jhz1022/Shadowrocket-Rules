@@ -54,285 +54,27 @@
     "stage": "ordinary-sources"
   },
   {
-    "action": "proxy-first-exception",
-    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
-    "proxy": "DOMAIN-SUFFIX,666pool.cn,PROXY",
-    "stage": "ordinary-sources"
-  },
-  {
-    "action": "proxy-first-exception",
-    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
-    "proxy": "DOMAIN-SUFFIX,airbnb.cn,PROXY",
-    "stage": "ordinary-sources"
-  },
-  {
-    "action": "proxy-first-exception",
-    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
-    "proxy": "DOMAIN-SUFFIX,amd.com.cn,PROXY",
-    "stage": "ordinary-sources"
-  },
-  {
-    "action": "proxy-first-exception",
-    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
-    "proxy": "DOMAIN-SUFFIX,arphic.com.cn,PROXY",
-    "stage": "ordinary-sources"
-  },
-  {
-    "action": "proxy-first-exception",
-    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
-    "proxy": "DOMAIN-SUFFIX,bloomberg.cn,PROXY",
-    "stage": "ordinary-sources"
-  },
-  {
-    "action": "proxy-first-exception",
-    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
-    "proxy": "DOMAIN-SUFFIX,daxa.cn,PROXY",
-    "stage": "ordinary-sources"
-  },
-  {
-    "action": "proxy-first-exception",
-    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
-    "proxy": "DOMAIN-SUFFIX,drweb.cn,PROXY",
-    "stage": "ordinary-sources"
-  },
-  {
-    "action": "proxy-first-exception",
-    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
-    "proxy": "DOMAIN-SUFFIX,dungeonkeeper.cn,PROXY",
-    "stage": "ordinary-sources"
-  },
-  {
-    "action": "proxy-first-exception",
-    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
-    "proxy": "DOMAIN-SUFFIX,dungeonkeeper.com.cn,PROXY",
-    "stage": "ordinary-sources"
-  },
-  {
-    "action": "proxy-first-exception",
-    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
-    "proxy": "DOMAIN-SUFFIX,dynacw.com.cn,PROXY",
-    "stage": "ordinary-sources"
-  },
-  {
-    "action": "proxy-first-exception",
-    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
-    "proxy": "DOMAIN-SUFFIX,ebayauthenticate.com.cn,PROXY",
-    "stage": "ordinary-sources"
-  },
-  {
-    "action": "proxy-first-exception",
-    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
-    "proxy": "DOMAIN-SUFFIX,entrust.cn,PROXY",
-    "stage": "ordinary-sources"
-  },
-  {
-    "action": "proxy-first-exception",
-    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
-    "proxy": "DOMAIN-SUFFIX,futu.cn,PROXY",
-    "stage": "ordinary-sources"
-  },
-  {
-    "action": "proxy-first-exception",
-    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
-    "proxy": "DOMAIN-SUFFIX,futubull.cn,PROXY",
-    "stage": "ordinary-sources"
-  },
-  {
-    "action": "proxy-first-exception",
-    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
-    "proxy": "DOMAIN-SUFFIX,google.cn,PROXY",
-    "stage": "ordinary-sources"
-  },
-  {
-    "action": "proxy-first-exception",
-    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
-    "proxy": "DOMAIN-SUFFIX,googleapis.cn,PROXY",
-    "stage": "ordinary-sources"
-  },
-  {
-    "action": "proxy-first-exception",
-    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
-    "proxy": "DOMAIN-SUFFIX,hewlett-packard.com.cn,PROXY",
-    "stage": "ordinary-sources"
-  },
-  {
-    "action": "proxy-first-exception",
-    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
-    "proxy": "DOMAIN-SUFFIX,hsbc.com.cn,PROXY",
-    "stage": "ordinary-sources"
-  },
-  {
-    "action": "proxy-first-exception",
-    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
-    "proxy": "DOMAIN-SUFFIX,hsbcinsurance.com.cn,PROXY",
-    "stage": "ordinary-sources"
-  },
-  {
-    "action": "proxy-first-exception",
-    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
-    "proxy": "DOMAIN-SUFFIX,hsbcqh.com.cn,PROXY",
-    "stage": "ordinary-sources"
-  },
-  {
-    "action": "proxy-first-exception",
-    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
-    "proxy": "DOMAIN-SUFFIX,intel.com.cn,PROXY",
-    "stage": "ordinary-sources"
-  },
-  {
-    "action": "proxy-first-exception",
-    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
-    "proxy": "DOMAIN-SUFFIX,intelrealsense.cn,PROXY",
-    "stage": "ordinary-sources"
-  },
-  {
-    "action": "proxy-first-exception",
-    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
-    "proxy": "DOMAIN-SUFFIX,jinrieluosi.cn,PROXY",
-    "stage": "ordinary-sources"
-  },
-  {
-    "action": "proxy-first-exception",
-    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
-    "proxy": "DOMAIN-SUFFIX,lightnovel.cn,PROXY",
-    "stage": "ordinary-sources"
-  },
-  {
-    "action": "proxy-first-exception",
-    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
-    "proxy": "DOMAIN-SUFFIX,logitech.com.cn,PROXY",
-    "stage": "ordinary-sources"
-  },
-  {
-    "action": "proxy-first-exception",
-    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
-    "proxy": "DOMAIN-SUFFIX,logitechg.com.cn,PROXY",
-    "stage": "ordinary-sources"
-  },
-  {
-    "action": "proxy-first-exception",
-    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
-    "proxy": "DOMAIN-SUFFIX,logitechio.com.cn,PROXY",
-    "stage": "ordinary-sources"
-  },
-  {
-    "action": "proxy-first-exception",
-    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
-    "proxy": "DOMAIN-SUFFIX,longbridge.cn,PROXY",
-    "stage": "ordinary-sources"
-  },
-  {
-    "action": "proxy-first-exception",
-    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
-    "proxy": "DOMAIN-SUFFIX,longportapp.cn,PROXY",
-    "stage": "ordinary-sources"
-  },
-  {
-    "action": "proxy-first-exception",
-    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
-    "proxy": "DOMAIN-SUFFIX,msi.cn,PROXY",
-    "stage": "ordinary-sources"
-  },
-  {
-    "action": "proxy-first-exception",
-    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
-    "proxy": "DOMAIN-SUFFIX,mucinex.cn,PROXY",
-    "stage": "ordinary-sources"
-  },
-  {
-    "action": "proxy-first-exception",
-    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
-    "proxy": "DOMAIN-SUFFIX,mucinex.com.cn,PROXY",
-    "stage": "ordinary-sources"
-  },
-  {
-    "action": "proxy-first-exception",
-    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
-    "proxy": "DOMAIN-SUFFIX,qualcommventures.cn,PROXY",
-    "stage": "ordinary-sources"
-  },
-  {
-    "action": "proxy-first-exception",
-    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
-    "proxy": "DOMAIN-SUFFIX,reutersagency.cn,PROXY",
-    "stage": "ordinary-sources"
-  },
-  {
-    "action": "proxy-first-exception",
-    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
-    "proxy": "DOMAIN-SUFFIX,schwab.com.cn,PROXY",
-    "stage": "ordinary-sources"
-  },
-  {
-    "action": "proxy-first-exception",
-    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
-    "proxy": "DOMAIN-SUFFIX,skytigris.cn,PROXY",
-    "stage": "ordinary-sources"
-  },
-  {
-    "action": "proxy-first-exception",
-    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
-    "proxy": "DOMAIN-SUFFIX,snapdragon.cn,PROXY",
-    "stage": "ordinary-sources"
-  },
-  {
-    "action": "proxy-first-exception",
-    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
-    "proxy": "DOMAIN-SUFFIX,sourcingforebay.com.cn,PROXY",
-    "stage": "ordinary-sources"
-  },
-  {
-    "action": "proxy-first-exception",
-    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
-    "proxy": "DOMAIN-SUFFIX,thomsonreuters.cn,PROXY",
-    "stage": "ordinary-sources"
-  },
-  {
-    "action": "proxy-first-exception",
-    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
-    "proxy": "DOMAIN-SUFFIX,tigerbbs.cn,PROXY",
-    "stage": "ordinary-sources"
-  },
-  {
-    "action": "proxy-first-exception",
-    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
-    "proxy": "DOMAIN-SUFFIX,uupool.cn,PROXY",
-    "stage": "ordinary-sources"
-  },
-  {
-    "action": "proxy-first-exception",
-    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
-    "proxy": "DOMAIN-SUFFIX,verisign.com.cn,PROXY",
-    "stage": "ordinary-sources"
-  },
-  {
-    "action": "proxy-first-exception",
-    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
-    "proxy": "DOMAIN-SUFFIX,xn--ztsq84g.cn,PROXY",
-    "stage": "ordinary-sources"
-  },
-  {
-    "action": "proxy-first-exception",
-    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
-    "proxy": "DOMAIN-SUFFIX,zhijianfengyi.cn,PROXY",
-    "stage": "ordinary-sources"
-  },
-  {
-    "action": "proxy-first-exception",
-    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
-    "proxy": "DOMAIN-SUFFIX,zmw.cn,PROXY",
-    "stage": "ordinary-sources"
-  },
-  {
-    "action": "proxy-first-exception",
-    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
-    "proxy": "DOMAIN-SUFFIX,zoom.com.cn,PROXY",
+    "action": "drop-direct",
+    "direct": "DOMAIN-SUFFIX,cn.pool.ntp.org,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,pool.ntp.org,PROXY",
     "stage": "ordinary-sources"
   },
   {
     "action": "drop-direct",
-    "direct": "DOMAIN-SUFFIX,cn.pool.ntp.org,DIRECT",
-    "proxy": "DOMAIN-SUFFIX,pool.ntp.org,PROXY",
+    "direct": "DOMAIN-SUFFIX,hsbc.com.cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,hsbc.com.cn,PROXY",
+    "stage": "ordinary-sources"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN-SUFFIX,hsbcinsurance.com.cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,hsbcinsurance.com.cn,PROXY",
+    "stage": "ordinary-sources"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN-SUFFIX,hsbcqh.com.cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,hsbcqh.com.cn,PROXY",
     "stage": "ordinary-sources"
   },
   {
@@ -357,66 +99,6 @@
     "action": "proxy-first-exception",
     "direct": "DOMAIN-SUFFIX,qcloud.com,DIRECT",
     "proxy": "DOMAIN-SUFFIX,shortconn.im.qcloud.com,PROXY",
-    "stage": "ordinary-sources"
-  },
-  {
-    "action": "proxy-first-exception",
-    "direct": "DOMAIN-SUFFIX,xn--czr694b,DIRECT",
-    "proxy": "DOMAIN-SUFFIX,apple.xn--czr694b,PROXY",
-    "stage": "ordinary-sources"
-  },
-  {
-    "action": "proxy-first-exception",
-    "direct": "DOMAIN-SUFFIX,xn--czr694b,DIRECT",
-    "proxy": "DOMAIN-SUFFIX,xn--hxtr4rozx.xn--czr694b,PROXY",
-    "stage": "ordinary-sources"
-  },
-  {
-    "action": "proxy-first-exception",
-    "direct": "DOMAIN-SUFFIX,xn--fiqs8s,DIRECT",
-    "proxy": "DOMAIN-SUFFIX,apple.xn--fiqs8s,PROXY",
-    "stage": "ordinary-sources"
-  },
-  {
-    "action": "proxy-first-exception",
-    "direct": "DOMAIN-SUFFIX,xn--hxt814e,DIRECT",
-    "proxy": "DOMAIN-SUFFIX,nike.xn--hxt814e,PROXY",
-    "stage": "ordinary-sources"
-  },
-  {
-    "action": "proxy-first-exception",
-    "direct": "DOMAIN-SUFFIX,xn--hxt814e,DIRECT",
-    "proxy": "DOMAIN-SUFFIX,xn--74q035i.xn--hxt814e,PROXY",
-    "stage": "ordinary-sources"
-  },
-  {
-    "action": "proxy-first-exception",
-    "direct": "DOMAIN-SUFFIX,xn--hxt814e,DIRECT",
-    "proxy": "DOMAIN-SUFFIX,xn--fiqs8sxootzz.xn--hxt814e,PROXY",
-    "stage": "ordinary-sources"
-  },
-  {
-    "action": "proxy-first-exception",
-    "direct": "DOMAIN-SUFFIX,xn--hxt814e,DIRECT",
-    "proxy": "DOMAIN-SUFFIX,xn--gtvq61aiijy0b.xn--hxt814e,PROXY",
-    "stage": "ordinary-sources"
-  },
-  {
-    "action": "proxy-first-exception",
-    "direct": "DOMAIN-SUFFIX,xn--hxt814e,DIRECT",
-    "proxy": "DOMAIN-SUFFIX,xn--gtvz22d.xn--hxt814e,PROXY",
-    "stage": "ordinary-sources"
-  },
-  {
-    "action": "proxy-first-exception",
-    "direct": "DOMAIN-SUFFIX,xn--hxt814e,DIRECT",
-    "proxy": "DOMAIN-SUFFIX,xn--kput3imi374g.xn--hxt814e,PROXY",
-    "stage": "ordinary-sources"
-  },
-  {
-    "action": "proxy-first-exception",
-    "direct": "DOMAIN-SUFFIX,xn--hxt814e,DIRECT",
-    "proxy": "DOMAIN-SUFFIX,xn--ruq8a011kt6y.xn--hxt814e,PROXY",
     "stage": "ordinary-sources"
   },
   {
@@ -463,6 +145,41 @@
   },
   {
     "action": "reviewed-direct-override",
+    "direct": "DOMAIN,amp-api-edge.apps.apple.com,DIRECT",
+    "group": "apple-store-assets",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "reviewed-policy"
+  },
+  {
+    "action": "reviewed-direct-override",
+    "direct": "DOMAIN,amp-api-search-edge.apps.apple.com,DIRECT",
+    "group": "apple-store-assets",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "reviewed-policy"
+  },
+  {
+    "action": "reviewed-direct-override",
+    "direct": "DOMAIN,amp-api-updates.apps.apple.com,DIRECT",
+    "group": "apple-store-assets",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "reviewed-policy"
+  },
+  {
+    "action": "reviewed-direct-override",
+    "direct": "DOMAIN,amp-api.apps.apple.com,DIRECT",
+    "group": "apple-store-assets",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "reviewed-policy"
+  },
+  {
+    "action": "reviewed-direct-override",
+    "direct": "DOMAIN,api-edge.apps.apple.com,DIRECT",
+    "group": "apple-store-assets",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "reviewed-policy"
+  },
+  {
+    "action": "reviewed-direct-override",
     "direct": "DOMAIN,appldnld.apple.com,DIRECT",
     "group": "apple-downloads",
     "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
@@ -479,6 +196,13 @@
     "action": "reviewed-direct-override",
     "direct": "DOMAIN,apps.apple.com,DIRECT",
     "group": "apple-downloads",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "reviewed-policy"
+  },
+  {
+    "action": "reviewed-direct-override",
+    "direct": "DOMAIN,bag.itunes.apple.com,DIRECT",
+    "group": "apple-store-assets",
     "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
     "stage": "reviewed-policy"
   },
@@ -533,8 +257,50 @@
   },
   {
     "action": "reviewed-direct-override",
+    "direct": "DOMAIN,gdmf-ados.apple.com,DIRECT",
+    "group": "apple-update-catalogs",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "reviewed-policy"
+  },
+  {
+    "action": "reviewed-direct-override",
     "direct": "DOMAIN,gdmf.apple.com,DIRECT",
     "group": "apple-downloads",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "reviewed-policy"
+  },
+  {
+    "action": "reviewed-direct-override",
+    "direct": "DOMAIN,gg.apple.com,DIRECT",
+    "group": "apple-update-catalogs",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "reviewed-policy"
+  },
+  {
+    "action": "reviewed-direct-override",
+    "direct": "DOMAIN,gs.apple.com,DIRECT",
+    "group": "apple-update-catalogs",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "reviewed-policy"
+  },
+  {
+    "action": "reviewed-direct-override",
+    "direct": "DOMAIN,ig.apple.com,DIRECT",
+    "group": "apple-update-catalogs",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "reviewed-policy"
+  },
+  {
+    "action": "reviewed-direct-override",
+    "direct": "DOMAIN,init.itunes.apple.com,DIRECT",
+    "group": "apple-store-assets",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "reviewed-policy"
+  },
+  {
+    "action": "reviewed-direct-override",
+    "direct": "DOMAIN,iosapps.itunes.apple.com,DIRECT",
+    "group": "apple-store-assets",
     "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
     "stage": "reviewed-policy"
   },
@@ -543,6 +309,48 @@
     "direct": "DOMAIN,iosapps.itunes.g.aaplimg.com,DIRECT",
     "group": "apple-downloads",
     "proxy": "DOMAIN-SUFFIX,aaplimg.com,PROXY",
+    "stage": "reviewed-policy"
+  },
+  {
+    "action": "reviewed-direct-override",
+    "direct": "DOMAIN,is1-ssl.mzstatic.com,DIRECT",
+    "group": "apple-store-assets",
+    "proxy": "DOMAIN-SUFFIX,mzstatic.com,PROXY",
+    "stage": "reviewed-policy"
+  },
+  {
+    "action": "reviewed-direct-override",
+    "direct": "DOMAIN,is2-ssl.mzstatic.com,DIRECT",
+    "group": "apple-store-assets",
+    "proxy": "DOMAIN-SUFFIX,mzstatic.com,PROXY",
+    "stage": "reviewed-policy"
+  },
+  {
+    "action": "reviewed-direct-override",
+    "direct": "DOMAIN,is3-ssl.mzstatic.com,DIRECT",
+    "group": "apple-store-assets",
+    "proxy": "DOMAIN-SUFFIX,mzstatic.com,PROXY",
+    "stage": "reviewed-policy"
+  },
+  {
+    "action": "reviewed-direct-override",
+    "direct": "DOMAIN,is4-ssl.mzstatic.com,DIRECT",
+    "group": "apple-store-assets",
+    "proxy": "DOMAIN-SUFFIX,mzstatic.com,PROXY",
+    "stage": "reviewed-policy"
+  },
+  {
+    "action": "reviewed-direct-override",
+    "direct": "DOMAIN,is5-ssl.mzstatic.com,DIRECT",
+    "group": "apple-store-assets",
+    "proxy": "DOMAIN-SUFFIX,mzstatic.com,PROXY",
+    "stage": "reviewed-policy"
+  },
+  {
+    "action": "reviewed-direct-override",
+    "direct": "DOMAIN,itunes.apple.com,DIRECT",
+    "group": "apple-store-assets",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
     "stage": "reviewed-policy"
   },
   {
@@ -568,9 +376,30 @@
   },
   {
     "action": "reviewed-direct-override",
+    "direct": "DOMAIN,osrecovery.apple.com,DIRECT",
+    "group": "apple-update-catalogs",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "reviewed-policy"
+  },
+  {
+    "action": "reviewed-direct-override",
+    "direct": "DOMAIN,osxapps.itunes.apple.com,DIRECT",
+    "group": "apple-store-assets",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "reviewed-policy"
+  },
+  {
+    "action": "reviewed-direct-override",
     "direct": "DOMAIN,osxapps.itunes.g.aaplimg.com,DIRECT",
     "group": "apple-downloads",
     "proxy": "DOMAIN-SUFFIX,aaplimg.com,PROXY",
+    "stage": "reviewed-policy"
+  },
+  {
+    "action": "reviewed-direct-override",
+    "direct": "DOMAIN,skl.apple.com,DIRECT",
+    "group": "apple-update-catalogs",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
     "stage": "reviewed-policy"
   },
   {
@@ -641,6 +470,13 @@
     "direct": "DOMAIN,updates.cdn-apple.com,DIRECT",
     "group": "apple-downloads",
     "proxy": "DOMAIN-SUFFIX,cdn-apple.com,PROXY",
+    "stage": "reviewed-policy"
+  },
+  {
+    "action": "reviewed-direct-override",
+    "direct": "DOMAIN,xp.apple.com,DIRECT",
+    "group": "apple-update-catalogs",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
     "stage": "reviewed-policy"
   },
   {

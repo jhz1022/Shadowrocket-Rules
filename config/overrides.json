@@ -230,6 +230,56 @@
         "entry": "microsoft",
         "attribute": "cn"
       }
+    },
+    {
+      "id": "apple-store-assets",
+      "type": "DOMAIN",
+      "domains": [
+        "itunes.apple.com",
+        "iosapps.itunes.apple.com",
+        "osxapps.itunes.apple.com",
+        "amp-api.apps.apple.com",
+        "amp-api-edge.apps.apple.com",
+        "amp-api-search-edge.apps.apple.com",
+        "amp-api-updates.apps.apple.com",
+        "api-edge.apps.apple.com",
+        "bag.itunes.apple.com",
+        "init.itunes.apple.com",
+        "is1-ssl.mzstatic.com",
+        "is2-ssl.mzstatic.com",
+        "is3-ssl.mzstatic.com",
+        "is4-ssl.mzstatic.com",
+        "is5-ssl.mzstatic.com"
+      ],
+      "reason": "Exact store API, artwork and download hosts; shared store assets may also be used by other Apple services. No wildcard Apple/CDN bypass or region-unlock promise.",
+      "evidence": [
+        "https://support.apple.com/en-us/101555",
+        "https://github.com/felixonmars/dnsmasq-china-list/blob/master/apple.china.conf"
+      ],
+      "community_check": {
+        "entry": "apple",
+        "attribute": "cn"
+      }
+    },
+    {
+      "id": "apple-update-catalogs",
+      "type": "DOMAIN",
+      "domains": [
+        "gg.apple.com",
+        "gs.apple.com",
+        "ig.apple.com",
+        "osrecovery.apple.com",
+        "skl.apple.com",
+        "gdmf-ados.apple.com",
+        "xp.apple.com"
+      ],
+      "reason": "Documented OS update/catalog/recovery hosts, restricted to exact names.",
+      "evidence": [
+        "https://support.apple.com/en-us/101555"
+      ],
+      "community_check": {
+        "entry": "apple-update"
+      }
     }
   ]
 }

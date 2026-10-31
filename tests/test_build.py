@@ -65,6 +65,13 @@ class ConversionTests(unittest.TestCase):
                  ('DOMAIN', 'only.example.com')]}
         self.assertEqual(len(b.minimize(rules)), 2)
 
+    def test_registry_suffixes_do_not_make_unknown_domains_direct(self):
+        config = {'direct_excluded_suffixes': ['cn', 'com.cn', 'net.cn', 'org.cn']}
+        rows = {b.Rule('DOMAIN-SUFFIX', name, 'DIRECT') for name in
+                ['cn', 'com.cn', 'xn--fiqs8s', 'baidu', 'baidu.com', 'qlogo.cn']}
+        kept = b.precise_direct(rows, config)
+        self.assertEqual({x.value for x in kept}, {'baidu.com', 'qlogo.cn'})
+
     def test_typed_direct_domains_attributes_and_regex_omission(self):
         data = ''.join(f'domain:x{i}.com\n' for i in range(110))
         data += 'full:exact.example.net:@cn,@telemetry\nregexp:^regional[0-9]+\\.example.net$:@cn\n'
@@ -199,6 +206,23 @@ class PublishedSnapshotTests(unittest.TestCase):
         self.assertNotIn('[Proxy Group]', self.conf)
         self.assertEqual([line for line in b.rule_lines(self.conf) if ',REJECT' in line],
                          ['DST-PORT,53,REJECT'])
+
+    def test_broad_registry_bypass_cannot_return(self):
+        for suffix in ['cn', 'com.cn', 'xn--fiqs8s', 'xn--55qx5d']:
+            with self.subTest(suffix=suffix), self.assertRaises(b.BuildError):
+                b.validate(self.conf.replace('# BEGIN DIRECT\n',
+                    '# BEGIN DIRECT\nDOMAIN-SUFFIX,' + suffix + ',DIRECT\n'))
+
+    def test_apple_store_chain_and_overseas_service_separation(self):
+        rules = b.rule_lines(self.conf)
+        for host in ['itunes.apple.com', 'is1-ssl.mzstatic.com', 'is5-ssl.mzstatic.com',
+                     'amp-api.apps.apple.com', 'iosapps.itunes.apple.com', 'osxapps.itunes.apple.com',
+                     'gs.apple.com', 'gdmf-ados.apple.com']:
+            self.assertEqual(b.match_rules(rules, host, port=443), 'DIRECT')
+            self.assertEqual(b.match_rules(rules, host, port=53), 'REJECT')
+        for host in ['sub.itunes.apple.com', 'is6-ssl.mzstatic.com', 'music.apple.com',
+                     'tv.apple.com', 'apple-relay.apple.com', 'news.apple.com']:
+            self.assertEqual(b.match_rules(rules, host, port=443), 'PROXY')
 
     def test_dns_guard_preserves_lan_and_blocks_uncaptured_public_dns(self):
         rules = b.rule_lines(self.conf)

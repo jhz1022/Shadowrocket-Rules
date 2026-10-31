@@ -15,7 +15,8 @@
       "policy": "DIRECT",
       "license": "MIT",
       "min_records": 3000,
-      "max_records": 50000
+      "max_records": 50000,
+      "max_revision_age_hours": 336
     },
     {
       "id": "proxy",
@@ -26,7 +27,8 @@
       "policy": "PROXY",
       "license": "GPL-3.0",
       "min_records": 10000,
-      "max_records": 80000
+      "max_records": 80000,
+      "max_revision_age_hours": 72
     },
     {
       "id": "china4",
@@ -37,7 +39,8 @@
       "policy": "DIRECT",
       "license": "MIT",
       "min_records": 3000,
-      "max_records": 30000
+      "max_records": 30000,
+      "max_revision_age_hours": 72
     },
     {
       "id": "china6",
@@ -48,7 +51,18 @@
       "policy": "DIRECT",
       "license": "MIT",
       "min_records": 1000,
-      "max_records": 30000
+      "max_records": 30000,
+      "max_revision_age_hours": 72
     }
+  ],
+  "direct_excluded_suffixes": [
+    "cn",
+    "com.cn",
+    "net.cn",
+    "org.cn",
+    "ac.cn",
+    "edu.cn",
+    "gov.cn",
+    "mil.cn"
   ]
 }
