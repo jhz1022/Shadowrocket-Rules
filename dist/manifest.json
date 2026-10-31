@@ -1,13 +1,12 @@
 {
-  "config_sha256": "c7275e5ed3af28e7027b78587ed3189c82aac827f819240e60731b41e8674bc4",
-  "conflicts": 73,
+  "config_sha256": "7c9858f7b83592814d5636e9b9d9573ca8257fca6269db0b3a01c52f5eb1b648",
+  "conflicts": 842,
   "excluded_registry_direct": [
     "DOMAIN-SUFFIX,alibaba,DIRECT",
     "DOMAIN-SUFFIX,alipay,DIRECT",
     "DOMAIN-SUFFIX,anquan,DIRECT",
     "DOMAIN-SUFFIX,baidu,DIRECT",
     "DOMAIN-SUFFIX,citic,DIRECT",
-    "DOMAIN-SUFFIX,cn,DIRECT",
     "DOMAIN-SUFFIX,edu.cn,DIRECT",
     "DOMAIN-SUFFIX,gov.cn,DIRECT",
     "DOMAIN-SUFFIX,icbc,DIRECT",
@@ -19,6 +18,7 @@
     "DOMAIN-SUFFIX,taobao,DIRECT",
     "DOMAIN-SUFFIX,tmall,DIRECT",
     "DOMAIN-SUFFIX,unicom,DIRECT",
+    "DOMAIN-SUFFIX,wang,DIRECT",
     "DOMAIN-SUFFIX,weibo,DIRECT",
     "DOMAIN-SUFFIX,xihuan,DIRECT",
     "DOMAIN-SUFFIX,xn--1qqw23a,DIRECT",
@@ -37,8 +37,6 @@
     "DOMAIN-SUFFIX,xn--czru2d,DIRECT",
     "DOMAIN-SUFFIX,xn--fiq228c5hs,DIRECT",
     "DOMAIN-SUFFIX,xn--fiq64b,DIRECT",
-    "DOMAIN-SUFFIX,xn--fiqs8s,DIRECT",
-    "DOMAIN-SUFFIX,xn--fiqz9s,DIRECT",
     "DOMAIN-SUFFIX,xn--fjq720a,DIRECT",
     "DOMAIN-SUFFIX,xn--g2xx48c,DIRECT",
     "DOMAIN-SUFFIX,xn--hxt814e,DIRECT",
@@ -56,7 +54,7 @@
     "DOMAIN-SUFFIX,xn--zfr164b,DIRECT",
     "DOMAIN-SUFFIX,yun,DIRECT"
   ],
-  "generator_sha256": "c462c238ba1e75171522910dcbbb884ecf13c082d41b9beb47c2c3957f4d7d74",
+  "generator_sha256": "8b8033a4d767dc027ce6073e9fd48a21b45598827ae2523dee10b0f1ce33fc6d",
   "ip_coverage": {
     "china4": 344076032,
     "china6": 5430297436658120360713663555829760
@@ -64,20 +62,31 @@
   "output": {
     "dns_port_canaries": 6,
     "reviewed_route_canaries": 74,
-    "routing_canaries": 24,
-    "rules": 44188,
+    "routing_canaries": 31,
+    "rules": 147154,
     "types": {
-      "DOMAIN": 176,
-      "DOMAIN-SUFFIX": 34349,
+      "DOMAIN": 625,
+      "DOMAIN-SUFFIX": 136866,
       "DST-PORT": 1,
       "FINAL": 1,
       "IP-CIDR": 6182,
       "IP-CIDR6": 3479
     }
   },
-  "overrides_sha256": "2a610f88ca4fe735502346073855fc685231e8ecc4aa531896e78730b78a5b21",
+  "overrides_sha256": "ad85a61f5a878892afbcace942640f54a780c48e7b8bad00fd8bef55dfa9d095",
   "schema": 1,
   "sources": {
+    "apple_cn": {
+      "bytes": 4920,
+      "duplicates": 0,
+      "license": "GPL-3.0",
+      "omitted_direct_regex": [],
+      "records": 165,
+      "revision": "e8c869ef82e03f8cfb02f820f99e9f10e5b15e8a",
+      "sha256": "9fbb3bc9b6c9d81c4b1887ce4c81f816a676618592c3dbd2a8c742e14fbba32b",
+      "unique": 165,
+      "url": "https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/e8c869ef82e03f8cfb02f820f99e9f10e5b15e8a/apple-cn.txt"
+    },
     "china4": {
       "bytes": 95991,
       "duplicates": 0,
@@ -115,6 +124,26 @@
       "unique": 7934,
       "url": "https://codeload.github.com/v2fly/domain-list-community/tar.gz/1daade8c4bb957d21d1f5c09c2b050d699e8e96c"
     },
+    "enhanced": {
+      "bytes": 1399522,
+      "duplicates": 0,
+      "license": "GPL-3.0",
+      "omitted_direct_regex": [
+        "regexp:.+\\.awsdns-cn-[0-9][0-9]\\.(biz|com|net|top)$",
+        "regexp:.+\\.awsdns-cn-[0-9][a-e0-9]\\.cn$",
+        "regexp:^(.+\\.)*zh\\.okaapps\\.com$",
+        "regexp:^.+-mihayo\\.akamaized\\.net$",
+        "regexp:^cdn\\d-epicgames-\\d+\\.file\\.myqcloud\\.com$",
+        "regexp:^epicgames-download\\d-\\d+\\.file\\.myqcloud\\.com$",
+        "regexp:^r+[0-9]+(---|\\.)sn-(2x3|ni5|j5o)\\w{5}\\.googlevideo\\.com$",
+        "regexp:^r+[0-9]+(---|\\.)sn-(2x3|ni5|j5o)\\w{5}\\.xn--ngstr-lra8j\\.com$"
+      ],
+      "records": 110194,
+      "revision": "e8c869ef82e03f8cfb02f820f99e9f10e5b15e8a",
+      "sha256": "7799323e9937cb93ab62a776cb22597d2206bfe5bf9ffbdad385809b2783e06f",
+      "unique": 110186,
+      "url": "https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/e8c869ef82e03f8cfb02f820f99e9f10e5b15e8a/direct-list.txt"
+    },
     "proxy": {
       "bytes": 622632,
       "duplicates": 0,
@@ -125,6 +154,25 @@
       "sha256": "1a4394c81d4fae9298cc9d6e392c22459c89f3f24ad9ec20d6f95c69e02492af",
       "unique": 27324,
       "url": "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/611f7e9db13b5c824233ed7451abdf867fc08a41/proxy.txt"
+    },
+    "regional": {
+      "bytes": 351133,
+      "duplicates": 0,
+      "license": "MIT",
+      "omitted_direct_regex": [
+        "regexp:.+\\.awsdns-cn-[0-9][0-9]\\.(biz|com|net|top)$",
+        "regexp:.+\\.awsdns-cn-[0-9][a-e0-9]\\.cn$",
+        "regexp:^(.+\\.)*zh\\.okaapps\\.com$",
+        "regexp:^cdn\\d-epicgames-\\d+\\.file\\.myqcloud\\.com$",
+        "regexp:^epicgames-download\\d-\\d+\\.file\\.myqcloud\\.com$",
+        "regexp:^r+[0-9]+(---|\\.)sn-(2x3|ni5|j5o)\\w{5}\\.googlevideo\\.com$",
+        "regexp:^r+[0-9]+(---|\\.)sn-(2x3|ni5|j5o)\\w{5}\\.xn--ngstr-lra8j\\.com$"
+      ],
+      "records": 1122,
+      "revision": "1daade8c4bb957d21d1f5c09c2b050d699e8e96c",
+      "sha256": "bee50c36c3866890387d6d0ffef5f559c0156d22dbbfa9896f0d0c8c631493a7",
+      "unique": 1115,
+      "url": "https://codeload.github.com/v2fly/domain-list-community/tar.gz/1daade8c4bb957d21d1f5c09c2b050d699e8e96c"
     },
     "registry": {
       "bytes": 337923,
@@ -138,6 +186,6 @@
       "url": "https://raw.githubusercontent.com/publicsuffix/list/9dfbe81931367b3f0af21035c36ae7eeb830dd88/public_suffix_list.dat"
     }
   },
-  "sources_spec_sha256": "0de97c88d8b528ef48d2b1f27acd86266173683d5c3e99711f0f9a77695a5191",
-  "template_sha256": "57cde926ca93939f4c62c256a5dbbb4793dc054257eea840b8dc5c4182cd7739"
+  "sources_spec_sha256": "5536bd493a0eb600dec2b0a6ea4d6d4ed251cd856feb374e8b4c64d713c7775e",
+  "template_sha256": "1b2a6610c8b55bda84d3acacbfe643f08352edefb373b4000313e49e60723789"
 }

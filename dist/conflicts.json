@@ -1,99 +1,4713 @@
 [
   {
     "action": "drop-direct",
-    "direct": "DOMAIN,account-cn.alibabacloud.com,DIRECT",
-    "proxy": "DOMAIN-SUFFIX,alibabacloud.com,PROXY",
+    "direct": "DOMAIN,adservice.google.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,google.com,PROXY",
     "stage": "ordinary-sources"
   },
   {
     "action": "drop-direct",
+    "direct": "DOMAIN,c.android.clients.google.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,google.com,PROXY",
+    "stage": "ordinary-sources"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,cache-management-prod.google.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,google.com,PROXY",
+    "stage": "ordinary-sources"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,cache.pack.google.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,google.com,PROXY",
+    "stage": "ordinary-sources"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,checkin.gstatic.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,gstatic.com,PROXY",
+    "stage": "ordinary-sources"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,clientservices.googleapis.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,googleapis.com,PROXY",
+    "stage": "ordinary-sources"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,connectivitycheck.gstatic.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,gstatic.com,PROXY",
+    "stage": "ordinary-sources"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,crashlyticsreports-pa.googleapis.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,googleapis.com,PROXY",
+    "stage": "ordinary-sources"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,csi.gstatic.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,gstatic.com,PROXY",
+    "stage": "ordinary-sources"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,dg-meta.video.google.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,google.com,PROXY",
+    "stage": "ordinary-sources"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,dl.google.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,google.com,PROXY",
+    "stage": "ordinary-sources"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,dl.l.google.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,google.com,PROXY",
+    "stage": "ordinary-sources"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,download.mlcc.google.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,google.com,PROXY",
+    "stage": "ordinary-sources"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,download.tensorflow.google.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,google.com,PROXY",
+    "stage": "ordinary-sources"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,fontfiles.googleapis.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,googleapis.com,PROXY",
+    "stage": "ordinary-sources"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,fonts.googleapis.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,googleapis.com,PROXY",
+    "stage": "ordinary-sources"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,fonts.gstatic.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,gstatic.com,PROXY",
+    "stage": "ordinary-sources"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,g0.gstatic.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,gstatic.com,PROXY",
+    "stage": "ordinary-sources"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,g1.gstatic.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,gstatic.com,PROXY",
+    "stage": "ordinary-sources"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,g2.gstatic.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,gstatic.com,PROXY",
+    "stage": "ordinary-sources"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,g3.gstatic.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,gstatic.com,PROXY",
+    "stage": "ordinary-sources"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,gstaticadssl.l.google.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,google.com,PROXY",
+    "stage": "ordinary-sources"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,imasdk.googleapis.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,googleapis.com,PROXY",
+    "stage": "ordinary-sources"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,pagead-googlehosted.l.google.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,google.com,PROXY",
+    "stage": "ordinary-sources"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,performanceparameters.googleapis.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,googleapis.com,PROXY",
+    "stage": "ordinary-sources"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,pki-goog.l.google.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,google.com,PROXY",
+    "stage": "ordinary-sources"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,redirector.c.chat.google.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,google.com,PROXY",
+    "stage": "ordinary-sources"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,redirector.c.mail.google.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,google.com,PROXY",
+    "stage": "ordinary-sources"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,redirector.c.pack.google.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,google.com,PROXY",
+    "stage": "ordinary-sources"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,redirector.c.play.google.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,google.com,PROXY",
+    "stage": "ordinary-sources"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,safebrowsing-cache.google.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,google.com,PROXY",
+    "stage": "ordinary-sources"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,safebrowsing.googleapis.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,googleapis.com,PROXY",
+    "stage": "ordinary-sources"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,ssl-google-analytics.l.google.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,google.com,PROXY",
+    "stage": "ordinary-sources"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,ssl.gstatic.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,gstatic.com,PROXY",
+    "stage": "ordinary-sources"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,tac.googleapis.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,googleapis.com,PROXY",
+    "stage": "ordinary-sources"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,tools.google.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,google.com,PROXY",
+    "stage": "ordinary-sources"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,update.googleapis.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,googleapis.com,PROXY",
+    "stage": "ordinary-sources"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,wear.googleapis.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,googleapis.com,PROXY",
+    "stage": "ordinary-sources"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,www-google-analytics.l.google.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,google.com,PROXY",
+    "stage": "ordinary-sources"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,www-googletagmanager.l.google.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,google.com,PROXY",
+    "stage": "ordinary-sources"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,www.gstatic.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,gstatic.com,PROXY",
+    "stage": "ordinary-sources"
+  },
+  {
+    "action": "proxy-first-exception",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,google.cn,PROXY",
+    "stage": "ordinary-sources"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,adservice.google.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,google.com,PROXY",
+    "stage": "protected-over-regional"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,c.android.clients.google.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,google.com,PROXY",
+    "stage": "protected-over-regional"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,cache-management-prod.google.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,google.com,PROXY",
+    "stage": "protected-over-regional"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,cache.pack.google.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,google.com,PROXY",
+    "stage": "protected-over-regional"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,checkin.gstatic.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,gstatic.com,PROXY",
+    "stage": "protected-over-regional"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,clientservices.googleapis.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,googleapis.com,PROXY",
+    "stage": "protected-over-regional"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,connectivitycheck.gstatic.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,gstatic.com,PROXY",
+    "stage": "protected-over-regional"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,crashlyticsreports-pa.googleapis.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,googleapis.com,PROXY",
+    "stage": "protected-over-regional"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,csi.gstatic.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,gstatic.com,PROXY",
+    "stage": "protected-over-regional"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,dg-meta.video.google.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,google.com,PROXY",
+    "stage": "protected-over-regional"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,dl.google.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,google.com,PROXY",
+    "stage": "protected-over-regional"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,dl.l.google.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,google.com,PROXY",
+    "stage": "protected-over-regional"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,download.mlcc.google.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,google.com,PROXY",
+    "stage": "protected-over-regional"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,download.tensorflow.google.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,google.com,PROXY",
+    "stage": "protected-over-regional"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,fontfiles.googleapis.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,googleapis.com,PROXY",
+    "stage": "protected-over-regional"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,fonts.googleapis.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,googleapis.com,PROXY",
+    "stage": "protected-over-regional"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,fonts.gstatic.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,gstatic.com,PROXY",
+    "stage": "protected-over-regional"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,g0.gstatic.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,gstatic.com,PROXY",
+    "stage": "protected-over-regional"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,g1.gstatic.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,gstatic.com,PROXY",
+    "stage": "protected-over-regional"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,g2.gstatic.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,gstatic.com,PROXY",
+    "stage": "protected-over-regional"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,g3.gstatic.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,gstatic.com,PROXY",
+    "stage": "protected-over-regional"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,gstaticadssl.l.google.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,google.com,PROXY",
+    "stage": "protected-over-regional"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,imasdk.googleapis.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,googleapis.com,PROXY",
+    "stage": "protected-over-regional"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,pagead-googlehosted.l.google.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,google.com,PROXY",
+    "stage": "protected-over-regional"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,performanceparameters.googleapis.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,googleapis.com,PROXY",
+    "stage": "protected-over-regional"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,pki-goog.l.google.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,google.com,PROXY",
+    "stage": "protected-over-regional"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,redirector.c.chat.google.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,google.com,PROXY",
+    "stage": "protected-over-regional"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,redirector.c.mail.google.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,google.com,PROXY",
+    "stage": "protected-over-regional"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,redirector.c.pack.google.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,google.com,PROXY",
+    "stage": "protected-over-regional"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,redirector.c.play.google.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,google.com,PROXY",
+    "stage": "protected-over-regional"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,safebrowsing-cache.google.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,google.com,PROXY",
+    "stage": "protected-over-regional"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,safebrowsing.googleapis.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,googleapis.com,PROXY",
+    "stage": "protected-over-regional"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,ssl-google-analytics.l.google.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,google.com,PROXY",
+    "stage": "protected-over-regional"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,ssl.gstatic.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,gstatic.com,PROXY",
+    "stage": "protected-over-regional"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,tac.googleapis.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,googleapis.com,PROXY",
+    "stage": "protected-over-regional"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,tools.google.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,google.com,PROXY",
+    "stage": "protected-over-regional"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,update.googleapis.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,googleapis.com,PROXY",
+    "stage": "protected-over-regional"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,wear.googleapis.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,googleapis.com,PROXY",
+    "stage": "protected-over-regional"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,www-google-analytics.l.google.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,google.com,PROXY",
+    "stage": "protected-over-regional"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,www-googletagmanager.l.google.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,google.com,PROXY",
+    "stage": "protected-over-regional"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,www.gstatic.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,gstatic.com,PROXY",
+    "stage": "protected-over-regional"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN-SUFFIX,google.cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,google.cn,PROXY",
+    "stage": "protected-over-regional"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,2mdn-cn.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,2mdn-cn.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,2mdn.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,2mdn.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,a1.mzstatic.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,mzstatic.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,a2.mzstatic.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,mzstatic.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,a3.mzstatic.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,mzstatic.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,a4.mzstatic.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,mzstatic.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,a5.mzstatic.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,mzstatic.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,activate.activation-v2.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,activation-v2.geo.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,activation-v2.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,adcdownload.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,adcdownload.apple.com.akadns.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,akadns.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,admob-cn.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,admob-cn.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,alibaba.cdn.steampipe.steamcontent.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,steamcontent.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,amp-api-edge-lb-cn.itunes-apple.com.akadns.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,akadns.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,amp-api-edge-lb.itunes-apple.com.akadns.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,akadns.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,amp-api-edge.music.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,amp-api.media.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,amp-api.music.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,amp-api.podcasts.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,aod-ssl.itunes.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,aod.itunes.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
     "direct": "DOMAIN,api.alibabacloud.com,DIRECT",
     "proxy": "DOMAIN-SUFFIX,alibabacloud.com,PROXY",
-    "stage": "ordinary-sources"
+    "stage": "regional-policy"
   },
   {
-    "action": "drop-direct",
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,app-analytics-services.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,app-analytics-services.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,app-measurement-cn.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,app-measurement-cn.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,app-measurement.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,app-measurement.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,app-site-association.cdn-apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,cdn-apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,appleid.cdn-apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,cdn-apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,apps.mzstatic.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,mzstatic.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,apps5.oingo.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apps5.oingo.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,apptrailers.itunes.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,avail.googleflights.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,avail.googleflights.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,azuremigrate.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,azuremigratetest.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,azurestackhub.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,azurestackhubuat.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,b.c2r.ts.cdn.office.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,office.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,bag-cdn.itunes-apple.com.akadns.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,akadns.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,beacons.gcp.gvt2.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,gvt2.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,beacons.gvt2.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,gvt2.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,beacons2.gvt2.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,gvt2.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,beacons3.gvt2.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,gvt2.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,bj1.api.bing.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,bing.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,bookkeeper.itunes.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,c.admob.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,admob.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,c.pki.goog,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,goog,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,cbdstest.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,cdn-cn.apple-mapkit.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple-mapkit.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,cdn-cn1.apple-mapkit.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple-mapkit.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,cdn-cn2.apple-mapkit.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple-mapkit.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,cdn-cn3.apple-mapkit.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple-mapkit.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,cdn-cn4.apple-mapkit.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple-mapkit.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,cdn.ampproject.org,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,ampproject.org,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,cdn.apple-mapkit.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple-mapkit.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,cdn.globalsigncdn.com.cdn.cloudflare.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,cloudflare.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,cdn1.apple-mapkit.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple-mapkit.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,cdn2.apple-mapkit.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple-mapkit.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,cdn3.apple-mapkit.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple-mapkit.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,cdn4.apple-mapkit.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple-mapkit.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,cds.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,cds.apple.com.akadns.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,akadns.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,cdsassets.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,certs-lb.apple.com.akadns.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,akadns.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,certs.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,cl1-cdn.origin-apple.com.akadns.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,akadns.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,cl1.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,cl2-cdn.origin-apple.com.akadns.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,akadns.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,cl2-cn.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,cl2.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,cl2.apple.com.edgekey.net.globalredir.akadns.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,akadns.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,cl3-cdn.origin-apple.com.akadns.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,akadns.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,cl3.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,cl4-cdn.origin-apple.com.akadns.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,akadns.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,cl4-cn.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,cl4.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,cl5-cdn.origin-apple.com.akadns.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,akadns.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,cl5.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,clickserve.cc-dt.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,clickserve.cc-dt.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,clickserve.dartsearch.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,dartsearch.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,clickserver.googleads.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,clickserver.googleads.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,client-api.itunes.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,clientflow.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,clientflow.apple.com.akadns.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,akadns.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,cma.itunes.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,cn-smp-paymentservices.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
     "direct": "DOMAIN,cn.alibabacloud.com,DIRECT",
     "proxy": "DOMAIN-SUFFIX,alibabacloud.com,PROXY",
-    "stage": "ordinary-sources"
+    "stage": "regional-policy"
   },
   {
-    "action": "drop-direct",
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,cn.download.nvidia.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,nvidia.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,cn.widevine.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,widevine.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,cn.windowssearch.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,windowssearch.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,collaborate.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,collaborateppe.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,communities.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,configuration.apple.com.akadns.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,akadns.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,crl-lb.apple.com.akadns.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,akadns.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,crl.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,crl.globalsign.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,globalsign.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,crl.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,crl.pki.goog,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,goog,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,crls.pki.goog,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,goog,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,cstat.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,cstat.cdn-apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,cdn-apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,ctldl.windowsupdate.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,windowsupdate.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,dartsearch-cn.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,dartsearch-cn.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,dc1-cert.ksn.kaspersky-labs.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky-labs.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,dc1-file.ksn.kaspersky-labs.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky-labs.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,dc1-pp.ksn.kaspersky-labs.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky-labs.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,dc1-st.ksn.kaspersky-labs.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky-labs.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,dc1.ksn.kaspersky-labs.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky-labs.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,dd-cdn.origin-apple.com.akadns.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,akadns.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,dejavu.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,developer.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,devimages-cdn.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,devstreaming-cdn.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,discussionschinese.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,dnl-00.geo.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,dnl-01.geo.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,dnl-02.geo.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,dnl-03.geo.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,dnl-04.geo.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,dnl-05.geo.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,dnl-06.geo.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,dnl-07.geo.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,dnl-08.geo.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,dnl-09.geo.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,dnl-10.geo.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,dnl-11.geo.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,dnl-12.geo.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,dnl-13.geo.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,dnl-14.geo.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,dnl-15.geo.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,dnl-16.geo.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,dnl-17.geo.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,dnl-18.geo.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,dnl-19.geo.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,doubleclick-cn.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,doubleclick-cn.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,doubleclick.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,doubleclick.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,download.developer.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,download.visualstudio.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,downloaddispatch.itunes.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,dreamspark.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,dreamsparkuat.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,drivers.amd.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,amd.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,edge.geo.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,entitlements-edge.itunes.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,experiments.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,f.c2r.ts.cdn.office.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,office.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,fides-pol.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,firebase-settings.crashlytics.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,crashlytics.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,fpinit.itunes.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,gonglchuangl.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,gonglchuangl.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,gongyichuangyi.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,gongyichuangyi.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,google-analytics-cn.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,google-analytics-cn.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,google-analytics.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,google-analytics.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,googleadservices-cn.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,googleadservices-cn.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,googleadservices.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,googleadservices.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,googleanalytics.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,googleanalytics.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,googleapis-cn.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,googleapis-cn.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,googleapps-cn.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,googleapps-cn.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,googleflights-cn.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,googleflights-cn.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,googleoptimize-cn.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,googleoptimize-cn.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,googleoptimize.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,googleoptimize.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,googlesyndication-cn.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,googlesyndication-cn.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,googlesyndication.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,googlesyndication.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,googletagmanager-cn.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,googletagmanager-cn.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,googletagmanager.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,googletagmanager.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,googletagservices-cn.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,googletagservices-cn.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,googletagservices.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,googletagservices.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,googletraveladservices-cn.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,googletraveladservices-cn.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,googletraveladservices.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,googletraveladservices.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,googlevads-cn.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,googlevads-cn.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,gs-loc-cn.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,gs-loc.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,gsp10-ssl-cn.ls.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,gsp11-cn.ls.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,gsp12-cn.ls.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,gsp13-cn.ls.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,gsp4-cn.ls.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,gsp4-cn.ls.apple.com.edgekey.net.globalredir.akadns.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,akadns.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,gsp5-cn.ls.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,gsp85-cn-ssl.ls.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,gspe11-2-cn-ssl.ls.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,gspe12-cn-ssl.ls.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,gspe19-2-cn-ssl.ls-apple.com.akadns.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,akadns.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,gspe19-2-cn-ssl.ls.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,gspe19-cn-ssl.ls.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,gspe19-cn.ls-apple.com.akadns.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,akadns.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,gspe19-cn.ls.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,gspe21-ssl.ls.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,gspe35-ssl.ls.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,gspe79-cn-ssl.ls.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,gspe85-cn-ssl.ls.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,gstatic-cn.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,gstatic-cn.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,gtm.oasisfeng.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,gtm.oasisfeng.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,guzzoni-apple-com.v.aaplimg.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,aaplimg.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,guzzoni.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,guzzoni.smoot.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,i.pki.goog,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,goog,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,iadsdk.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,images-cn-8.ssl-images-amazon.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,ssl-images-amazon.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,images-cn.ssl-images-amazon.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,ssl-images-amazon.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,images.apple.com.edgekey.net.globalredir.akadns.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,akadns.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,inappcheck-cn.itunes-apple.com.akadns.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,akadns.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,inappcheck-lb.itunes-apple.com.akadns.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,akadns.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,inappcheck.itunes.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,init-kt.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,init-p01md-lb.push-apple.com.akadns.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,akadns.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,init-p01md.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,init-p01st-lb.push-apple.com.akadns.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,akadns.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,init-p01st.push.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,init-s01st-lb.push-apple.com.akadns.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,akadns.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,init-s01st.push.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,init.ess.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,init.gc-lb.apple.com.akadns.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,akadns.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,init.gc.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,ipcdn.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,iphone-ld.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,iphone-ld.origin-apple.com.akadns.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,akadns.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,is-ssl.mzstatic.com-cn-lb.itunes-apple.com.akadns.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,akadns.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,is1.mzstatic.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,mzstatic.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,is2.mzstatic.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,mzstatic.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,is3.mzstatic.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,mzstatic.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,is4.mzstatic.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,mzstatic.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,is5.mzstatic.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,mzstatic.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,itacademy.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,itacademyuat.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,itunes-apple.com.akadns.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,akadns.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,itunesconnect.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
     "direct": "DOMAIN,izattime.qcomgeo2.com,DIRECT",
     "proxy": "DOMAIN-SUFFIX,qcomgeo2.com,PROXY",
-    "stage": "ordinary-sources"
+    "stage": "regional-policy"
   },
   {
-    "action": "drop-direct",
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,js-cdn.music.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,km.support.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,ksn-cinfo-geo.kaspersky-labs.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky-labs.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,ksn-cinfo.geoksn.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,ksn-crypto-info-geo.kaspersky-labs.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky-labs.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,ksn-crypto-kas-geo.kaspersky-labs.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky-labs.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,ksn-crypto-tcert-geo.kaspersky-labs.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky-labs.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,ksn-crypto-url-geo.kaspersky-labs.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky-labs.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,ksn-crypto-verdict-geo.kaspersky-labs.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky-labs.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,ksn-crypto-wifiplus-geo.kaspersky-labs.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky-labs.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,ksn-crypto-wifiplus.geoksn.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,ksn-dc1-cert.geoksn.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,ksn-dc1-file.geoksn.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,ksn-dc1.geoksn.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,ksn-file-geo.kaspersky-labs.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky-labs.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,ksn-file.geoksn.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,ksn-info-geo.kaspersky-labs.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky-labs.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,ksn-info.geoksn.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,ksn-kas.geoksn.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,ksn-mdr.geoksn.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,ksn-tcert-geo.kaspersky-labs.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky-labs.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,ksn-tcert.geoksn.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,ksn-url-geo.kaspersky-labs.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky-labs.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,ksn-url.geoksn.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,ksn-verdict-geo.kaspersky-labs.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky-labs.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,ksn-verdict.geoksn.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,lex.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,lexuat.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,maps.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,mbs.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,mdr.ksn.kaspersky-labs.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky-labs.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,mensura.cdn-apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,cdn-apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,mesu-cdn.apple.com.akadns.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,akadns.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,mesu-china.apple.com.akadns.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,akadns.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,misc-assets.itunes.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,ml.cdn-apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,cdn-apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,mpnbenefits.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,mpnbenefitsrtl.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,mpnbenefitsrtluat.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,msdn.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,msdprod-ad.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,msproduct.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,music.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,musicstatus.music.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,mvod.itunes.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,myapp.itunes.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,myvs.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,np-edge.itunes.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,o.pki.goog,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,goog,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,ocsp.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,ocsp.pki.goog,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,goog,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,ocsp2.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,oemsoc.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,oemsocuat.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,officemkt.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,officemktuat.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,oscdn.origin-apple.com.akadns.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,akadns.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,osrelease.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,p00.upd.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,p01.upd.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,p02.upd.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,p03.upd.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,p04.upd.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,p05.upd.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,p06.upd.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,p07.upd.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,p08.upd.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,p09.upd.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,p10.upd.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,p11.upd.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,p12.upd.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,p13.upd.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,p14.upd.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,p15.upd.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,p16.upd.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,p17.upd.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,p18.upd.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,p19.upd.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,pancake.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,pba0.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,pd-nk.itunes.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,pd.itunes.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,play-edge.itunes.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,play.itunes.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,play.music.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,podcasts.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,podcasts.itunes.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,probe.siri.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,prod-controlbe.floonet.goog,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,goog,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,prod-databe.floonet.goog,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,goog,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,prod-support.apple-support.akadns.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,akadns.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,prod.databe.floonet.goog,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,goog,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,publicassets.cdn-apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,cdn-apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,qiao-cn.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,qiao-cn.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,qpx.googleflights.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,qpx.googleflights.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,recaptcha-cn.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,recaptcha-cn.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,recaptcha.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,recaptcha.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,redirector.bdn.dev,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,bdn.dev,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,redirector.c.youtubeeducation.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,youtubeeducation.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,redirector.gcpcdn.gvt1.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,gvt1.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,redirector.gvt1.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,gvt1.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,redirector.offline-maps.gvt1.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,gvt1.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,redirector.snap.gvt1.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,gvt1.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,redirector.xn--ngstr-lra8j.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,xn--ngstr-lra8j.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,refresh-bkg.activation-v2.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,rsm.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,s.mzstatic.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,mzstatic.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,s00.upd.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,s01.upd.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,s02.upd.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,s03.upd.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,s04.upd.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,s05.upd.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,s06.upd.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,s07.upd.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,s08.upd.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,s09.upd.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,s1.mzstatic.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,mzstatic.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,s10.upd.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,s11.upd.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,s12.upd.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,s13.upd.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,s14.upd.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,s15.upd.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,s16.upd.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,s17.upd.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,s18.upd.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,s19.upd.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,s2.mzstatic.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,mzstatic.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,s3.mzstatic.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,mzstatic.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,s4.mzstatic.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,mzstatic.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,s5.mzstatic.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,mzstatic.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,sdx.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,se-edge.itunes.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,se2.itunes.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,search.itunes.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,seed-sequoia.siri.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,seed-swallow.siri.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,seed.siri.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,sequoia.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,service.urchin.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,urchin.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,sf-api-token-service.itunes.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,sh-pod1-smp-device.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,sh-pod2-smp-device.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,sh-pod3-smp-device.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,shazam-insights.cdn-apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,cdn-apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,shell.cdn.office.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,office.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,smp-device-content.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,software.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,sp.itunes.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,speedysub.music.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,staging-controlbe.floonet.goog,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,goog,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,staging-databe.floonet.goog,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,goog,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,staging.databe.floonet.goog,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,goog,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,static.gc.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,statics.teams.cdn.office.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,office.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
     "direct": "DOMAIN,status.alibabacloud.com,DIRECT",
     "proxy": "DOMAIN-SUFFIX,alibabacloud.com,PROXY",
-    "stage": "ordinary-sources"
+    "stage": "regional-policy"
   },
   {
-    "action": "drop-direct",
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,stocks-sparkline-lb.apple.com.akadns.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,akadns.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,stocks-sparkline.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,store.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,store.apple.com.edgekey.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,edgekey.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,store.apple.com.edgekey.net.globalredir.akadns.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,akadns.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,store.storeimages.apple.com.akadns.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,akadns.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,store.storeimages.cdn-apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,cdn-apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,storecorefulfillment.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,storeedge.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,storeedgefd.dsx.mp.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,streamingaudio.itunes.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,su.itunes.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,support-china.apple-support.akadns.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,akadns.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,support.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,surface.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,surface.downloads.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,swallow-apple-com.v.aaplimg.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,aaplimg.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,swallow.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,swcatalog-cdn.apple.com.akadns.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,akadns.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,swcdn.g.aaplimg.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,aaplimg.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,swdist.apple.com.akadns.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,akadns.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,swscan-cdn.apple.com.akadns.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,akadns.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,sylvan.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,sync.itunes.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,tf-feedback.itunes.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
     "direct": "DOMAIN,time.xtracloud.net,DIRECT",
     "proxy": "DOMAIN-SUFFIX,xtracloud.net,PROXY",
-    "stage": "ordinary-sources"
+    "stage": "regional-policy"
   },
   {
-    "action": "drop-direct",
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,tj-pod1-smp-device.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,tj-pod2-smp-device.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,tj-pod3-smp-device.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,universal-activity-service.itunes.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,update.crashlytics.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,crashlytics.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,updates-http.cdn-apple.com.akadns.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,akadns.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,upp.itunes.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,valid.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,valid.origin-apple.com.akadns.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,akadns.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,vlportal.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,volic.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,vscode.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,vz.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,weather-data.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,weather-data.apple.com.akadns.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,akadns.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,weather-map.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,weather-map2.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,weatherkit.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,windbg.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,www.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,www.apple.com.edgekey.net.globalredir.akadns.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,akadns.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,www.destinationurl.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,www.destinationurl.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,www.entrust.cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,entrust.cn,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,www.pxcc.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,www.pxcc.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,www.recaptcha-cn.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,recaptcha-cn.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,www.recaptcha.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,recaptcha.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,www.support.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
     "direct": "DOMAIN,xtratime.qcomgeo2.com,DIRECT",
     "proxy": "DOMAIN-SUFFIX,qcomgeo2.com,PROXY",
-    "stage": "ordinary-sources"
+    "stage": "regional-policy"
   },
   {
-    "action": "proxy-first-exception",
-    "direct": "DOMAIN-SUFFIX,ccb.com,DIRECT",
-    "proxy": "DOMAIN-SUFFIX,ru.ccb.com,PROXY",
-    "stage": "ordinary-sources"
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,265.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,265.com,PROXY",
+    "stage": "regional-policy"
   },
   {
-    "action": "proxy-first-exception",
-    "direct": "DOMAIN-SUFFIX,cdn20.com,DIRECT",
-    "proxy": "DOMAIN,licdn.cn.cdn20.com,PROXY",
-    "stage": "ordinary-sources"
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,91cy.app,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,91cy.app,PROXY",
+    "stage": "enhanced-whitelist"
   },
   {
-    "action": "drop-direct",
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,99thz.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,99thz.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,aa77kk.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,aa77kk.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,acs.org,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,acs.org,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,age.tv,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,age.tv,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,agedm.app,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,agedm.app,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,agefans.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,agefans.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,alibabacloud.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,alibabacloud.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,alicloud.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,alicloud.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,as.mr,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,as.mr,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,asmr.gay,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,asmr.gay,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,avstar4.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,avstar4.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,azuremigrate.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,azuremigratetest.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,azurestackhub.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,azurestackhubuat.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,b.c2r.ts.cdn.office.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,office.net,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,bilinovel.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,bilinovel.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,binancezh.kim,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,binancezh.kim,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,binancezh.link,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,binancezh.link,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,bj1.api.bing.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,bing.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,bjgvpn.amd.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,amd.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,bjgvpn2.amd.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,amd.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,calgoncarbon-china.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,calgoncarbon-china.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,cbdstest.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,ccmdls.adobe.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,adobe.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,cdn.jetbrains.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,jetbrains.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,chinamule.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,chinamule.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,cn-cdn1.skymansion.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,skymansion.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,cn.bing.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,bing.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,cn.bing.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,bing.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,cn.eset.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,eset.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,cn.mm.bing.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,bing.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
     "direct": "DOMAIN-SUFFIX,cn.pool.ntp.org,DIRECT",
     "proxy": "DOMAIN-SUFFIX,pool.ntp.org,PROXY",
-    "stage": "ordinary-sources"
+    "stage": "regional-policy"
   },
   {
-    "action": "drop-direct",
-    "direct": "DOMAIN-SUFFIX,hsbc.com.cn,DIRECT",
-    "proxy": "DOMAIN-SUFFIX,hsbc.com.cn,PROXY",
-    "stage": "ordinary-sources"
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,cn.sc.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,sc.com,PROXY",
+    "stage": "enhanced-whitelist"
   },
   {
-    "action": "drop-direct",
-    "direct": "DOMAIN-SUFFIX,hsbcinsurance.com.cn,DIRECT",
-    "proxy": "DOMAIN-SUFFIX,hsbcinsurance.com.cn,PROXY",
-    "stage": "ordinary-sources"
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,cnpmjs.org,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,cnpmjs.org,PROXY",
+    "stage": "enhanced-whitelist"
   },
   {
-    "action": "drop-direct",
-    "direct": "DOMAIN-SUFFIX,hsbcqh.com.cn,DIRECT",
-    "proxy": "DOMAIN-SUFFIX,hsbcqh.com.cn,PROXY",
-    "stage": "ordinary-sources"
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,collaborate.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "enhanced-whitelist"
   },
   {
-    "action": "drop-direct",
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,collaborateppe.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,createpoint.qti.qualcomm.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,qualcomm.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,crl.globalsign.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,globalsign.net,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,crl.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,ctldl.windowsupdate.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,windowsupdate.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,ctyun.online,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,ctyun.online,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,cxacg.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,cxacg.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,dcg.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,dcn01.ps4.update.playstation.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,playstation.net,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,dcn01.ps5.update.playstation.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,playstation.net,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,ditu.live.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,live.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,dl.delivery.mp.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,download.visualstudio.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,download.windowsupdate.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,windowsupdate.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,dreamspark.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,dreamsparkuat.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,drivers.amd.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,amd.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,eilieili.cc,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,eilieili.cc,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,f.c2r.ts.cdn.office.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,office.net,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,fi11.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,fi11.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,footseen.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,footseen.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,furrybar.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,furrybar.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,futu5.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,futu5.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,futuau.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,futuau.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,futuesop.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,futuesop.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,futufin.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,futufin.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,futuhn.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,futuhn.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,futuniuniu.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,futuniuniu.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,futunn.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,futunn.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,futustatic.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,futustatic.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,fututrade.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,fututrade.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,fututrustee.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,fututrustee.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,galaxyappstore.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,galaxyappstore.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,genshinimpact.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,genshinimpact.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,geo.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,global-download.acer.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,acer.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,gs2.ww.prod.dl.playstation.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,playstation.net,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,gst.prod.dl.playstation.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,playstation.net,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,gvt1-cn.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,gvt1-cn.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,gvt2-cn.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,gvt2-cn.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,hechaji.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,hechaji.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,heyuedi.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,heyuedi.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,honkaiimpact3.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,honkaiimpact3.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,honkaistarrail.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,honkaistarrail.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,hotcoin.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,hotcoin.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,hoyo.link,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,hoyo.link,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,hoyoverse.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,hoyoverse.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,hp-ww.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,hp-ww.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,hp.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,hp.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,hpconnected.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,hpconnected.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,hpstore-china.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,hpstore-china.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,hshsxkj.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,hshsxkj.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,huati.cc,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,huati.cc,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,igkbroker.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,igkbroker.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,img.samsungapps.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,samsungapps.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,inshotapp.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,inshotapp.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,itacademy.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,itacademyuat.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,itigergrowth.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,itigergrowth.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,itigergrowtha.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,itigergrowtha.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,itigerup.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,itigerup.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,jhxl.org,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,jhxl.org,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,joox.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,joox.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,kimi.ai,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kimi.ai,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,kuke.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kuke.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,laohu8.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,laohu8.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,lbctrl.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,lbctrl.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,lbkrs.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,lbkrs.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,ldplayer.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,ldplayer.net,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
     "direct": "DOMAIN-SUFFIX,lenovo.com.cdn.cloudflare.net,DIRECT",
     "proxy": "DOMAIN-SUFFIX,cloudflare.net,PROXY",
-    "stage": "ordinary-sources"
+    "stage": "enhanced-whitelist"
   },
   {
-    "action": "proxy-first-exception",
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,lex.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,lexuat.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,like.video,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,like.video,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,likee.video,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,likee.video,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,likeevideo.ru,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,likeevideo.ru,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,liuxiaotong.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,liuxiaotong.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,maa.plus,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,maa.plus,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,mangafuna.xyz,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,mangafuna.xyz,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,mbs.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,microsoftuwp.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoftuwp.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,minimax.io,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,minimax.io,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,miniso.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,miniso.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,moomoo.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,moomoo.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,moomooequity.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,moomooequity.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,moomootrustee.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,moomootrustee.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,moonshot.ai,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,moonshot.ai,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,mpnbenefits.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,mpnbenefitsrtl.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,mpnbenefitsrtluat.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,msdn.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,msdprod-ad.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,msproduct.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,my.st.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,st.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,myvs.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,n0vadesktop.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,n0vadesktop.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,nike.host,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,nike.host,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,nvgate16.nvidia.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,nvidia.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,oemsoc.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,oemsocuat.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,oemssl.cn.cdn.cloudflare.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,cloudflare.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,officecdn.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,officemkt.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,officemktuat.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,okaapps.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,okaapps.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,oklink.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,oklink.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,omobi.cc,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,omobi.cc,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,opus-gaming.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,opus-gaming.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,osrelease.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,picacgp.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,picacgp.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,pikpak.me,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,pikpak.me,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,pikpakdrive.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,pikpakdrive.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,platform.dell.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,dell.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,pokemon-unitepgame.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,pokemon-unitepgame.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,powercx.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,powercx.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,prts.plus,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,prts.plus,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,qcc.qualcomm.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,qualcomm.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,qiao-cn.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,qiao-cn.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,qoder.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,qoder.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,qualcomm.cn.cdn.cloudflare.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,cloudflare.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,quantil.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,quantil.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,r.bing.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,bing.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,rsm.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,sci-hub.ee,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,sci-hub.ee,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,sdx.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,sectigochina.com.cdn.cloudflare.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,cloudflare.net,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,sgst.prod.dl.playstation.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,playstation.net,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,shavpn.amd.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,amd.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,shavpn2.amd.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,amd.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,sifangclub.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,sifangclub.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,software.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,static.eprintsw.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,eprintsw.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,storecorefulfillment.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,storeedge.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,support-cn.samsung.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,samsung.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,surface.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,surface.downloads.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,suz-vpn.amd.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,amd.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,tantaly.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,tantaly.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,th.bing.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,bing.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,thzu.cc,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,thzu.cc,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,tigerbbs.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,tigerbbs.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,tigerbrokers.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,tigerbrokers.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,tigerbrokers.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,tigerbrokers.net,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,tigerfintech.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,tigerfintech.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,tik-tokapi.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,tik-tokapi.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,tiktokrow-cdn.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,tiktokrow-cdn.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,upd.kaspersky.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,kaspersky.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,vlportal.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,volic.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,vscode.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,vulcan.dl.playstation.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,playstation.net,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,vz.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,wbrks.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,wbrks.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,webnovel.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,webnovel.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,whoami.akamai.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,akamai.net,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,windbg.download.prss.microsoft.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,www.redhat.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,redhat.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,www.st.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,st.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,xiaohu8.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,xiaohu8.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,xn--2vxsp6vi4j.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,xn--2vxsp6vi4j.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,xn--sgt856gbjl.cc,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,xn--sgt856gbjl.cc,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,yantaqu.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,yantaqu.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,yostar.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,yostar.net,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,zenlesszonezero.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,zenlesszonezero.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN-SUFFIX,zhijianfengyi.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,zhijianfengyi.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-parent-override",
+    "direct": "DOMAIN-SUFFIX,aliyuncs.com,DIRECT",
+    "proxy": "DOMAIN,gitlab-assets.oss-cn-hongkong.aliyuncs.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-parent-override",
+    "direct": "DOMAIN-SUFFIX,cdn20.com,DIRECT",
+    "proxy": "DOMAIN,licdn.cn.cdn20.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-parent-override",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,666pool.cn,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-parent-override",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,airbnb.cn,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-parent-override",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,amd.com.cn,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-parent-override",
+    "direct": "DOMAIN-SUFFIX,xn--fiqs8s,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.xn--fiqs8s,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-parent-override",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,arphic.com.cn,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-parent-override",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,bloomberg.cn,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-parent-override",
     "direct": "DOMAIN-SUFFIX,mi.com,DIRECT",
     "proxy": "DOMAIN-SUFFIX,c.mi.com,PROXY",
-    "stage": "ordinary-sources"
+    "stage": "enhanced-whitelist"
   },
   {
-    "action": "proxy-first-exception",
+    "action": "whitelist-parent-override",
+    "direct": "DOMAIN-SUFFIX,play-analytics.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,cg.play-analytics.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-parent-override",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,daxa.cn,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-parent-override",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,drweb.cn,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-parent-override",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,dungeonkeeper.cn,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-parent-override",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,dungeonkeeper.com.cn,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-parent-override",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,dynacw.com.cn,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-parent-override",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,ebayauthenticate.com.cn,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-parent-override",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,entrust.cn,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-parent-override",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,futu.cn,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-parent-override",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,futubull.cn,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-parent-override",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,googleapis.cn,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-parent-override",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,hewlett-packard.com.cn,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-parent-override",
+    "direct": "DOMAIN-SUFFIX,jiepang.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,hk.jiepang.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-parent-override",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,hsbc.com.cn,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-parent-override",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,hsbcinsurance.com.cn,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-parent-override",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,hsbcqh.com.cn,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-parent-override",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,intel.com.cn,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-parent-override",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,intelrealsense.cn,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-parent-override",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,jinrieluosi.cn,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-parent-override",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,lightnovel.cn,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-parent-override",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,logitech.com.cn,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-parent-override",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,logitechg.com.cn,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-parent-override",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,logitechio.com.cn,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-parent-override",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,longbridge.cn,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-parent-override",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,longportapp.cn,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-parent-override",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,msi.cn,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-parent-override",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,mucinex.cn,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-parent-override",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,mucinex.com.cn,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-parent-override",
+    "direct": "DOMAIN-SUFFIX,istarshine.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,oversea.istarshine.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-parent-override",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,qualcommventures.cn,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-parent-override",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,reutersagency.cn,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-parent-override",
+    "direct": "DOMAIN-SUFFIX,ccb.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,ru.ccb.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-parent-override",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,schwab.com.cn,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-parent-override",
     "direct": "DOMAIN-SUFFIX,qcloud.com,DIRECT",
     "proxy": "DOMAIN-SUFFIX,shortconn.im.qcloud.com,PROXY",
-    "stage": "ordinary-sources"
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-parent-override",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,skytigris.cn,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-parent-override",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,snapdragon.cn,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-parent-override",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,sourcingforebay.com.cn,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-parent-override",
+    "direct": "DOMAIN-SUFFIX,qtlglb.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,steam.apac.qtlglb.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-parent-override",
+    "direct": "DOMAIN-SUFFIX,qtlglb.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,steam.eca.qtlglb.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-parent-override",
+    "direct": "DOMAIN-SUFFIX,qtlglb.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,steam.naeu.qtlglb.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-parent-override",
+    "direct": "DOMAIN-SUFFIX,qtlglb.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,steam.ru.qtlglb.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-parent-override",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,thomsonreuters.cn,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-parent-override",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,tigerbbs.cn,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-parent-override",
+    "direct": "DOMAIN-SUFFIX,jiepang.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,tw.jiepang.com,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-parent-override",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,uupool.cn,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-parent-override",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,verisign.com.cn,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-parent-override",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,xn--ztsq84g.cn,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-parent-override",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,zhijianfengyi.cn,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-parent-override",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,zmw.cn,PROXY",
+    "stage": "enhanced-whitelist"
+  },
+  {
+    "action": "whitelist-parent-override",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,zoom.com.cn,PROXY",
+    "stage": "enhanced-whitelist"
   },
   {
     "action": "reviewed-direct-override",

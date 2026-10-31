@@ -16,8 +16,10 @@
 - `publicsuffix/list`：MPL-2.0，完整许可原文见 `licenses/publicsuffix-MPL-2.0.txt`。未经修改的源文件及其声明保存在 `dist/inputs/registry.txt`，仍按 MPL-2.0 提供；构建只读取 ICANN 部分作为直连边界校验，不将 PSL 转换成客户端路由表。
   来源：https://github.com/publicsuffix/list
 
-固定来源 URL、提交和文件哈希记录在 `dist/manifest.json`。修改包括类型转换、相同策略压缩、普通源代理优先冲突处理、带依据的本地精确例外、国内地址合并、局域网及默认策略拼接；实现和完整原始输入随工程一起提供。
+固定来源 URL、提交和文件哈希记录在 `dist/manifest.json`。修改包括类型转换、相同策略压缩、受保护代理优先、增强白名单优先于普通国外分类的冲突处理、带依据的本地精确例外、国内地址合并、局域网及默认策略拼接；实现和完整原始输入随工程一起提供。
 
 未使用 blackmatrix7 的规则、广告拦截列表、脚本或 MITM 数据。Shadowrocket、GitHub 及各服务商商标归各自所有者。
 
-本地精确例外是从服务商/设备厂商公开文档中核实用途后独立整理的主机事实，不全量导入第三方配置或 DNS 服务器值。部分例外另以已有 v2fly 固定归档中的专用分类和 @cn 属性作构建核查；出处 URL 及说明保留在 config/overrides.json。felixonmars/dnsmasq-china-list 仅用于交叉参考 Apple 中国可达主机，没有新增其全量数据下载、转换或分发依赖。
+本地精确例外是从服务商/设备厂商公开文档中核实用途后独立整理的主机事实，不全量导入第三方配置或 DNS 服务器值。部分例外另以已有 v2fly 固定归档中的专用分类和 @cn 属性作构建核查；出处 URL 及说明保留在 config/overrides.json。现通过 Loyalsoldier/v2ray-rules-dat 的增强直连表及 apple-cn.txt 引入 felixonmars/dnsmasq-china-list 数据，其原始许可为 WTFPL v2，原文见 licenses/dnsmasq-china-WTFPL.txt。
+
+新增发布源：Loyalsoldier/v2ray-rules-dat（GPL-3.0，见 LICENSE），原始发布文件见 dist/inputs/enhanced.txt 和 apple_cn.txt。来源 https://github.com/Loyalsoldier/v2ray-rules-dat 。国外服务的 @cn 分类从同一 v2fly 固定归档另存 dist/inputs/regional.tar.gz，保留 MIT 声明。所有下载文件保持原始内容；构建中的正则省略记录于 manifest。

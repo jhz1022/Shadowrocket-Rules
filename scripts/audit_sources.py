@@ -159,7 +159,21 @@ def read_sources(root, specs):
         if fmt == 'public-suffix':
             result[ident] = public_suffixes(data)
         elif fmt == 'v2fly-archive':
-            result[ident] = community(data, spec['path'].split('/')[-1])
+            result[ident] = community(data, spec['path'].split('/')[-1], spec.get('attribute'))
+        elif fmt == 'loyal-direct':
+            rows = set()
+            for line in data.decode('utf-8-sig').splitlines():
+                if not line or line.startswith('#') or line.startswith('regexp:'):
+                    continue
+                if line.startswith('full:'):
+                    rows.add(('DOMAIN', hostname(line[5:])))
+                elif ':' not in line:
+                    rows.add(('DOMAIN-SUFFIX', hostname(line)))
+                elif line.startswith('domain:'):
+                    rows.add(('DOMAIN-SUFFIX', hostname(line[7:])))
+                else:
+                    raise ValueError('Audit: unsupported enhanced whitelist record')
+            result[ident] = rows
         elif fmt == 'clash-domain':
             lines = data.decode('utf-8-sig').splitlines()
             if not lines or lines[0] != 'payload:':

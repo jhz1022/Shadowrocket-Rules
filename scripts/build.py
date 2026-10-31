@@ -202,8 +202,18 @@ def default_registry():
 def parse_source(data, spec):
     """Accept only the verified single-quoted payload subset, never arbitrary YAML."""
     if spec['format'] == 'v2fly-archive':
-        flattened = parse_community_archive(data, spec['path'].removeprefix('data/'))
+        flattened = parse_community_archive(data, spec['path'].removeprefix('data/'), spec.get('attribute'))
         return parse_source(flattened, dict(spec, format='v2ray-direct'))
+    if spec['format'] == 'loyal-direct':
+        # Published bare records are suffixes; full: remains exact. Never widen
+        # full: Apple CDN hosts or silently accept unsupported keyword syntax.
+        try:
+            lines = data.decode('utf-8-sig').splitlines()
+        except UnicodeError as exc:
+            raise BuildError('Invalid Loyalsoldier UTF-8') from exc
+        normalized = '\n'.join(line if ':' in line or not line or line.startswith('#')
+                               else 'domain:' + line for line in lines)
+        return parse_source(normalized.encode(), dict(spec, format='v2ray-direct'))
     try:
         lines = data.decode('utf-8-sig').splitlines()
     except UnicodeError as exc:
@@ -302,7 +312,10 @@ def precise_direct(rules, config, registry=None):
     if not {'cn', 'com.cn', 'net.cn', 'org.cn'} <= excluded:
         raise BuildError('Missing registry-level DIRECT exclusions')
     registry = default_registry() if registry is None else registry
-    return {r for r in rules if not (r.kind == 'DOMAIN-SUFFIX'
+    allowed = set(config.get('direct_allowed_registry_suffixes', []))
+    if not allowed <= {'cn', 'xn--fiqs8s', 'xn--fiqz9s'}:
+        raise BuildError('Unreviewed registry whitelist expansion')
+    return {r for r in rules if r.value in allowed or not (r.kind == 'DOMAIN-SUFFIX'
             and (registry_suffix(r.value, registry) or r.value in excluded))}
 
 
@@ -482,9 +495,10 @@ def validate(conf, overrides=None, registry=None):
     if 'dns-fallback-system' in settings or 'direct-dns-server' in settings:
         raise BuildError('Unexpected DNS override')
     markers = ['# BEGIN LAN', '# END LAN', '# BEGIN DNS GUARD', '# END DNS GUARD',
-               '# BEGIN LOCAL NAMES', '# END LOCAL NAMES', '# BEGIN REVIEWED DIRECT', '# END REVIEWED DIRECT',
-               '# BEGIN PROXY', '# END PROXY',
-               '# BEGIN DIRECT', '# END DIRECT', '# BEGIN CHINA IP', '# END CHINA IP', 'FINAL,PROXY']
+               '# BEGIN LOCAL NAMES', '# END LOCAL NAMES', '# BEGIN PROTECTED', '# END PROTECTED',
+               '# BEGIN REVIEWED DIRECT', '# END REVIEWED DIRECT', '# BEGIN REGIONAL', '# END REGIONAL',
+               '# BEGIN DIRECT', '# END DIRECT',
+               '# BEGIN PROXY', '# END PROXY', '# BEGIN CHINA IP', '# END CHINA IP', 'FINAL,PROXY']
     offsets = [conf.index(m) for m in markers]
     if offsets != sorted(offsets) or any(conf.count(m) != 1 for m in markers):
         raise BuildError('Wrong routing block order')
@@ -495,6 +509,10 @@ def validate(conf, overrides=None, registry=None):
     guard_rules = [x for x in guard.splitlines() if x and not x.startswith('#')]
     if guard_rules != ['DST-PORT,53,REJECT']:
         raise BuildError('Missing or weakened port-53 DNS guard')
+    protected_block = conf.split('# BEGIN PROTECTED\n')[1].split('# END PROTECTED')[0]
+    if set(protected_block.splitlines()) != {
+            'DOMAIN-SUFFIX,' + h + ',PROXY' for h in overrides['proxy_suffix']}:
+        raise BuildError('Protected service block differs from policy')
     for section, marker in [('lan_domains', 'LOCAL NAMES'), ('direct_exceptions', 'REVIEWED DIRECT')]:
         actual = conf.split(f'# BEGIN {marker}\n')[1].split(f'# END {marker}')[0]
         actual = [x for x in actual.splitlines() if x and not x.startswith('#')]
@@ -511,7 +529,7 @@ def validate(conf, overrides=None, registry=None):
         if parts[0] in ('DOMAIN', 'DOMAIN-SUFFIX'):
             if len(parts) != 3 or domain(parts[1]) != parts[1]:
                 raise BuildError('Malformed domain rule')
-            reserved = {'local', 'lan', 'home.arpa', 'in-addr.arpa', 'ip6.arpa'}
+            reserved = {'local', 'lan', 'home.arpa', 'in-addr.arpa', 'ip6.arpa', 'cn', 'xn--fiqs8s', 'xn--fiqz9s'}
             if parts[2] == 'DIRECT' and parts[0] == 'DOMAIN-SUFFIX' and (
                     parts[1] not in reserved and registry_suffix(parts[1], registry)):
                 raise BuildError('Registry-level DIRECT rule is forbidden')
@@ -524,7 +542,8 @@ def validate(conf, overrides=None, registry=None):
         else:
             raise BuildError('Unsupported rule type (no remote sets, scripts or GEOIP)')
     # Validate policy inside each dynamic block, not only the canary endpoints.
-    for block, policy in [('PROXY', 'PROXY'), ('DIRECT', 'DIRECT'), ('CHINA IP', 'DIRECT')]:
+    for block, policy in [('PROTECTED', 'PROXY'), ('REGIONAL', 'DIRECT'),
+                          ('PROXY', 'PROXY'), ('DIRECT', 'DIRECT'), ('CHINA IP', 'DIRECT')]:
         content = conf.split(f'# BEGIN {block}\n')[1].split(f'# END {block}')[0]
         if not content.strip() or any(x.split(',')[2] != policy for x in content.splitlines()):
             raise BuildError(f'Invalid {block} block')
@@ -537,10 +556,15 @@ def validate(conf, overrides=None, registry=None):
                 ('github.com', None, 'PROXY'), ('chatgpt.com', None, 'PROXY'),
                 ('api.openai.com', None, 'PROXY'), ('www.google.cn', None, 'PROXY'),
                 ('fresh-unlisted.invalid', None, 'PROXY'),
-                ('fresh-unlisted.cn', None, 'PROXY'),
-                ('fresh-unlisted.com.cn', None, 'PROXY'),
+                ('fresh-unlisted.cn', None, 'DIRECT'),
+                ('fresh-unlisted.com.cn', None, 'DIRECT'),
                 ('fresh-unlisted.in.th', None, 'PROXY'),
-                ('fresh-unlisted.xn--fiqs8s', None, 'PROXY'),
+                ('fresh-unlisted.xn--fiqs8s', None, 'DIRECT'),
+                ('cn.bing.com', None, 'DIRECT'), ('sydney.bing.com', None, 'PROXY'),
+                ('copilot.microsoft.com', None, 'PROXY'), ('claude.ai', None, 'PROXY'),
+                ('gateway.icloud.com.cn', None, 'DIRECT'),
+                ('alibaba.cdn.steampipe.steamcontent.com', None, 'DIRECT'),
+                ('steamcommunity.com', None, 'PROXY'),
                 ('printer.local', None, 'DIRECT'), ('nas.home.arpa', None, 'DIRECT'),
                 ('', '192.168.1.1', 'DIRECT'), ('', '223.5.5.5', 'DIRECT'),
                 ('', '2400:3200::1', 'DIRECT'), ('', '1.1.1.1', 'PROXY'),
@@ -590,7 +614,7 @@ def download(url, limit=8388608, token=None, attempts=3):
 
 
 def fetch_inputs(config):
-    revisions, inputs, metadata = {}, {}, {}
+    revisions, inputs, metadata, downloads = {}, {}, {}, {}
     for spec in config['sources']:
         repo, ref = spec['repository'], spec['ref']
         key = (repo, ref)
@@ -603,7 +627,9 @@ def fetch_inputs(config):
         revision = revisions[key]
         url = (f'https://codeload.github.com/{repo}/tar.gz/{revision}' if spec.get('format') == 'v2fly-archive'
                else f'https://raw.githubusercontent.com/{repo}/{revision}/{spec["path"]}')
-        inputs[spec['id']] = download(url, limit=config['max_bytes'])
+        if url not in downloads:
+            downloads[url] = download(url, limit=config['max_bytes'])
+        inputs[spec['id']] = downloads[url]
         metadata[spec['id']] = {'revision': revision, 'url': url}
     return inputs, metadata
 
@@ -643,15 +669,43 @@ def generate(config, template, overrides, inputs, metadata, baseline=None):
                           'bytes': len(data), 'license': spec['license']}
     reviewed, protected = reviewed_rules(overrides, inputs['direct'])
     registry = frozenset(r.value for r in all_rules['registry'])
-    proxy = all_rules['proxy'] | protected
-    proxy, direct = minimize(proxy), minimize(precise_direct(all_rules['direct'], config, registry))
-    direct, conflicts = resolve_conflicts(proxy, direct)
+    proxy = minimize(all_rules['proxy']) - protected
+    ordinary = all_rules['direct'] | all_rules['enhanced']
+    direct = minimize(precise_direct(ordinary, config, registry))
+    regional_raw = all_rules['regional'] | all_rules['apple_cn']
+    regional = minimize(precise_direct(regional_raw, config, registry))
+    regional, regional_conflicts = resolve_conflicts(protected, regional)
+    direct, conflicts = resolve_conflicts(protected, direct)
     for item in conflicts:
         item['stage'] = 'ordinary-sources'
     # Explicit local policy remains separate, so .cn minimization cannot erase it.
     explicit = set().union(*reviewed.values())
+    regional -= explicit
+    direct -= regional
     proxy = {r for r in proxy if not (r.kind == 'DOMAIN' and Rule(r.kind, r.value, 'DIRECT') in explicit)}
     direct -= explicit
+    for item in regional_conflicts:
+        item['stage'] = 'protected-over-regional'
+    conflicts.extend(regional_conflicts)
+    # Record every regional override of an ordinary proxy suffix, including
+    # exact hosts. This is generated from whole categories, not brand patches.
+    p_suffix = {r.value: r for r in proxy if r.kind == 'DOMAIN-SUFFIX'}
+    p_exact = {r.value: r for r in proxy if r.kind == 'DOMAIN'}
+    for r in sorted(regional | direct):
+        hits = [p_suffix[p] for p in parents(r.value) if p in p_suffix]
+        if r.value in p_exact:
+            hits.append(p_exact[r.value])
+        for p in hits:
+            conflicts.append({'stage': 'regional-policy' if r in regional else 'enhanced-whitelist',
+                              'action': 'whitelist-direct-override',
+                              'direct': r.line(), 'proxy': p.line()})
+    direct_suffix = {r.value: r for r in regional | direct if r.kind == 'DOMAIN-SUFFIX'}
+    for p in sorted(proxy):
+        for name in parents(p.value):
+            if name in direct_suffix and name != p.value:
+                conflicts.append({'stage': 'enhanced-whitelist', 'action': 'whitelist-parent-override',
+                                  'direct': direct_suffix[name].line(), 'proxy': p.line()})
+                break
     for section, entries in reviewed.items():
         for rule, ident in sorted(entries.items()):
             for p in sorted(proxy):
@@ -660,7 +714,7 @@ def generate(config, template, overrides, inputs, metadata, baseline=None):
                                       'direct': rule.line(), 'proxy': p.line()})
     # Never let an upstream entry duplicate or shadow reserved local namespaces.
     reserved = {'local', 'lan', 'home.arpa', 'in-addr.arpa', 'ip6.arpa', 'localhost'}
-    for rule in proxy | direct:
+    for rule in proxy | direct | regional | protected:
         if any(p in reserved for p in parents(rule.value)):
             raise BuildError('Upstream intrudes into reserved local namespace')
     ip_rules = set()
@@ -678,6 +732,7 @@ def generate(config, template, overrides, inputs, metadata, baseline=None):
         ip_rules.update(Rule(kind, str(net), 'DIRECT') for net in nets)
     content = template
     for marker, rules in [('LOCAL_NAME_RULES', reviewed['lan_domains']),
+                          ('PROTECTED_RULES', protected), ('REGIONAL_RULES', regional),
                           ('REVIEWED_DIRECT_RULES', reviewed['direct_exceptions']),
                           ('PROXY_RULES', proxy), ('DIRECT_RULES', direct), ('IP_RULES', ip_rules)]:
         token = '{{' + marker + '}}'
@@ -689,8 +744,8 @@ def generate(config, template, overrides, inputs, metadata, baseline=None):
     if stats['rules'] > config['max_output_rules'] or len(content.encode()) > config['max_output_bytes']:
         raise BuildError('Output exceeds reviewed client size budget')
     manifest = {'schema': 1, 'sources': sources, 'ip_coverage': coverage,
-                'excluded_registry_direct': sorted(r.line() for r in all_rules['direct']
-                    - precise_direct(all_rules['direct'], config, registry)),
+                'excluded_registry_direct': sorted(r.line() for r in ordinary | regional_raw
+                    if r not in precise_direct({r}, config, registry)),
                 'config_sha256': sha(content.encode()),
                 'generator_sha256': sha(Path(__file__).read_bytes()),
                 'template_sha256': sha(template.encode()),

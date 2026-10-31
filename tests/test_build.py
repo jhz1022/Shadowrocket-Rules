@@ -252,7 +252,7 @@ class PublishedSnapshotTests(unittest.TestCase):
                          ['DST-PORT,53,REJECT'])
 
     def test_broad_registry_bypass_cannot_return(self):
-        for suffix in ['cn', 'com.cn', 'xn--fiqs8s', 'xn--55qx5d']:
+        for suffix in ['com.cn', 'in.th', 'co.uk', 'xn--55qx5d']:
             with self.subTest(suffix=suffix), self.assertRaises(b.BuildError):
                 b.validate(self.conf.replace('# BEGIN DIRECT\n',
                     '# BEGIN DIRECT\nDOMAIN-SUFFIX,' + suffix + ',DIRECT\n'))
@@ -261,10 +261,10 @@ class PublishedSnapshotTests(unittest.TestCase):
         rules = b.rule_lines(self.conf)
         for host in ['itunes.apple.com', 'is1-ssl.mzstatic.com', 'is5-ssl.mzstatic.com',
                      'amp-api.apps.apple.com', 'iosapps.itunes.apple.com', 'osxapps.itunes.apple.com',
-                     'gs.apple.com', 'gdmf-ados.apple.com']:
+                     'gs.apple.com', 'gdmf-ados.apple.com', 'music.apple.com']:
             self.assertEqual(b.match_rules(rules, host, port=443), 'DIRECT')
             self.assertEqual(b.match_rules(rules, host, port=53), 'REJECT')
-        for host in ['sub.itunes.apple.com', 'is6-ssl.mzstatic.com', 'music.apple.com',
+        for host in ['sub.itunes.apple.com', 'is6-ssl.mzstatic.com',
                      'tv.apple.com', 'apple-relay.apple.com', 'news.apple.com']:
             self.assertEqual(b.match_rules(rules, host, port=443), 'PROXY')
 
@@ -309,9 +309,9 @@ class PublishedSnapshotTests(unittest.TestCase):
     def test_wechat_asset_routing_regression_is_rejected(self):
         for host in ['wx.qlogo.cn', 'mmbiz.qpic.cn', 'short.weixin.qq.com']:
             # An unexpected upstream PROXY entry must not silently capture WeChat.
-            conf = self.conf.replace('# BEGIN PROXY\n',
-                                     '# BEGIN PROXY\nDOMAIN,' + host + ',PROXY\n', 1)
-            with self.subTest(host=host), self.assertRaisesRegex(b.BuildError, 'Routing canary'):
+            conf = self.conf.replace('# BEGIN PROTECTED\n',
+                                     '# BEGIN PROTECTED\nDOMAIN,' + host + ',PROXY\n', 1)
+            with self.subTest(host=host), self.assertRaisesRegex(b.BuildError, 'Protected service'):
                 b.validate(conf)
 
     def test_reviewed_direct_overrides_broad_proxy_without_widening(self):
@@ -321,15 +321,16 @@ class PublishedSnapshotTests(unittest.TestCase):
                    'www.hsbcinsurance.com.cn', 'www.hsbcqh.com.cn',
                    'account-cn.alibabacloud.com', 'captive.apple.com', 'time.apple.com',
                    'apps.apple.com', 'swcdn.apple.com', 'download.windowsupdate.com',
-                   'dl.delivery.mp.microsoft.com', 'officecdn.microsoft.com']
+                   'dl.delivery.mp.microsoft.com', 'officecdn.microsoft.com',
+                   'sub.0.cn.pool.ntp.org', 'sub.account-cn.alibabacloud.com',
+                   'api.alibabacloud.com', 'cn.alibabacloud.com', 'status.alibabacloud.com']
         for host in direct:
             with self.subTest(host=host):
                 self.assertEqual(b.match_rules(rules, host, port=443), 'DIRECT')
                 self.assertEqual(b.match_rules(rules, host, port=53), 'REJECT')
-        for host in ['0.pool.ntp.org', '0.jp.pool.ntp.org', 'sub.0.cn.pool.ntp.org',
+        for host in ['0.pool.ntp.org', '0.jp.pool.ntp.org',
                      'hsbc.com.cn.example.net', 'www.hsbc.com.hk', 'www.hsbc.com',
-                     'sub.account-cn.alibabacloud.com', 'account-cn.alibabacloud.com.example.net',
-                     'api.alibabacloud.com', 'cn.alibabacloud.com', 'status.alibabacloud.com',
+                     'account-cn.alibabacloud.com.example.net',
                      'copilot.microsoft.com', 'api.openai.com', 'claude.ai', 'www.netflix.com',
                      'tv.apple.com', 'news.apple.com', 'apple-relay.cloudflare.com',
                      'other.apple.com', 'other.microsoft.com', 'other.akadns.net']:

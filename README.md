@@ -1,6 +1,6 @@
 # Shadowrocket 自建分流规则
 
-每日由 GitHub Actions 下载数据、清洗、检查并更新一份完整的 [`dist/Shadowrocket.conf`](dist/Shadowrocket.conf)。客户端只订阅这一份配置。国内分类直连，境外及未命中流量默认 `PROXY`，使用首页当前选择的节点。
+每日由 GitHub Actions 下载数据、清洗、检查并更新一份完整的 [`dist/Shadowrocket.conf`](dist/Shadowrocket.conf)。客户端只订阅这一份配置。采用增强版绕过大陆：已知可直连服务及批准的中国域名后缀直连，受保护服务、其余境外及未命中流量使用 `PROXY`，使用首页当前选择的节点。
 
 没有节点、订阅密码、地区策略组、广告拦截、MITM、脚本、重写或远程 RULE-SET。DNS 检测站没有人工添加的特殊规则。
 
@@ -12,7 +12,7 @@ https://raw.githubusercontent.com/jhz1022/Shadowrocket-Rules/main/dist/Shadowroc
 
 GitHub 发布及 Mac 客户端验证状态见 [验证记录](docs/VALIDATION.md)和[本机修复验收](docs/MAC_DNS_FIX.md)。已在 macOS 26.7.1 / Shadowrocket 2.2.93 实测基础分流与 DNS 修复；iPhone 已补充一次 5G / Claude 连通与出口检查，网络切换、手机故障注入和物理接口抓包仍未验收，不承诺“零泄漏”。
 
-2026-10-31 的三项缺陷修复、36 个上游候选调研及项目边界见 [本轮评估](docs/ASSESSMENT_2026-10-31.md)。对应提交的在线检查结果见 [GitHub Actions](https://github.com/jhz1022/Shadowrocket-Rules/actions)；客户端需刷新上述订阅并重新连接，才会使用下载后的新配置。
+2026-10-31 的增强白名单重构、全表覆盖与验收边界见 [ENHANCED_WHITELIST.md](docs/ENHANCED_WHITELIST.md)。此前三项缺陷修复、36 个上游候选调研的历史记录见 [本轮评估](docs/ASSESSMENT_2026-10-31.md)。对应提交的在线检查结果见 [GitHub Actions](https://github.com/jhz1022/Shadowrocket-Rules/actions)；客户端需刷新上述订阅并重新连接，才会使用下载后的新配置。
 
 精确分流例外、全源审计及更新健康检查的交付记录见 [HARDENING.md](docs/HARDENING.md)。
 
@@ -44,9 +44,9 @@ GitHub 发布及 Mac 客户端验证状态见 [验证记录](docs/VALIDATION.md)
 
 `proxy-dns-server` **不是代理网站使用的 DNS**。解析器使用 IP 地址 DoH URL，TLS 校验保持开启，不需要先查询解析器域名。国内直连使用系统 DNS 是本项目为局域网及 CDN 作出的明确选择，不是误配或检测规避。
 
-直连源先移除所有顶级后缀，以及 Public Suffix List 的 ICANN 注册边界及其上层（如 `.com.cn`、`.in.th`），处理通配规则与例外，避免一个直连后缀覆盖互不相关的注册者。PSL 使用固定提交并随原始输入保存；PRIVATE 部分不自动作为剔除依据，共享托管平台仍需单独审查。现有百度、淘宝、微信等业务规则保留。域名归属仍依赖维护数据，不把“有收录”说成地理准确性的证明。
+直连采用可达性白名单，不把域名后缀或公司国籍当作服务器物理位置证明。明确允许 `.cn`、`.中国`、`.中國`（Punycode 为 `cn`、`xn--fiqs8s`、`xn--fiqz9s`）；需要代理的服务在此前优先匹配。其余顶级/注册后缀仍按固定 PSL 快照过滤，避免恢复 `in.th` 等无关区域的整段直连。对未列入代理保护的未知 `.cn` 域名，直连是有意选择，与 v2rayN 白名单使用习惯一致。
 
-所有地址规则都带 `no-resolve`。未命中域名不会仅为匹配中国 IP 表而额外请求本地 DNS；已知国内 IP 直接连接可以命中 IP 表。代价是**未收录的国内域名也可能走默认代理**，这是隐私优先的边界，不为“猜国内 IP”主动解析。已明确匹配代理的域名不会因为最终落在中国 IP 上而改成直连。
+所有地址规则都带 `no-resolve`。未命中域名不会仅为匹配中国 IP 表而额外请求本地 DNS；已知国内 IP 直接连接可以命中 IP 表。未被白名单及允许后缀覆盖的国内域名仍可能走默认代理；不为“猜国内 IP”主动解析。受保护的代理服务不会因为中国后缀或中国 IP 而改成直连。
 
 `always-ip-address = false` 避免强迫所有域名本地解析。代理不能转发 UDP 时拒绝而不改走直连；这不是广告过滤，但不支持 UDP 的节点可能无法使用部分 QUIC/游戏/语音流量。选择可用节点并不意味着任意节点都能访问所有有地区限制的服务。
 
@@ -66,32 +66,35 @@ GitHub 发布及 Mac 客户端验证状态见 [验证记录](docs/VALIDATION.md)
 
 | 用途 | 实际上游 | 格式及许可 |
 | --- | --- | --- |
-| 国内域名 | [v2fly/domain-list-community](https://github.com/v2fly/domain-list-community)，固定提交的完整归档，入口 `data/cn` | 原生 `domain`/`full`/属性/`include`/`&affiliation`；MIT |
+| 国内分类补充及本地例外依据 | [v2fly/domain-list-community](https://github.com/v2fly/domain-list-community)，固定提交的完整归档，入口 `data/cn` | 原生 `domain`/`full`/属性/`include`/`&affiliation`；MIT |
+| 增强直连表 | [Loyalsoldier/v2ray-rules-dat](https://github.com/Loyalsoldier/v2ray-rules-dat)，`release/direct-list.txt` | 裸后缀、`full:`、记录省略的正则；GPL-3.0 |
+| 国外服务的中国节点 | v2fly 同一固定归档的 `geolocation-!cn @cn`，自动递归全部所含类别 | 原生属性选择器；MIT |
+| Apple 中国节点 | Loyalsoldier 同一 release 提交的 `apple-cn.txt` | `full:` 精确主机，不扩大为后缀；GPL-3.0 数据链 |
 | 明确代理域名 | [Loyalsoldier/clash-rules](https://github.com/Loyalsoldier/clash-rules)，`release/proxy.txt` | `payload` 域名集；普通值是完整域名，`+.` 才是后缀；GPL-3.0 |
 | 国内 IPv4 / IPv6 | [gaoyifan/china-operator-ip](https://github.com/gaoyifan/china-operator-ip)，`ip-lists/china.txt`、`china6.txt` | 标准 CIDR；MIT |
 | 注册边界校验 | [publicsuffix/list](https://github.com/publicsuffix/list)，`main/public_suffix_list.dat` | ICANN 精确、通配、例外；保留完整原始 MPL-2.0 文件，不生成客户端路由 |
 
-没有全量采用候选 `v2ray-rules-dat/direct-list.txt`：实取样构建产生约 14.6 万条、4.8 MiB 的配置，且它是可直连白名单，不是严格地理分类。精简中间产物也未通过淘宝哨兵，所以国内域名最终直接读取官方分类源，正确处理新的 affiliation 语法。当前输出控制在 **7 万条、3 MiB**以内，超过预算即停止发布。
+完整采用增强直连表；保留原始国内分类作为补充，避免上游已用注册后缀压缩后再过滤时丢失具体业务。原 7 万条 / 3 MiB 是自设预算，不能作为舍弃覆盖的充分依据。新发布上限为 **20 万条 / 8 MiB**，超限停止发布；本轮产物约 14.7 万条 / 4.83 MiB，尚未实测新版在 iPhone 上的内存与加载耗时。
 
-Loyalsoldier 的代理域名集由候选 V2Ray 数据生成，其上游工作流明确排除 `regexp`/`keyword`，所以它**不等价于完整原始列表**。本项目不伪造正则转换；代理集未覆盖的流量仍由默认代理处理，但与直连分类交叉时可能缺少部分代理例外，这是上游分类的已知限制。关键代理保护、精确局域网管理域名和经审查直连例外集中在 [`config/overrides.json`](config/overrides.json)，每组例外包含用途和 HTTPS 依据，不涉及 DNS 检测站。
+Loyalsoldier 的代理域名集由候选 V2Ray 数据生成，其上游工作流明确排除 `regexp`/`keyword`，所以它**不等价于完整原始列表**。本项目不伪造正则转换；代理集未覆盖的流量仍由默认代理处理，增强白名单有意优先于普通代理分类；需要强制代理的服务必须进入独立保护层，不能依赖宽泛品牌分类。这是白名单策略的明确取舍。关键代理保护、精确局域网管理域名和经审查直连例外集中在 [`config/overrides.json`](config/overrides.json)，每组例外包含用途和 HTTPS 依据，不涉及 DNS 检测站。
 
-国内源的 `domain:` → `DOMAIN-SUFFIX`，`full:` → `DOMAIN`。属性、include 引用、affiliation 和类型名称按上游语义忽略大小写；`@ads`、`@ADS`、`@!cn`、`@!CN` 条目均不进入直连白名单，**不会生成拦截策略**，仍继续匹配其他规则或 FINAL。直连正则没有可靠等价形式，明确省略并把原文记录进 manifest，优先让漏收请求走默认代理。直连 `keyword`、未知记录、异常 include 等直接报错；不静默降级。暂不引入 blackmatrix7，避免叠加另一套分类及许可范围。
+国内源的 `domain:` → `DOMAIN-SUFFIX`，`full:` → `DOMAIN`。属性、include 引用、affiliation 和类型名称按上游语义忽略大小写；原生分类中的 `@ads`、`@ADS`、`@!cn`、`@!CN` 条目不进入该来源的直连结果，**不会生成拦截策略**，仍继续匹配其他规则或 FINAL。增强发布表已扁平化，不保留所有原始属性，因此不承诺从所有来源排除这些域名；本项目不做广告拦截。直连正则没有可靠等价形式，明确省略并把原文记录进 manifest，优先让漏收请求走默认代理。直连 `keyword`、未知记录、异常 include 等直接报错；不静默降级。暂不引入 blackmatrix7，避免叠加另一套分类及许可范围。
 
 IP 表是 BGP/登记分类数据，不代表每个地址的实时物理位置，也不是全网准确性保证。细节和证据见 [技术审查](docs/REVIEW.md)。
 
 ## 规则顺序与冲突
 
-局域网 IP / 本地保留命名空间 → 未接管 DNS 的端口 53 拒绝兜底 → 精确管理主机 → 经审查直连例外 → 明确代理 → 普通国内域名直连 → 国内 IPv4/IPv6 直连 → `FINAL,PROXY`。端口 53 的 REJECT 仅用于 DNS 安全，不生成广告拦截策略。
+局域网 / 本地保留命名空间 → DNS 端口 53 兜底 → 精确管理主机 → 受保护代理服务 → 本地直连例外 → 自动中国服务类别 → 增强直连白名单 → 普通国外规则 → 国内 IP → `FINAL,PROXY`。
 
-相同策略的子后缀、被后缀涵盖的完整域名会被压缩。普通上游表之间仍按代理优先：代理后缀完整覆盖的直连条目删除；直连父后缀内的代理子域名保留并排在前面。经审查的直连例外独立生成，避免被 `.cn` 等宽泛后缀压缩掉；它们可以覆盖普通代理分类，但不能与受保护的海外服务域相交。`dist/conflicts.json` 用 `ordinary-sources` / `reviewed-policy` 区分普通表冲突和最终例外覆盖，不能只看前者就推断最终路由。局域网保留命名空间被上游侵入时停止构建。
+增强白名单优先于普通国外品牌、共享 CDN 分类。受保护的 Claude/OpenAI/Google/Copilot 等服务仍先匹配代理；中国节点例外不能覆盖它们。`bing.com` 不再整体列为强制代理，Bing 中国站随中国类别直连，Copilot/Sydney 单独保护。
 
-### 已落实的精确例外
+同策略域名按精确/后缀语义去重压缩；保护层单独输出，避免压缩进普通品牌规则后丢失优先级。`dist/conflicts.json` 记录保护层、区域类别和增强白名单的覆盖关系。审计独立解码全部来源，检查来源与产物的域名边界、地址集合，并列出直连来源仍代理的条目及原因。更新任务在 Actions 摘要显示策略变化统计，完整报告作为 artifact 保存；变化样例最多 100 条，统计覆盖全部检查边界，不等同于真实请求量。
 
-- 中国 NTP：`cn.pool.ntp.org` 和 `0`～`3.cn.pool.ntp.org` 五个精确主机；全球池及其他国家池仍走代理。
-- 国内业务：汇丰中国、汇丰人寿中国、汇丰前海的三个专属业务域族；仅 `account-cn.alibabacloud.com` 这一 Qoder CN 账户主机。其他国际银行域名、阿里国际入口继续代理。
-- 系统基础服务：精确放行 `captive.apple.com` 及三个 Apple 校时主机，避免公共 Wi-Fi 检测和校时依赖可用代理。
-- 下载：17 个既有指定 Apple 商店/更新/下载主机，加 15 个商店接口/图片/下载主机及 7 个更新主机、4 个上游标记 `@cn` 的 Microsoft 下载主机。未放行整个 `apple.com`、`microsoft.com`、`akadns.net`、共享 CDN 或 Apple 全局 IP 块；Apple TV、News、Intelligence 和 Copilot 保留代理。
-- 局域网管理：18 个有厂商用途依据的精确管理主机，包含 ASUS、TP-Link、NETGEAR/Orbi、Tenda、小米。保留本地 DNS 和私网地址规则；品牌域名仍需当前网络的本地 DNS 正确解析，不能凭规则修复错误 DHCP/DNS，也没有固定写死某个家庭网关。
+### 本地例外与自动类别
+
+本地例外保留路由器管理、联网检测、校时及已有经核实的主机。它们不再承担完整业务覆盖；上游的增强直连表、全部国外类别的 `@cn` 和 Apple 中国主机自动更新。旧例外的精确范围不代表最终路由仅限这些主机：完整上游可能提供更广的合法白名单，例如中国 NTP 池和阿里云服务。
+
+Apple 中国表仅代表一批精确主机，不等同于全部 iCloud 或整个 Apple。iCloud 中国域名通过中国后缀及 `@cn` 覆盖，全球 iCloud、Apple TV/News/Relay 等依据其他规则继续判定。所有最终结果以全表审计为准。
 
 这些是业务范围经过审查的路由选择，不保证每个 CDN IP 都在大陆或每个网络直连都更快。管理域名也放在 DNS 端口兜底之后；仅已知私网目的地址和本地保留命名空间继续允许 DNS，不因公共品牌域名而放开外部端口 53。
 
@@ -108,7 +111,8 @@ python3 scripts/build.py                      # 实际下载并构建
 python3 scripts/build.py --offline             # 从已提交源快照重建
 python3 scripts/build.py --offline --check     # 只读检查完整可复现性
 python3 -m unittest discover -s tests -v        # 转换、路由、异常输入与保留旧版测试
-python3 scripts/audit.py                       # 独立源解码、域名边界模型及 CIDR 集合检查
+python3 scripts/audit.py --output .build/policy-audit.json # 独立全表审计和覆盖报告
+# 可加 --compare previous.conf 对比上个版本的域名边界决策
 python3 scripts/probe_client_dns.py            # 仅在实际客户端 Mac 上运行；需要已启用配置
 python3 scripts/probe_client_services.py       # 可选 UDP/123、联网检测及公开业务/CDN 根路径探测
 python3 scripts/probe_client_dns.py --resolution success # 非 Fake-IP 的正向 TXT 控制
@@ -135,7 +139,7 @@ python3 scripts/probe_apple_delivery.py         # 真正下载公开图片和 <=
 
 执行记录按当前尝试的更新时间排序，避免旧任务重跑被创建时间掩盖；检查所有未完成任务，避免新排队任务盖住旧超时任务。查询分页覆盖可重跑历史窗口，并额外查询任意年龄的未完成任务；历史超出 API 查询上限时明确报错，不把截断结果当健康。
 
-另外查询每个上游仓库的归档/停用状态及目标分支最新提交年龄：国内域名源及 PSL 为 14 天，三个每日产出数据源为 72 小时，超过预算即检查失败。预算是维护活动信号，不证明规则内容每日变化或归属准确；正常无变化不会制造提交。
+另外查询每个上游仓库的归档/停用状态及目标分支最新提交年龄：v2fly 分类及 PSL 为 14 天，其余每日产出数据源为 72 小时，超过预算即检查失败。预算是维护活动信号，不证明规则内容每日变化或归属准确；正常无变化不会制造提交。
 
 该检查只有 `contents: read` / `actions: read`，不创建 Issue、不发送私人日志、不制造每日提交。是否收到邮件取决于你的 GitHub 通知设置；检查失败不等于已经通知到手机。两个工作流都依赖 GitHub 调度，若整个仓库 Actions 被停用或 GitHub 不运行任务，仓库内部无法自我唤醒；不把它称为外部全天候监控。
 

@@ -55,9 +55,8 @@ class FullAuditTests(unittest.TestCase):
 
     def test_domain_scope_broadening_and_ip_loss_are_detected(self):
         conf = (ROOT / 'dist/Shadowrocket.conf').read_text()
-        # Broadening a precise China NTP exception would leak its unapproved
-        # subdomains into DIRECT, even though both still look syntactically valid.
-        exact = 'DOMAIN,0.cn.pool.ntp.org,DIRECT'
+        # Broadening a local management host must not route arbitrary subdomains directly.
+        exact = 'DOMAIN,asusrouter.com,DIRECT'
         self.assertIn(exact, conf)
         wrong_scope = conf.replace(exact, exact.replace('DOMAIN,', 'DOMAIN-SUFFIX,', 1), 1)
         block = conf.split('# BEGIN CHINA IP\n')[1].split('# END CHINA IP')[0]
