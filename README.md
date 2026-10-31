@@ -12,6 +12,8 @@ https://raw.githubusercontent.com/jhz1022/Shadowrocket-Rules/main/dist/Shadowroc
 
 GitHub 发布及 Mac 客户端验证状态见 [验证记录](docs/VALIDATION.md)和[本机修复验收](docs/MAC_DNS_FIX.md)。已在 macOS 26.7.1 / Shadowrocket 2.2.93 实测基础分流与 DNS 修复；iPhone、故障注入和物理网卡抓包仍未验收，不承诺“零 DNS 泄漏”。
 
+精确分流例外、全源审计及更新健康检查的交付记录见 [HARDENING.md](docs/HARDENING.md)。
+
 本仓库已完成发布。直接使用上面的订阅地址即可；以下步骤用于自行 Fork 或部署另一份仓库。
 
 ## 一次性部署
@@ -66,7 +68,7 @@ GitHub 发布及 Mac 客户端验证状态见 [验证记录](docs/VALIDATION.md)
 
 没有全量采用候选 `v2ray-rules-dat/direct-list.txt`：实取样构建产生约 14.6 万条、4.8 MiB 的配置，且它是可直连白名单，不是严格地理分类。精简中间产物也未通过淘宝哨兵，所以国内域名最终直接读取官方分类源，正确处理新的 affiliation 语法。当前输出控制在 **7 万条、3 MiB**以内，超过预算即停止发布。
 
-Loyalsoldier 的代理域名集由候选 V2Ray 数据生成，其上游工作流明确排除 `regexp`/`keyword`，所以它**不等价于完整原始列表**。本项目不伪造正则转换；代理集未覆盖的流量仍由默认代理处理，但与直连分类交叉时可能缺少部分代理例外，这是上游分类的已知限制。少量关键服务保护后缀保存在 [`config/overrides.json`](config/overrides.json)，不涉及 DNS 检测站。
+Loyalsoldier 的代理域名集由候选 V2Ray 数据生成，其上游工作流明确排除 `regexp`/`keyword`，所以它**不等价于完整原始列表**。本项目不伪造正则转换；代理集未覆盖的流量仍由默认代理处理，但与直连分类交叉时可能缺少部分代理例外，这是上游分类的已知限制。关键代理保护、精确局域网管理域名和经审查直连例外集中在 [`config/overrides.json`](config/overrides.json)，每组例外包含用途和 HTTPS 依据，不涉及 DNS 检测站。
 
 国内源的 `domain:` → `DOMAIN-SUFFIX`，`full:` → `DOMAIN`。`@ads`、`@!cn` 条目不进入直连白名单，**不会生成拦截策略**，仍继续匹配其他规则或 FINAL。直连正则没有可靠等价形式，明确省略并把原文记录进 manifest，优先让漏收请求走默认代理。直连 `keyword`、未知记录、异常 include 等直接报错；不静默降级。暂不引入 blackmatrix7，避免叠加另一套分类及许可范围。
 
@@ -74,9 +76,21 @@ IP 表是 BGP/登记分类数据，不代表每个地址的实时物理位置，
 
 ## 规则顺序与冲突
 
-局域网保护 → 未接管 DNS 的端口 53 拒绝兜底 → 明确代理 → 国内域名直连 → 国内 IPv4/IPv6 直连 → `FINAL,PROXY`。端口 53 的 REJECT 仅用于 DNS 安全，不生成广告拦截策略。
+局域网 IP / 本地保留命名空间 → 未接管 DNS 的端口 53 拒绝兜底 → 精确管理主机 → 经审查直连例外 → 明确代理 → 普通国内域名直连 → 国内 IPv4/IPv6 直连 → `FINAL,PROXY`。端口 53 的 REJECT 仅用于 DNS 安全，不生成广告拦截策略。
 
-相同策略的子后缀、被后缀涵盖的完整域名会被压缩。跨策略统一代理优先：代理后缀完整覆盖的直连条目删除；直连父后缀内的代理子域名保留并排在前面。全部交叉项及处理结果见 [`dist/conflicts.json`](dist/conflicts.json)。局域网保留命名空间被上游侵入时停止构建。
+相同策略的子后缀、被后缀涵盖的完整域名会被压缩。普通上游表之间仍按代理优先：代理后缀完整覆盖的直连条目删除；直连父后缀内的代理子域名保留并排在前面。经审查的直连例外独立生成，避免被 `.cn` 等宽泛后缀压缩掉；它们可以覆盖普通代理分类，但不能与受保护的海外服务域相交。`dist/conflicts.json` 用 `ordinary-sources` / `reviewed-policy` 区分普通表冲突和最终例外覆盖，不能只看前者就推断最终路由。局域网保留命名空间被上游侵入时停止构建。
+
+### 已落实的精确例外
+
+- 中国 NTP：`cn.pool.ntp.org` 和 `0`～`3.cn.pool.ntp.org` 五个精确主机；全球池及其他国家池仍走代理。
+- 国内业务：汇丰中国、汇丰人寿中国、汇丰前海的三个专属业务域族；仅 `account-cn.alibabacloud.com` 这一 Qoder CN 账户主机。其他国际银行域名、阿里国际入口继续代理。
+- 系统基础服务：精确放行 `captive.apple.com` 及三个 Apple 校时主机，避免公共 Wi-Fi 检测和校时依赖可用代理。
+- 下载：17 个指定 Apple 商店/更新/下载主机、4 个上游标记 `@cn` 的 Microsoft 下载主机。未放行整个 `apple.com`、`microsoft.com`、`akadns.net`、共享 CDN 或 Apple 全局 IP 块；Apple TV、News、Intelligence 和 Copilot 保留代理。
+- 局域网管理：18 个有厂商用途依据的精确管理主机，包含 ASUS、TP-Link、NETGEAR/Orbi、Tenda、小米。保留本地 DNS 和私网地址规则；品牌域名仍需当前网络的本地 DNS 正确解析，不能凭规则修复错误 DHCP/DNS，也没有固定写死某个家庭网关。
+
+这些是业务范围经过审查的路由选择，不保证每个 CDN IP 都在大陆或每个网络直连都更快。管理域名也放在 DNS 端口兜底之后；仅已知私网目的地址和本地保留命名空间继续允许 DNS，不因公共品牌域名而放开外部端口 53。
+
+带 `community_check` 的例外会在每次构建时，用同一个固定归档核查具体分类/`@cn` 属性；依据丢失即停止发布，防止静态白名单悄悄脱离上游。全部例外限制在 250 条以内，拒绝无理由、无 HTTPS 来源、非规范域名、宽泛平台后缀和代理保护域重叠。
 
 不使用内置 `GEOIP`：已经内嵌国内地址表，可避免另一份隐式 IP 数据库成为依赖。若以后使用 GEOIP，同样需要 `no-resolve`，并重新评估数据来源与规则优先级。
 
@@ -89,7 +103,9 @@ python3 scripts/build.py                      # 实际下载并构建
 python3 scripts/build.py --offline             # 从已提交源快照重建
 python3 scripts/build.py --offline --check     # 只读检查完整可复现性
 python3 -m unittest discover -s tests -v        # 转换、路由、异常输入与保留旧版测试
+python3 scripts/audit.py                       # 全源域名边界模型及 CIDR 集合检查
 python3 scripts/probe_client_dns.py            # 仅在实际客户端 Mac 上运行；需要已启用配置
+python3 scripts/probe_client_services.py       # 可选 UDP/123、联网检测及公开业务/CDN 根路径探测
 ```
 
 修改模板、构建器或 sources 后，先离线重建、运行测试，再提交源码和 `dist/`。`--check` 会比较生成器、模板、源配置和产物哈希，因此故意修改源码却不重建会失败。`--check` 不模拟 Shadowrocket 原生解析器。
@@ -106,14 +122,24 @@ python3 scripts/probe_client_dns.py            # 仅在实际客户端 Mac 上�
 - 回滚使用 GitHub 历史中最后正常提交的整个 `dist/`，或 revert 对应更新提交；临时回滚模板/脚本时保持两者配套。也可暂停 Actions 防止下次正常更新覆盖回滚。在 Shadowrocket 手动刷新一次即可。
 - GitHub 定时任务只在默认分支运行，可能排队、延迟或被丢弃，不是严格的每日 SLA。公开仓库长期（通常 60 天）无活动可能自动停用 schedule；Fork 后也需确认 Actions 已启用。通过 Actions 页面检查运行状态，必要时手动 Run workflow。[GitHub 官方说明](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#schedule)
 
+## 更新健康检查
+
+除了每日北京时间 12:23 更新，`Check rule update health` 在北京时间次日 00:23（UTC 16:23）独立检查默认分支的更新执行记录，也支持手动运行。最近一次完成的更新失败、超过 36 小时没有成功、运行超过 1 小时或排队超过新鲜度上限时，检查明确失败并给出 Actions 错误标注。成功的 `NO_CHANGE` 也算新鲜，不能用最后一次规则提交日期判断是否停更。
+
+该检查只有 `contents: read` / `actions: read`，不创建 Issue、不发送私人日志、不制造每日提交。是否收到邮件取决于你的 GitHub 通知设置；检查失败不等于已经通知到手机。两个工作流都依赖 GitHub 调度，若整个仓库 Actions 被停用或 GitHub 不运行任务，仓库内部无法自我唤醒；不把它称为外部全天候监控。
+
 ## 项目结构
 
 ```text
 .github/workflows/update.yml   每日、手动、PR 检查及成功后提交
+.github/workflows/health.yml   独立更新失败/陈旧检查（只读）
 config/template.conf          固定 DNS / 局域网 / 模板
-config/overrides.json         少量关键服务代理保护
+config/overrides.json         审查过的本地管理、直连例外、海外保护及依据
 sources/sources.json          上游、类型、许可、质量阈值
 scripts/build.py              标准库构建器
+scripts/audit.py              独立全源边界与 IP 覆盖审计
+scripts/check_update_health.py 更新执行状态及陈旧检查
+scripts/probe_client_services.py 可选本机服务与 NTP 探测
 scripts/probe_client_dns.py   可选的本机实时 DNS 验收，不在 Actions 中冒充真机测试
 tests/test_build.py           解析、冲突、失败保护、可复现性测试
 dist/Shadowrocket.conf        唯一客户端订阅入口

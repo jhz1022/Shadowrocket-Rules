@@ -152,6 +152,12 @@ class ArchiveTests(unittest.TestCase):
         data = self.archive({'cn': 'include:synthetic', 'brand': 'brand.example &synthetic'})
         self.assertEqual(b.parse_community_archive(data, 'cn'), b'domain:brand.example\n')
 
+    def test_explicit_attribute_selection_does_not_include_global_services(self):
+        data = self.archive({'cn': 'local.example', 'microsoft':
+                             'full:download.example @cn\nglobal.example\nforeign.example @cn @!cn'})
+        self.assertEqual(b.parse_community_archive(data, 'microsoft', 'cn'),
+                         b'full:download.example\n')
+
     def test_missing_cyclic_and_unknown_syntax_fail(self):
         for entries in [{'cn': 'include:missing'}, {'cn': 'include:cycle', 'cycle': 'include:cn'},
                         {'cn': 'surprise:bad.example'}, {'cn': 'good.example @bad=value'}]:
@@ -239,6 +245,68 @@ class PublishedSnapshotTests(unittest.TestCase):
                                      '# BEGIN PROXY\nDOMAIN,' + host + ',PROXY\n', 1)
             with self.subTest(host=host), self.assertRaisesRegex(b.BuildError, 'Routing canary'):
                 b.validate(conf)
+
+    def test_reviewed_direct_overrides_broad_proxy_without_widening(self):
+        rules = b.rule_lines(self.conf)
+        direct = ['cn.pool.ntp.org'] + [f'{i}.cn.pool.ntp.org' for i in range(4)]
+        direct += ['www.hsbc.com.cn', 'www.services.online-banking.hsbc.com.cn',
+                   'www.hsbcinsurance.com.cn', 'www.hsbcqh.com.cn',
+                   'account-cn.alibabacloud.com', 'captive.apple.com', 'time.apple.com',
+                   'apps.apple.com', 'swcdn.apple.com', 'download.windowsupdate.com',
+                   'dl.delivery.mp.microsoft.com', 'officecdn.microsoft.com']
+        for host in direct:
+            with self.subTest(host=host):
+                self.assertEqual(b.match_rules(rules, host, port=443), 'DIRECT')
+                self.assertEqual(b.match_rules(rules, host, port=53), 'REJECT')
+        for host in ['0.pool.ntp.org', '0.jp.pool.ntp.org', 'sub.0.cn.pool.ntp.org',
+                     'hsbc.com.cn.example.net', 'www.hsbc.com.hk', 'www.hsbc.com',
+                     'sub.account-cn.alibabacloud.com', 'account-cn.alibabacloud.com.example.net',
+                     'api.alibabacloud.com', 'cn.alibabacloud.com', 'status.alibabacloud.com',
+                     'copilot.microsoft.com', 'api.openai.com', 'claude.ai', 'www.netflix.com',
+                     'tv.apple.com', 'news.apple.com', 'apple-relay.cloudflare.com',
+                     'other.apple.com', 'other.microsoft.com', 'other.akadns.net']:
+            with self.subTest(host=host):
+                self.assertEqual(b.match_rules(rules, host, port=443), 'PROXY')
+
+    def test_local_management_names_use_direct_local_dns_policy(self):
+        rules = b.rule_lines(self.conf)
+        for host in ['asusrouter.com', 'www.asusrouter.com', 'router.asus.com',
+                     'tplinkwifi.net', 'tplogin.cn', 'tendawifi.com', 'routerlogin.net',
+                     'orbilogin.com', 'miwifi.com']:
+            self.assertEqual(b.match_rules(rules, host, port=443), 'DIRECT')
+            self.assertEqual(b.match_rules(rules, host, port=53), 'REJECT')
+            self.assertEqual(b.match_rules(rules, host, '192.168.1.1', port=53), 'DIRECT')
+        for host in ['asusrouter.com.example.net', 'sub.asusrouter.com', 'other.asus.com']:
+            self.assertEqual(b.match_rules(rules, host, port=443), 'PROXY')
+
+    def test_reviewed_blocks_and_order_cannot_silently_change(self):
+        for content in [self.conf.replace('DOMAIN,0.cn.pool.ntp.org,DIRECT\n', ''),
+                        self.conf.replace('DOMAIN,captive.apple.com,DIRECT',
+                                          'DOMAIN,captive.apple.com,PROXY'),
+                        self.conf.replace('# BEGIN REVIEWED DIRECT', '# BEGIN PROXY', 1)]:
+            with self.assertRaises((b.BuildError, ValueError)):
+                b.validate(content)
+
+    def test_unsafe_reviewed_policy_is_rejected(self):
+        changes = [('type', 'DOMAIN-KEYWORD'), ('domains', ['com.cn']),
+                   ('domains', ['apple.com']), ('domains', ['api.openai.com']),
+                   ('domains', ['sub.claude.ai']), ('evidence', []),
+                   ('evidence', ['http://example.com']), ('unexpected', True)]
+        for key, value in changes:
+            override = copy.deepcopy(self.overrides)
+            override['direct_exceptions'][0][key] = value
+            with self.subTest(key=key, value=value), self.assertRaises(b.BuildError):
+                b.reviewed_rules(override)
+        override = copy.deepcopy(self.overrides)
+        override['lan_domains'][0]['type'] = 'DOMAIN-SUFFIX'
+        with self.assertRaises(b.BuildError):
+            b.reviewed_rules(override)
+
+    def test_reviewed_upstream_evidence_is_checked_before_publication(self):
+        overrides = copy.deepcopy(self.overrides)
+        overrides['direct_exceptions'][0]['domains'] = ['invented.not-in-ntp.example']
+        with self.assertRaisesRegex(b.BuildError, 'lost its upstream evidence'):
+            self.generate(overrides=overrides)
 
     def test_abnormal_count_and_coverage_are_rejected(self):
         baseline = copy.deepcopy(self.manifest)

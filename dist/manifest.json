@@ -1,25 +1,26 @@
 {
-  "config_sha256": "748a95dafcf6674929b3ce31f88fb0b882c33d8eacbbd1de732b9db4eb76201f",
-  "conflicts": 70,
-  "generator_sha256": "31a249884801ee24963a318c4206f41b0042f56043fca697f498e952c26fac09",
+  "config_sha256": "e9fb1cdf880672f8a54e1c046708ea03497fb7646d04c787234978bfcbf6bc32",
+  "conflicts": 105,
+  "generator_sha256": "a5983df6b1ace8f6914e2fab81de131f9e9586c1d09e03e1aa91b4a8efb63e6f",
   "ip_coverage": {
     "china4": 344076032,
     "china6": 5430297436658120360713663555829760
   },
   "output": {
     "dns_port_canaries": 6,
+    "reviewed_route_canaries": 52,
     "routing_canaries": 20,
-    "rules": 42450,
+    "rules": 42502,
     "types": {
-      "DOMAIN": 100,
-      "DOMAIN-SUFFIX": 32687,
+      "DOMAIN": 149,
+      "DOMAIN-SUFFIX": 32690,
       "DST-PORT": 1,
       "FINAL": 1,
       "IP-CIDR": 6182,
       "IP-CIDR6": 3479
     }
   },
-  "overrides_sha256": "25b5bc648d5f8710d95d57a8717d8e49a085becf15ae8e3820f06624e5c45d77",
+  "overrides_sha256": "604439080d93294128e6fa2e139ec7bef17c195d85f04d8f6987a323d82d0584",
   "schema": 1,
   "sources": {
     "china4": {
@@ -72,5 +73,5 @@
     }
   },
   "sources_spec_sha256": "2c63d01eff71573bcc2ed4199770aa954702fda3d70306385acb0b0f5f18fd37",
-  "template_sha256": "8926b74329522f6bd2808db9b4d2913c5ca3d387a529b3421d610489f97d9882"
+  "template_sha256": "cf0afd1d5cfd683f1803e7ee643436e29ed32a79461795306c2fc55344aeb8b7"
 }

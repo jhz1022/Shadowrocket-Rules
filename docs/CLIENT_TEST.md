@@ -68,3 +68,11 @@ sudo tcpdump -i en0 -n '(udp port 53 or tcp port 53 or tcp port 853)'
 通过标准：在“配置”模式，业务可用且命中预期策略；没有发现应代理域名通过非预期本地/国内 DNS 查询的证据；故障时不绕回直连；局域网仍可用。一次通过不构成所有版本、节点、网络下“100% 零泄漏”的承诺。
 
 如未通过，保存时间、版本、请求域名、命中规则、DNS 上游和连接错误。区分节点握手失败、域名解析失败、规则命中错误与服务端地区拒绝，再有针对性修复。临时恢复备份配置即可，不必删除节点或更改其他应用。
+
+## 精确例外修订验收
+
+1. 在客户端“测试规则”里用 `0.cn.pool.ntp.org`、`account-cn.alibabacloud.com`、`www.hsbc.com.cn`、`swcdn.apple.com`、`officecdn.microsoft.com` 测试，应命中前置经审查 DIRECT。
+2. `0.pool.ntp.org`、`0.jp.pool.ntp.org`、`api.alibabacloud.com`、`tv.apple.com`、`news.apple.com`、`copilot.microsoft.com`、`claude.ai` 继续 PROXY。不得仅为 `.cn` 或国内品牌批量切换整个分类。
+3. 运行 `python3 scripts/probe_client_services.py --output .build/client-services.json`。NTP 必须收到匹配请求时间戳的 UDP/123 应答；脚本不调整系统时间。CDN 根路径的 400/404 只表示收到了协议响应，不是完整安装包下载认证。
+4. 查看原生连接日志核对实际 DIRECT/PROXY 和耗时。静态模型不是实际出口证明。路由器应在连接该品牌本地网络时验证，错误的本地 DNS/DHCP 不由规则修复。
+5. 手机只需继续使用原订阅地址。新规则没有增加客户端远程 RULE-SET；是否刷新及何时刷新由客户端决定。未在 iPhone 上逐项完成新增例外真机验收。

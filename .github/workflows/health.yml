@@ -1,0 +1,33 @@
+name: Check rule update health
+
+on:
+  schedule:
+    # UTC 16:23 = Asia/Shanghai 00:23 next day, 12 hours after the update slot.
+    - cron: '23 16 * * *'
+  workflow_dispatch:
+  push:
+    branches: ['main']
+    paths:
+      - 'scripts/check_update_health.py'
+      - '.github/workflows/health.yml'
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  health:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.12'
+      - name: Check successful updates, including no-change builds
+        env:
+          GH_TOKEN: ${{ github.token }}
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+        run: python scripts/check_update_health.py --branch "$DEFAULT_BRANCH"

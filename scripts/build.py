@@ -66,7 +66,7 @@ def parents(value):
     return ('.'.join(labels[i:]) for i in range(len(labels)))
 
 
-def parse_community_archive(data, entry):
+def parse_community_archive(data, entry, attribute=None):
     """Read without extracting; implement upstream includes AND affiliations."""
     lists, includes = {}, {}
     total = 0
@@ -139,6 +139,8 @@ def parse_community_archive(data, entry):
     lines = []
     for kind, value, attrs in sorted(records, key=lambda r: (r[0], r[1], sorted(r[2]))):
         if 'ads' in attrs or '!cn' in attrs:
+            continue
+        if attribute and attribute not in attrs:
             continue
         lines.append(f'{kind}:{value}')
     return ('\n'.join(lines) + '\n').encode()
@@ -259,6 +261,90 @@ def resolve_conflicts(proxy, direct):
     return kept, sorted(conflicts, key=lambda x: (x['direct'], x['proxy'], x['action']))
 
 
+def domain_overlap(a, b):
+    """Whether two exact/suffix rules can match at least one common hostname."""
+    if a.kind == b.kind == 'DOMAIN':
+        return a.value == b.value
+    if a.kind == 'DOMAIN':
+        return a.value == b.value or a.value.endswith('.' + b.value)
+    if b.kind == 'DOMAIN':
+        return b.value == a.value or b.value.endswith('.' + a.value)
+    return (a.value == b.value or a.value.endswith('.' + b.value)
+            or b.value.endswith('.' + a.value))
+
+
+def reviewed_rules(overrides, archive=None):
+    """Local reviewed policy is independent of upstream minimization/classification."""
+    if set(overrides) != {'schema', 'proxy_suffix', 'lan_domains', 'direct_exceptions'} or overrides['schema'] != 2:
+        raise BuildError('Unknown reviewed-policy schema')
+    if not isinstance(overrides['proxy_suffix'], list) or not overrides['proxy_suffix']:
+        raise BuildError('Missing protected proxy domains')
+    protected = {Rule('DOMAIN-SUFFIX', domain(x), 'PROXY') for x in overrides['proxy_suffix']}
+    if len(protected) != len(overrides['proxy_suffix']):
+        raise BuildError('Duplicate protected proxy domain')
+    result, ids, seen, evidence_cache = {}, set(), set(), {}
+    broad = {'cn', 'com', 'net', 'org', 'com.cn', 'net.cn', 'org.cn', 'co.uk',
+             'apple.com', 'microsoft.com', 'cloudflare.net',
+             'cloudflare.com', 'akadns.net', 'akamaiedge.net', 'akamaihd.net', 'cloudfront.net'}
+    for section in ('lan_domains', 'direct_exceptions'):
+        groups = overrides[section]
+        if not isinstance(groups, list) or not groups:
+            raise BuildError('Missing reviewed-policy groups')
+        entries = {}
+        for group in groups:
+            required = {'id', 'type', 'domains', 'reason', 'evidence'}
+            if not isinstance(group, dict) or not required <= set(group) or set(group) - required - {'community_check'}:
+                raise BuildError('Invalid reviewed group fields')
+            ident = group['id']
+            if not isinstance(ident, str) or not re.fullmatch('[a-z0-9-]+', ident) or ident in ids:
+                raise BuildError('Invalid/duplicate reviewed group ID')
+            ids.add(ident)
+            kind = group['type']
+            if kind not in ('DOMAIN', 'DOMAIN-SUFFIX') or (section == 'lan_domains' and kind != 'DOMAIN'):
+                raise BuildError('Reviewed rules must be exact or approved domain families')
+            if not isinstance(group['reason'], str) or not group['reason'].strip() or '\n' in group['reason']:
+                raise BuildError('Missing reviewed-policy rationale')
+            evidence = group['evidence']
+            if (not isinstance(evidence, list) or not evidence
+                    or any(not isinstance(u, str) or not re.fullmatch(r'https://[^\s]+', u) for u in evidence)):
+                raise BuildError('Missing HTTPS policy evidence')
+            values = group['domains']
+            if not isinstance(values, list) or not values or len(values) > 100:
+                raise BuildError('Invalid reviewed domain list')
+            witness = None
+            if 'community_check' in group:
+                check = group['community_check']
+                if (not isinstance(check, dict) or set(check) - {'entry', 'attribute'}
+                        or not re.fullmatch('[a-z0-9_!-]+', check.get('entry', ''))
+                        or ('attribute' in check and check['attribute'] != 'cn')):
+                    raise BuildError('Invalid community evidence selector')
+                if archive is not None:
+                    key = (check['entry'], check.get('attribute'))
+                    if key not in evidence_cache:
+                        data = parse_community_archive(archive, *key)
+                        evidence_cache[key], _ = parse_source(data, {'id': ident, 'format': 'v2ray-direct',
+                            'policy': 'DIRECT', 'min_records': 1, 'max_records': 50000})
+                    witness = evidence_cache[key]
+            for value in values:
+                if not isinstance(value, str) or domain(value) != value or '.' not in value or value in broad:
+                    raise BuildError('Unsafe broad/noncanonical reviewed domain')
+                rule = Rule(kind, value, 'DIRECT')
+                if rule in seen:
+                    raise BuildError('Duplicate reviewed rule')
+                seen.add(rule)
+                if any(domain_overlap(rule, p) for p in protected):
+                    raise BuildError(f'Reviewed DIRECT intersects protected proxy: {value}')
+                if witness is not None and not any(
+                        (w.kind == 'DOMAIN-SUFFIX' and (value == w.value or value.endswith('.' + w.value)))
+                        or (w.kind == kind == 'DOMAIN' and value == w.value) for w in witness):
+                    raise BuildError(f'Reviewed domain lost its upstream evidence: {value}')
+                entries[rule] = ident
+        result[section] = entries
+    if len(seen) > 250:
+        raise BuildError('Reviewed policy exceeds small-list budget')
+    return result, protected
+
+
 def match_rules(rules, host, address=None, port=None):
     """Textual first-match model. Does not simulate Shadowrocket's DNS/TUN."""
     host = host.lower().rstrip('.')
@@ -295,7 +381,10 @@ def rule_lines(conf):
     return result
 
 
-def validate(conf):
+def validate(conf, overrides=None):
+    if overrides is None:
+        overrides = json.loads((ROOT / 'config/overrides.json').read_text())
+    reviewed, _ = reviewed_rules(overrides)
     sections = re.findall(r'^\[([^\]]+)\]$', conf, flags=re.M)
     if sections != ['General', 'Rule', 'Host'] or '{{' in conf or '\r' in conf:
         raise BuildError('Unexpected sections, template token, or encoding')
@@ -326,6 +415,7 @@ def validate(conf):
     if 'dns-fallback-system' in settings or 'direct-dns-server' in settings:
         raise BuildError('Unexpected DNS override')
     markers = ['# BEGIN LAN', '# END LAN', '# BEGIN DNS GUARD', '# END DNS GUARD',
+               '# BEGIN LOCAL NAMES', '# END LOCAL NAMES', '# BEGIN REVIEWED DIRECT', '# END REVIEWED DIRECT',
                '# BEGIN PROXY', '# END PROXY',
                '# BEGIN DIRECT', '# END DIRECT', '# BEGIN CHINA IP', '# END CHINA IP', 'FINAL,PROXY']
     offsets = [conf.index(m) for m in markers]
@@ -338,6 +428,11 @@ def validate(conf):
     guard_rules = [x for x in guard.splitlines() if x and not x.startswith('#')]
     if guard_rules != ['DST-PORT,53,REJECT']:
         raise BuildError('Missing or weakened port-53 DNS guard')
+    for section, marker in [('lan_domains', 'LOCAL NAMES'), ('direct_exceptions', 'REVIEWED DIRECT')]:
+        actual = conf.split(f'# BEGIN {marker}\n')[1].split(f'# END {marker}')[0]
+        actual = [x for x in actual.splitlines() if x and not x.startswith('#')]
+        if set(actual) != {r.line() for r in reviewed[section]} or len(actual) != len(set(actual)):
+            raise BuildError(f'Reviewed block differs from approved policy: {marker}')
     for line in rules[:-1]:
         # This single security guard is the only permitted REJECT rule.
         # Upstream domain/IP data still cannot inject blocking policies.
@@ -384,8 +479,16 @@ def validate(conf):
     for address, expected in dns_canaries:
         if match_rules(rules, '', address, port=53) != expected:
             raise BuildError(f'DNS fallback rule failed: {address}')
+    for section, entries in reviewed.items():
+        for rule in entries:
+            host = rule.value
+            if match_rules(rules, host, port=443) != 'DIRECT':
+                raise BuildError(f'Reviewed route failed: {host}')
+            if match_rules(rules, host, port=53) != 'REJECT':
+                raise BuildError(f'Reviewed route bypasses DNS guard: {host}')
     return {'rules': len(rules), 'types': dict(sorted(Counter(x.split(',')[0] for x in rules).items())),
-            'routing_canaries': len(canaries), 'dns_port_canaries': len(dns_canaries)}
+            'routing_canaries': len(canaries), 'dns_port_canaries': len(dns_canaries),
+            'reviewed_route_canaries': sum(len(x) for x in reviewed.values())}
 
 
 def download(url, limit=8388608, token=None, attempts=3):
@@ -463,9 +566,22 @@ def generate(config, template, overrides, inputs, metadata, baseline=None):
         all_rules[ident] = rules
         sources[ident] = {**stats, **metadata[ident], 'sha256': sha(data),
                           'bytes': len(data), 'license': spec['license']}
-    proxy = all_rules['proxy'] | {Rule('DOMAIN-SUFFIX', domain(x), 'PROXY') for x in overrides['proxy_suffix']}
+    reviewed, protected = reviewed_rules(overrides, inputs['direct'])
+    proxy = all_rules['proxy'] | protected
     proxy, direct = minimize(proxy), minimize(all_rules['direct'])
     direct, conflicts = resolve_conflicts(proxy, direct)
+    for item in conflicts:
+        item['stage'] = 'ordinary-sources'
+    # Explicit local policy remains separate, so .cn minimization cannot erase it.
+    explicit = set().union(*reviewed.values())
+    proxy = {r for r in proxy if not (r.kind == 'DOMAIN' and Rule(r.kind, r.value, 'DIRECT') in explicit)}
+    direct -= explicit
+    for section, entries in reviewed.items():
+        for rule, ident in sorted(entries.items()):
+            for p in sorted(proxy):
+                if domain_overlap(rule, p):
+                    conflicts.append({'action': 'reviewed-direct-override', 'stage': 'reviewed-policy', 'group': ident,
+                                      'direct': rule.line(), 'proxy': p.line()})
     # Never let an upstream entry duplicate or shadow reserved local namespaces.
     reserved = {'local', 'lan', 'home.arpa', 'in-addr.arpa', 'ip6.arpa', 'localhost'}
     for rule in proxy | direct:
@@ -485,13 +601,15 @@ def generate(config, template, overrides, inputs, metadata, baseline=None):
         kind = 'IP-CIDR' if ident == 'china4' else 'IP-CIDR6'
         ip_rules.update(Rule(kind, str(net), 'DIRECT') for net in nets)
     content = template
-    for marker, rules in [('PROXY_RULES', proxy), ('DIRECT_RULES', direct), ('IP_RULES', ip_rules)]:
+    for marker, rules in [('LOCAL_NAME_RULES', reviewed['lan_domains']),
+                          ('REVIEWED_DIRECT_RULES', reviewed['direct_exceptions']),
+                          ('PROXY_RULES', proxy), ('DIRECT_RULES', direct), ('IP_RULES', ip_rules)]:
         token = '{{' + marker + '}}'
         if content.count(token) != 1:
             raise BuildError('Missing or repeated template token')
         ordered = sorted(rules, key=lambda r: (r.kind, r.value))
         content = content.replace(token, '\n'.join(r.line() for r in ordered))
-    stats = validate(content)
+    stats = validate(content, overrides)
     if stats['rules'] > config['max_output_rules'] or len(content.encode()) > config['max_output_bytes']:
         raise BuildError('Output exceeds reviewed client size budget')
     manifest = {'schema': 1, 'sources': sources, 'ip_coverage': coverage,

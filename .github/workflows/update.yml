@@ -37,6 +37,8 @@ jobs:
         run: python -m unittest discover -s tests -v
       - name: Verify published snapshot integrity and reproducibility
         run: python scripts/build.py --offline --check
+      - name: Audit every source-domain boundary and exact IP coverage
+        run: python scripts/audit.py
 
   update:
     needs: verify
@@ -59,6 +61,8 @@ jobs:
         run: python scripts/build.py
       - name: Reproduce the complete candidate offline
         run: python scripts/build.py --offline --check
+      - name: Audit candidate domain boundaries and exact IP coverage
+        run: python scripts/audit.py
       - name: Publish only a validated change
         env:
           PUBLISH_BRANCH: ${{ github.ref_name }}
@@ -76,3 +80,8 @@ jobs:
           # A concurrent human commit/protected branch rejects publication safely.
           git push origin "HEAD:refs/heads/$PUBLISH_BRANCH"
           echo 'Published validated dist/Shadowrocket.conf and source snapshots.' >> "$GITHUB_STEP_SUMMARY"
+      - name: Explain safe failure
+        if: failure()
+        run: |
+          echo '::error title=Rule update failed::Inspect the failed step and remote head. Invalid builds are never published.'
+          echo 'Update failed. Inspect the failed step; the last published configuration remains available.' >> "$GITHUB_STEP_SUMMARY"
