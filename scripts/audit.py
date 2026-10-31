@@ -31,7 +31,8 @@ def audit(root=build.ROOT, conf=None):
     protected = {('DOMAIN-SUFFIX', h) for h in overrides['proxy_suffix']}
     proxy = raw['proxy'] | protected
     direct = {(kind, name) for kind, name in raw['direct'] if not (kind == 'DOMAIN-SUFFIX'
-              and ('.' not in name or name in specs['direct_excluded_suffixes']))}
+              and (audit_sources.registry_suffix(name, raw['registry'])
+                   or name in specs['direct_excluded_suffixes']))}
     local_exact = {'localhost'} | {name for _, name in reviewed['lan_domains']}
     local_suffix = {'local', 'lan', 'home.arpa', 'in-addr.arpa', 'ip6.arpa'}
     p_exact, p_suffix = domain_sets(proxy)
@@ -58,6 +59,9 @@ def audit(root=build.ROOT, conf=None):
         if parts[0] == 'DOMAIN':
             exact.setdefault(parts[1], (index, parts[2]))
         elif parts[0] == 'DOMAIN-SUFFIX':
+            if (parts[2] == 'DIRECT' and parts[1] not in local_suffix
+                    and audit_sources.registry_suffix(parts[1], raw['registry'])):
+                raise build.BuildError('Full rule audit failed: registry-level DIRECT suffix')
             suffix.setdefault(parts[1], (index, parts[2]))
 
     def actual(host):
@@ -86,7 +90,7 @@ def audit(root=build.ROOT, conf=None):
             {'domain_failures': failures[:5], 'ip_union_equal': ip_equality}, sort_keys=True))
     return {'config_sha256': build.sha(conf.encode()), 'domain_boundary_cases': len(samples),
             'domain_failures': 0, 'ip_union_equal': ip_equality,
-            'validation': build.validate(conf, overrides),
+            'validation': build.validate(conf, overrides, raw['registry']),
             'scope': 'Independent source decoders and static output model; not upstream truth or native DNS/TUN simulation'}
 
 

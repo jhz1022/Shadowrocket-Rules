@@ -3,6 +3,7 @@
 import argparse
 from collections import Counter
 from dataclasses import dataclass
+from functools import lru_cache
 import hashlib
 import io
 import ipaddress
@@ -68,6 +69,8 @@ def parents(value):
 
 def parse_community_archive(data, entry, attribute=None):
     """Read without extracting; implement upstream includes AND affiliations."""
+    entry = entry.lower()
+    attribute = attribute.lower() if attribute else None
     lists, includes = {}, {}
     total = 0
     try:
@@ -95,15 +98,16 @@ def parse_community_archive(data, entry, attribute=None):
                     head, tokens = fields[0], fields[1:]
                     if any(not re.fullmatch(r'[@&][a-zA-Z0-9_!-]+', t) for t in tokens):
                         raise BuildError(f'{name}:{index}: invalid attribute/affiliation')
-                    attrs = frozenset(t[1:] for t in tokens if t.startswith('@'))
-                    affiliates = tuple(t[1:] for t in tokens if t.startswith('&'))
-                    if head.startswith('include:'):
-                        target = head.split(':', 1)[1]
+                    attrs = frozenset(t[1:].lower() for t in tokens if t.startswith('@'))
+                    affiliates = tuple(t[1:].lower() for t in tokens if t.startswith('&'))
+                    if head.lower().startswith('include:'):
+                        target = head.split(':', 1)[1].lower()
                         if not re.fullmatch('[a-z0-9_!-]+', target) or affiliates:
                             raise BuildError('Invalid include')
                         includes[name].append((target, attrs))
                     else:
                         kind, sep, value = head.partition(':')
+                        kind = kind.lower()
                         if not sep:
                             kind, value = 'domain', head
                         if kind not in ('domain', 'full', 'regexp', 'keyword') or not value:
@@ -146,6 +150,55 @@ def parse_community_archive(data, entry, attribute=None):
     return ('\n'.join(lines) + '\n').encode()
 
 
+def parse_public_suffixes(data):
+    """Only ICANN registration boundaries; PRIVATE hosting is a separate policy."""
+    try:
+        lines = data.decode('utf-8-sig').splitlines()
+    except UnicodeError as exc:
+        raise BuildError('Public suffix list is not UTF-8') from exc
+    begin, end = '// ===BEGIN ICANN DOMAINS===', '// ===END ICANN DOMAINS==='
+    if lines.count(begin) != 1 or lines.count(end) != 1 or lines.index(begin) >= lines.index(end):
+        raise BuildError('Missing or repeated ICANN public suffix section')
+    result = set()
+    for raw in lines[lines.index(begin) + 1:lines.index(end)]:
+        if not raw.strip() or raw.lstrip().startswith('//'):
+            continue
+        line = raw.split()[0]  # PSL records end at the first whitespace.
+        prefix = '*.' if line.startswith('*.') else '!' if line.startswith('!') else ''
+        name = domain(line[len(prefix):])
+        if '_' in name:
+            raise BuildError('Invalid public suffix record')
+        rule = prefix + name
+        if rule in result:
+            raise BuildError('Duplicate public suffix record')
+        result.add(rule)
+    if not result:
+        raise BuildError('Empty ICANN public suffix section')
+    for rule in result:
+        if rule.startswith('!') and '*.' + rule[1:].partition('.')[2] not in result:
+            raise BuildError('Public suffix exception without wildcard')
+    return frozenset(result)
+
+
+@lru_cache(maxsize=4)
+def registry_boundaries(registry):
+    # Also forbid a parent above a registry boundary, e.g. kawasaki.jp above
+    # *.kawasaki.jp. Whitelisting that parent would cover unrelated registrants.
+    return {p for rule in registry if not rule.startswith('!')
+            for p in parents(rule.removeprefix('*.'))}
+
+
+def registry_suffix(name, registry):
+    if '!' + name in registry:
+        return False
+    return ('.' not in name or name in registry_boundaries(registry)
+            or '*.' + name.partition('.')[2] in registry)
+
+
+def default_registry():
+    return parse_public_suffixes((ROOT / 'dist/inputs/registry.txt').read_bytes())
+
+
 def parse_source(data, spec):
     """Accept only the verified single-quoted payload subset, never arbitrary YAML."""
     if spec['format'] == 'v2fly-archive':
@@ -158,7 +211,10 @@ def parse_source(data, spec):
     rules = set()
     rows = 0
     omitted = []
-    if spec['format'] == 'clash-domain':
+    if spec['format'] == 'public-suffix':
+        rules = {Rule('PUBLIC-SUFFIX', value, 'VALIDATE') for value in parse_public_suffixes(data)}
+        rows = len(rules)
+    elif spec['format'] == 'clash-domain':
         if not lines or lines[0] != 'payload:':
             raise BuildError(f'{spec["id"]}: missing payload header')
         for index, line in enumerate(lines[1:], 2):
@@ -240,13 +296,14 @@ def minimize(rules):
     return result
 
 
-def precise_direct(rules, config):
+def precise_direct(rules, config, registry=None):
     """A TLD/registry suffix is not evidence about an individual business."""
     excluded = set(config['direct_excluded_suffixes'])
     if not {'cn', 'com.cn', 'net.cn', 'org.cn'} <= excluded:
         raise BuildError('Missing registry-level DIRECT exclusions')
+    registry = default_registry() if registry is None else registry
     return {r for r in rules if not (r.kind == 'DOMAIN-SUFFIX'
-            and ('.' not in r.value or r.value in excluded))}
+            and (registry_suffix(r.value, registry) or r.value in excluded))}
 
 
 def resolve_conflicts(proxy, direct):
@@ -390,7 +447,8 @@ def rule_lines(conf):
     return result
 
 
-def validate(conf, overrides=None):
+def validate(conf, overrides=None, registry=None):
+    registry = default_registry() if registry is None else registry
     if overrides is None:
         overrides = json.loads((ROOT / 'config/overrides.json').read_text())
     reviewed, _ = reviewed_rules(overrides)
@@ -453,9 +511,9 @@ def validate(conf, overrides=None):
         if parts[0] in ('DOMAIN', 'DOMAIN-SUFFIX'):
             if len(parts) != 3 or domain(parts[1]) != parts[1]:
                 raise BuildError('Malformed domain rule')
-            excluded = {'cn', 'com.cn', 'net.cn', 'org.cn', 'ac.cn', 'edu.cn', 'gov.cn', 'mil.cn'}
+            reserved = {'local', 'lan', 'home.arpa', 'in-addr.arpa', 'ip6.arpa'}
             if parts[2] == 'DIRECT' and parts[0] == 'DOMAIN-SUFFIX' and (
-                    ('.' not in parts[1] and parts[1] not in {'local', 'lan'}) or parts[1] in excluded):
+                    parts[1] not in reserved and registry_suffix(parts[1], registry)):
                 raise BuildError('Registry-level DIRECT rule is forbidden')
         elif parts[0] in ('IP-CIDR', 'IP-CIDR6'):
             if len(parts) != 4 or parts[3] != 'no-resolve':
@@ -481,6 +539,7 @@ def validate(conf, overrides=None):
                 ('fresh-unlisted.invalid', None, 'PROXY'),
                 ('fresh-unlisted.cn', None, 'PROXY'),
                 ('fresh-unlisted.com.cn', None, 'PROXY'),
+                ('fresh-unlisted.in.th', None, 'PROXY'),
                 ('fresh-unlisted.xn--fiqs8s', None, 'PROXY'),
                 ('printer.local', None, 'DIRECT'), ('nas.home.arpa', None, 'DIRECT'),
                 ('', '192.168.1.1', 'DIRECT'), ('', '223.5.5.5', 'DIRECT'),
@@ -574,7 +633,7 @@ def generate(config, template, overrides, inputs, metadata, baseline=None):
         if not data or len(data) > config['max_bytes']:
             raise BuildError(f'{ident}: empty or oversized input')
         rules, stats = parse_source(data, spec)
-        if baseline:
+        if baseline and ident in baseline['sources']:
             old = baseline['sources'][ident]['unique']
             ratio = stats['unique'] / old
             if not config['min_ratio'] <= ratio <= config['max_ratio']:
@@ -583,8 +642,9 @@ def generate(config, template, overrides, inputs, metadata, baseline=None):
         sources[ident] = {**stats, **metadata[ident], 'sha256': sha(data),
                           'bytes': len(data), 'license': spec['license']}
     reviewed, protected = reviewed_rules(overrides, inputs['direct'])
+    registry = frozenset(r.value for r in all_rules['registry'])
     proxy = all_rules['proxy'] | protected
-    proxy, direct = minimize(proxy), minimize(precise_direct(all_rules['direct'], config))
+    proxy, direct = minimize(proxy), minimize(precise_direct(all_rules['direct'], config, registry))
     direct, conflicts = resolve_conflicts(proxy, direct)
     for item in conflicts:
         item['stage'] = 'ordinary-sources'
@@ -625,12 +685,12 @@ def generate(config, template, overrides, inputs, metadata, baseline=None):
             raise BuildError('Missing or repeated template token')
         ordered = sorted(rules, key=lambda r: (r.kind, r.value))
         content = content.replace(token, '\n'.join(r.line() for r in ordered))
-    stats = validate(content, overrides)
+    stats = validate(content, overrides, registry)
     if stats['rules'] > config['max_output_rules'] or len(content.encode()) > config['max_output_bytes']:
         raise BuildError('Output exceeds reviewed client size budget')
     manifest = {'schema': 1, 'sources': sources, 'ip_coverage': coverage,
                 'excluded_registry_direct': sorted(r.line() for r in all_rules['direct']
-                    - precise_direct(all_rules['direct'], config)),
+                    - precise_direct(all_rules['direct'], config, registry)),
                 'config_sha256': sha(content.encode()),
                 'generator_sha256': sha(Path(__file__).read_bytes()),
                 'template_sha256': sha(template.encode()),

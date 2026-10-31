@@ -37,6 +37,49 @@ class HealthTests(unittest.TestCase):
             with self.subTest(status=status), self.assertRaises(ValueError):
                 h.assess([self.run_data(age=age, status=status), self.run_data(age=age + 1)], self.now)
 
+    def test_older_run_retry_is_ordered_by_completion(self):
+        retry = self.run_data(age=72, conclusion='failure', ident=2)
+        retry['updated_at'] = self.run_data(age=1)['updated_at']
+        with self.assertRaisesRegex(ValueError, 'did not succeed'):
+            h.assess([self.run_data(age=12), retry], self.now)
+        retry['conclusion'] = 'success'
+        result = h.assess([self.run_data(age=48), retry], self.now)
+        self.assertEqual((result['last_success_run'], result['age_hours']), (2, 1))
+
+    def test_new_queue_does_not_hide_stuck_older_run(self):
+        with self.assertRaisesRegex(ValueError, 'more than one hour'):
+            h.assess([self.run_data(age=0.1, status='queued', ident=3),
+                      self.run_data(age=2, status='in_progress', ident=2),
+                      self.run_data(age=12)], self.now)
+
+    def test_future_pending_attempt_is_rejected(self):
+        with self.assertRaisesRegex(ValueError, 'future'):
+            h.assess([self.run_data(age=-1, status='in_progress'), self.run_data()], self.now)
+
+    def test_history_pagination_and_old_pending_runs(self):
+        pages = [[self.run_data(age=i, ident=i) for i in range(1, 101)],
+                 [self.run_data(age=200, ident=101)]]
+        pages[1][0]['updated_at'] = self.run_data(age=1)['updated_at']
+        pages[1][0]['conclusion'] = 'failure'
+        old_pending = self.run_data(age=1000, status='queued', ident=102)
+        def respond(path, query):
+            if 'created' in query:
+                return {'total_count': 101, 'workflow_runs': pages[query['page'] - 1]}
+            rows = [old_pending] if query['status'] == 'queued' else []
+            return {'total_count': len(rows), 'workflow_runs': rows}
+        with patch.object(h, 'github_json', side_effect=respond) as request:
+            runs = h.fetch_runs('owner/repo', 'main', self.now)
+        self.assertEqual(len(runs), 102)
+        self.assertEqual(request.call_count, 7)
+        with self.assertRaises(ValueError):
+            h.assess(runs, self.now)
+
+    def test_truncated_history_is_not_healthy(self):
+        for response in [{'total_count': 1001, 'workflow_runs': []},
+                         {'total_count': 101, 'workflow_runs': []}]:
+            with patch.object(h, 'github_json', return_value=response), self.assertRaises(ValueError):
+                h.fetch_runs('owner/repo', 'main', self.now)
+
     def test_pull_request_does_not_refresh_published_update_health(self):
         with self.assertRaises(ValueError):
             h.assess([self.run_data(age=1, event='pull_request'), self.run_data(age=40)], self.now)

@@ -4,6 +4,7 @@ This checks conversion agreement, not the truth of upstream classifications.
 The explicit-source subset is deliberately small; unknown syntax fails.
 """
 import hashlib
+from functools import lru_cache
 import io
 import ipaddress
 import json
@@ -25,6 +26,8 @@ def hostname(text):
 
 
 def community(data, entry, attribute=None):
+    entry = entry.lower()
+    attribute = attribute.lower() if attribute else None
     records, edges = {}, {}
     size = 0
     with tarfile.open(fileobj=io.BytesIO(data), mode='r:gz') as archive:
@@ -47,12 +50,14 @@ def community(data, entry, attribute=None):
                 head, tags = words[0], words[1:]
                 if any(not re.fullmatch('[@&][A-Za-z0-9_!-]+', tag) for tag in tags):
                     raise ValueError('Audit: unsupported annotation')
-                attrs = frozenset(tag[1:] for tag in tags if tag[0] == '@')
-                targets = [tag[1:] for tag in tags if tag[0] == '&']
+                attrs = frozenset(tag[1:].lower() for tag in tags if tag[0] == '@')
+                targets = [tag[1:].lower() for tag in tags if tag[0] == '&']
                 kind, sep, value = head.partition(':')
                 if not sep:
                     kind, value = 'domain', kind
+                kind = kind.lower()
                 if kind == 'include':
+                    value = value.lower()
                     if targets or not re.fullmatch('[a-z0-9_!-]+', value):
                         raise ValueError('Audit: invalid include')
                     edges[name].append((value, attrs))
@@ -99,6 +104,50 @@ def community(data, entry, attribute=None):
     return result
 
 
+def public_suffixes(data):
+    lines = data.decode('utf-8-sig').splitlines()
+    markers = ['// ===BEGIN ICANN DOMAINS===', '// ===END ICANN DOMAINS===']
+    if any(lines.count(m) != 1 for m in markers):
+        raise ValueError('Audit: invalid ICANN section')
+    start, stop = map(lines.index, markers)
+    if start >= stop:
+        raise ValueError('Audit: reversed ICANN section')
+    result = set()
+    for line in lines[start + 1:stop]:
+        words = line.split()
+        if not words or words[0].startswith('//'):
+            continue
+        text = words[0]
+        prefix = next((p for p in ['*.', '!'] if text.startswith(p)), '')
+        item = prefix + hostname(text[len(prefix):])
+        if item in result or any(c.isspace() for c in text) or '_' in item:
+            raise ValueError('Audit: invalid public suffix')
+        result.add(item)
+    if not result:
+        raise ValueError('Audit: empty public suffix list')
+    return frozenset(result)
+
+
+@lru_cache(maxsize=4)
+def registry_parents(registry):
+    result = set()
+    for entry in registry:
+        if entry.startswith('!'):
+            continue
+        labels = entry.split('.')
+        for offset in range(1 if labels[0] == '*' else 0, len(labels)):
+            result.add('.'.join(labels[offset:]))
+    return result
+
+
+def registry_suffix(name, registry):
+    # Independently match exactly one wildcard label, respecting exceptions.
+    labels = name.split('.')
+    if '!' + name in registry:
+        return False
+    return len(labels) == 1 or name in registry_parents(registry) or '*.' + '.'.join(labels[1:]) in registry
+
+
 def read_sources(root, specs):
     manifest = json.loads((root / 'dist/manifest.json').read_text())
     result = {}
@@ -107,7 +156,9 @@ def read_sources(root, specs):
         data = (root / 'dist/inputs' / (ident + ('.tar.gz' if fmt == 'v2fly-archive' else '.txt'))).read_bytes()
         if hashlib.sha256(data).hexdigest() != manifest['sources'][ident]['sha256']:
             raise ValueError('Audit: source snapshot checksum mismatch')
-        if fmt == 'v2fly-archive':
+        if fmt == 'public-suffix':
+            result[ident] = public_suffixes(data)
+        elif fmt == 'v2fly-archive':
             result[ident] = community(data, spec['path'].split('/')[-1])
         elif fmt == 'clash-domain':
             lines = data.decode('utf-8-sig').splitlines()

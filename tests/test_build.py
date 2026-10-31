@@ -13,6 +13,7 @@ import urllib.error
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
 import build as b
+import audit_sources
 
 
 def spec(fmt='clash-domain', policy='DIRECT'):
@@ -71,6 +72,38 @@ class ConversionTests(unittest.TestCase):
                 ['cn', 'com.cn', 'xn--fiqs8s', 'baidu', 'baidu.com', 'qlogo.cn']}
         kept = b.precise_direct(rows, config)
         self.assertEqual({x.value for x in kept}, {'baidu.com', 'qlogo.cn'})
+
+    def test_icann_boundaries_wildcards_exceptions_and_private_hosts(self):
+        data = ('// ===BEGIN ICANN DOMAINS===\ncn\nbj.cn\nin.th\nco.uk\n'
+                '*.ck\n!www.ck\n*.kawasaki.jp\n!city.kawasaki.jp\n'
+                '中国 // IDN comment\n// ===END ICANN DOMAINS===\n'
+                '// ===BEGIN PRIVATE DOMAINS===\nsinaapp.com\n'
+                '// ===END PRIVATE DOMAINS===\n').encode()
+        registry = b.parse_public_suffixes(data)
+        self.assertEqual(registry, audit_sources.public_suffixes(data))
+        for name in ['bj.cn', 'in.th', 'co.uk', 'a.ck', 'kawasaki.jp', 'a.kawasaki.jp',
+                     'xn--fiqs8s', 'unknown-tld']:
+            with self.subTest(name=name):
+                self.assertTrue(b.registry_suffix(name, registry))
+                self.assertTrue(audit_sources.registry_suffix(name, registry))
+        for name in ['company.in.th', 'www.ck', 'a.www.ck', 'sub.a.ck', 'sinaapp.com',
+                     'city.kawasaki.jp', 'sub.city.kawasaki.jp']:
+            with self.subTest(name=name):
+                self.assertFalse(b.registry_suffix(name, registry))
+                self.assertFalse(audit_sources.registry_suffix(name, registry))
+        config = {'direct_excluded_suffixes': ['cn', 'com.cn', 'net.cn', 'org.cn']}
+        rows = {b.Rule('DOMAIN-SUFFIX', name, 'DIRECT') for name in ['in.th', 'company.in.th']}
+        self.assertEqual(b.precise_direct(rows, config, registry),
+                         {b.Rule('DOMAIN-SUFFIX', 'company.in.th', 'DIRECT')})
+
+    def test_malformed_public_suffix_lists_fail_closed(self):
+        begin, end = '// ===BEGIN ICANN DOMAINS===\n', '// ===END ICANN DOMAINS===\n'
+        for text in ['', begin + 'com\n', end + 'com\n' + begin,
+                     begin + begin + 'com\n' + end, begin + end,
+                     begin + 'com\ncom\n' + end, begin + '*.*.ck\n' + end,
+                     begin + '!www.ck\n' + end, begin + 'co.uk,DIRECT\n' + end]:
+            with self.subTest(text=text), self.assertRaises(b.BuildError):
+                b.parse_public_suffixes(text.encode())
 
     def test_typed_direct_domains_attributes_and_regex_omission(self):
         data = ''.join(f'domain:x{i}.com\n' for i in range(110))
@@ -158,6 +191,17 @@ class ArchiveTests(unittest.TestCase):
     def test_affiliated_target_without_file(self):
         data = self.archive({'cn': 'include:synthetic', 'brand': 'brand.example &synthetic'})
         self.assertEqual(b.parse_community_archive(data, 'cn'), b'domain:brand.example\n')
+
+    def test_case_insensitive_attributes_includes_and_affiliations(self):
+        data = self.archive({'cn': 'INCLUDE:VENDOR @-ADS\ninclude:SYNTHETIC',
+            'vendor': 'foreign.example @!CN\nad.example @ADS\nFULL:legit.example @CN',
+            'extra': 'affiliated.example &SYNTHETIC\nforeign2.example @!Cn &SYNTHETIC'})
+        self.assertEqual(b.parse_community_archive(data, 'CN').decode().splitlines(),
+                         ['domain:affiliated.example', 'full:legit.example'])
+        self.assertEqual(audit_sources.community(data, 'CN'),
+                         {('DOMAIN-SUFFIX', 'affiliated.example'), ('DOMAIN', 'legit.example')})
+        self.assertEqual(b.parse_community_archive(data, 'VENDOR', 'CN'), b'full:legit.example\n')
+        self.assertEqual(audit_sources.community(data, 'VENDOR', 'CN'), {('DOMAIN', 'legit.example')})
 
     def test_explicit_attribute_selection_does_not_include_global_services(self):
         data = self.archive({'cn': 'local.example', 'microsoft':

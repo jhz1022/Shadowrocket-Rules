@@ -7,6 +7,18 @@
   "max_output_bytes": 3145728,
   "sources": [
     {
+      "id": "registry",
+      "repository": "publicsuffix/list",
+      "ref": "main",
+      "path": "public_suffix_list.dat",
+      "format": "public-suffix",
+      "policy": "VALIDATE",
+      "license": "MPL-2.0",
+      "min_records": 5000,
+      "max_records": 15000,
+      "max_revision_age_hours": 336
+    },
+    {
       "id": "direct",
       "repository": "v2fly/domain-list-community",
       "ref": "master",

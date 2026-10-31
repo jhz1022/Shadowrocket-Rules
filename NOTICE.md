@@ -13,6 +13,8 @@
   其数据来自 Loyalsoldier/v2ray-rules-dat 及其列明的社区数据链。
 - `gaoyifan/china-operator-ip`：MIT，Copyright (c) 2017 Yifan Gao。原文见 `licenses/gaoyifan-MIT.txt`，原始 CIDR 见 `dist/inputs/china4.txt`、`dist/inputs/china6.txt`。
   来源：https://github.com/gaoyifan/china-operator-ip
+- `publicsuffix/list`：MPL-2.0，完整许可原文见 `licenses/publicsuffix-MPL-2.0.txt`。未经修改的源文件及其声明保存在 `dist/inputs/registry.txt`，仍按 MPL-2.0 提供；构建只读取 ICANN 部分作为直连边界校验，不将 PSL 转换成客户端路由表。
+  来源：https://github.com/publicsuffix/list
 
 固定来源 URL、提交和文件哈希记录在 `dist/manifest.json`。修改包括类型转换、相同策略压缩、普通源代理优先冲突处理、带依据的本地精确例外、国内地址合并、局域网及默认策略拼接；实现和完整原始输入随工程一起提供。
 

@@ -10,7 +10,9 @@
 https://raw.githubusercontent.com/jhz1022/Shadowrocket-Rules/main/dist/Shadowrocket.conf
 ```
 
-GitHub 发布及 Mac 客户端验证状态见 [验证记录](docs/VALIDATION.md)和[本机修复验收](docs/MAC_DNS_FIX.md)。已在 macOS 26.7.1 / Shadowrocket 2.2.93 实测基础分流与 DNS 修复；iPhone、故障注入和物理网卡抓包仍未验收，不承诺“零 DNS 泄漏”。
+GitHub 发布及 Mac 客户端验证状态见 [验证记录](docs/VALIDATION.md)和[本机修复验收](docs/MAC_DNS_FIX.md)。已在 macOS 26.7.1 / Shadowrocket 2.2.93 实测基础分流与 DNS 修复；iPhone 已补充一次 5G / Claude 连通与出口检查，网络切换、手机故障注入和物理接口抓包仍未验收，不承诺“零泄漏”。
+
+2026-10-31 的三项缺陷修复、36 个上游候选调研及项目边界见 [本轮评估](docs/ASSESSMENT_2026-10-31.md)。对应提交的在线检查结果见 [GitHub Actions](https://github.com/jhz1022/Shadowrocket-Rules/actions)；客户端需刷新上述订阅并重新连接，才会使用下载后的新配置。
 
 精确分流例外、全源审计及更新健康检查的交付记录见 [HARDENING.md](docs/HARDENING.md)。
 
@@ -42,7 +44,7 @@ GitHub 发布及 Mac 客户端验证状态见 [验证记录](docs/VALIDATION.md)
 
 `proxy-dns-server` **不是代理网站使用的 DNS**。解析器使用 IP 地址 DoH URL，TLS 校验保持开启，不需要先查询解析器域名。国内直连使用系统 DNS 是本项目为局域网及 CDN 作出的明确选择，不是误配或检测规避。
 
-直连源先移除所有顶级后缀及列明的注册级后缀（如 `.cn`、`.com.cn`），仅保留明确业务域名。未知 `.cn` 不再自动直连；现有百度、淘宝、微信等业务规则保留。域名归属仍依赖维护数据，不把“有收录”说成地理准确性的证明。
+直连源先移除所有顶级后缀，以及 Public Suffix List 的 ICANN 注册边界及其上层（如 `.com.cn`、`.in.th`），处理通配规则与例外，避免一个直连后缀覆盖互不相关的注册者。PSL 使用固定提交并随原始输入保存；PRIVATE 部分不自动作为剔除依据，共享托管平台仍需单独审查。现有百度、淘宝、微信等业务规则保留。域名归属仍依赖维护数据，不把“有收录”说成地理准确性的证明。
 
 所有地址规则都带 `no-resolve`。未命中域名不会仅为匹配中国 IP 表而额外请求本地 DNS；已知国内 IP 直接连接可以命中 IP 表。代价是**未收录的国内域名也可能走默认代理**，这是隐私优先的边界，不为“猜国内 IP”主动解析。已明确匹配代理的域名不会因为最终落在中国 IP 上而改成直连。
 
@@ -52,7 +54,7 @@ GitHub 发布及 Mac 客户端验证状态见 [验证记录](docs/VALIDATION.md)
 
 默认采用 **IPv4 兼容模式**（`ipv6 = false`、`prefer-ipv6 = false`）。此前启用 IPv6 后，在本机物理网卡没有公网 IPv6 地址的网络上，微信图片请求持续尝试不可用的 IPv6，实际出口停在 SYN_SENT；关闭该配置选项后，用户确认头像和图片明显恢复。仅设置 IPv4 优先不能保证应用不再尝试 IPv6。国内 IPv6 数据保留供静态审计及后续经验证的 IPv6 部署使用，不代表当前默认启用了原生 IPv6。详情见 [微信修复记录](docs/WECHAT_IPV4_FIX.md)。
 
-这是客户端兼容设置，不是关闭 macOS/iPhone 系统 IPv6，也不是系统级 IPv6 防火墙。若以后确需原生 IPv6，应同时验证本地直连出口与节点出口，再配套调整模板和构建校验器。IPv6-only/NAT64、iPhone 蜂窝网络仍待真机验收，不能根据本次 Mac 结果保证兼容。
+这是客户端兼容设置，不是关闭 macOS/iPhone 系统 IPv6，也不是系统级 IPv6 防火墙。iPhone 打开“包括所有网络”并重连后，已在一次 5G 测试中观察到 Claude 请求选择代理、IPv4 出口符合预期、IPv6-only 测试不可达；本轮未发现蜂窝 IPv6 绕过证据。IPv6-only/NAT64、网络切换和断线恢复仍待分别验收。若以后确需原生 IPv6，应同时验证本地直连出口与节点出口，再配套调整模板和构建校验器。
 
 `hijack-dns = *:53` 已在上述 Mac 版本实测能接管 IPv4 UDP DNS。原来的裸 IP 名单、空地址 `:53` 写法没有达到预期，已移除。客户端未接管的外部端口 53 流量，由局域网规则之后、业务规则之前的 `DST-PORT,53,REJECT` 拒绝；本次 TCP 和 IPv6 DNS 探测没有获得上游答案。**这部分是拒绝兜底，不是把 TCP/IPv6 DNS 自动转换成 DoH**；应用自带的 TCP DNS 可能因此失败，应使用系统解析。
 
@@ -67,12 +69,13 @@ GitHub 发布及 Mac 客户端验证状态见 [验证记录](docs/VALIDATION.md)
 | 国内域名 | [v2fly/domain-list-community](https://github.com/v2fly/domain-list-community)，固定提交的完整归档，入口 `data/cn` | 原生 `domain`/`full`/属性/`include`/`&affiliation`；MIT |
 | 明确代理域名 | [Loyalsoldier/clash-rules](https://github.com/Loyalsoldier/clash-rules)，`release/proxy.txt` | `payload` 域名集；普通值是完整域名，`+.` 才是后缀；GPL-3.0 |
 | 国内 IPv4 / IPv6 | [gaoyifan/china-operator-ip](https://github.com/gaoyifan/china-operator-ip)，`ip-lists/china.txt`、`china6.txt` | 标准 CIDR；MIT |
+| 注册边界校验 | [publicsuffix/list](https://github.com/publicsuffix/list)，`main/public_suffix_list.dat` | ICANN 精确、通配、例外；保留完整原始 MPL-2.0 文件，不生成客户端路由 |
 
 没有全量采用候选 `v2ray-rules-dat/direct-list.txt`：实取样构建产生约 14.6 万条、4.8 MiB 的配置，且它是可直连白名单，不是严格地理分类。精简中间产物也未通过淘宝哨兵，所以国内域名最终直接读取官方分类源，正确处理新的 affiliation 语法。当前输出控制在 **7 万条、3 MiB**以内，超过预算即停止发布。
 
 Loyalsoldier 的代理域名集由候选 V2Ray 数据生成，其上游工作流明确排除 `regexp`/`keyword`，所以它**不等价于完整原始列表**。本项目不伪造正则转换；代理集未覆盖的流量仍由默认代理处理，但与直连分类交叉时可能缺少部分代理例外，这是上游分类的已知限制。关键代理保护、精确局域网管理域名和经审查直连例外集中在 [`config/overrides.json`](config/overrides.json)，每组例外包含用途和 HTTPS 依据，不涉及 DNS 检测站。
 
-国内源的 `domain:` → `DOMAIN-SUFFIX`，`full:` → `DOMAIN`。`@ads`、`@!cn` 条目不进入直连白名单，**不会生成拦截策略**，仍继续匹配其他规则或 FINAL。直连正则没有可靠等价形式，明确省略并把原文记录进 manifest，优先让漏收请求走默认代理。直连 `keyword`、未知记录、异常 include 等直接报错；不静默降级。暂不引入 blackmatrix7，避免叠加另一套分类及许可范围。
+国内源的 `domain:` → `DOMAIN-SUFFIX`，`full:` → `DOMAIN`。属性、include 引用、affiliation 和类型名称按上游语义忽略大小写；`@ads`、`@ADS`、`@!cn`、`@!CN` 条目均不进入直连白名单，**不会生成拦截策略**，仍继续匹配其他规则或 FINAL。直连正则没有可靠等价形式，明确省略并把原文记录进 manifest，优先让漏收请求走默认代理。直连 `keyword`、未知记录、异常 include 等直接报错；不静默降级。暂不引入 blackmatrix7，避免叠加另一套分类及许可范围。
 
 IP 表是 BGP/登记分类数据，不代表每个地址的实时物理位置，也不是全网准确性保证。细节和证据见 [技术审查](docs/REVIEW.md)。
 
@@ -130,7 +133,9 @@ python3 scripts/probe_apple_delivery.py         # 真正下载公开图片和 <=
 
 除了每日北京时间 12:23 更新，`Check rule update health` 在北京时间次日 00:23（UTC 16:23）独立检查默认分支的更新执行记录，也支持手动运行。最近一次完成的更新失败、超过 36 小时没有成功、运行超过 1 小时或排队超过新鲜度上限时，检查明确失败并给出 Actions 错误标注。成功的 `NO_CHANGE` 也算新鲜，不能用最后一次规则提交日期判断是否停更。
 
-另外查询每个上游仓库的归档/停用状态及目标分支最新提交年龄：人工维护国内域名源为 14 天，三个每日产出源为 72 小时，超过预算即检查失败。预算是维护活动信号，不证明规则内容每日变化或归属准确；正常无变化不会制造提交。
+执行记录按当前尝试的更新时间排序，避免旧任务重跑被创建时间掩盖；检查所有未完成任务，避免新排队任务盖住旧超时任务。查询分页覆盖可重跑历史窗口，并额外查询任意年龄的未完成任务；历史超出 API 查询上限时明确报错，不把截断结果当健康。
+
+另外查询每个上游仓库的归档/停用状态及目标分支最新提交年龄：国内域名源及 PSL 为 14 天，三个每日产出数据源为 72 小时，超过预算即检查失败。预算是维护活动信号，不证明规则内容每日变化或归属准确；正常无变化不会制造提交。
 
 该检查只有 `contents: read` / `actions: read`，不创建 Issue、不发送私人日志、不制造每日提交。是否收到邮件取决于你的 GitHub 通知设置；检查失败不等于已经通知到手机。两个工作流都依赖 GitHub 调度，若整个仓库 Actions 被停用或 GitHub 不运行任务，仓库内部无法自我唤醒；不把它称为外部全天候监控。
 
@@ -155,11 +160,11 @@ dist/manifest.json            来源与质量报告
 dist/conflicts.json           交叉规则及处理结果
 dist/inputs/                  发布对应原始快照
 docs/                         技术审查、客户端验收、交付验证记录
-licenses/                     MIT 上游许可原文
+licenses/                     MIT / MPL-2.0 上游许可原文
 LICENSE                       GPL-3.0 原文
 NOTICE.md                     数据来源及分发许可说明
 ```
 
-工程及组合配置按 GPL-3.0 分发，MIT 数据保留原声明；详情见 [NOTICE](NOTICE.md)。不要将私人节点、密码、机场订阅、DNS 日志或个人抓包提交到公开仓库。
+工程及组合配置按 GPL-3.0 分发，MIT 数据保留原声明，独立 PSL 源文件保留 MPL-2.0；详情见 [NOTICE](NOTICE.md)。不要将私人节点、密码、机场订阅、DNS 日志或个人抓包提交到公开仓库。
 
 本轮注册后缀收紧、双主 DoH 故障实测及真实内容验证见 [PRECISION_FIX.md](docs/PRECISION_FIX.md)。

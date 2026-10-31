@@ -20,16 +20,22 @@ def timestamp(value):
 
 def assess(runs, now, max_age_hours=36):
     eligible = [r for r in runs if r.get('event') in {'schedule', 'push', 'workflow_dispatch'}]
-    eligible.sort(key=lambda r: timestamp(r['created_at']), reverse=True)
+    # A rerun keeps its original created_at. Activity/completion time belongs
+    # to the current attempt and must decide which result is most recent.
+    eligible.sort(key=lambda r: timestamp(r['updated_at']), reverse=True)
     if not eligible:
         raise ValueError('No update runs found on the default branch')
     latest = eligible[0]
-    if latest.get('status') != 'completed':
-        age = (now - timestamp(latest.get('run_started_at') or latest['created_at'])).total_seconds() / 3600
-        if latest.get('status') == 'in_progress' and age > 1:
-            raise ValueError('The latest update has been running for more than one hour')
+    for run in eligible:
+        if run.get('status') == 'completed':
+            continue
+        age = (now - timestamp(run.get('run_started_at') or run['created_at'])).total_seconds() / 3600
+        if age < -0.1:
+            raise ValueError('Pending update timestamp is in the future')
+        if run.get('status') == 'in_progress' and age > 1:
+            raise ValueError('An update has been running for more than one hour')
         if age > max_age_hours:
-            raise ValueError('The latest update has remained pending beyond the freshness limit')
+            raise ValueError('An update has remained pending beyond the freshness limit')
     completed = [r for r in eligible if r.get('status') == 'completed']
     if not completed or completed[0].get('conclusion') != 'success':
         raise ValueError('The most recent completed update did not succeed')
@@ -57,11 +63,35 @@ def github_json(path, query=None):
     return json.loads(body)
 
 
-def fetch_runs(repository, branch):
+def fetch_runs(repository, branch, now=None):
     if not re.fullmatch(r'[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+', repository):
         raise ValueError('Invalid repository')
-    return github_json(f'repos/{repository}/actions/workflows/update.yml/runs',
-                       {'branch': branch, 'per_page': 100, 'exclude_pull_requests': 'true'})['workflow_runs']
+    now = now or dt.datetime.now(dt.timezone.utc)
+    # GitHub permits reruns for 30 days. Fetch a 31-day creation window with
+    # pagination; separately include pending runs of any age so they cannot
+    # age out of monitoring. Never silently accept a truncated API response.
+    since = (now - dt.timedelta(days=31)).strftime('%Y-%m-%dT%H:%M:%SZ')
+    filters = [{'created': '>=' + since}] + [
+        {'status': s} for s in ('in_progress', 'queued', 'waiting', 'requested', 'pending')]
+    runs = {}
+    for selection in filters:
+        for page in range(1, 11):
+            response = github_json(f'repos/{repository}/actions/workflows/update.yml/runs',
+                {'branch': branch, 'per_page': 100, 'page': page,
+                 'exclude_pull_requests': 'true', **selection})
+            if response['total_count'] > 1000:
+                raise ValueError('Update history exceeds the GitHub search limit')
+            batch = response['workflow_runs']
+            for run in batch:
+                # A run may complete while the status queries are being made.
+                old = runs.get(run['id'])
+                if old is None or timestamp(run['updated_at']) >= timestamp(old['updated_at']):
+                    runs[run['id']] = run
+            if page * 100 >= response['total_count']:
+                break
+            if not batch:
+                raise ValueError('Incomplete GitHub update history')
+    return list(runs.values())
 
 
 def assess_source(spec, repo, commit, now):
@@ -106,7 +136,7 @@ def main():
     args = parser.parse_args()
     try:
         now = dt.datetime.now(dt.timezone.utc)
-        result = assess(fetch_runs(args.repository or '', args.branch), now)
+        result = assess(fetch_runs(args.repository or '', args.branch, now), now)
         result['upstreams'] = check_sources(json.loads(args.sources.read_text())['sources'], now)
     except (ValueError, KeyError, TypeError, OSError) as exc:
         # Do not print HTTP error bodies or credentials.

@@ -12,6 +12,17 @@ import audit_sources
 
 
 class FullAuditTests(unittest.TestCase):
+    def test_registry_direct_injection_rejected_by_both_validators(self):
+        conf = (ROOT / 'dist/Shadowrocket.conf').read_text()
+        for name in ['in.th', 'co.uk', 'bj.cn', 'a.ck']:
+            candidate = conf.replace('# BEGIN DIRECT\n',
+                '# BEGIN DIRECT\nDOMAIN-SUFFIX,' + name + ',DIRECT\n')
+            with self.subTest(name=name):
+                with self.assertRaisesRegex(build.BuildError, 'Registry-level'):
+                    build.validate(candidate)
+                with self.assertRaisesRegex(build.BuildError, 'registry-level'):
+                    audit.audit(conf=candidate)
+
     def test_audit_does_not_use_builder_source_decoder(self):
         with patch.object(build, 'parse_source', side_effect=AssertionError('shared parser')), \
                 patch.object(build, 'parse_community_archive', side_effect=AssertionError('shared archive')):

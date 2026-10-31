@@ -78,12 +78,6 @@
     "stage": "ordinary-sources"
   },
   {
-    "action": "proxy-first-exception",
-    "direct": "DOMAIN-SUFFIX,in.th,DIRECT",
-    "proxy": "DOMAIN-SUFFIX,bx.in.th,PROXY",
-    "stage": "ordinary-sources"
-  },
-  {
     "action": "drop-direct",
     "direct": "DOMAIN-SUFFIX,lenovo.com.cdn.cloudflare.net,DIRECT",
     "proxy": "DOMAIN-SUFFIX,cloudflare.net,PROXY",

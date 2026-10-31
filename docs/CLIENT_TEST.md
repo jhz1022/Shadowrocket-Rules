@@ -69,7 +69,19 @@ sudo tcpdump -i en0 -n '(udp port 53 or tcp port 53 or tcp port 853)'
 
 如未通过，保存时间、版本、请求域名、命中规则、DNS 上游和连接错误。区分节点握手失败、域名解析失败、规则命中错误与服务端地区拒绝，再有针对性修复。临时恢复备份配置即可，不必删除节点或更改其他应用。
 
-## 精确例外修订验收
+## 2026-10-31 iPhone 蜂窝网络补充记录
+
+用户报告的环境为 iOS 26.7.1、Shadowrocket 2.2.93（3488）、VLESS TCP TLS、Claude 原生 App；VPS 当前采用 IPv4 出口。用户在“设置 → 隧道”打开“包括所有网络”并重连后，在 5G 网络下完成测试：
+
+- 提供的连接列表中，Claude 的 HTTPS 和 UDP 请求均标记为 `PROXY`，所示 Google、Sift、Sentry、Datadog 相关请求也选择代理。
+- 用户确认 IPv4 测试显示预期出口，IPv6-only 测试无法打开。
+- 结论仅为这次已连接状态的测试未发现 IPv6 绕过证据。日志只能记录被客户端观察到的连接；单个 IPv6 测试不可达，也可能来自测试站或路径故障，不能单独证明所有应用和协议均无泄漏。
+
+“包括所有网络”是本机隧道设置，不由这份远程配置自动开启。“包括蜂窝服务”指 VoLTE、IMS、彩信等运营商服务，不是控制所有 5G App 数据流量。不要将手机有中国 IPv6 地址本身等同于 Claude 已看到该地址，也不要将 VPS 开启 IPv6 当成手机防旁路措施。
+
+仍待实际完成：Wi-Fi ↔ 蜂窝切换、锁屏唤醒、节点不可用/重连、IPv6-only/NAT64 网络、可控目的端或物理接口的旁路验证。本次修复不改变已测试的 DNS 与 IPv4 兼容基线，也未代替用户操作手机。
+
+## 精确例外修订验收步骤
 
 1. 在客户端“测试规则”里用 `0.cn.pool.ntp.org`、`account-cn.alibabacloud.com`、`www.hsbc.com.cn`、`swcdn.apple.com`、`officecdn.microsoft.com` 测试，应命中前置经审查 DIRECT。
 2. `0.pool.ntp.org`、`0.jp.pool.ntp.org`、`api.alibabacloud.com`、`tv.apple.com`、`news.apple.com`、`copilot.microsoft.com`、`claude.ai` 继续 PROXY。不得仅为 `.cn` 或国内品牌批量切换整个分类。
