@@ -46,8 +46,14 @@
 - 首轮 BrowserLeaks DNS：70 个 Google/Cloudflare 解析出口，本轮均为美国；WebRTC 显示 No Leak。该结果只代表该浏览器该轮请求。
 - 首轮 YouTube 实际观察到 720p 视频播放、readyState 4、时间推进、无媒体错误；Netflix 仅首页 200，未验证登录、片库及播放授权。
 - 全量域名边界模型 105,766 个样本无策略差异，IPv4/IPv6 合并前后覆盖集合完全相同；不声称原生客户端逐条联网。
-- 硬编码 DNS 初轮失败；实测改为 `hijack-dns = *:53`，并在 LAN 之后、业务规则之前设置 `DST-PORT,53,REJECT`。五个公共 IPv4 DNS 的 UDP 查询均得到 Fake-IP；三项 TCP 查询关闭且无 DNS 答案；两项 IPv6 UDP 无答案，但不能单凭超时证明规则命中或物理链路未外发。
+- 硬编码 DNS 初轮失败；实测改为 `hijack-dns = *:53`，并在 LAN 之后、业务规则之前设置 `DST-PORT,53,REJECT`。五个公共 IPv4 DNS 的 UDP 查询均得到 Fake-IP；三项 TCP 查询关闭且无 DNS 答案；两项 IPv6 UDP 无答案。进一步查看本轮原生拒绝日志，五项 TCP/IPv6 UDP 均命中 `DST-PORT,53,REJECT`；物理网卡抓包未执行。
 - IPv6 字面量和纯 IPv6 域名均失败，IPv4 对照正常。用户确认 VPS 未启用 IPv6；保留客户端 IPv6 处理及 IPv4 优先，没有宣称规则修复了节点的 IPv6 出口。
+
+- 修订候选下重跑 BrowserLeaks DNS：67 个 Google/Cloudflare 出口，均为美国，无中国解析出口；这是该轮浏览器结果，不代表所有应用。
+
+- DNS 修订 [bd11bc0](https://github.com/jhz1022/Shadowrocket-Rules/commit/bd11bc012e6e825e9faca7864800252341eecf28) 已发布；[该版 Actions](https://github.com/jhz1022/Shadowrocket-Rules/actions/runs/41163723164) 的 verify / update 均成功，26 项测试、在线下载、离线复现通过，无规则变化跳过提交。
+- 匿名下载修订版与本机发布文件 SHA-256 一致；Mac 正式 GitHub 订阅已更新并选用，原生解析 42,450 条规则。正式订阅下再次运行 10 项 DNS 探测全部符合预期，11:18:33 的原生拒绝日志再次核对 TCP / IPv6 UDP 命中端口兜底。25 个站点请求重新完成，HTTP 状态与候选一致。
+- 正式订阅下最后一轮 BrowserLeaks 为 70 个 Google/Cloudflare 美国出口。临时代理日志已恢复关闭；VPN 仍连接、全局路由仍为“配置”，没有更改首页节点。
 
 详细对照、取舍及实时复测命令见 [MAC_DNS_FIX.md](MAC_DNS_FIX.md)。原始诊断日志仅在本机忽略目录，不发布个人出口 IP、节点名称或凭据。
 

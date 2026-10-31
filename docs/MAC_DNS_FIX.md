@@ -37,9 +37,9 @@ DST-PORT,53,REJECT
 
 - IPv4 UDP：`8.8.8.8`、`223.5.5.5`、`119.29.29.29`、`9.9.9.9`、`114.114.114.114` 查询 Google，全部返回 `198.18.0.0/15` 内的 Fake-IP。
 - TCP：对 Google、阿里和腾讯 DNS 的定向查询无上游答案，连接被关闭。
-- IPv6 UDP：对 Google 和 Cloudflare DNS 的定向查询无上游答案。没有将此结果描述成 IPv6 透明接管成功；当前 VPS 没有 IPv6 出口，单独的超时也不能代替规则命中或抓包证据。
+- IPv6 UDP：对 Google 和 Cloudflare DNS 的定向查询无上游答案；随后在本轮原生“拒绝”日志中确认这两项及三项 TCP 查询均命中 `DST-PORT,53,REJECT`（候选 11:11:59 / 11:12:15；正式 GitHub 订阅 11:18:33）。这证明本轮端口拒绝规则实际执行，不是 IPv6 透明接管成功；仍未做物理网卡抓包。
 - 复测百度、淘宝 HTTP 200，Google 204、GitHub 200；其余业务请求与初轮结果对照，无新的连接层失败。
-- 浏览器 DNS / WebRTC 和视频测试结果以本地验收报告为准；不上传含个人出口地址的原始日志。
+- 修订候选下再次运行 BrowserLeaks DNS：67 个 Google LLC / Cloudflare 出口，均为美国；没有观察到中国解析出口。此前 WebRTC 和视频测试结果见验收记录；不上传含个人出口地址的原始日志。
 
 探测器会区分真实 DNS 应答与“无应答/连接关闭”，不会把 NXDOMAIN 或 SERVFAIL 当成拒绝成功。无答案本身仍不能单独证明包未外发，需结合客户端规则、对照结果和日志；本次没有管理员物理网卡抓包。
 
@@ -64,3 +64,5 @@ DST-PORT,53,REJECT
 - 上游仍不能注入任意 REJECT 域名或广告拦截规则。
 
 本次不是 iPhone、网络切换、节点故障注入或“所有 DNS 协议均无旁路”的认证；应用自带 DoH/DoT、私网旁路和 Tunnel 之外的流量仍需单独评估。
+
+正式订阅已从 GitHub 更新并生效，客户端解析 42,450 条规则；重复实时 DNS 探测及 25 站点连接检查通过上述限定范围。修订 CI：[41163723164](https://github.com/jhz1022/Shadowrocket-Rules/actions/runs/41163723164)。正式订阅下最后一轮 BrowserLeaks 为 70 个 Google/Cloudflare 美国出口。代理日志已恢复关闭，临时本机 HTTP 服务器已停止。
