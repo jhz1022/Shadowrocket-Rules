@@ -252,7 +252,7 @@ class PublishedSnapshotTests(unittest.TestCase):
                          ['DST-PORT,53,REJECT'])
 
     def test_broad_registry_bypass_cannot_return(self):
-        for suffix in ['com.cn', 'in.th', 'co.uk', 'xn--55qx5d']:
+        for suffix in ['cn', 'xn--fiqs8s', 'xn--fiqz9s', 'com.cn', 'in.th', 'co.uk', 'xn--55qx5d']:
             with self.subTest(suffix=suffix), self.assertRaises(b.BuildError):
                 b.validate(self.conf.replace('# BEGIN DIRECT\n',
                     '# BEGIN DIRECT\nDOMAIN-SUFFIX,' + suffix + ',DIRECT\n'))

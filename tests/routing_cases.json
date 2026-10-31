@@ -1,0 +1,792 @@
+[
+  {
+    "id": "domestic-www.baidu.com",
+    "host": "www.baidu.com",
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "domestic-www.taobao.com",
+    "host": "www.taobao.com",
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "domestic-www.jd.com",
+    "host": "www.jd.com",
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "domestic-www.tmall.com",
+    "host": "www.tmall.com",
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "domestic-www.alipay.com",
+    "host": "www.alipay.com",
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "domestic-www.qq.com",
+    "host": "www.qq.com",
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "domestic-wx.qlogo.cn",
+    "host": "wx.qlogo.cn",
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "domestic-mmbiz.qpic.cn",
+    "host": "mmbiz.qpic.cn",
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "domestic-www.163.com",
+    "host": "www.163.com",
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "domestic-music.163.com",
+    "host": "music.163.com",
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "domestic-www.douyin.com",
+    "host": "www.douyin.com",
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "domestic-www.toutiao.com",
+    "host": "www.toutiao.com",
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "domestic-www.bilibili.com",
+    "host": "www.bilibili.com",
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "domestic-www.iqiyi.com",
+    "host": "www.iqiyi.com",
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "domestic-www.youku.com",
+    "host": "www.youku.com",
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "domestic-www.zhihu.com",
+    "host": "www.zhihu.com",
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "domestic-www.weibo.com",
+    "host": "www.weibo.com",
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "domestic-www.xiaohongshu.com",
+    "host": "www.xiaohongshu.com",
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "domestic-www.meituan.com",
+    "host": "www.meituan.com",
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "domestic-www.ctrip.com",
+    "host": "www.ctrip.com",
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "domestic-www.12306.cn",
+    "host": "www.12306.cn",
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "domestic-www.icbc.com.cn",
+    "host": "www.icbc.com.cn",
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "domestic-www.cmbchina.com",
+    "host": "www.cmbchina.com",
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "domestic-www.gov.cn",
+    "host": "www.gov.cn",
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "domestic-www.tsinghua.edu.cn",
+    "host": "www.tsinghua.edu.cn",
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "domestic-cnpmjs.org",
+    "host": "cnpmjs.org",
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "regional-cn.bing.com",
+    "host": "cn.bing.com",
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "regional-gateway.icloud.com.cn",
+    "host": "gateway.icloud.com.cn",
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "regional-www.qualcomm.cn",
+    "host": "www.qualcomm.cn",
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "regional-apps.apple.com",
+    "host": "apps.apple.com",
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "regional-swcdn.apple.com",
+    "host": "swcdn.apple.com",
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "regional-is1-ssl.mzstatic.com",
+    "host": "is1-ssl.mzstatic.com",
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "regional-officecdn.microsoft.com",
+    "host": "officecdn.microsoft.com",
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "regional-dl.delivery.mp.microsoft.com",
+    "host": "dl.delivery.mp.microsoft.com",
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "regional-dl.steam.clngaa.com",
+    "host": "dl.steam.clngaa.com",
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "regional-alibaba.cdn.steampipe.steamcontent.com",
+    "host": "alibaba.cdn.steampipe.steamcontent.com",
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "regional-dcn01.ps5.update.playstation.net",
+    "host": "dcn01.ps5.update.playstation.net",
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "regional-fonts.googleapis.com",
+    "host": "fonts.googleapis.com",
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "regional-dl.google.com",
+    "host": "dl.google.com",
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "regional-www.gstatic.com",
+    "host": "www.gstatic.com",
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "overseas-claude.ai",
+    "host": "claude.ai",
+    "policy": "PROXY",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "overseas-api.anthropic.com",
+    "host": "api.anthropic.com",
+    "policy": "PROXY",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "overseas-chatgpt.com",
+    "host": "chatgpt.com",
+    "policy": "PROXY",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "overseas-api.openai.com",
+    "host": "api.openai.com",
+    "policy": "PROXY",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "overseas-oaistatic.com",
+    "host": "oaistatic.com",
+    "policy": "PROXY",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "overseas-oaiusercontent.com",
+    "host": "oaiusercontent.com",
+    "policy": "PROXY",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "overseas-copilot.microsoft.com",
+    "host": "copilot.microsoft.com",
+    "policy": "PROXY",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "overseas-sydney.bing.com",
+    "host": "sydney.bing.com",
+    "policy": "PROXY",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "overseas-www.google.com",
+    "host": "www.google.com",
+    "policy": "PROXY",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "overseas-gemini.google.com",
+    "host": "gemini.google.com",
+    "policy": "PROXY",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "overseas-generativelanguage.googleapis.com",
+    "host": "generativelanguage.googleapis.com",
+    "policy": "PROXY",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "overseas-github.com",
+    "host": "github.com",
+    "policy": "PROXY",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "overseas-raw.githubusercontent.com",
+    "host": "raw.githubusercontent.com",
+    "policy": "PROXY",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "overseas-www.youtube.com",
+    "host": "www.youtube.com",
+    "policy": "PROXY",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "overseas-steamcommunity.com",
+    "host": "steamcommunity.com",
+    "policy": "PROXY",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "overseas-tv.apple.com",
+    "host": "tv.apple.com",
+    "policy": "PROXY",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "overseas-news.apple.com",
+    "host": "news.apple.com",
+    "policy": "PROXY",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "overseas-apple-relay.apple.com",
+    "host": "apple-relay.apple.com",
+    "policy": "PROXY",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "overseas-www.netflix.com",
+    "host": "www.netflix.com",
+    "policy": "PROXY",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "overseas-www.spotify.com",
+    "host": "www.spotify.com",
+    "policy": "PROXY",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "overseas-discord.com",
+    "host": "discord.com",
+    "policy": "PROXY",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "overseas-x.com",
+    "host": "x.com",
+    "policy": "PROXY",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "overseas-telegram.org",
+    "host": "telegram.org",
+    "policy": "PROXY",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "local-localhost",
+    "host": "localhost",
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "local-printer.local",
+    "host": "printer.local",
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "local-nas.home.arpa",
+    "host": "nas.home.arpa",
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "local-asusrouter.com",
+    "host": "asusrouter.com",
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "local-tplogin.cn",
+    "host": "tplogin.cn",
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "sr-unclassified.invalid-cn4",
+    "host": "sr-unclassified.invalid",
+    "answers": [
+      "223.5.5.5"
+    ],
+    "policy": "DIRECT",
+    "routing_dns_requested": true
+  },
+  {
+    "id": "sr-unclassified.invalid-foreign4",
+    "host": "sr-unclassified.invalid",
+    "answers": [
+      "1.1.1.1"
+    ],
+    "policy": "PROXY",
+    "routing_dns_requested": true
+  },
+  {
+    "id": "sr-unclassified.invalid-cn6",
+    "host": "sr-unclassified.invalid",
+    "answers": [
+      "2400:3200::1"
+    ],
+    "policy": "DIRECT",
+    "routing_dns_requested": true
+  },
+  {
+    "id": "sr-unclassified.invalid-foreign6",
+    "host": "sr-unclassified.invalid",
+    "answers": [
+      "2606:4700:4700::1111"
+    ],
+    "policy": "PROXY",
+    "routing_dns_requested": true
+  },
+  {
+    "id": "sr-unclassified.invalid-nxdomain",
+    "host": "sr-unclassified.invalid",
+    "answers": [],
+    "policy": "PROXY",
+    "routing_dns_requested": true
+  },
+  {
+    "id": "sr-unclassified.invalid-private-answer",
+    "host": "sr-unclassified.invalid",
+    "answers": [
+      "192.168.1.1"
+    ],
+    "policy": "PROXY",
+    "routing_dns_requested": true
+  },
+  {
+    "id": "sr-unclassified.invalid-timeout",
+    "host": "sr-unclassified.invalid",
+    "dns_error": true,
+    "policy": "PROXY",
+    "routing_dns_requested": true
+  },
+  {
+    "id": "sr-unclassified.cn-cn4",
+    "host": "sr-unclassified.cn",
+    "answers": [
+      "223.5.5.5"
+    ],
+    "policy": "DIRECT",
+    "routing_dns_requested": true
+  },
+  {
+    "id": "sr-unclassified.cn-foreign4",
+    "host": "sr-unclassified.cn",
+    "answers": [
+      "1.1.1.1"
+    ],
+    "policy": "PROXY",
+    "routing_dns_requested": true
+  },
+  {
+    "id": "sr-unclassified.cn-cn6",
+    "host": "sr-unclassified.cn",
+    "answers": [
+      "2400:3200::1"
+    ],
+    "policy": "DIRECT",
+    "routing_dns_requested": true
+  },
+  {
+    "id": "sr-unclassified.cn-foreign6",
+    "host": "sr-unclassified.cn",
+    "answers": [
+      "2606:4700:4700::1111"
+    ],
+    "policy": "PROXY",
+    "routing_dns_requested": true
+  },
+  {
+    "id": "sr-unclassified.cn-nxdomain",
+    "host": "sr-unclassified.cn",
+    "answers": [],
+    "policy": "PROXY",
+    "routing_dns_requested": true
+  },
+  {
+    "id": "sr-unclassified.cn-private-answer",
+    "host": "sr-unclassified.cn",
+    "answers": [
+      "192.168.1.1"
+    ],
+    "policy": "PROXY",
+    "routing_dns_requested": true
+  },
+  {
+    "id": "sr-unclassified.cn-timeout",
+    "host": "sr-unclassified.cn",
+    "dns_error": true,
+    "policy": "PROXY",
+    "routing_dns_requested": true
+  },
+  {
+    "id": "sr-unclassified.com.cn-cn4",
+    "host": "sr-unclassified.com.cn",
+    "answers": [
+      "223.5.5.5"
+    ],
+    "policy": "DIRECT",
+    "routing_dns_requested": true
+  },
+  {
+    "id": "sr-unclassified.com.cn-foreign4",
+    "host": "sr-unclassified.com.cn",
+    "answers": [
+      "1.1.1.1"
+    ],
+    "policy": "PROXY",
+    "routing_dns_requested": true
+  },
+  {
+    "id": "sr-unclassified.com.cn-cn6",
+    "host": "sr-unclassified.com.cn",
+    "answers": [
+      "2400:3200::1"
+    ],
+    "policy": "DIRECT",
+    "routing_dns_requested": true
+  },
+  {
+    "id": "sr-unclassified.com.cn-foreign6",
+    "host": "sr-unclassified.com.cn",
+    "answers": [
+      "2606:4700:4700::1111"
+    ],
+    "policy": "PROXY",
+    "routing_dns_requested": true
+  },
+  {
+    "id": "sr-unclassified.com.cn-nxdomain",
+    "host": "sr-unclassified.com.cn",
+    "answers": [],
+    "policy": "PROXY",
+    "routing_dns_requested": true
+  },
+  {
+    "id": "sr-unclassified.com.cn-private-answer",
+    "host": "sr-unclassified.com.cn",
+    "answers": [
+      "192.168.1.1"
+    ],
+    "policy": "PROXY",
+    "routing_dns_requested": true
+  },
+  {
+    "id": "sr-unclassified.com.cn-timeout",
+    "host": "sr-unclassified.com.cn",
+    "dns_error": true,
+    "policy": "PROXY",
+    "routing_dns_requested": true
+  },
+  {
+    "id": "sr-unclassified.xn--fiqs8s-cn4",
+    "host": "sr-unclassified.xn--fiqs8s",
+    "answers": [
+      "223.5.5.5"
+    ],
+    "policy": "DIRECT",
+    "routing_dns_requested": true
+  },
+  {
+    "id": "sr-unclassified.xn--fiqs8s-foreign4",
+    "host": "sr-unclassified.xn--fiqs8s",
+    "answers": [
+      "1.1.1.1"
+    ],
+    "policy": "PROXY",
+    "routing_dns_requested": true
+  },
+  {
+    "id": "sr-unclassified.xn--fiqs8s-cn6",
+    "host": "sr-unclassified.xn--fiqs8s",
+    "answers": [
+      "2400:3200::1"
+    ],
+    "policy": "DIRECT",
+    "routing_dns_requested": true
+  },
+  {
+    "id": "sr-unclassified.xn--fiqs8s-foreign6",
+    "host": "sr-unclassified.xn--fiqs8s",
+    "answers": [
+      "2606:4700:4700::1111"
+    ],
+    "policy": "PROXY",
+    "routing_dns_requested": true
+  },
+  {
+    "id": "sr-unclassified.xn--fiqs8s-nxdomain",
+    "host": "sr-unclassified.xn--fiqs8s",
+    "answers": [],
+    "policy": "PROXY",
+    "routing_dns_requested": true
+  },
+  {
+    "id": "sr-unclassified.xn--fiqs8s-private-answer",
+    "host": "sr-unclassified.xn--fiqs8s",
+    "answers": [
+      "192.168.1.1"
+    ],
+    "policy": "PROXY",
+    "routing_dns_requested": true
+  },
+  {
+    "id": "sr-unclassified.xn--fiqs8s-timeout",
+    "host": "sr-unclassified.xn--fiqs8s",
+    "dns_error": true,
+    "policy": "PROXY",
+    "routing_dns_requested": true
+  },
+  {
+    "id": "us.ip111.cn-cn4",
+    "host": "us.ip111.cn",
+    "answers": [
+      "223.5.5.5"
+    ],
+    "policy": "DIRECT",
+    "routing_dns_requested": true
+  },
+  {
+    "id": "us.ip111.cn-foreign4",
+    "host": "us.ip111.cn",
+    "answers": [
+      "1.1.1.1"
+    ],
+    "policy": "PROXY",
+    "routing_dns_requested": true
+  },
+  {
+    "id": "us.ip111.cn-cn6",
+    "host": "us.ip111.cn",
+    "answers": [
+      "2400:3200::1"
+    ],
+    "policy": "DIRECT",
+    "routing_dns_requested": true
+  },
+  {
+    "id": "us.ip111.cn-foreign6",
+    "host": "us.ip111.cn",
+    "answers": [
+      "2606:4700:4700::1111"
+    ],
+    "policy": "PROXY",
+    "routing_dns_requested": true
+  },
+  {
+    "id": "us.ip111.cn-nxdomain",
+    "host": "us.ip111.cn",
+    "answers": [],
+    "policy": "PROXY",
+    "routing_dns_requested": true
+  },
+  {
+    "id": "us.ip111.cn-private-answer",
+    "host": "us.ip111.cn",
+    "answers": [
+      "192.168.1.1"
+    ],
+    "policy": "PROXY",
+    "routing_dns_requested": true
+  },
+  {
+    "id": "us.ip111.cn-timeout",
+    "host": "us.ip111.cn",
+    "dns_error": true,
+    "policy": "PROXY",
+    "routing_dns_requested": true
+  },
+  {
+    "id": "ai-cn-answer-claude.ai",
+    "host": "claude.ai",
+    "address": "223.5.5.5",
+    "policy": "PROXY",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "ai-cn-answer-api.openai.com",
+    "host": "api.openai.com",
+    "address": "223.5.5.5",
+    "policy": "PROXY",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "ai-cn-answer-gemini.google.com",
+    "host": "gemini.google.com",
+    "address": "223.5.5.5",
+    "policy": "PROXY",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "ai-cn-answer-generativelanguage.googleapis.com",
+    "host": "generativelanguage.googleapis.com",
+    "address": "223.5.5.5",
+    "policy": "PROXY",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "literal-223.5.5.5",
+    "host": "",
+    "address": "223.5.5.5",
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "literal-1.1.1.1",
+    "host": "",
+    "address": "1.1.1.1",
+    "policy": "PROXY",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "literal-2400:3200::1",
+    "host": "",
+    "address": "2400:3200::1",
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "literal-2606:4700:4700::1111",
+    "host": "",
+    "address": "2606:4700:4700::1111",
+    "policy": "PROXY",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "literal-192.168.1.1",
+    "host": "",
+    "address": "192.168.1.1",
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "dns-port-223.5.5.5",
+    "host": "",
+    "address": "223.5.5.5",
+    "port": 53,
+    "policy": "REJECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "dns-port-1.1.1.1",
+    "host": "",
+    "address": "1.1.1.1",
+    "port": 53,
+    "policy": "REJECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "dns-port-192.168.1.1",
+    "host": "",
+    "address": "192.168.1.1",
+    "port": 53,
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  }
+]

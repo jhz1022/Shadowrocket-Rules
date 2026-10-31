@@ -33,6 +33,8 @@ def audit(root=build.ROOT, conf=None, previous=None):
     protected = {('DOMAIN-SUFFIX', h) for h in overrides['proxy_suffix']}
     proxy = raw['proxy']
     allowed = set(specs['direct_allowed_registry_suffixes'])
+    if allowed:
+        raise build.BuildError('Full rule audit failed: registry-level DIRECT allowance')
     direct = {(kind, name) for kind, name in raw['direct'] | raw['enhanced'] if name in allowed or not (kind == 'DOMAIN-SUFFIX'
               and (audit_sources.registry_suffix(name, raw['registry'])
                    or name in specs['direct_excluded_suffixes']))}
@@ -71,7 +73,7 @@ def audit(root=build.ROOT, conf=None, previous=None):
         if parts[0] == 'DOMAIN':
             exact.setdefault(parts[1], (index, parts[2]))
         elif parts[0] == 'DOMAIN-SUFFIX':
-            if (parts[2] == 'DIRECT' and parts[1] not in local_suffix | allowed
+            if (parts[2] == 'DIRECT' and parts[1] not in local_suffix | {'gov.cn', 'edu.cn'}
                     and audit_sources.registry_suffix(parts[1], raw['registry'])):
                 raise build.BuildError('Full rule audit failed: registry-level DIRECT suffix')
             suffix.setdefault(parts[1], (index, parts[2]))

@@ -39,8 +39,8 @@ class Rule:
     value: str
     policy: str
 
-    def line(self):
-        extra = ',no-resolve' if self.kind in ('IP-CIDR', 'IP-CIDR6', 'GEOIP') else ''
+    def line(self, resolve=False):
+        extra = ',no-resolve' if not resolve and self.kind in ('IP-CIDR', 'IP-CIDR6', 'GEOIP') else ''
         return f'{self.kind},{self.value},{self.policy}{extra}'
 
 
@@ -313,7 +313,7 @@ def precise_direct(rules, config, registry=None):
         raise BuildError('Missing registry-level DIRECT exclusions')
     registry = default_registry() if registry is None else registry
     allowed = set(config.get('direct_allowed_registry_suffixes', []))
-    if not allowed <= {'cn', 'xn--fiqs8s', 'xn--fiqz9s'}:
+    if allowed:
         raise BuildError('Unreviewed registry whitelist expansion')
     return {r for r in rules if r.value in allowed or not (r.kind == 'DOMAIN-SUFFIX'
             and (registry_suffix(r.value, registry) or r.value in excluded))}
@@ -518,6 +518,7 @@ def validate(conf, overrides=None, registry=None):
         actual = [x for x in actual.splitlines() if x and not x.startswith('#')]
         if set(actual) != {r.line() for r in reviewed[section]} or len(actual) != len(set(actual)):
             raise BuildError(f'Reviewed block differs from approved policy: {marker}')
+    resolving_ip_rules = set(conf.split('# BEGIN CHINA IP\n')[1].split('# END CHINA IP')[0].splitlines())
     for line in rules[:-1]:
         # This single security guard is the only permitted REJECT rule.
         # Upstream domain/IP data still cannot inject blocking policies.
@@ -529,13 +530,16 @@ def validate(conf, overrides=None, registry=None):
         if parts[0] in ('DOMAIN', 'DOMAIN-SUFFIX'):
             if len(parts) != 3 or domain(parts[1]) != parts[1]:
                 raise BuildError('Malformed domain rule')
-            reserved = {'local', 'lan', 'home.arpa', 'in-addr.arpa', 'ip6.arpa', 'cn', 'xn--fiqs8s', 'xn--fiqz9s'}
+            reserved = {'local', 'lan', 'home.arpa', 'in-addr.arpa', 'ip6.arpa', 'gov.cn', 'edu.cn'}
             if parts[2] == 'DIRECT' and parts[0] == 'DOMAIN-SUFFIX' and (
                     parts[1] not in reserved and registry_suffix(parts[1], registry)):
                 raise BuildError('Registry-level DIRECT rule is forbidden')
         elif parts[0] in ('IP-CIDR', 'IP-CIDR6'):
-            if len(parts) != 4 or parts[3] != 'no-resolve':
-                raise BuildError('IP rule without no-resolve')
+            if line in resolving_ip_rules:
+                if len(parts) != 3:
+                    raise BuildError('China IP fallback must allow DNS resolution')
+            elif len(parts) != 4 or parts[3] != 'no-resolve':
+                raise BuildError('LAN IP rule must not trigger DNS resolution')
             net = ipaddress.ip_network(parts[1], strict=True)
             if net.version != (4 if parts[0] == 'IP-CIDR' else 6):
                 raise BuildError('Incorrect rule IP family')
@@ -554,12 +558,12 @@ def validate(conf, overrides=None, registry=None):
                 ('wx.qlogo.cn', None, 'DIRECT'), ('mmbiz.qpic.cn', None, 'DIRECT'),
                 ('www.google.com', None, 'PROXY'),
                 ('github.com', None, 'PROXY'), ('chatgpt.com', None, 'PROXY'),
-                ('api.openai.com', None, 'PROXY'), ('www.google.cn', None, 'PROXY'),
+                ('api.openai.com', None, 'PROXY'), ('www.google.cn', None, 'DIRECT'),
                 ('fresh-unlisted.invalid', None, 'PROXY'),
-                ('fresh-unlisted.cn', None, 'DIRECT'),
-                ('fresh-unlisted.com.cn', None, 'DIRECT'),
+                ('fresh-unlisted.cn', None, 'PROXY'),
+                ('fresh-unlisted.com.cn', None, 'PROXY'),
                 ('fresh-unlisted.in.th', None, 'PROXY'),
-                ('fresh-unlisted.xn--fiqs8s', None, 'DIRECT'),
+                ('fresh-unlisted.xn--fiqs8s', None, 'PROXY'),
                 ('cn.bing.com', None, 'DIRECT'), ('sydney.bing.com', None, 'PROXY'),
                 ('copilot.microsoft.com', None, 'PROXY'), ('claude.ai', None, 'PROXY'),
                 ('gateway.icloud.com.cn', None, 'DIRECT'),
@@ -739,7 +743,7 @@ def generate(config, template, overrides, inputs, metadata, baseline=None):
         if content.count(token) != 1:
             raise BuildError('Missing or repeated template token')
         ordered = sorted(rules, key=lambda r: (r.kind, r.value))
-        content = content.replace(token, '\n'.join(r.line() for r in ordered))
+        content = content.replace(token, '\n'.join(r.line(resolve=marker == 'IP_RULES') for r in ordered))
     stats = validate(content, overrides, registry)
     if stats['rules'] > config['max_output_rules'] or len(content.encode()) > config['max_output_bytes']:
         raise BuildError('Output exceeds reviewed client size budget')

@@ -114,9 +114,5 @@
     "gov.cn",
     "mil.cn"
   ],
-  "direct_allowed_registry_suffixes": [
-    "cn",
-    "xn--fiqs8s",
-    "xn--fiqz9s"
-  ]
+  "direct_allowed_registry_suffixes": []
 }

@@ -16,11 +16,7 @@
     "github.io",
     "githubassets.com",
     "githubusercontent.com",
-    "google.cn",
-    "google.com",
-    "googleapis.com",
     "googlevideo.com",
-    "gstatic.com",
     "netflix.com",
     "news-edge.apple.com",
     "news-events.apple.com",
@@ -282,6 +278,28 @@
       "community_check": {
         "entry": "apple-update"
       }
+    },
+    {
+      "id": "china-government-namespace",
+      "type": "DOMAIN-SUFFIX",
+      "domains": [
+        "gov.cn"
+      ],
+      "reason": "Restricted Chinese government service namespace; choose local DNS/direct delivery by service identity, not by assumed server geography. Covers the category without a blanket .cn rule.",
+      "evidence": [
+        "https://cnnic.cn/n4/2022/0830/c57-10123.html"
+      ]
+    },
+    {
+      "id": "china-education-namespace",
+      "type": "DOMAIN-SUFFIX",
+      "domains": [
+        "edu.cn"
+      ],
+      "reason": "CERNET-managed Chinese education namespace; choose local DNS/direct delivery for the category. This is not a guarantee that every host is physically in mainland China.",
+      "evidence": [
+        "https://www.cernet.edu.cn/xxh/yc/202508/t20250804_2684370.shtml"
+      ]
     }
   ]
 }

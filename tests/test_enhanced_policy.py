@@ -39,7 +39,7 @@ class EnhancedPolicyTests(unittest.TestCase):
     def test_registry_exception_is_explicit_and_cannot_expand_arbitrarily(self):
         config = json.loads((ROOT / 'sources/sources.json').read_text())
         rows = {build.Rule('DOMAIN-SUFFIX', h, 'DIRECT') for h in ('cn', 'in.th', 'co.uk')}
-        self.assertEqual(build.precise_direct(rows, config), {build.Rule('DOMAIN-SUFFIX', 'cn', 'DIRECT')})
+        self.assertEqual(build.precise_direct(rows, config), set())
         config['direct_allowed_registry_suffixes'].append('in.th')
         with self.assertRaises(build.BuildError):
             build.precise_direct(rows, config)
@@ -48,10 +48,11 @@ class EnhancedPolicyTests(unittest.TestCase):
         rules = build.rule_lines((ROOT / 'dist/Shadowrocket.conf').read_text())
         for host in ('cn.sc.com', 'cn.bing.com', 'gateway.icloud.com.cn',
                      'dl.steam.clngaa.com', 'alibaba.cdn.steampipe.steamcontent.com',
-                     'dcn01.ps5.update.playstation.net', 'cnpmjs.org', 'fresh-unlisted.cn'):
+                     'dcn01.ps5.update.playstation.net', 'cnpmjs.org', 'www.google.cn',
+                     'fonts.googleapis.com', 'dl.google.com', 'www.gstatic.com'):
             with self.subTest(host=host):
                 self.assertEqual(build.match_rules(rules, host), 'DIRECT')
-        for host in ('www.google.cn', 'sydney.bing.com', 'copilot.microsoft.com',
+        for host in ('fresh-unlisted.cn', 'fresh-unlisted.com.cn', 'sydney.bing.com', 'copilot.microsoft.com',
                      'api.anthropic.com', 'chatgpt.com', 'tv.apple.com',
                      'steamcommunity.com', 'never-listed.invalid', 'fresh-unlisted.in.th'):
             with self.subTest(host=host):

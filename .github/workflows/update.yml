@@ -39,11 +39,15 @@ jobs:
         run: python scripts/build.py --offline --check
       - name: Audit every source-domain boundary and exact IP coverage
         run: python scripts/audit.py --output .build/policy-audit.json
+      - name: Check cross-service routing and DNS-trigger contracts
+        run: python scripts/check_routing_contract.py --output .build/routing-contract.json
       - name: Save independent policy audit
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: verified-policy-audit
-          path: .build/policy-audit.json
+          path: |
+            .build/policy-audit.json
+            .build/routing-contract.json
           include-hidden-files: true
           if-no-files-found: error
 
@@ -74,11 +78,15 @@ jobs:
         run: python scripts/build.py --offline --check
       - name: Audit candidate domain boundaries and exact IP coverage
         run: python scripts/audit.py --compare .build/previous.conf --output .build/policy-audit.json
+      - name: Check candidate cross-service routing and DNS-trigger contracts
+        run: python scripts/check_routing_contract.py --output .build/routing-contract.json
       - name: Save policy coverage, exceptions and transition summary
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: updated-policy-audit
-          path: .build/policy-audit.json
+          path: |
+            .build/policy-audit.json
+            .build/routing-contract.json
           include-hidden-files: true
           if-no-files-found: error
       - name: Publish only a validated change

@@ -14,7 +14,7 @@ import audit_sources
 class FullAuditTests(unittest.TestCase):
     def test_registry_direct_injection_rejected_by_both_validators(self):
         conf = (ROOT / 'dist/Shadowrocket.conf').read_text()
-        for name in ['in.th', 'co.uk', 'bj.cn', 'a.ck']:
+        for name in ['cn', 'xn--fiqs8s', 'xn--fiqz9s', 'in.th', 'co.uk', 'bj.cn', 'a.ck']:
             candidate = conf.replace('# BEGIN DIRECT\n',
                 '# BEGIN DIRECT\nDOMAIN-SUFFIX,' + name + ',DIRECT\n')
             with self.subTest(name=name):

@@ -14,6 +14,7 @@ from pathlib import Path
 import subprocess
 import time
 import uuid
+from verify_client_config import require_active_config, ClientConfigMismatch, ROOT
 
 
 def resolution_probe(expect='success', query=None):
@@ -76,6 +77,11 @@ def main():
                         help='Only probe fresh TXT resolution, including controlled DNS outage tests')
     parser.add_argument('--query', help='Public TXT name for a positive control; default example.com')
     args = parser.parse_args()
+    try:
+        require_active_config((ROOT / 'dist/Shadowrocket.conf').read_text())
+    except ClientConfigMismatch as exc:
+        print('CLIENT_NOT_VERIFIED:', exc)
+        return 2
     if args.resolution:
         result = resolution_probe(args.resolution, args.query)
         if args.output:

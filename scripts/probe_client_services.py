@@ -16,6 +16,7 @@ import subprocess
 import time
 
 import build
+from verify_client_config import require_active_config, ClientConfigMismatch
 
 HTTP = ['http://captive.apple.com/hotspot-detect.html', 'https://apps.apple.com/cn/',
         'http://swcdn.apple.com/', 'https://www.hsbc.com.cn/',
@@ -69,6 +70,11 @@ def main():
     parser.add_argument('--output', type=Path)
     args = parser.parse_args()
     conf = (build.ROOT / 'dist/Shadowrocket.conf').read_text()
+    try:
+        identity = require_active_config(conf)
+    except ClientConfigMismatch as exc:
+        print('CLIENT_NOT_VERIFIED:', exc)
+        return 2
     rules = build.rule_lines(conf)
     try:
         with concurrent.futures.ThreadPoolExecutor(max_workers=3) as executor:
@@ -85,7 +91,7 @@ def main():
         row['expected_policy'] = build.match_rules(rules, host, port=80 if row['url'].startswith('http:') else 443)
         print('HTTP', host, row['expected_policy'], row['http_code'], row['curl_exit'], row['time_total'])
     report = {'timestamp': dt.datetime.now(dt.timezone.utc).isoformat(),
-              'config_sha256': build.sha(conf.encode()), 'ntp': ntp, 'http': http,
+              'config_sha256': build.sha(conf.encode()), 'client_identity': identity, 'ntp': ntp, 'http': http,
               'scope': __doc__}
     if args.output:
         args.output.parent.mkdir(parents=True, exist_ok=True)

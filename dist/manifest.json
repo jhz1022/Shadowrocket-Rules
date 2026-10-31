@@ -1,12 +1,13 @@
 {
-  "config_sha256": "7c9858f7b83592814d5636e9b9d9573ca8257fca6269db0b3a01c52f5eb1b648",
-  "conflicts": 842,
+  "config_sha256": "61848c3c66a466dfdf72cf679f013d6757e119d345e4ffa7fd233897fdc8dedc",
+  "conflicts": 754,
   "excluded_registry_direct": [
     "DOMAIN-SUFFIX,alibaba,DIRECT",
     "DOMAIN-SUFFIX,alipay,DIRECT",
     "DOMAIN-SUFFIX,anquan,DIRECT",
     "DOMAIN-SUFFIX,baidu,DIRECT",
     "DOMAIN-SUFFIX,citic,DIRECT",
+    "DOMAIN-SUFFIX,cn,DIRECT",
     "DOMAIN-SUFFIX,edu.cn,DIRECT",
     "DOMAIN-SUFFIX,gov.cn,DIRECT",
     "DOMAIN-SUFFIX,icbc,DIRECT",
@@ -37,6 +38,8 @@
     "DOMAIN-SUFFIX,xn--czru2d,DIRECT",
     "DOMAIN-SUFFIX,xn--fiq228c5hs,DIRECT",
     "DOMAIN-SUFFIX,xn--fiq64b,DIRECT",
+    "DOMAIN-SUFFIX,xn--fiqs8s,DIRECT",
+    "DOMAIN-SUFFIX,xn--fiqz9s,DIRECT",
     "DOMAIN-SUFFIX,xn--fjq720a,DIRECT",
     "DOMAIN-SUFFIX,xn--g2xx48c,DIRECT",
     "DOMAIN-SUFFIX,xn--hxt814e,DIRECT",
@@ -54,26 +57,26 @@
     "DOMAIN-SUFFIX,xn--zfr164b,DIRECT",
     "DOMAIN-SUFFIX,yun,DIRECT"
   ],
-  "generator_sha256": "8b8033a4d767dc027ce6073e9fd48a21b45598827ae2523dee10b0f1ce33fc6d",
+  "generator_sha256": "47076f9e0284b477bd64f545e780ed5f3bc85417e2b2b4c7695eaea7ad07d625",
   "ip_coverage": {
     "china4": 344076032,
     "china6": 5430297436658120360713663555829760
   },
   "output": {
     "dns_port_canaries": 6,
-    "reviewed_route_canaries": 74,
+    "reviewed_route_canaries": 76,
     "routing_canaries": 31,
-    "rules": 147154,
+    "rules": 148877,
     "types": {
-      "DOMAIN": 625,
-      "DOMAIN-SUFFIX": 136866,
+      "DOMAIN": 671,
+      "DOMAIN-SUFFIX": 138543,
       "DST-PORT": 1,
       "FINAL": 1,
       "IP-CIDR": 6182,
       "IP-CIDR6": 3479
     }
   },
-  "overrides_sha256": "ad85a61f5a878892afbcace942640f54a780c48e7b8bad00fd8bef55dfa9d095",
+  "overrides_sha256": "e5c48329933fa814595095dc590f68c10b46bf9096b6c7bc682d0e9f719b82d9",
   "schema": 1,
   "sources": {
     "apple_cn": {
@@ -186,6 +189,6 @@
       "url": "https://raw.githubusercontent.com/publicsuffix/list/9dfbe81931367b3f0af21035c36ae7eeb830dd88/public_suffix_list.dat"
     }
   },
-  "sources_spec_sha256": "5536bd493a0eb600dec2b0a6ea4d6d4ed251cd856feb374e8b4c64d713c7775e",
-  "template_sha256": "1b2a6610c8b55bda84d3acacbfe643f08352edefb373b4000313e49e60723789"
+  "sources_spec_sha256": "83a43a8dcf03e86282a7ebcabb1b07c6dda7cef688feac1094b6a7d9d6c4a23f",
+  "template_sha256": "869fff4611e5ea9d0539d9f38da0e3e9432a00cabdb2822c7e280a4e6fa78f75"
 }
