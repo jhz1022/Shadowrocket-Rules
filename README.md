@@ -46,7 +46,9 @@ GitHub 发布及 Mac 客户端验证状态见 [验证记录](docs/VALIDATION.md)
 
 本机 Shadowrocket **2.2.93** 的内置默认配置、提示文本和程序参数字符串已经只读核对。建议 Mac/iPhone 使用同版或更新版。`dns-fallback` 是本机可识别的回退键；不采用未经本机依据确认的 `dns-fallback-system`。参数识别与真实执行效果是两回事，导入后仍需按 [客户端验收](docs/CLIENT_TEST.md) 核对。
 
-IPv6 **启用**，同时内嵌国内 IPv6 前缀。客户端支持 IPv6 不代表所选节点拥有 IPv6 出口：IPv4-only VPS 可以正常处理有 IPv4 地址的常见服务，但 IPv6-only 目标仍需节点服务器实际启用 IPv6。本次所选 VPS 未启用 IPv6，纯 IPv6 连接失败与该限制吻合，未通过关闭客户端 IPv6 掩盖，也未擅自更改服务器。
+默认采用 **IPv4 兼容模式**（`ipv6 = false`、`prefer-ipv6 = false`）。此前启用 IPv6 后，在本机物理网卡没有公网 IPv6 地址的网络上，微信图片请求持续尝试不可用的 IPv6，实际出口停在 SYN_SENT；关闭该配置选项后，用户确认头像和图片明显恢复。仅设置 IPv4 优先不能保证应用不再尝试 IPv6。国内 IPv6 数据保留供静态审计及后续经验证的 IPv6 部署使用，不代表当前默认启用了原生 IPv6。详情见 [微信修复记录](docs/WECHAT_IPV4_FIX.md)。
+
+这是客户端兼容设置，不是关闭 macOS/iPhone 系统 IPv6，也不是系统级 IPv6 防火墙。若以后确需原生 IPv6，应同时验证本地直连出口与节点出口，再配套调整模板和构建校验器。IPv6-only/NAT64、iPhone 蜂窝网络仍待真机验收，不能根据本次 Mac 结果保证兼容。
 
 `hijack-dns = *:53` 已在上述 Mac 版本实测能接管 IPv4 UDP DNS。原来的裸 IP 名单、空地址 `:53` 写法没有达到预期，已移除。客户端未接管的外部端口 53 流量，由局域网规则之后、业务规则之前的 `DST-PORT,53,REJECT` 拒绝；本次 TCP 和 IPv6 DNS 探测没有获得上游答案。**这部分是拒绝兜底，不是把 TCP/IPv6 DNS 自动转换成 DoH**；应用自带的 TCP DNS 可能因此失败，应使用系统解析。
 

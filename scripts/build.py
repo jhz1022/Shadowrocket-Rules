@@ -316,7 +316,8 @@ def validate(conf):
         'proxy-dns-server': 'https://223.5.5.5/dns-query, https://223.6.6.6/dns-query',
         'dns-fallback': 'false', 'dns-direct-system': 'true',
         'dns-direct-fallback-proxy': 'false', 'always-ip-address': 'false',
-        'use-local-host-item-for-proxy': 'false', 'ipv6': 'true',
+        'use-local-host-item-for-proxy': 'false', 'ipv6': 'false',
+        'prefer-ipv6': 'false',
         'hijack-dns': '*:53',
         'bypass-system': 'false', 'udp-policy-not-supported-behaviour': 'REJECT'
     }
@@ -362,7 +363,11 @@ def validate(conf):
         if not content.strip() or any(x.split(',')[2] != policy for x in content.splitlines()):
             raise BuildError(f'Invalid {block} block')
     canaries = [('www.baidu.com', None, 'DIRECT'), ('www.taobao.com', None, 'DIRECT'),
-                ('www.qq.com', None, 'DIRECT'), ('www.google.com', None, 'PROXY'),
+                ('www.qq.com', None, 'DIRECT'),
+                ('short.weixin.qq.com', None, 'DIRECT'),
+                ('long.weixin.qq.com', None, 'DIRECT'),
+                ('wx.qlogo.cn', None, 'DIRECT'), ('mmbiz.qpic.cn', None, 'DIRECT'),
+                ('www.google.com', None, 'PROXY'),
                 ('github.com', None, 'PROXY'), ('chatgpt.com', None, 'PROXY'),
                 ('api.openai.com', None, 'PROXY'), ('www.google.cn', None, 'PROXY'),
                 ('fresh-unlisted.invalid', None, 'PROXY'),

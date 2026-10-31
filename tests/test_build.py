@@ -223,11 +223,21 @@ class PublishedSnapshotTests(unittest.TestCase):
 
     def test_bad_template_and_wrong_order_rejected(self):
         for conf in [self.conf.replace('dns-fallback = false', 'dns-fallback = true'),
+                     self.conf.replace('ipv6 = false\n', 'ipv6 = true\n', 1),
+                     self.conf.replace('prefer-ipv6 = false', 'prefer-ipv6 = true'),
                      self.conf.replace('no-resolve', 'resolve', 1),
                      self.conf.replace('FINAL,PROXY', 'FINAL,DIRECT'),
                      self.conf.replace('[Host]', '[MITM]'),
                      self.conf.replace('# BEGIN PROXY', '# BEGIN DIRECT', 1)]:
             with self.subTest(change=conf[:60]), self.assertRaises((b.BuildError, ValueError)):
+                b.validate(conf)
+
+    def test_wechat_asset_routing_regression_is_rejected(self):
+        for host in ['wx.qlogo.cn', 'mmbiz.qpic.cn', 'short.weixin.qq.com']:
+            # An unexpected upstream PROXY entry must not silently capture WeChat.
+            conf = self.conf.replace('# BEGIN PROXY\n',
+                                     '# BEGIN PROXY\nDOMAIN,' + host + ',PROXY\n', 1)
+            with self.subTest(host=host), self.assertRaisesRegex(b.BuildError, 'Routing canary'):
                 b.validate(conf)
 
     def test_abnormal_count_and_coverage_are_rejected(self):
