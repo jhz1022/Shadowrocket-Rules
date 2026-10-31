@@ -2,7 +2,7 @@
 """Optional live test: requires dig and an active Shadowrocket configuration.
 
 Run on the client Mac, never as an unattended GitHub Actions test. This verifies
-real-IP responses and fail-closed outcomes; correlate denials with native logs
+Fake-IP responses and fail-closed outcomes; correlate denials with native logs
 to distinguish a rule rejection from an unreachable resolver.
 """
 import argparse
@@ -39,7 +39,7 @@ def resolution_probe(expect='success', query=None):
             'exit_code': result.returncode, 'stdout': result.stdout, 'stderr': result.stderr,
             'scope': 'Correlate the queried name in native DNS logs; a reply alone does not identify the egress.'}
 
-CASES = [('udp', x, 'real-ip') for x in
+CASES = [('udp', x, 'fake-ip') for x in
          ['8.8.8.8', '223.5.5.5', '119.29.29.29', '9.9.9.9', '114.114.114.114']]
 CASES += [('tcp', x, 'no-answer') for x in ['8.8.8.8', '223.5.5.5', '119.29.29.29']]
 CASES += [('udp', x, 'no-answer') for x in ['2606:4700:4700::1111', '2001:4860:4860::8888']]
@@ -57,8 +57,8 @@ def probe(case):
         fields = line.split()
         if len(fields) >= 5 and fields[-2] == 'A':
             answers.append(fields[-1])
-    if expected == 'real-ip':
-        passed = bool(answers) and all(ipaddress.ip_address(a).is_global and ipaddress.ip_address(a) not in ipaddress.ip_network('198.18.0.0/15')
+    if expected == 'fake-ip':
+        passed = bool(answers) and all(ipaddress.ip_address(a) in ipaddress.ip_network('198.18.0.0/15')
                                       for a in answers)
     else:
         # A genuine upstream DNS response (even NXDOMAIN/SERVFAIL) is a failure

@@ -37,7 +37,7 @@ jobs:
         run: python -m unittest discover -s tests -v
       - name: Verify published snapshot integrity and reproducibility
         run: python scripts/build.py --offline --check
-      - name: Audit exact destination-IP coverage and domain independence
+      - name: Audit every source-domain boundary and exact IP coverage
         run: python scripts/audit.py --output .build/policy-audit.json
       - name: Save independent policy audit
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
@@ -72,9 +72,9 @@ jobs:
         run: python scripts/build.py
       - name: Reproduce the complete candidate offline
         run: python scripts/build.py --offline --check
-      - name: Audit candidate destination-IP routing and exact IP coverage
+      - name: Audit candidate domain boundaries and exact IP coverage
         run: python scripts/audit.py --compare .build/previous.conf --output .build/policy-audit.json
-      - name: Save destination-IP policy audit
+      - name: Save policy coverage, exceptions and transition summary
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: updated-policy-audit

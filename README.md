@@ -2,7 +2,7 @@
 
 > 墙外有更广阔的信息，也有偏见、误解和未经证实的说法。多看一种声音，是为了多一份判断的依据。愿你始终保有独立思考的心：不因观点顺耳就全盘接受，也不因立场不同就急着否定。多查证、多思考，把判断留给自己。
 
-一份个人自用、公开分享的 Shadowrocket 配置。按服务器目标 IP 分流：大陆地址直连，境外及未收录地址走代理。域名后缀、品牌和网站能否直连，不决定出口。
+一份个人自用、公开分享的 Shadowrocket 配置。以「绕过大陆」为基础，让国内及适合直连的服务尽量直连，海外服务按规则走代理，未命中的流量默认代理。
 
 ## 使用
 
@@ -22,16 +22,16 @@ https://raw.githubusercontent.com/jhz1022/Shadowrocket-Rules/main/dist/Shadowroc
 
 ## 分流方式
 
-- 先解析域名，再根据实际目标 IP 判断：命中大陆地址库就直连，其余走代理。
-- 同一网站使用国内外不同 CDN 节点时，按各次连接的目标地址分别判断。
-- `.cn` 不自动直连，国外品牌也不自动代理；不为检测网站或某个品牌添加特殊规则。
-- 局域网和本地保留名称继续直连。
+- 局域网、国内网站及上游收录的可直连服务优先直连。
+- 国外服务的中国站点和国内下载节点单独判断，例如 Bing 中国、iCloud 中国、Steam 国内下载，不按品牌一概代理。
+- Claude、OpenAI、Google、Copilot 等服务优先走代理。
+- 其余流量按域名和中国 IP 规则判断，最后由代理兜底。
 
 使用首页当前选择的代理节点，没有复杂的地区分组，也不包含广告拦截、MITM、脚本或重写。
 
 ## 几点说明
 
-- **DNS**：公网域名通过代理访问加密 DNS，返回真实 IP 后分流，并尽量保持连接使用同一地址。DNS 所在位置可能影响 CDN 选址；节点不可用时，公网域名解析也可能受影响。
+- **DNS**：直连服务使用当前网络的系统 DNS，保留国内 CDN 和局域网解析；代理侧使用代理解析及经代理访问的加密 DNS。
 - **IPv6**：默认采用 IPv4 兼容设置。这不等于关闭手机或电脑的系统 IPv6；iPhone 建议开启小火箭「隧道 → 包括所有网络」，重连后检查实际出口。
 - **UDP**：节点不支持转发时拒绝请求，不回退到直连；部分游戏、语音等功能需要支持 UDP 的节点。
 - **体积**：完整规则内置在一份配置中。小火箭导入后显示的大小还包含数据库和索引，不等于 VPN 运行内存。保留覆盖范围，只做不改变分流结果的去重与合并。
@@ -40,6 +40,12 @@ https://raw.githubusercontent.com/jhz1022/Shadowrocket-Rules/main/dist/Shadowroc
 
 ## 来源
 
-大陆地址数据来自 [gaoyifan/china-operator-ip](https://github.com/gaoyifan/china-operator-ip)，每日同步 IPv4 / IPv6 列表。IP 库依据网络路由与登记数据分类，可能存在误差，不能保证服务器的精确物理位置。CDN 分流判断的是连接到的节点，而非其背后的源站。
+感谢这些持续维护的数据来源：
+
+- [Loyalsoldier/v2ray-rules-dat](https://github.com/Loyalsoldier/v2ray-rules-dat)：增强直连列表、Apple 中国服务。
+- [v2fly/domain-list-community](https://github.com/v2fly/domain-list-community)：国内域名及国外服务的中国节点分类。
+- [Loyalsoldier/clash-rules](https://github.com/Loyalsoldier/clash-rules)：代理域名列表。
+- [gaoyifan/china-operator-ip](https://github.com/gaoyifan/china-operator-ip)：中国 IPv4 / IPv6 地址段。
+- [Public Suffix List](https://github.com/publicsuffix/list)：域名边界校验。
 
 构建与检查的详细记录保留在 [docs](docs/)。代码及组合配置按 [GPL-3.0](LICENSE) 分发，上游数据的许可与署名见 [NOTICE](NOTICE.md)。

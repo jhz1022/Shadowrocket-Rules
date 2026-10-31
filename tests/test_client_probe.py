@@ -22,11 +22,3 @@ class ResolutionEvidenceTests(unittest.TestCase):
                     patch.object(probe.subprocess, 'run', return_value=reply) as run:
                 self.assertEqual(probe.resolution_probe(mode)['passed'], passed)
                 self.assertIn('TXT', run.call_args[0][0])
-
-class RealAddressTests(unittest.TestCase):
-    def test_real_ip_probe_rejects_synthetic_and_private_answers(self):
-        for address,passed in [('142.251.157.119',True),('198.18.0.2',False),('192.168.1.1',False)]:
-            output='->>HEADER<<- status: NOERROR\nwww.google.com. 60 IN A '+address+'\n'
-            reply=subprocess.CompletedProcess([],0,output,'')
-            with self.subTest(address=address),patch.object(probe.subprocess,'run',return_value=reply):
-                self.assertEqual(probe.probe(('udp','8.8.8.8','real-ip'))['passed'],passed)
