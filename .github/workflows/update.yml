@@ -1,0 +1,78 @@
+name: Update Shadowrocket rules
+
+on:
+  schedule:
+    # UTC 04:23 = Asia/Shanghai 12:23. After both upstream daily schedules.
+    - cron: '23 4 * * *'
+  workflow_dispatch:
+  push:
+    branches: ['main']
+    paths:
+      - 'config/**'
+      - 'sources/sources.json'
+      - 'scripts/**'
+      - 'tests/**'
+      - '.github/workflows/**'
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: shadowrocket-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.12'
+      - name: Unit and failure-safety tests
+        run: python -m unittest discover -s tests -v
+      - name: Verify published snapshot integrity and reproducibility
+        run: python scripts/build.py --offline --check
+
+  update:
+    needs: verify
+    if: github.event_name != 'pull_request' && github.ref_name == github.event.repository.default_branch
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          fetch-depth: 1
+          ref: ${{ github.ref_name }}
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.12'
+      - name: Download pinned snapshots, build and validate
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python scripts/build.py
+      - name: Reproduce the complete candidate offline
+        run: python scripts/build.py --offline --check
+      - name: Publish only a validated change
+        env:
+          PUBLISH_BRANCH: ${{ github.ref_name }}
+        run: |
+          set -euo pipefail
+          git add -- dist
+          if git diff --cached --quiet; then
+            echo 'No published changes.' >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'chore: update generated Shadowrocket rules'
+          # Never force push or rebase a candidate built against an older template.
+          # A concurrent human commit/protected branch rejects publication safely.
+          git push origin "HEAD:refs/heads/$PUBLISH_BRANCH"
+          echo 'Published validated dist/Shadowrocket.conf and source snapshots.' >> "$GITHUB_STEP_SUMMARY"

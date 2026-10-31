@@ -1,0 +1,352 @@
+[
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,account-cn.alibabacloud.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,alibabacloud.com,PROXY"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,api.alibabacloud.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,alibabacloud.com,PROXY"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,cn.alibabacloud.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,alibabacloud.com,PROXY"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,izattime.qcomgeo2.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,qcomgeo2.com,PROXY"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,status.alibabacloud.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,alibabacloud.com,PROXY"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,time.xtracloud.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,xtracloud.net,PROXY"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN,xtratime.qcomgeo2.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,qcomgeo2.com,PROXY"
+  },
+  {
+    "action": "proxy-first-exception",
+    "direct": "DOMAIN-SUFFIX,ccb.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,ru.ccb.com,PROXY"
+  },
+  {
+    "action": "proxy-first-exception",
+    "direct": "DOMAIN-SUFFIX,cdn20.com,DIRECT",
+    "proxy": "DOMAIN,licdn.cn.cdn20.com,PROXY"
+  },
+  {
+    "action": "proxy-first-exception",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,666pool.cn,PROXY"
+  },
+  {
+    "action": "proxy-first-exception",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,airbnb.cn,PROXY"
+  },
+  {
+    "action": "proxy-first-exception",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,amd.com.cn,PROXY"
+  },
+  {
+    "action": "proxy-first-exception",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,arphic.com.cn,PROXY"
+  },
+  {
+    "action": "proxy-first-exception",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,bloomberg.cn,PROXY"
+  },
+  {
+    "action": "proxy-first-exception",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,daxa.cn,PROXY"
+  },
+  {
+    "action": "proxy-first-exception",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,drweb.cn,PROXY"
+  },
+  {
+    "action": "proxy-first-exception",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,dungeonkeeper.cn,PROXY"
+  },
+  {
+    "action": "proxy-first-exception",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,dungeonkeeper.com.cn,PROXY"
+  },
+  {
+    "action": "proxy-first-exception",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,dynacw.com.cn,PROXY"
+  },
+  {
+    "action": "proxy-first-exception",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,ebayauthenticate.com.cn,PROXY"
+  },
+  {
+    "action": "proxy-first-exception",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,entrust.cn,PROXY"
+  },
+  {
+    "action": "proxy-first-exception",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,futu.cn,PROXY"
+  },
+  {
+    "action": "proxy-first-exception",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,futubull.cn,PROXY"
+  },
+  {
+    "action": "proxy-first-exception",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,google.cn,PROXY"
+  },
+  {
+    "action": "proxy-first-exception",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,googleapis.cn,PROXY"
+  },
+  {
+    "action": "proxy-first-exception",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,hewlett-packard.com.cn,PROXY"
+  },
+  {
+    "action": "proxy-first-exception",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,hsbc.com.cn,PROXY"
+  },
+  {
+    "action": "proxy-first-exception",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,hsbcinsurance.com.cn,PROXY"
+  },
+  {
+    "action": "proxy-first-exception",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,hsbcqh.com.cn,PROXY"
+  },
+  {
+    "action": "proxy-first-exception",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,intel.com.cn,PROXY"
+  },
+  {
+    "action": "proxy-first-exception",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,intelrealsense.cn,PROXY"
+  },
+  {
+    "action": "proxy-first-exception",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,jinrieluosi.cn,PROXY"
+  },
+  {
+    "action": "proxy-first-exception",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,lightnovel.cn,PROXY"
+  },
+  {
+    "action": "proxy-first-exception",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,logitech.com.cn,PROXY"
+  },
+  {
+    "action": "proxy-first-exception",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,logitechg.com.cn,PROXY"
+  },
+  {
+    "action": "proxy-first-exception",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,logitechio.com.cn,PROXY"
+  },
+  {
+    "action": "proxy-first-exception",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,longbridge.cn,PROXY"
+  },
+  {
+    "action": "proxy-first-exception",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,longportapp.cn,PROXY"
+  },
+  {
+    "action": "proxy-first-exception",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,msi.cn,PROXY"
+  },
+  {
+    "action": "proxy-first-exception",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,mucinex.cn,PROXY"
+  },
+  {
+    "action": "proxy-first-exception",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,mucinex.com.cn,PROXY"
+  },
+  {
+    "action": "proxy-first-exception",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,qualcommventures.cn,PROXY"
+  },
+  {
+    "action": "proxy-first-exception",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,reutersagency.cn,PROXY"
+  },
+  {
+    "action": "proxy-first-exception",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,schwab.com.cn,PROXY"
+  },
+  {
+    "action": "proxy-first-exception",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,skytigris.cn,PROXY"
+  },
+  {
+    "action": "proxy-first-exception",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,snapdragon.cn,PROXY"
+  },
+  {
+    "action": "proxy-first-exception",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,sourcingforebay.com.cn,PROXY"
+  },
+  {
+    "action": "proxy-first-exception",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,thomsonreuters.cn,PROXY"
+  },
+  {
+    "action": "proxy-first-exception",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,tigerbbs.cn,PROXY"
+  },
+  {
+    "action": "proxy-first-exception",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,uupool.cn,PROXY"
+  },
+  {
+    "action": "proxy-first-exception",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,verisign.com.cn,PROXY"
+  },
+  {
+    "action": "proxy-first-exception",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,xn--ztsq84g.cn,PROXY"
+  },
+  {
+    "action": "proxy-first-exception",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,zhijianfengyi.cn,PROXY"
+  },
+  {
+    "action": "proxy-first-exception",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,zmw.cn,PROXY"
+  },
+  {
+    "action": "proxy-first-exception",
+    "direct": "DOMAIN-SUFFIX,cn,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,zoom.com.cn,PROXY"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN-SUFFIX,cn.pool.ntp.org,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,pool.ntp.org,PROXY"
+  },
+  {
+    "action": "proxy-first-exception",
+    "direct": "DOMAIN-SUFFIX,in.th,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,bx.in.th,PROXY"
+  },
+  {
+    "action": "drop-direct",
+    "direct": "DOMAIN-SUFFIX,lenovo.com.cdn.cloudflare.net,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,cloudflare.net,PROXY"
+  },
+  {
+    "action": "proxy-first-exception",
+    "direct": "DOMAIN-SUFFIX,mi.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,c.mi.com,PROXY"
+  },
+  {
+    "action": "proxy-first-exception",
+    "direct": "DOMAIN-SUFFIX,qcloud.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,shortconn.im.qcloud.com,PROXY"
+  },
+  {
+    "action": "proxy-first-exception",
+    "direct": "DOMAIN-SUFFIX,xn--czr694b,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.xn--czr694b,PROXY"
+  },
+  {
+    "action": "proxy-first-exception",
+    "direct": "DOMAIN-SUFFIX,xn--czr694b,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,xn--hxtr4rozx.xn--czr694b,PROXY"
+  },
+  {
+    "action": "proxy-first-exception",
+    "direct": "DOMAIN-SUFFIX,xn--fiqs8s,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.xn--fiqs8s,PROXY"
+  },
+  {
+    "action": "proxy-first-exception",
+    "direct": "DOMAIN-SUFFIX,xn--hxt814e,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,nike.xn--hxt814e,PROXY"
+  },
+  {
+    "action": "proxy-first-exception",
+    "direct": "DOMAIN-SUFFIX,xn--hxt814e,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,xn--74q035i.xn--hxt814e,PROXY"
+  },
+  {
+    "action": "proxy-first-exception",
+    "direct": "DOMAIN-SUFFIX,xn--hxt814e,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,xn--fiqs8sxootzz.xn--hxt814e,PROXY"
+  },
+  {
+    "action": "proxy-first-exception",
+    "direct": "DOMAIN-SUFFIX,xn--hxt814e,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,xn--gtvq61aiijy0b.xn--hxt814e,PROXY"
+  },
+  {
+    "action": "proxy-first-exception",
+    "direct": "DOMAIN-SUFFIX,xn--hxt814e,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,xn--gtvz22d.xn--hxt814e,PROXY"
+  },
+  {
+    "action": "proxy-first-exception",
+    "direct": "DOMAIN-SUFFIX,xn--hxt814e,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,xn--kput3imi374g.xn--hxt814e,PROXY"
+  },
+  {
+    "action": "proxy-first-exception",
+    "direct": "DOMAIN-SUFFIX,xn--hxt814e,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,xn--ruq8a011kt6y.xn--hxt814e,PROXY"
+  }
+]

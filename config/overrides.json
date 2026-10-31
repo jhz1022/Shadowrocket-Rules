@@ -1,0 +1,8 @@
+{
+  "proxy_suffix": [
+    "google.com", "google.cn", "googleapis.com", "gstatic.com",
+    "googlevideo.com", "youtube.com", "youtu.be",
+    "github.com", "github.io", "githubusercontent.com", "githubassets.com",
+    "chatgpt.com", "openai.com", "oaistatic.com", "oaiusercontent.com"
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "max_bytes": 8388608,
+  "min_ratio": 0.8,
+  "max_ratio": 1.5,
+  "max_output_rules": 70000,
+  "max_output_bytes": 3145728,
+  "sources": [
+    {
+      "id": "direct",
+      "repository": "v2fly/domain-list-community",
+      "ref": "master",
+      "path": "data/cn",
+      "format": "v2fly-archive",
+      "policy": "DIRECT",
+      "license": "MIT",
+      "min_records": 3000,
+      "max_records": 50000
+    },
+    {
+      "id": "proxy",
+      "repository": "Loyalsoldier/clash-rules",
+      "ref": "release",
+      "path": "proxy.txt",
+      "format": "clash-domain",
+      "policy": "PROXY",
+      "license": "GPL-3.0",
+      "min_records": 10000,
+      "max_records": 80000
+    },
+    {
+      "id": "china4",
+      "repository": "gaoyifan/china-operator-ip",
+      "ref": "ip-lists",
+      "path": "china.txt",
+      "format": "cidr4",
+      "policy": "DIRECT",
+      "license": "MIT",
+      "min_records": 3000,
+      "max_records": 30000
+    },
+    {
+      "id": "china6",
+      "repository": "gaoyifan/china-operator-ip",
+      "ref": "ip-lists",
+      "path": "china6.txt",
+      "format": "cidr6",
+      "policy": "DIRECT",
+      "license": "MIT",
+      "min_records": 1000,
+      "max_records": 30000
+    }
+  ]
+}
