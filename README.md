@@ -12,10 +12,12 @@ https://raw.githubusercontent.com/jhz1022/Shadowrocket-Rules/main/dist/Shadowroc
 
 GitHub 发布和自动化的验证状态见 [验证记录](docs/VALIDATION.md)。**尚未完成配置导入后的 Mac/iPhone 联网、日志与抓包验收。** 不能据静态检查声称“零 DNS 泄漏”。
 
+本仓库已完成发布。直接使用上面的订阅地址即可；以下步骤用于自行 Fork 或部署另一份仓库。
+
 ## 一次性部署
 
 1. 在自己的 GitHub 账户创建公开仓库，建议命名 `Shadowrocket-Rules`，默认分支 `main`。上传本工程所有文件，包含 `.github/`、`dist/inputs/` 和许可证。ZIP 本身不用上传；本地 `.git`、`.build` 不上传。
-2. Settings → Actions → General：允许 Actions，Workflow permissions 允许读写仓库内容。工作流仅使用 GitHub 自动提供的 `GITHUB_TOKEN`，不用填写个人 PAT。
+2. Settings → Actions → General：允许 Actions。默认 Workflow permissions 可保持只读；本工程只为 `update` 任务显式申请 `contents: write`。工作流仅使用 GitHub 自动提供的 `GITHUB_TOKEN`，不用填写个人 PAT。
 3. Actions → **Update Shadowrocket rules** → **Run workflow**，在默认分支运行一次；确认 `verify`、`update` 都成功。
 4. 在 Shadowrocket 的配置页面从 URL 添加以下地址，把占位内容替换成自己的仓库；启用该配置，全局路由选“配置”，首页选择任意可用节点。节点或机场订阅仍单独保留在首页，禁止提交到本仓库。
 

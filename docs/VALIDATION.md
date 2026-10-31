@@ -28,12 +28,16 @@ e0ac8b4a35dd395346d678cddd59d7138ff7ec88eeec3702fb02aa8ec2ff6bfa
 
 ## GitHub 发布验收
 
-- 每日 UTC 04:23 / 北京时间 12:23 的 schedule。
-- `workflow_dispatch` 手动运行、默认分支写权限、成功后提交、无差异时跳过提交。
-- 托管 Ubuntu / Python 3.12 上的实际 CI 执行。
-- GitHub 权限、分支保护和推送冲突的真实表现。
+- 已发布公开仓库：[jhz1022/Shadowrocket-Rules](https://github.com/jhz1022/Shadowrocket-Rules)，默认分支 `main`。
+- 已匿名下载 [唯一订阅地址](https://raw.githubusercontent.com/jhz1022/Shadowrocket-Rules/main/dist/Shadowrocket.conf)，与本地配置逐字节一致，大小及 SHA-256 与本记录相符。
+- [首次 push 运行](https://github.com/jhz1022/Shadowrocket-Rules/actions/runs/41160093172) 已成功完成 `verify` 和 `update`：托管 Ubuntu / Python 3.12 上 24 项测试、真实下载、构建门禁和离线复现均通过。
+- 首次在线构建返回 `NO_CHANGE`，发布步骤正常跳过提交；没有为了测试制造规则变更或空提交。真实 bot 提交/推送及推送冲突尚未遇到，不能写成已经实测。
+- Actions 已启用。仓库默认令牌权限保持只读，`update` 任务日志确认获得 `Contents: write`；没有放宽整个仓库的默认权限。
+- [workflow_dispatch 手动验收](https://github.com/jhz1022/Shadowrocket-Rules/actions/runs/41160097988) 已成功完成 `verify` 和 `update`，确认可以手动运行完整流水线。
+- 默认分支当前未启用分支保护；未来如果启用，需重新评估 bot 的提交/推送策略。
+- 工作流配置了每日 UTC 04:23 / 北京时间 12:23 的 schedule，状态 active；首次真实定时触发尚待计划时间到达，不以手动运行替代定时运行证据。
 
-联网复核确认现有 `jhz1022` GitHub CLI 授权有效，具有 `repo` 和 `workflow` 权限。首次检查把沙箱网络限制误判为凭据失效，此处纠正。正在发布到 `jhz1022/Shadowrocket-Rules`；上述远端项目须以实际 Actions 结果补充，不据本地检查认定通过。无需向脚本或聊天提供密钥。
+联网复核确认现有 `jhz1022` GitHub CLI 授权有效，具有 `repo` 和 `workflow` 权限。首次检查把沙箱网络限制误判为凭据失效，此处纠正。本次无需重新登录或向脚本、聊天提供密钥。
 
 ## 待客户端实测
 
