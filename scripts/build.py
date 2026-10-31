@@ -259,7 +259,7 @@ def resolve_conflicts(proxy, direct):
     return kept, sorted(conflicts, key=lambda x: (x['direct'], x['proxy'], x['action']))
 
 
-def match_rules(rules, host, address=None):
+def match_rules(rules, host, address=None, port=None):
     """Textual first-match model. Does not simulate Shadowrocket's DNS/TUN."""
     host = host.lower().rstrip('.')
     ip = ipaddress.ip_address(address) if address else None
@@ -269,6 +269,8 @@ def match_rules(rules, host, address=None):
         if kind == 'FINAL':
             return parts[1]
         value, policy = parts[1:3]
+        if kind == 'DST-PORT' and port is not None and int(value) == port:
+            return policy
         if kind == 'DOMAIN' and host == value:
             return policy
         if kind == 'DOMAIN-SUFFIX' and (host == value or host.endswith('.' + value)):
@@ -315,13 +317,15 @@ def validate(conf):
         'dns-fallback': 'false', 'dns-direct-system': 'true',
         'dns-direct-fallback-proxy': 'false', 'always-ip-address': 'false',
         'use-local-host-item-for-proxy': 'false', 'ipv6': 'true',
+        'hijack-dns': '*:53',
         'bypass-system': 'false', 'udp-policy-not-supported-behaviour': 'REJECT'
     }
     if any(settings.get(k) != v for k, v in required.items()):
         raise BuildError('DNS/routing baseline changed: update the design and validator together')
     if 'dns-fallback-system' in settings or 'direct-dns-server' in settings:
         raise BuildError('Unexpected DNS override')
-    markers = ['# BEGIN LAN', '# END LAN', '# BEGIN PROXY', '# END PROXY',
+    markers = ['# BEGIN LAN', '# END LAN', '# BEGIN DNS GUARD', '# END DNS GUARD',
+               '# BEGIN PROXY', '# END PROXY',
                '# BEGIN DIRECT', '# END DIRECT', '# BEGIN CHINA IP', '# END CHINA IP', 'FINAL,PROXY']
     offsets = [conf.index(m) for m in markers]
     if offsets != sorted(offsets) or any(conf.count(m) != 1 for m in markers):
@@ -329,7 +333,15 @@ def validate(conf):
     rules = rule_lines(conf)
     if not rules or rules[-1] != 'FINAL,PROXY' or len(rules) != len(set(rules)):
         raise BuildError('Duplicate rules or incorrect FINAL')
+    guard = conf.split('# BEGIN DNS GUARD\n')[1].split('# END DNS GUARD')[0]
+    guard_rules = [x for x in guard.splitlines() if x and not x.startswith('#')]
+    if guard_rules != ['DST-PORT,53,REJECT']:
+        raise BuildError('Missing or weakened port-53 DNS guard')
     for line in rules[:-1]:
+        # This single security guard is the only permitted REJECT rule.
+        # Upstream domain/IP data still cannot inject blocking policies.
+        if line == 'DST-PORT,53,REJECT':
+            continue
         parts = line.split(',')
         if len(parts) not in (3, 4) or parts[2] not in ('DIRECT', 'PROXY'):
             raise BuildError('Unexpected rule/policy')
@@ -361,8 +373,14 @@ def validate(conf):
     for host, ip, expected in canaries:
         if match_rules(rules, host, ip) != expected:
             raise BuildError(f'Routing canary failed: {host or ip}')
+    dns_canaries = [('223.5.5.5', 'REJECT'), ('119.29.29.29', 'REJECT'),
+                    ('9.9.9.9', 'REJECT'), ('2606:4700:4700::1111', 'REJECT'),
+                    ('192.168.1.1', 'DIRECT'), ('fe80::1', 'DIRECT')]
+    for address, expected in dns_canaries:
+        if match_rules(rules, '', address, port=53) != expected:
+            raise BuildError(f'DNS fallback rule failed: {address}')
     return {'rules': len(rules), 'types': dict(sorted(Counter(x.split(',')[0] for x in rules).items())),
-            'routing_canaries': len(canaries)}
+            'routing_canaries': len(canaries), 'dns_port_canaries': len(dns_canaries)}
 
 
 def download(url, limit=8388608, token=None, attempts=3):

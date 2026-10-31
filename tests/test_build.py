@@ -191,7 +191,30 @@ class PublishedSnapshotTests(unittest.TestCase):
         self.assertNotIn('GEOIP,', self.conf)
         self.assertNotIn('RULE-SET,', self.conf)
         self.assertNotIn('[Proxy Group]', self.conf)
-        self.assertFalse(any(',REJECT' in line for line in b.rule_lines(self.conf)))
+        self.assertEqual([line for line in b.rule_lines(self.conf) if ',REJECT' in line],
+                         ['DST-PORT,53,REJECT'])
+
+    def test_dns_guard_preserves_lan_and_blocks_uncaptured_public_dns(self):
+        rules = b.rule_lines(self.conf)
+        for address in ['223.5.5.5', '119.29.29.29', '8.8.8.8', '9.9.9.9',
+                        '2606:4700:4700::1111', '2001:4860:4860::8888']:
+            with self.subTest(address=address):
+                self.assertEqual(b.match_rules(rules, '', address, port=53), 'REJECT')
+        for address in ['192.168.1.1', '10.0.0.1', 'fd00::1', 'fe80::1']:
+            self.assertEqual(b.match_rules(rules, '', address, port=53), 'DIRECT')
+        self.assertEqual(b.match_rules(rules, 'www.baidu.com', port=53), 'REJECT')
+        self.assertEqual(b.match_rules(rules, 'www.baidu.com', port=443), 'DIRECT')
+        self.assertEqual(b.match_rules(rules, 'www.google.com', port=443), 'PROXY')
+
+    def test_dns_capture_and_guard_cannot_silently_regress(self):
+        for conf in [self.conf.replace('hijack-dns = *:53', 'hijack-dns = :53'),
+                     self.conf.replace('hijack-dns = *:53', 'hijack-dns = 223.5.5.5'),
+                     self.conf.replace('DST-PORT,53,REJECT', 'DST-PORT,53,DIRECT'),
+                     self.conf.replace('DST-PORT,53,REJECT', 'DST-PORT,853,REJECT'),
+                     self.conf.replace('# BEGIN DNS GUARD', '# BEGIN PROXY', 1),
+                     self.conf.replace('FINAL,PROXY', 'DOMAIN,ads.example,REJECT\nFINAL,PROXY')]:
+            with self.subTest(change=conf[:50]), self.assertRaises((b.BuildError, ValueError)):
+                b.validate(conf)
 
     def test_proxy_domain_does_not_need_cn_ip_resolution(self):
         rules = b.rule_lines(self.conf)

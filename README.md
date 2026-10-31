@@ -10,7 +10,7 @@
 https://raw.githubusercontent.com/jhz1022/Shadowrocket-Rules/main/dist/Shadowrocket.conf
 ```
 
-GitHub 发布和自动化的验证状态见 [验证记录](docs/VALIDATION.md)。**尚未完成配置导入后的 Mac/iPhone 联网、日志与抓包验收。** 不能据静态检查声称“零 DNS 泄漏”。
+GitHub 发布及 Mac 客户端验证状态见 [验证记录](docs/VALIDATION.md)和[本机修复验收](docs/MAC_DNS_FIX.md)。已在 macOS 26.7.1 / Shadowrocket 2.2.93 实测基础分流与 DNS 修复；iPhone、故障注入和物理网卡抓包仍未验收，不承诺“零 DNS 泄漏”。
 
 本仓库已完成发布。直接使用上面的订阅地址即可；以下步骤用于自行 Fork 或部署另一份仓库。
 
@@ -46,7 +46,11 @@ GitHub 发布和自动化的验证状态见 [验证记录](docs/VALIDATION.md)�
 
 本机 Shadowrocket **2.2.93** 的内置默认配置、提示文本和程序参数字符串已经只读核对。建议 Mac/iPhone 使用同版或更新版。`dns-fallback` 是本机可识别的回退键；不采用未经本机依据确认的 `dns-fallback-system`。参数识别与真实执行效果是两回事，导入后仍需按 [客户端验收](docs/CLIENT_TEST.md) 核对。
 
-IPv6 **启用**，同时内嵌国内 IPv6 前缀，避免把“关闭 AAAA”误认为禁用了系统所有 IPv6。局域网、链路本地及组播旁路得到保留。TUN、网络扩展、其他 VPN、系统路由、浏览器 DoH/Private Relay 等仍可能改变实际路径；本配置不是系统防火墙。`hijack-dns` 仅捕获列出的常见硬编码 DNS，未列出的 DNS、自带 DoH/DoT 和未被接管的流量不在完整控制范围。
+IPv6 **启用**，同时内嵌国内 IPv6 前缀。客户端支持 IPv6 不代表所选节点拥有 IPv6 出口：IPv4-only VPS 可以正常处理有 IPv4 地址的常见服务，但 IPv6-only 目标仍需节点服务器实际启用 IPv6。本次所选 VPS 未启用 IPv6，纯 IPv6 连接失败与该限制吻合，未通过关闭客户端 IPv6 掩盖，也未擅自更改服务器。
+
+`hijack-dns = *:53` 已在上述 Mac 版本实测能接管 IPv4 UDP DNS。原来的裸 IP 名单、空地址 `:53` 写法没有达到预期，已移除。客户端未接管的外部端口 53 流量，由局域网规则之后、业务规则之前的 `DST-PORT,53,REJECT` 拒绝；本次 TCP 和 IPv6 DNS 探测没有获得上游答案。**这部分是拒绝兜底，不是把 TCP/IPv6 DNS 自动转换成 DoH**；应用自带的 TCP DNS 可能因此失败，应使用系统解析。
+
+局域网、链路本地及组播旁路得到保留，私网 DNS 仍可使用；因此不能把此规则称为系统级 DNS 防火墙。应用自带 DoH/DoT、私网旁路及未进入 Tunnel 的流量仍有独立边界。客户端内部的直连系统 DNS、代理 DoH 和节点 DoH 引导不由这条端口兜底代替。TUN、其他 VPN、系统路由、浏览器 DoH/Private Relay 也可能改变实际路径。
 
 ## 上游与取舍
 
@@ -68,7 +72,7 @@ IP 表是 BGP/登记分类数据，不代表每个地址的实时物理位置，
 
 ## 规则顺序与冲突
 
-局域网保护 → 明确代理 → 国内域名直连 → 国内 IPv4/IPv6 直连 → `FINAL,PROXY`。
+局域网保护 → 未接管 DNS 的端口 53 拒绝兜底 → 明确代理 → 国内域名直连 → 国内 IPv4/IPv6 直连 → `FINAL,PROXY`。端口 53 的 REJECT 仅用于 DNS 安全，不生成广告拦截策略。
 
 相同策略的子后缀、被后缀涵盖的完整域名会被压缩。跨策略统一代理优先：代理后缀完整覆盖的直连条目删除；直连父后缀内的代理子域名保留并排在前面。全部交叉项及处理结果见 [`dist/conflicts.json`](dist/conflicts.json)。局域网保留命名空间被上游侵入时停止构建。
 
@@ -83,6 +87,7 @@ python3 scripts/build.py                      # 实际下载并构建
 python3 scripts/build.py --offline             # 从已提交源快照重建
 python3 scripts/build.py --offline --check     # 只读检查完整可复现性
 python3 -m unittest discover -s tests -v        # 转换、路由、异常输入与保留旧版测试
+python3 scripts/probe_client_dns.py            # 仅在实际客户端 Mac 上运行；需要已启用配置
 ```
 
 修改模板、构建器或 sources 后，先离线重建、运行测试，再提交源码和 `dist/`。`--check` 会比较生成器、模板、源配置和产物哈希，因此故意修改源码却不重建会失败。`--check` 不模拟 Shadowrocket 原生解析器。
@@ -107,6 +112,7 @@ config/template.conf          固定 DNS / 局域网 / 模板
 config/overrides.json         少量关键服务代理保护
 sources/sources.json          上游、类型、许可、质量阈值
 scripts/build.py              标准库构建器
+scripts/probe_client_dns.py   可选的本机实时 DNS 验收，不在 Actions 中冒充真机测试
 tests/test_build.py           解析、冲突、失败保护、可复现性测试
 dist/Shadowrocket.conf        唯一客户端订阅入口
 dist/manifest.json            来源与质量报告
