@@ -2,7 +2,7 @@
 
 > 墙外有更广阔的信息，也有偏见、误解和未经证实的说法。多看一种声音，是为了多一份判断的依据。愿你始终保有独立思考的心：不因观点顺耳就全盘接受，也不因立场不同就急着否定。多查证、多思考，把判断留给自己。
 
-一份个人自用、公开分享的 Shadowrocket 配置。以「绕过大陆」为基础，让国内及适合直连的服务尽量直连，海外服务按规则走代理，未命中的流量默认代理。
+这是我为自己日常使用而维护、也公开分享的 Shadowrocket 配置。以「绕过大陆」为基础，让国内及适合直连的服务尽量直连，海外服务按规则走代理，未命中的流量默认代理。
 
 ## 使用
 
@@ -48,4 +48,4 @@ https://raw.githubusercontent.com/jhz1022/Shadowrocket-Rules/main/dist/Shadowroc
 - [gaoyifan/china-operator-ip](https://github.com/gaoyifan/china-operator-ip)：中国 IPv4 / IPv6 地址段。
 - [Public Suffix List](https://github.com/publicsuffix/list)：域名边界校验。
 
-构建与检查的详细记录保留在 [docs](docs/)。代码及组合配置按 [GPL-3.0](LICENSE) 分发，上游数据的许可与署名见 [NOTICE](NOTICE.md)。
+我的构建、排查与测试记录保留在 [docs](docs/)。代码及组合配置按 [GPL-3.0](LICENSE) 分发，上游数据的许可与署名见 [NOTICE](NOTICE.md)。

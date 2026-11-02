@@ -2,7 +2,7 @@
 
 > 历史记录：本文对应当时的配置。2026-10-31 后续已重构为增强白名单；当前数据源、分流优先级及覆盖结果以 [ENHANCED_WHITELIST.md](ENHANCED_WHITELIST.md) 和 README 为准。本文中的真机结果不代表新版已完成同样测试。
 
-2026-10-31，Mac Shadowrocket 2.2.93 / macOS 26.7.1。用户授权解决复审发现的缺口。
+2026-10-31，Mac Shadowrocket 2.2.93 / macOS 26.7.1。我根据复审结果，继续修复发现的缺口。
 
 ## 实际变更
 
@@ -48,7 +48,7 @@ python3 scripts/probe_client_dns.py --resolution negative
 python3 scripts/probe_apple_delivery.py
 ```
 
-故障测试必须在可恢复的本地副本中修改两个显式主端点，再按表中的正向/否定请求检查原生日志；禁止直接将故障端点发布到 dist 或让用户日常使用它们。
+我只在可恢复的本地副本中修改两个显式主端点做故障测试，再按表中的正向/否定请求检查原生日志；故障端点不得发布到 dist，也不得留在日常配置中。
 
 ## 自动检查与发布
 

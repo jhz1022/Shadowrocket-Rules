@@ -1,14 +1,14 @@
 # 项目修复与同类方案评估（2026-10-31）
 
-> 后续用户反馈揭示了本报告未充分验证的业务覆盖问题。直连来源与优先级已按 [增强白名单重构](ENHANCED_WHITELIST.md) 修订；本文是之前版本的历史验收，不代表当前分流策略。
+> 后续实际使用让我发现，这份报告对业务覆盖的验证还不充分。直连来源与优先级已按 [增强白名单重构](ENHANCED_WHITELIST.md) 修订；本文是之前版本的历史验收，不代表当前分流策略。
 
 ## 结论与范围
 
-本轮已修复三个能复现的缺陷，并生成通过本地检查的候选产物。对本项目既定目标——一份 Shadowrocket 配置、国内分类直连、境外及未知默认代理、保留局域网、不引入广告拦截和 MITM——目前没有在已执行检查中发现新的阻断问题。**这足以支持继续使用和受控发布，不能证明“完美”、全网分类准确或所有手机网络下零泄漏。**
+这一轮我修复了三个能复现的缺陷，并生成通过本地检查的候选产物。对本项目既定目标——一份 Shadowrocket 配置、国内分类直连、境外及未知默认代理、保留局域网、不引入广告拦截和 MITM——目前没有在已执行检查中发现新的阻断问题。**这足以支持继续使用和受控发布，不能证明“完美”、全网分类准确或所有手机网络下零泄漏。**
 
 本报告中的验证数据记录于提交前的本地验收阶段。对应提交的远端检查结果以 [GitHub Actions](https://github.com/jhz1022/Shadowrocket-Rules/actions) 为准；发布后，手机仍需刷新订阅并重新连接。先前手机测试不能视为更新后配置已经在手机生效的证明。
 
-调研核对了 36 个仓库或来源候选：29 个规则、数据或相关工具资源仓库有近期提交，1 个维护中的 PSL 安全数据源，另外包含历史仓库、归档镜像及无法读取的候选。没有宣称穷尽互联网所有维护项目，也没有对每个上游进行完整代码审计。
+我调研核对了 36 个仓库或来源候选：29 个规则、数据或相关工具资源仓库有近期提交，1 个维护中的 PSL 安全数据源，另外包含历史仓库、归档镜像及无法读取的候选。没有宣称穷尽互联网所有维护项目，也没有对每个上游进行完整代码审计。
 
 ## 已修复缺陷
 
@@ -108,8 +108,8 @@ PSL 快照包含 6,949 条 ICANN 记录；原始文件、固定提交、SHA-256 
 | [SukkaW/Surge](https://github.com/SukkaW/Surge/blob/master/README.md)、[构建与测试入口](https://github.com/SukkaW/Surge/blob/master/package.json) | 区分域名/non-IP/IP 规则，强调 DNS 触发顺序，具备构建、测试和性能工具 | 本项目已有业务域名先于公网 IP、所有 IP 规则 no-resolve；原生客户端性能测量仍弱于专门性能研究，不能凭条数声称更快 |
 | [DustinWin](https://github.com/DustinWin/ruleset_geodata/blob/main/README.md)、[SagerNet 发布工作流](https://github.com/SagerNet/sing-geosite/blob/main/.github/workflows/release.yaml) | 前者组合国内标签、游戏平台、AI 等分类；后者定时生成 geosite 与 rule-set | 参考来源链和发布方式；不因支持更多格式就增加客户端依赖 |
 | [Johnshall](https://github.com/Johnshall/Shadowrocket-ADBlock-Rules-Forever/blob/release/readme.md)、[zhouzhouprogram](https://github.com/zhouzhouprogram/Shadowrocket-ADBlock-Rules/blob/master/readme.md) | 延续 h2y 的多配置方案和每日生成，黑名单与白名单默认行为不同 | 保留本项目明确的 FINAL,PROXY；不用可直连的海外 top500 数据替换严格的业务白名单 |
-| [GMOogway](https://github.com/GMOogway/shadowrocket-rules/blob/master/README.md) | 模块化直连/代理/拦截表；当前 README 列出约 11 万直连规则 | 本项目约 4.4 万总规则及单文件交付更贴合既定范围；数量不能作为覆盖准确性或速度的直接评分 |
-| [LingJingMaster](https://github.com/LingJingMaster/Shadowrocket-Rules/blob/main/README.md) | 地区策略组、香港银行/券商、Apple 等细分策略 | 用户只使用当前节点，不需要照搬地区策略组；香港银行直连也不同于本项目汇丰中国例外 |
+| [GMOogway](https://github.com/GMOogway/shadowrocket-rules/blob/master/README.md) | 模块化直连/代理/拦截表；当前 README 列出约 11 万直连规则 | 本项目约 4.4 万总规则及单文件配置更贴合既定范围；数量不能作为覆盖准确性或速度的直接评分 |
+| [LingJingMaster](https://github.com/LingJingMaster/Shadowrocket-Rules/blob/main/README.md) | 地区策略组、香港银行/券商、Apple 等细分策略 | 我日常只使用当前节点，不需要照搬地区策略组；香港银行直连也不同于本项目汇丰中国例外 |
 | [VPSDance/ai-proxy-rules](https://github.com/VPSDance/ai-proxy-rules/blob/main/README.md) | 聚合多个来源，按 AI 服务和地区分类 | 用其 Anthropic 列表做静态交叉检查，未全量导入关键词、进程、ASN 规则 |
 | [PaPerseller/chn-iplist](https://github.com/PaPerseller/chn-iplist/blob/master/README.md) | IPv4 多源、IPv6 APNIC，并主动筛除部分 ASN | 说明“国内 IP”存在不同政策口径；本项目继续固定 gaoyifan，不能把两表取并集当更准确 |
 | [Aethersailor](https://github.com/Aethersailor/Custom_OpenClash_Rules/blob/main/README.md) | 将 DNS 防护与 Fake-IP、流量接管、终端设置及实际测试条件关联 | 采用这种条件化验收思想；OpenClash 的路由器设置不能直接用于 iOS 隧道 |

@@ -2,7 +2,7 @@
 
 > 历史记录：本文对应当时的配置。2026-10-31 后续已重构为增强白名单；当前数据源、分流优先级及覆盖结果以 [ENHANCED_WHITELIST.md](ENHANCED_WHITELIST.md) 和 README 为准。本文中的真机结果不代表新版已完成同样测试。
 
-审查日期：2026-10-31（Asia/Shanghai）。以下把事实、设计推断及待实测部分分开。
+审查日期：2026-10-31（Asia/Shanghai）。我在这里分别记录查到的事实、设计推断和仍待实测的部分。
 
 ## 原故障不能据检测页定性
 
@@ -16,7 +16,7 @@
 
 ## 参数依据与证据强度
 
-本机安装 `/Applications/Shadowrocket.app`，读取 Info.plist 得到版本 **2.2.93**。未读取用户节点数据库、密码或订阅，初期参数核查为只读；后续已按用户授权导入 DNS 修订候选并复测，见 `MAC_DNS_FIX.md`。
+我的 Mac 安装了 `/Applications/Shadowrocket.app`，我从 Info.plist 确认版本为 **2.2.93**。初期参数核查只读，没有涉及节点数据库、密码或订阅；随后我导入 DNS 修订候选并复测，见 `MAC_DNS_FIX.md`。
 
 只读检查的一手材料：
 
@@ -24,7 +24,7 @@
 - `Contents/Resources/zh-Hans.lproj/Localizable.strings`：DNS 回退说明、独立 Direct DNS、fake-IP 与硬编码 DNS、Include All Networks / Enforce Routes 及本地网络排除提示。
 - 程序的参数字符串：存在 `dns-fallback`、`direct-dns-server`、`proxy-dns-server`、`always-ip-address`；未发现 `dns-fallback-system`。**字符串出现证明支持线索，不证明所有版本、模式及协议的行为。**
 
-开发者由 [App Store 页面](https://apps.apple.com/us/app/shadowrocket/id932747118) 指向 [shadowlaunch.com](https://shadowlaunch.com/)，没有把搜索结果中自称“官方手册”的其他域名当成官方来源。App Store 的更新记录也明确提到独立直连 DNS 及 DNS/TUN 修复，说明版本差异有实际影响。
+我从 [App Store 页面](https://apps.apple.com/us/app/shadowrocket/id932747118) 确认 Shadowrocket 开发者官网为 [shadowlaunch.com](https://shadowlaunch.com/)，没有把搜索结果中自称“官方手册”的其他域名当成官方来源。App Store 的更新记录也明确提到独立直连 DNS 及 DNS/TUN 修复，说明版本差异有实际影响。
 
 [LOWERTOP 社区手册](https://github.com/LOWERTOP/Shadowrocket) 仅作为查找语法和待验行为的辅助资料，**不是官方协议规范**。其中 `#proxy`、节点 DNS 与 `no-resolve` 的解释须以本机导出配置、DNS 日志与实际链路交叉确认。本次没有把社区描述当成客户端联网验收。
 
@@ -54,7 +54,7 @@
 
 候选 [v2ray-rules-dat 构建脚本](https://github.com/Loyalsoldier/v2ray-rules-dat/blob/master/.github/workflows/run.yml) 的计划为 UTC 22:00。它合并多种来源，并保留 `full`、`regexp`、`keyword`。实际样本约 110,194 条直连、27,475 条代理，不能全部视为后缀，也不能视为严格境内/境外地理界限。
 
-首轮用同源的 Clash 全量直连/代理数据构建到约 145,745 条、4.8 MiB，未选为最终交付。随后约 5,700 条的中间 `cn.txt` 未通过淘宝直连哨兵，也未发布。最终直接使用 [v2fly 原始数据语法](https://github.com/v2fly/domain-list-community#structure-of-data)，展开 `include` 属性过滤和 `&affiliation`，避免依赖中间生成器是否跟上数据格式变化。归档只在内存读取，不解压到磁盘，并限制下载及解压大小、循环 include 和格式类型。
+我首轮用同源的 Clash 全量直连/代理数据构建到约 145,745 条、4.8 MiB，没有将其作为最终发布版本。随后约 5,700 条的中间 `cn.txt` 未通过淘宝直连哨兵，也未发布。最终直接使用 [v2fly 原始数据语法](https://github.com/v2fly/domain-list-community#structure-of-data)，展开 `include` 属性过滤和 `&affiliation`，避免依赖中间生成器是否跟上数据格式变化。归档只在内存读取，不解压到磁盘，并限制下载及解压大小、循环 include 和格式类型。
 
 [Loyalsoldier/clash-rules 构建脚本](https://github.com/Loyalsoldier/clash-rules/blob/master/.github/workflows/run.yml) 在 UTC 22:30 计划生成代理域名集，明确剔除正则与关键词。本工程严格解析其实际输出格式。完整匹配和后缀的区分不丢失；缺失正则带来的代理例外覆盖不足仍是已知限制，而非假装完整兼容原 V2Ray 列表。
 
