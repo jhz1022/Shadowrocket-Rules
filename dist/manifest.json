@@ -57,7 +57,7 @@
     "DOMAIN-SUFFIX,xn--zfr164b,DIRECT",
     "DOMAIN-SUFFIX,yun,DIRECT"
   ],
-  "generator_sha256": "47076f9e0284b477bd64f545e780ed5f3bc85417e2b2b4c7695eaea7ad07d625",
+  "generator_sha256": "e10b355d9a5aef347f6a385be9223e1b56ce1efeacea05939760fbaf93be28eb",
   "ip_coverage": {
     "china4": 344075264,
     "china6": 5430376659984931346592740400955392

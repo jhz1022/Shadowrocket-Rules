@@ -10,6 +10,7 @@ from collections import Counter
 
 import build
 import audit_sources
+import update_guard
 
 
 def domain_sets(rules):
@@ -116,12 +117,17 @@ def audit(root=build.ROOT, conf=None, previous=None):
                 if len(changed_examples) < 100:
                     changed_examples.append({'host': host, 'before': before, 'after': got})
     block = conf.split('# BEGIN CHINA IP\n')[1].split('# END CHINA IP')[0]
-    ip_equality = {}
+    ip_equality, ip_changes = {}, {}
     for ident, kind in [('china4', 'IP-CIDR'), ('china6', 'IP-CIDR6')]:
         before = list(ipaddress.collapse_addresses(raw[ident]))
         after = list(ipaddress.collapse_addresses(ipaddress.ip_network(x.split(',')[1])
                      for x in block.splitlines() if x.startswith(kind + ',')))
         ip_equality[ident] = before == after
+        if previous is not None:
+            old_ip_block = previous.split('# BEGIN CHINA IP\n')[1].split('# END CHINA IP')[0]
+            old_networks = [ipaddress.ip_network(x.split(',')[1])
+                            for x in old_ip_block.splitlines() if x.startswith(kind + ',')]
+            ip_changes[ident] = update_guard.ip_delta(old_networks, after)
     if failures or not all(ip_equality.values()):
         raise build.BuildError('Full rule audit failed: ' + json.dumps(
             {'domain_failures': failures[:5], 'ip_union_equal': ip_equality}, sort_keys=True))
@@ -142,6 +148,7 @@ def audit(root=build.ROOT, conf=None, previous=None):
     return {'config_sha256': build.sha(conf.encode()), 'domain_boundary_cases': len(samples),
             'previous_config_sha256': build.sha(previous.encode()) if previous is not None else None,
             'boundary_policy_changes': dict(transitions),
+            'ip_policy_changes': ip_changes,
             'change_examples_first_100': changed_examples,
             'source_policy_coverage': coverage, 'direct_source_exceptions': exceptions,
             'domain_failures': 0, 'ip_union_equal': ip_equality,
@@ -153,13 +160,18 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output', type=Path, help='Optional local audit JSON, not a daily commit')
     parser.add_argument('--compare', type=Path, help='Previous config for boundary-policy change accounting')
+    parser.add_argument('--enforce-changes', action='store_true', help='Block anomalous automatic publication')
     args = parser.parse_args()
     try:
         result = audit(previous=args.compare.read_text() if args.compare else None)
+        if args.enforce_changes:
+            result['update_guard'] = update_guard.assess(result,
+                json.loads((build.ROOT / 'config/update-policy.json').read_text()))
         if args.output:
             args.output.parent.mkdir(parents=True, exist_ok=True)
             args.output.write_text(json.dumps(result, indent=2, sort_keys=True) + '\n')
-        print('AUDIT_OK:', json.dumps({k: v for k, v in result.items()
+        label = 'AUDIT_BLOCKED:' if result.get('update_guard', {}).get('passed') is False else 'AUDIT_OK:'
+        print(label, json.dumps({k: v for k, v in result.items()
                                       if k not in {'direct_source_exceptions', 'change_examples_first_100'}}, sort_keys=True))
         if os.environ.get('GITHUB_STEP_SUMMARY'):
             summary = {k: result[k] for k in ('config_sha256', 'domain_boundary_cases',
@@ -167,6 +179,11 @@ def main():
             with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as stream:
                 stream.write('### Routing policy audit\n\n```json\n' +
                              json.dumps(summary, indent=2) + '\n```\n')
+                if 'update_guard' in result:
+                    stream.write('\n### Automatic publication guard\n\n```json\n' +
+                                 json.dumps(result['update_guard'], indent=2) + '\n```\n')
+        if args.enforce_changes and not result['update_guard']['passed']:
+            raise build.BuildError('Routing change budget exceeded; keep the published configuration and review the audit artifact')
     except (build.BuildError, ValueError, KeyError, OSError) as exc:
         print('AUDIT FAILED:', exc, file=sys.stderr)
         return 1

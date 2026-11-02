@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "max_domain_changes": 2000,
+  "max_domain_change_ratio": 0.005,
+  "max_proxy_to_direct": 500,
+  "max_proxy_to_direct_ratio": 0.001,
+  "max_ip_added_ratio": 0.05,
+  "max_ip_removed_ratio": 0.05
+}

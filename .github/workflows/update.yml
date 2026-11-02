@@ -77,10 +77,11 @@ jobs:
       - name: Reproduce the complete candidate offline
         run: python scripts/build.py --offline --check
       - name: Audit candidate domain boundaries and exact IP coverage
-        run: python scripts/audit.py --compare .build/previous.conf --output .build/policy-audit.json
+        run: python scripts/audit.py --compare .build/previous.conf --enforce-changes --output .build/policy-audit.json
       - name: Check candidate cross-service routing and DNS-trigger contracts
         run: python scripts/check_routing_contract.py --output .build/routing-contract.json
       - name: Save policy coverage, exceptions and transition summary
+        if: ${{ !cancelled() && hashFiles('.build/policy-audit.json') != '' }}
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: updated-policy-audit

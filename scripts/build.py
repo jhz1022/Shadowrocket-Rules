@@ -704,7 +704,8 @@ def generate(config, template, overrides, inputs, metadata, baseline=None):
                               'action': 'whitelist-direct-override',
                               'direct': r.line(), 'proxy': p.line()})
     direct_suffix = {r.value: r for r in regional | direct if r.kind == 'DOMAIN-SUFFIX'}
-    for p in sorted(proxy):
+    ordered_proxy = sorted(proxy)
+    for p in ordered_proxy:
         for name in parents(p.value):
             if name in direct_suffix and name != p.value:
                 conflicts.append({'stage': 'enhanced-whitelist', 'action': 'whitelist-parent-override',
@@ -712,7 +713,7 @@ def generate(config, template, overrides, inputs, metadata, baseline=None):
                 break
     for section, entries in reviewed.items():
         for rule, ident in sorted(entries.items()):
-            for p in sorted(proxy):
+            for p in ordered_proxy:
                 if domain_overlap(rule, p):
                     conflicts.append({'action': 'reviewed-direct-override', 'stage': 'reviewed-policy', 'group': ident,
                                       'direct': rule.line(), 'proxy': p.line()})
