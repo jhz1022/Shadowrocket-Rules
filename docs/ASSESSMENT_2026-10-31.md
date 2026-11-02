@@ -1,14 +1,14 @@
 # 项目修复与同类方案评估（2026-10-31）
 
-> 后续实际使用让我发现，这份报告对业务覆盖的验证还不充分。直连来源与优先级已按 [增强白名单重构](ENHANCED_WHITELIST.md) 修订；本文是之前版本的历史验收，不代表当前分流策略。
+> 历史记录：此版本存在部分国内服务误走代理的问题，后续已通过 [增强白名单重构](ENHANCED_WHITELIST.md) 调整数据来源和规则优先级。以下为修订前的测试结果。
 
 ## 结论与范围
 
-这一轮我修复了三个能复现的缺陷，并生成通过本地检查的候选产物。对本项目既定目标——一份 Shadowrocket 配置、国内分类直连、境外及未知默认代理、保留局域网、不引入广告拦截和 MITM——目前没有在已执行检查中发现新的阻断问题。**这足以支持继续使用和受控发布，不能证明“完美”、全网分类准确或所有手机网络下零泄漏。**
+修复了三个可复现缺陷，候选配置通过本地检查，未发现新的阻断问题。配置仍采用国内分类直连、境外及未知域名默认代理的策略，保留局域网访问，不包含广告拦截和 MITM。检查范围见下表，全网分类和其他手机网络场景尚未验证。
 
-本报告中的验证数据记录于提交前的本地验收阶段。对应提交的远端检查结果以 [GitHub Actions](https://github.com/jhz1022/Shadowrocket-Rules/actions) 为准；发布后，手机仍需刷新订阅并重新连接。先前手机测试不能视为更新后配置已经在手机生效的证明。
+以下为提交前的本地测试记录，远端结果见对应提交的 [GitHub Actions](https://github.com/jhz1022/Shadowrocket-Rules/actions)。发布后需在手机上刷新订阅、重新连接并核对版本，旧版测试结果不能用于确认新版已生效。
 
-我调研核对了 36 个仓库或来源候选：29 个规则、数据或相关工具资源仓库有近期提交，1 个维护中的 PSL 安全数据源，另外包含历史仓库、归档镜像及无法读取的候选。没有宣称穷尽互联网所有维护项目，也没有对每个上游进行完整代码审计。
+调研范围包括 36 个仓库或来源候选：29 个规则、数据或相关工具资源仓库有近期提交，1 个维护中的 PSL 安全数据源，另外包含历史仓库、归档镜像及无法读取的候选。调研未覆盖所有维护中的项目，也未对每个上游做完整代码审计。
 
 ## 已修复缺陷
 
@@ -22,9 +22,9 @@ PSL 快照包含 6,949 条 ICANN 记录；原始文件、固定提交、SHA-256 
 
 更新查询的分页、状态和 1,000 条搜索限制按 [GitHub Workflow Runs API](https://docs.github.com/en/rest/actions/workflow-runs#list-workflow-runs-for-a-workflow)处理；31 天窗口覆盖 GitHub 允许的 [30 天重跑期限](https://docs.github.com/en/actions/how-tos/manage-workflow-runs/re-run-workflows-and-jobs)。
 
-真实配置差异只有删除 `DOMAIN-SUFFIX,in.th,DIRECT` 一行；相关冲突报告和 provenance 同步变化。规则由 44,189 减至 **44,188**，文件为 **1,595,856 字节**，仍在 7 万条 / 3 MiB 预算内。DNS、UDP 不支持时拒绝、IPv4 兼容基线及其他业务策略保持一致。
+配置仅删除了 `DOMAIN-SUFFIX,in.th,DIRECT` 一行；相关冲突报告和 provenance 同步变化。规则由 44,189 减至 **44,188**，文件为 **1,595,856 字节**，仍在 7 万条 / 3 MiB 预算内。DNS、UDP 不支持时拒绝、IPv4 兼容基线及其他业务策略保持一致。
 
-## 本轮实际检查
+## 检查结果
 
 | 检查 | 结果及边界 |
 | --- | --- |
@@ -34,7 +34,7 @@ PSL 快照包含 6,949 条 ICANN 记录；原始文件、固定提交、SHA-256 
 | 配置基线 | 24 个路由哨兵、6 个 DNS 端口哨兵、74 个经审查例外检查通过 |
 | 工作流语法 | actionlint 通过 |
 | 修复版健康脚本联网运行 | GitHub 现有更新记录及五份上游数据源均通过；检查的是现有线上运行记录，不表示新脚本已在 Actions 上运行 |
-| 手机已提供证据 | 一次 5G / Claude 连接列表选择 PROXY、IPv4 出口符合预期、IPv6-only 测试不可达；详见 [客户端记录](CLIENT_TEST.md) |
+| 手机测试记录 | 一次 5G / Claude 连接列表选择 PROXY、IPv4 出口符合预期、IPv6-only 测试不可达；详见 [客户端记录](CLIENT_TEST.md) |
 
 候选配置 SHA-256：`c7275e5ed3af28e7027b78587ed3189c82aac827f819240e60731b41e8674bc4`。
 
@@ -98,21 +98,21 @@ PSL 快照包含 6,949 条 ICANN 记录；原始文件、固定提交、SHA-256 
 | [SukkaLab/ruleset.skk.moe](https://github.com/SukkaLab/ruleset.skk.moe) | API 显示归档；README 指向 SukkaW/Surge 源码仓库。镜像状态与源码项目状态分别记录 |
 | [DivineEngine/Profiles](https://github.com/DivineEngine/Profiles)、[QiuSimons/Rules](https://github.com/QiuSimons/Rules) | 本轮公开 API 返回 404；不能据此区分删除、私有或迁移，未列为已验证维护项目 |
 
-## 与同类方案的实质比较
+## 同类方案参考
 
-| 方案与原始依据 | 值得参考的特点 | 对本项目的决定 |
+| 方案与原始依据 | 值得参考的特点 | 采用情况 |
 | --- | --- | --- |
 | [blackmatrix7 分类目录](https://github.com/blackmatrix7/ios_rule_script/blob/master/rule/Shadowrocket/README.md) | 细分服务与多客户端格式，Apple/媒体/AI 等分类丰富 | 作服务域名交叉参考；不能直接合并全部 DIRECT、广告或共享平台类别 |
 | [ACL4SSR](https://github.com/ACL4SSR/ACL4SSR/blob/master/README.md) | 提供黑白名单、多种分片及订阅转换配置，部分直连列表按国内公司而非物理位置划分 | 使用其 AI 清单作比对；不把国内公司海外资源自动认定为国内出口 |
-| [Loyalsoldier/clash-rules](https://github.com/Loyalsoldier/clash-rules/blob/master/README.md) 与 [MetaCubeX](https://github.com/MetaCubeX/meta-rules-dat/blob/master/README.md) | 前者提供自动生成的域名集；后者提供多种 geodata/MRS 并调整分类来源 | 当前代理源继续保留；MRS 等跨内核能力不是此单一 Shadowrocket 项目的缺陷 |
-| [SukkaW/Surge](https://github.com/SukkaW/Surge/blob/master/README.md)、[构建与测试入口](https://github.com/SukkaW/Surge/blob/master/package.json) | 区分域名/non-IP/IP 规则，强调 DNS 触发顺序，具备构建、测试和性能工具 | 本项目已有业务域名先于公网 IP、所有 IP 规则 no-resolve；原生客户端性能测量仍弱于专门性能研究，不能凭条数声称更快 |
+| [Loyalsoldier/clash-rules](https://github.com/Loyalsoldier/clash-rules/blob/master/README.md) 与 [MetaCubeX](https://github.com/MetaCubeX/meta-rules-dat/blob/master/README.md) | 前者提供自动生成的域名集；后者提供多种 geodata/MRS 并调整分类来源 | 继续使用当前代理源；本项目只面向 Shadowrocket，暂不需要 MRS 等格式 |
+| [SukkaW/Surge](https://github.com/SukkaW/Surge/blob/master/README.md)、[构建与测试入口](https://github.com/SukkaW/Surge/blob/master/package.json) | 区分域名/non-IP/IP 规则，强调 DNS 触发顺序，具备构建、测试和性能工具 | 本项目已有业务域名先于公网 IP、所有 IP 规则 no-resolve；原生客户端性能测量仍弱于专门性能研究，规则条数不足以判断运行速度 |
 | [DustinWin](https://github.com/DustinWin/ruleset_geodata/blob/main/README.md)、[SagerNet 发布工作流](https://github.com/SagerNet/sing-geosite/blob/main/.github/workflows/release.yaml) | 前者组合国内标签、游戏平台、AI 等分类；后者定时生成 geosite 与 rule-set | 参考来源链和发布方式；不因支持更多格式就增加客户端依赖 |
 | [Johnshall](https://github.com/Johnshall/Shadowrocket-ADBlock-Rules-Forever/blob/release/readme.md)、[zhouzhouprogram](https://github.com/zhouzhouprogram/Shadowrocket-ADBlock-Rules/blob/master/readme.md) | 延续 h2y 的多配置方案和每日生成，黑名单与白名单默认行为不同 | 保留本项目明确的 FINAL,PROXY；不用可直连的海外 top500 数据替换严格的业务白名单 |
 | [GMOogway](https://github.com/GMOogway/shadowrocket-rules/blob/master/README.md) | 模块化直连/代理/拦截表；当前 README 列出约 11 万直连规则 | 本项目约 4.4 万总规则及单文件配置更贴合既定范围；数量不能作为覆盖准确性或速度的直接评分 |
-| [LingJingMaster](https://github.com/LingJingMaster/Shadowrocket-Rules/blob/main/README.md) | 地区策略组、香港银行/券商、Apple 等细分策略 | 我日常只使用当前节点，不需要照搬地区策略组；香港银行直连也不同于本项目汇丰中国例外 |
+| [LingJingMaster](https://github.com/LingJingMaster/Shadowrocket-Rules/blob/main/README.md) | 地区策略组、香港银行/券商、Apple 等细分策略 | 日常使用单一节点，暂不需要地区策略组；香港银行直连也不同于本项目汇丰中国例外 |
 | [VPSDance/ai-proxy-rules](https://github.com/VPSDance/ai-proxy-rules/blob/main/README.md) | 聚合多个来源，按 AI 服务和地区分类 | 用其 Anthropic 列表做静态交叉检查，未全量导入关键词、进程、ASN 规则 |
 | [PaPerseller/chn-iplist](https://github.com/PaPerseller/chn-iplist/blob/master/README.md) | IPv4 多源、IPv6 APNIC，并主动筛除部分 ASN | 说明“国内 IP”存在不同政策口径；本项目继续固定 gaoyifan，不能把两表取并集当更准确 |
-| [Aethersailor](https://github.com/Aethersailor/Custom_OpenClash_Rules/blob/main/README.md) | 将 DNS 防护与 Fake-IP、流量接管、终端设置及实际测试条件关联 | 采用这种条件化验收思想；OpenClash 的路由器设置不能直接用于 iOS 隧道 |
+| [Aethersailor](https://github.com/Aethersailor/Custom_OpenClash_Rules/blob/main/README.md) | 将 DNS 防护与 Fake-IP、流量接管、终端设置及实际测试条件关联 | 测试时同时记录 DNS、接管模式和终端设置；OpenClash 的路由器设置不适用于 iOS 隧道 |
 | [luestr/ShuntRules](https://github.com/luestr/ShuntRules/blob/main/README.md) | 合并 blackmatrix7 分类供 Loon/Clash 使用 | 属于同源转换，不算独立第二份分类证据 |
 | [Perfect-Rules 的实际配置](https://github.com/n0de-sudo/Perfect-Rules/blob/main/Shadowrocket/perfect_rules.conf) | 使用远程规则集、地区/服务策略；其 DNS 和 IPv6 设置与本项目不同 | 没有照搬其 IPv6 开启、系统备用 DNS、未带 no-resolve 的 GEOIP 方案；项目名称或宣传中的“完美”不能代替本机验证 |
 
@@ -136,16 +136,16 @@ LM-Firefly、dler-io、Semporia 的维护状态和配置资源结构也纳入候
 
 手机已有中国运营商 IPv6 地址本身不是泄漏证据；目标是否看到该地址取决于实际出口。当前 VPS 不启用 IPv6 也可提供 IPv4 代理出口。现有一次 5G 测试未发现绕过，不构成账户审查结果保证，也不能代替 Wi-Fi 切换或断线阶段测试。
 
-## 尚未被证明的部分
+## 待测项目与已知限制
 
 | 状态 | 边界 | 下一步需要什么 |
 | --- | --- | --- |
 | 已修复并通过静态回归 | 上述三项可复现缺陷 | 发布本次候选并观察远端 CI；客户端刷新后核对版本 |
 | 待手机现场验证 | Wi-Fi/5G 切换、锁屏唤醒、节点故障和重连期间的路由 | 在实际手机上按 CLIENT_TEST 操作，并关联目的端或接口证据；本机代码测试不能代替 |
-| 待特定网络验证 | IPv6-only/NAT64、完整原生 IPv6 代理 | 需要对应网络与 VPS 出口；当前不为追求功能数量启用 IPv6 |
+| 待特定网络验证 | IPv6-only/NAT64、完整原生 IPv6 代理 | 需要对应网络与 VPS 出口；验证通过后再启用 IPv6 |
 | 持续数据风险 | 上游误分类、共享 CDN/托管平台、域名转手 | 结合具体业务日志修订并加回归；PSL 不是地理或信誉数据库 |
-| 明确转换边界 | 国内源 3 条正则省略；代理中间源不含所有 keyword/regexp | 默认 PROXY 减少漏收影响，但不能证明所有跨表冲突正确；如出现误直连，核实后加精确保护，不伪造等价转换 |
-| 监控边界 | 健康检查与更新同依赖 GitHub Actions | 整个平台/仓库调度停用时需独立外部监控；本轮没有擅自连接通知服务或创建定时任务 |
+| 明确转换边界 | 国内源 3 条正则省略；代理中间源不含所有 keyword/regexp | 默认 PROXY 减少漏收影响，但不能证明所有跨表冲突正确；如出现误直连，核实后加精确保护，无法等价转换的条目仍保留为已知缺口 |
+| 监控边界 | 健康检查与更新同依赖 GitHub Actions | 整个平台/仓库调度停用时需独立外部监控；尚未接入外部通知服务或部署外部定时任务 |
 | 性能与原生实现边界 | 模型与实际客户端有差异，未量化所有设备耗电/内存/导入耗时 | 使用具体设备记录冷启动、内存、功耗与吞吐，无法由规则数量推断 |
 
-因此，本项目当前可以描述为：**针对现有使用目标，已修复已知缺陷、可复现、有来源记录和回归保障的候选配置。** 不能描述为“市面最完美”“所有网站永不误分流”或“手机绝对不会泄漏”。剩余工作主要是实际网络条件下的验收和持续维护，不是继续堆叠整套规则库。
+候选配置已修复上述缺陷，支持离线复现，并保留来源记录和回归测试。后续重点是补齐实机测试、跟踪误分类和维护上游数据；增加规则库数量本身不能解决这些问题。

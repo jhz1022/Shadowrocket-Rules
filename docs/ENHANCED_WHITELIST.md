@@ -1,14 +1,14 @@
-> 历史记录：本文描述此前已发布的增强白名单及当时测试，不代表当前工作区候选。新的混合分流设计与验收状态见 [MIXED_ROUTING.md](MIXED_ROUTING.md)。
+> 历史记录：以下为增强白名单版本的设计和测试结果。后续混合分流调整见 [MIXED_ROUTING.md](MIXED_ROUTING.md)。
 
-# 增强白名单重构与验收（2026-10-31）
+# 增强白名单调整记录（2026-10-31）
 
-我在使用中发现 Bing 中国、iCloud 中国和 Steam 国内下载走了代理。进一步检查整张规则表后确认：旧项目只读取 v2fly 原版 cn，加上普通国外分类优先以及删除中国注册后缀，不能满足“大陆可用服务尽量直连”的目标。旧版本的转换测试通过，不代表该策略满足我的实际使用需求。这一轮我修复来源与优先级，不以手工增加品牌名单作为覆盖方案。
+Bing 中国、iCloud 中国和 Steam 国内下载出现误走代理的情况。全表检查确认：旧版仅使用 v2fly 原版 cn，普通国外分类又优先于直连表，删除中国注册后缀后，部分国内服务缺少直连规则。旧版测试覆盖了转换逻辑，但遗漏了这些实际使用场景。此次统一调整数据来源与优先级。
 
 ## 最终策略
 
 局域网 → DNS 端口保护 → 管理主机 → 受保护代理 → 本地例外 → 自动中国服务类别 → 增强直连表 → 普通代理分类 → 中国 IP → 默认代理。
 
-增强白名单优先于普通国外规则是本轮全表检查后的明确调整：若照搬此前提出的“普通国外规则在增强直连之前”，仍有 134 条上游直连记录被遮盖，其中包括中国服务、软件和游戏下载主机。我最终采用更接近自己在 Windows 上使用 v2rayN 绕过大陆时的白名单优先策略；不把这 134 条逐个手工修补。
+全表检查发现，将普通国外规则排在增强直连表之前，会遮盖 134 条上游直连记录，涉及中国服务、软件和游戏下载主机。最终采用接近日常 Windows v2rayN 配置的白名单优先策略，统一处理这 134 条记录。
 
 自动同步的覆盖层：
 
@@ -17,7 +17,7 @@
 - Loyalsoldier 的 apple-cn.txt，保留 full 精确语义；不把共享 CDN 整个后缀放行。
 - 中国 IPv4/IPv6 继续使用 gaoyifan 数据；IP 仍为 no-resolve。DNS、UDP 拒绝回落直连及 IPv4 兼容基线不变。
 
-明确允许 cn、xn--fiqs8s、xn--fiqz9s 三个中国域名后缀；其他注册后缀继续用 PSL 过滤。未知 .cn 直连是白名单政策，不是“中国后缀保证境内服务器”的判断。Google、Claude、OpenAI、Copilot 等受保护服务优先于白名单。Bing 不再整族强制代理，Sydney/Copilot 仍受保护。
+此版本允许 cn、xn--fiqs8s、xn--fiqz9s 三个中国域名后缀直连，其他注册后缀继续用 PSL 过滤。该做法会放行未知 .cn 域名，其中也可能包含境外服务器。Google、Claude、OpenAI、Copilot 等受保护服务优先于白名单。Bing 不再整族强制代理，Sydney/Copilot 仍受保护。
 
 普通代理分类现在主要记录其余国外服务；同名冲突由增强白名单胜出。上游直连收录不等于每个地区、运营商、账号和时间点都能直连。源的误分类、未识别的境外服务及新接入点仍可能需要上游修正。
 
@@ -43,7 +43,7 @@
 
 每天更新会重新运行全部构建门槛、独立审计和离线复现；来源错误、数量异常、地址覆盖异常、规则越界或审计不一致均阻止推送。新旧配置的全量边界变化统计写入 Actions 摘要。审计 artifact 保存每份来源覆盖统计、全部直连来源的代理例外及原因、前 100 条变化样例；样例有明确截断，统计不截断。上游每日产物与分类维护活动继续由独立健康任务检查。
 
-构建上限调整为 20 万条 / 8 MiB。这是发布保护预算，不是 Shadowrocket 的已验证性能上限。没有测得新版 iPhone 内存/加载耗时，也没有把旧手机 IPv6 测试冒充新版网络切换验收。
+构建上限调整为 20 万条 / 8 MiB。这是发布保护预算，不是 Shadowrocket 的已验证性能上限。新版 iPhone 内存、加载耗时和网络切换尚未测试；旧版 IPv6 测试仅适用于当时配置。
 
 本轮增加新厂商 @cn 自动覆盖、裸域名与 full 类型、注册后缀允许范围、保护层优先、输出未知域名注入、整源覆盖与版本变化回归测试。旧的 NTP/阿里云/Apple 范围断言根据全量来源的新策略调整；保留精确主机扩大为后缀、错误 IP 集合、解析失败及保留旧发布等故障检测。
 
@@ -54,9 +54,9 @@
 - [增强数据生成工作流](https://github.com/Loyalsoldier/v2ray-rules-dat/blob/master/.github/workflows/run.yml)
 - [国外服务 @cn 并入直连的工作流](https://github.com/Loyalsoldier/domain-list-custom/blob/master/.github/workflows/build.yml)
 - [Loyalsoldier 分类与推荐顺序](https://github.com/Loyalsoldier/v2ray-rules-dat#geositedat-1)
-- [MetaCubeX 的区域服务分类参考](https://github.com/MetaCubeX/meta-rules-dat/blob/meta/README.md)：交叉研究，未盲目合并另一套全量数据。
+- [MetaCubeX 的区域服务分类参考](https://github.com/MetaCubeX/meta-rules-dat/blob/meta/README.md)：用于分类对照，未合并其数据。
 
-发布对应的每份实际 SHA、原始 URL 和内容摘要见 dist/manifest.json；源快照见 dist/inputs。我没有上传自己的 Windows 客户端包、数据库、节点凭据或手机私人日志。
+发布对应的每份实际 SHA、原始 URL 和内容摘要见 dist/manifest.json；源快照见 dist/inputs。Windows 客户端包、数据库、节点凭据和手机私人日志未上传。
 
 ```sh
 python3 -m unittest discover -s tests -v
