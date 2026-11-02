@@ -788,5 +788,23 @@
     "port": 53,
     "policy": "DIRECT",
     "routing_dns_requested": false
+  },
+  {
+    "id": "iphone-ios.chat.openai.com",
+    "host": "ios.chat.openai.com",
+    "policy": "PROXY",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "iphone-ws.chatgpt.com",
+    "host": "ws.chatgpt.com",
+    "policy": "PROXY",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "iphone-persistent.oaistatic.com",
+    "host": "persistent.oaistatic.com",
+    "policy": "PROXY",
+    "routing_dns_requested": false
   }
 ]

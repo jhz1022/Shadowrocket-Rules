@@ -1,0 +1,47 @@
+[
+  {
+    "id": "regional-services",
+    "problem": "International brands were treated as one global proxy category, including their mainland endpoints.",
+    "evidence": [
+      "docs/MIXED_ROUTING.md"
+    ],
+    "case_ids": [
+      "regional-cn.bing.com",
+      "regional-gateway.icloud.com.cn",
+      "regional-dl.steam.clngaa.com",
+      "overseas-sydney.bing.com",
+      "overseas-steamcommunity.com"
+    ],
+    "validation_scope": "Mac routing and selected HTTP responses; Steam download was not verified."
+  },
+  {
+    "id": "domestic-cdn",
+    "problem": "IP-only classification sent domestic services through foreign exits when DNS returned overseas addresses.",
+    "evidence": [
+      "docs/MIXED_ROUTING.md"
+    ],
+    "case_ids": [
+      "domestic-www.163.com",
+      "domestic-www.douyin.com",
+      "regional-www.qualcomm.cn",
+      "domestic-www.gov.cn",
+      "domestic-www.tsinghua.edu.cn"
+    ],
+    "validation_scope": "Mac route observations; does not certify every account workflow."
+  },
+  {
+    "id": "iphone-ai-proxy",
+    "problem": "Keep the tested iPhone AI endpoints on the proxy, including when a DNS answer is in China.",
+    "evidence": [
+      "docs/IPHONE_TEST_2026-11-02.md"
+    ],
+    "case_ids": [
+      "iphone-ios.chat.openai.com",
+      "iphone-ws.chatgpt.com",
+      "iphone-persistent.oaistatic.com",
+      "ai-cn-answer-claude.ai",
+      "ai-cn-answer-api.openai.com"
+    ],
+    "validation_scope": "ChatGPT reply and logs on Wi-Fi/5G; Claude was not opened. China-address cases are synthetic."
+  }
+]

@@ -37,17 +37,22 @@ jobs:
         run: python -m unittest discover -s tests -v
       - name: Verify published snapshot integrity and reproducibility
         run: python scripts/build.py --offline --check
+      - name: Check source disagreements, conversion gaps and incident regressions
+        run: python scripts/check_source_quality.py --output .build/source-quality.json
       - name: Audit every source-domain boundary and exact IP coverage
         run: python scripts/audit.py --output .build/policy-audit.json
       - name: Check cross-service routing and DNS-trigger contracts
         run: python scripts/check_routing_contract.py --output .build/routing-contract.json
       - name: Save independent policy audit
+        if: ${{ !cancelled() && hashFiles('.build/source-quality.json') != '' }}
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: verified-policy-audit
           path: |
             .build/policy-audit.json
             .build/routing-contract.json
+            .build/source-quality.json
+            .build/source-quality.md
           include-hidden-files: true
           if-no-files-found: error
 
@@ -70,24 +75,31 @@ jobs:
         run: |
           mkdir -p .build
           cp dist/Shadowrocket.conf .build/previous.conf
+          mkdir -p .build/previous-root/sources
+          cp sources/sources.json .build/previous-root/sources/sources.json
+          cp -R dist .build/previous-root/dist
       - name: Download pinned snapshots, build and validate
         env:
           GH_TOKEN: ${{ github.token }}
         run: python scripts/build.py
       - name: Reproduce the complete candidate offline
         run: python scripts/build.py --offline --check
+      - name: Review candidate source changes before publication
+        run: python scripts/check_source_quality.py --previous-root .build/previous-root --require-baseline --output .build/source-quality.json
       - name: Audit candidate domain boundaries and exact IP coverage
         run: python scripts/audit.py --compare .build/previous.conf --enforce-changes --output .build/policy-audit.json
       - name: Check candidate cross-service routing and DNS-trigger contracts
         run: python scripts/check_routing_contract.py --output .build/routing-contract.json
       - name: Save policy coverage, exceptions and transition summary
-        if: ${{ !cancelled() && hashFiles('.build/policy-audit.json') != '' }}
+        if: ${{ !cancelled() && (hashFiles('.build/policy-audit.json') != '' || hashFiles('.build/source-quality.json') != '') }}
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: updated-policy-audit
           path: |
             .build/policy-audit.json
             .build/routing-contract.json
+            .build/source-quality.json
+            .build/source-quality.md
           include-hidden-files: true
           if-no-files-found: error
       - name: Publish only a validated change

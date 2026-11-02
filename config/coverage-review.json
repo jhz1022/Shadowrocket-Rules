@@ -1,0 +1,165 @@
+{
+  "schema": 1,
+  "entries": [
+    {
+      "pattern": "regexp:.+\\.awsdns-cn-[0-9][0-9]\\.(biz|com|net|top)$",
+      "disposition": "omit-with-visible-gap",
+      "reason": "No verified equivalent Shadowrocket domain-regex conversion. Preserve the current policy and report the limitation; representative matches do not prove full coverage.",
+      "evidence": [
+        "docs/SOURCE_QUALITY.md"
+      ],
+      "samples": [
+        {
+          "host": "ns.awsdns-cn-01.com",
+          "policy": "PROXY",
+          "role": "representative-pattern-member"
+        },
+        {
+          "host": "ns.awsdns-cn-01.com.outside.invalid",
+          "policy": "PROXY",
+          "role": "external-suffix-boundary"
+        }
+      ]
+    },
+    {
+      "pattern": "regexp:.+\\.awsdns-cn-[0-9][a-e0-9]\\.cn$",
+      "disposition": "omit-with-visible-gap",
+      "reason": "No verified equivalent Shadowrocket domain-regex conversion. Preserve the current policy and report the limitation; representative matches do not prove full coverage.",
+      "evidence": [
+        "docs/SOURCE_QUALITY.md"
+      ],
+      "samples": [
+        {
+          "host": "ns.awsdns-cn-0a.cn",
+          "policy": "PROXY",
+          "role": "representative-pattern-member"
+        },
+        {
+          "host": "ns.awsdns-cn-0a.cn.outside.invalid",
+          "policy": "PROXY",
+          "role": "external-suffix-boundary"
+        }
+      ]
+    },
+    {
+      "pattern": "regexp:^(.+\\.)*zh\\.okaapps\\.com$",
+      "disposition": "omit-with-visible-gap",
+      "reason": "No verified equivalent Shadowrocket domain-regex conversion. Preserve the current policy and report the limitation; representative matches do not prove full coverage.",
+      "evidence": [
+        "docs/SOURCE_QUALITY.md"
+      ],
+      "samples": [
+        {
+          "host": "zh.okaapps.com",
+          "policy": "DIRECT",
+          "role": "representative-pattern-member"
+        },
+        {
+          "host": "zh.okaapps.com.outside.invalid",
+          "policy": "PROXY",
+          "role": "external-suffix-boundary"
+        }
+      ]
+    },
+    {
+      "pattern": "regexp:^.+-mihayo\\.akamaized\\.net$",
+      "disposition": "omit-with-visible-gap",
+      "reason": "No verified equivalent Shadowrocket domain-regex conversion. Preserve the current policy and report the limitation; representative matches do not prove full coverage.",
+      "evidence": [
+        "docs/SOURCE_QUALITY.md"
+      ],
+      "samples": [
+        {
+          "host": "asset-mihayo.akamaized.net",
+          "policy": "PROXY",
+          "role": "representative-pattern-member"
+        },
+        {
+          "host": "asset-mihayo.akamaized.net.outside.invalid",
+          "policy": "PROXY",
+          "role": "external-suffix-boundary"
+        }
+      ]
+    },
+    {
+      "pattern": "regexp:^cdn\\d-epicgames-\\d+\\.file\\.myqcloud\\.com$",
+      "disposition": "omit-with-visible-gap",
+      "reason": "No verified equivalent Shadowrocket domain-regex conversion. Preserve the current policy and report the limitation; representative matches do not prove full coverage.",
+      "evidence": [
+        "docs/SOURCE_QUALITY.md"
+      ],
+      "samples": [
+        {
+          "host": "cdn1-epicgames-1.file.myqcloud.com",
+          "policy": "DIRECT",
+          "role": "representative-pattern-member"
+        },
+        {
+          "host": "cdn1-epicgames-1.file.myqcloud.com.outside.invalid",
+          "policy": "PROXY",
+          "role": "external-suffix-boundary"
+        }
+      ]
+    },
+    {
+      "pattern": "regexp:^epicgames-download\\d-\\d+\\.file\\.myqcloud\\.com$",
+      "disposition": "omit-with-visible-gap",
+      "reason": "No verified equivalent Shadowrocket domain-regex conversion. Preserve the current policy and report the limitation; representative matches do not prove full coverage.",
+      "evidence": [
+        "docs/SOURCE_QUALITY.md"
+      ],
+      "samples": [
+        {
+          "host": "epicgames-download1-1.file.myqcloud.com",
+          "policy": "DIRECT",
+          "role": "representative-pattern-member"
+        },
+        {
+          "host": "epicgames-download1-1.file.myqcloud.com.outside.invalid",
+          "policy": "PROXY",
+          "role": "external-suffix-boundary"
+        }
+      ]
+    },
+    {
+      "pattern": "regexp:^r+[0-9]+(---|\\.)sn-(2x3|ni5|j5o)\\w{5}\\.googlevideo\\.com$",
+      "disposition": "omit-with-visible-gap",
+      "reason": "No verified equivalent Shadowrocket domain-regex conversion. Preserve the current policy and report the limitation; representative matches do not prove full coverage.",
+      "evidence": [
+        "docs/SOURCE_QUALITY.md"
+      ],
+      "samples": [
+        {
+          "host": "r1.sn-2x3abcde.googlevideo.com",
+          "policy": "PROXY",
+          "role": "representative-pattern-member"
+        },
+        {
+          "host": "r1.sn-2x3abcde.googlevideo.com.outside.invalid",
+          "policy": "PROXY",
+          "role": "external-suffix-boundary"
+        }
+      ]
+    },
+    {
+      "pattern": "regexp:^r+[0-9]+(---|\\.)sn-(2x3|ni5|j5o)\\w{5}\\.xn--ngstr-lra8j\\.com$",
+      "disposition": "omit-with-visible-gap",
+      "reason": "No verified equivalent Shadowrocket domain-regex conversion. Preserve the current policy and report the limitation; representative matches do not prove full coverage.",
+      "evidence": [
+        "docs/SOURCE_QUALITY.md"
+      ],
+      "samples": [
+        {
+          "host": "r1.sn-2x3abcde.xn--ngstr-lra8j.com",
+          "policy": "PROXY",
+          "role": "representative-pattern-member"
+        },
+        {
+          "host": "r1.sn-2x3abcde.xn--ngstr-lra8j.com.outside.invalid",
+          "policy": "PROXY",
+          "role": "external-suffix-boundary"
+        }
+      ]
+    }
+  ]
+}
