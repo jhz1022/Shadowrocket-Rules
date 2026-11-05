@@ -109,6 +109,17 @@
   ],
   "direct_exceptions": [
     {
+      "id": "icloud-storage-offer",
+      "type": "DOMAIN",
+      "domains": [
+        "amp-api-edge.media.apple.com"
+      ],
+      "reason": "The iCloud+ offer on a mainland iPhone loaded over DIRECT and failed over PROXY on the same Wi-Fi and node.",
+      "evidence": [
+        "https://github.com/jhz1022/Shadowrocket-Rules/blob/main/docs/ICLOUD_STORAGE.md"
+      ]
+    },
+    {
       "id": "china-ntp",
       "type": "DOMAIN",
       "domains": [

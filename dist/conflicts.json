@@ -4232,6 +4232,13 @@
   },
   {
     "action": "reviewed-direct-override",
+    "direct": "DOMAIN,amp-api-edge.media.apple.com,DIRECT",
+    "group": "icloud-storage-offer",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "reviewed-policy"
+  },
+  {
+    "action": "reviewed-direct-override",
     "direct": "DOMAIN,amp-api-search-edge.apps.apple.com,DIRECT",
     "group": "apple-store-assets",
     "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",

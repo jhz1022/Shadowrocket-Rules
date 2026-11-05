@@ -1,5 +1,23 @@
 [
   {
+    "id": "icloud-storage-offer",
+    "host": "amp-api-edge.media.apple.com",
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "icloud-storage-child",
+    "host": "sub.amp-api-edge.media.apple.com",
+    "policy": "PROXY",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "icloud-storage-sibling",
+    "host": "amp-api.media.apple.com",
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  },
+  {
     "id": "domestic-www.baidu.com",
     "host": "www.baidu.com",
     "policy": "DIRECT",

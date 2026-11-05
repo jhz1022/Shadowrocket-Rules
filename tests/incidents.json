@@ -1,5 +1,19 @@
 [
   {
+    "id": "icloud-storage-offer",
+    "problem": "The iPhone iCloud+ offer failed to load while the mainland storage quota remained visible.",
+    "evidence": [
+      "docs/ICLOUD_STORAGE.md"
+    ],
+    "case_ids": [
+      "icloud-storage-offer",
+      "icloud-storage-child",
+      "icloud-storage-sibling",
+      "regional-gateway.icloud.com.cn"
+    ],
+    "validation_scope": "Offer page and HTTPS/UDP routes on one mainland iPhone over Wi-Fi. No subscription or payment was tested; child and sibling are routing checks."
+  },
+  {
     "id": "regional-services",
     "problem": "International brands were treated as one global proxy category, including their mainland endpoints.",
     "evidence": [

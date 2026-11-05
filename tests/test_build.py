@@ -373,7 +373,8 @@ class PublishedSnapshotTests(unittest.TestCase):
 
     def test_reviewed_upstream_evidence_is_checked_before_publication(self):
         overrides = copy.deepcopy(self.overrides)
-        overrides['direct_exceptions'][0]['domains'] = ['invented.not-in-ntp.example']
+        ntp = next(group for group in overrides['direct_exceptions'] if group['id'] == 'china-ntp')
+        ntp['domains'] = ['invented.not-in-ntp.example']
         with self.assertRaisesRegex(b.BuildError, 'lost its upstream evidence'):
             self.generate(overrides=overrides)
 
