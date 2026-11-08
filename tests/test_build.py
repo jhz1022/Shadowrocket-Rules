@@ -241,6 +241,13 @@ class PublishedSnapshotTests(unittest.TestCase):
         self.assertEqual(first, second)
         self.assertEqual(first['Shadowrocket.conf'], self.conf.encode())
 
+    def test_omitting_ordinary_suffix_preserves_more_specific_source_rules(self):
+        inputs = dict(self.inputs)
+        inputs['enhanced'] += b'\ngameloop.com\nfull:cn-fixture.gameloop.com\n'
+        conf = self.generate(inputs=inputs)['Shadowrocket.conf'].decode()
+        self.assertNotIn('\nDOMAIN-SUFFIX,gameloop.com,DIRECT\n', conf)
+        self.assertIn('\nDOMAIN,cn-fixture.gameloop.com,DIRECT\n', conf)
+
     def test_actual_rules_and_dns_baseline(self):
         stats = b.validate(self.conf)
         self.assertGreater(stats['rules'], 10000)

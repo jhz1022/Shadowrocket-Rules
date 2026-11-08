@@ -1,4 +1,14 @@
 {
   "schema": 1,
-  "approvals": []
+  "approvals": [
+    {
+      "id": "6d32da836cca23a2c14f40617870c3daf6103675a16ce2ebb620ffe54f3a4210",
+      "reason": "Exact mainland Apple Radio endpoint in v2fly #4266. Mainland DNS returned Kingsoft CDN addresses and verified HTTPS reached the endpoint.",
+      "evidence": [
+        "https://github.com/v2fly/domain-list-community/pull/4266",
+        "docs/SOURCE_QUALITY.md"
+      ],
+      "expires": "2026-12-08"
+    }
+  ]
 }

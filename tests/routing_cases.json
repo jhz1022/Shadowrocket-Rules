@@ -824,5 +824,41 @@
     "host": "persistent.oaistatic.com",
     "policy": "PROXY",
     "routing_dns_requested": false
+  },
+  {
+    "id": "radio-mainland-exact",
+    "host": "radio.itunes.apple.com",
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "radio-child",
+    "host": "child.radio.itunes.apple.com",
+    "policy": "PROXY",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "radio-lookalike",
+    "host": "other-radio.itunes.apple.com",
+    "policy": "PROXY",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "tencent-gameitop-cn-answer",
+    "host": "gameitop.com",
+    "policy": "DIRECT",
+    "routing_dns_requested": true,
+    "answers": [
+      "193.112.125.33"
+    ]
+  },
+  {
+    "id": "tencent-gameloop-overseas-answer",
+    "host": "www.gameloop.com",
+    "policy": "PROXY",
+    "routing_dns_requested": true,
+    "answers": [
+      "172.66.174.89"
+    ]
   }
 ]

@@ -354,8 +354,12 @@ def domain_overlap(a, b):
 
 def reviewed_rules(overrides, archive=None):
     """Local reviewed policy is independent of upstream minimization/classification."""
-    if set(overrides) != {'schema', 'proxy_suffix', 'lan_domains', 'direct_exceptions'} or overrides['schema'] != 2:
+    if set(overrides) - {'omit_ordinary_direct_suffixes'} != {'schema', 'proxy_suffix', 'lan_domains', 'direct_exceptions'} or overrides['schema'] != 2:
         raise BuildError('Unknown reviewed-policy schema')
+    omitted = overrides.get('omit_ordinary_direct_suffixes', [])
+    if (not isinstance(omitted, list) or any(not isinstance(h, str) or '.' not in h or domain(h) != h
+                                             for h in omitted) or len(set(omitted)) != len(omitted)):
+        raise BuildError('Invalid ordinary DIRECT suffix exclusions')
     if not isinstance(overrides['proxy_suffix'], list) or not overrides['proxy_suffix']:
         raise BuildError('Missing protected proxy domains')
     protected = {Rule('DOMAIN-SUFFIX', domain(x), 'PROXY') for x in overrides['proxy_suffix']}
@@ -675,7 +679,9 @@ def generate(config, template, overrides, inputs, metadata, baseline=None):
     registry = frozenset(r.value for r in all_rules['registry'])
     proxy = minimize(all_rules['proxy']) - protected
     ordinary = all_rules['direct'] | all_rules['enhanced']
-    direct = minimize(precise_direct(ordinary, config, registry))
+    # Drop only the reviewed source rows, before minimization can erase child rules.
+    omitted = {Rule('DOMAIN-SUFFIX', host, 'DIRECT') for host in overrides.get('omit_ordinary_direct_suffixes', [])}
+    direct = minimize(precise_direct(ordinary - omitted, config, registry))
     regional_raw = all_rules['regional'] | all_rules['apple_cn']
     regional = minimize(precise_direct(regional_raw, config, registry))
     regional, regional_conflicts = resolve_conflicts(protected, regional)
@@ -749,6 +755,7 @@ def generate(config, template, overrides, inputs, metadata, baseline=None):
     if stats['rules'] > config['max_output_rules'] or len(content.encode()) > config['max_output_bytes']:
         raise BuildError('Output exceeds reviewed client size budget')
     manifest = {'schema': 1, 'sources': sources, 'ip_coverage': coverage,
+                'omitted_ordinary_direct_suffixes': sorted(r.value for r in ordinary & omitted),
                 'excluded_registry_direct': sorted(r.line() for r in ordinary | regional_raw
                     if r not in precise_direct({r}, config, registry)),
                 'config_sha256': sha(content.encode()),

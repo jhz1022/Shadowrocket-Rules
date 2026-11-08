@@ -35,6 +35,16 @@
     "youtube.com"
   ],
   "schema": 2,
+  "omit_ordinary_direct_suffixes": [
+    "gameitop.com",
+    "gameloop.com",
+    "mahjongai.net",
+    "mahjongcup.com",
+    "mahjongcup.net",
+    "proximabeta.com",
+    "texasholdemcup.com",
+    "texasholdemcup.net"
+  ],
   "lan_domains": [
     {
       "id": "asus-router",

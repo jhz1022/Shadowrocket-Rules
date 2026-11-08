@@ -33,7 +33,25 @@
 
 指纹绑定具体发现和新旧两份 manifest；输入或候选变化后不能重复沿用，过期也不能放行。审批只允许这一轮候选继续接受其余检查，不直接把域名添加到 DIRECT。没有全局忽略冲突的开关。
 
-上游同步时间差也可能触发复核，导致更新暂缓。当前审批表为空。机制只管自动发布，不代替仓库权限或对人工提交的审查。
+上游同步时间差也可能触发复核，导致更新暂缓。
+
+### 2026-11-07 的九项待审规则
+
+腾讯游戏的变动发生在分类引用上。v2fly 把 `category-games-cn` 中的引用改为 `include:tencent-games @-!cn`，即排除带 `!cn` 的条目。这次新增并标记海外业务的是 `tencentgames.com`、`levelinfinite.com` 和 `nikke-en.com`。待审的八个域名仍在原文件里，均无标签。[上游补丁](https://github.com/v2fly/domain-list-community/pull/4261/files)
+
+Loyalsoldier 的生成器把带筛选条件的引用作为正向属性查找，`@-!cn` 不会命中无标签记录。核对其相邻两次发布的 `cn.txt`，旧版含这八条，新版全部消失。本项目按 v2fly 的排除语义读取原始文件，仍会得到这八条。这个差异解释了撤表原因，域名该走哪条线路还要看业务和接入地址。[生成器实现](https://github.com/Loyalsoldier/domain-list-custom/blob/0b3b2122b819ff0b8a747663890e6b3ef4ace4a0/listinfo.go#L197-L231) · [旧表](https://github.com/Loyalsoldier/domain-list-custom/blob/27d7b38a569e730d6251967afd7f989e8eaced22/cn.txt) · [新表](https://github.com/Loyalsoldier/domain-list-custom/blob/e036fcca2cfe1e8d89e5a41f8e0849f6bfae10d6/cn.txt)
+
+11 月 8 日用阿里公共 DNS 查了根域 A、AAAA 和 www 的 A 记录。
+
+| 域名 | 查询结果 | 当前策略 |
+|---|---|---|
+| `gameitop.com` | 根域返回 193.112.125.33，在中国地址表内 | 按该应答直连 |
+| `gameloop.com` | 根域和 www 均返回 104.20.43.73、172.66.174.89，均在中国地址表外 | 按该应答走代理 |
+| `mahjongai.net`、`mahjongcup.com`、`mahjongcup.net`、`proximabeta.com`、`texasholdemcup.com`、`texasholdemcup.net` | 根域无 A/AAAA，www 返回 NXDOMAIN。其他业务主机未实测 | 有地址时按中国 IP 表分流，未解析时按默认代理策略处理 |
+
+这八项仅移除普通直连表中覆盖整棵域名树的后缀条目。后续收录的具体业务主机及区域规则仍可优先命中。此次验证范围为 DNS、地址表和配置路由，未测试游戏登录或对局。
+
+Apple Radio 保留上游的精确直连。v2fly 给 `full:radio.itunes.apple.com` 标了 `@cn`，并附有四个大陆网段的 DNS 结果。本次复查得到金山云 CDN 的 CNAME 链，返回地址在中国 IP 表内。保留主机名向 120.220.213.129 发起 HTTPS 请求，证书校验通过，根路径返回 403。已验证大陆接入点，未验证账号、节目授权或实际播放。审批只绑定本次新旧快照和这个精确主机，子域仍走原规则。[上游实测与补丁](https://github.com/v2fly/domain-list-community/pull/4266)
 
 ## 正则转换缺口
 

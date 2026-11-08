@@ -42,6 +42,8 @@ def audit(root=build.ROOT, conf=None, previous=None):
     regional = {(kind, name) for kind, name in raw['regional'] | raw['apple_cn']
                 if name in allowed or not (kind == 'DOMAIN-SUFFIX' and
                     audit_sources.registry_suffix(name, raw['registry']))}
+    omitted = set(overrides.get('omit_ordinary_direct_suffixes', []))
+    direct.difference_update(('DOMAIN-SUFFIX', host) for host in omitted)
     local_exact = {'localhost'} | {name for _, name in reviewed['lan_domains']}
     local_suffix = {'local', 'lan', 'home.arpa', 'in-addr.arpa', 'ip6.arpa'}
     p_exact, p_suffix = domain_sets(proxy)
@@ -137,6 +139,8 @@ def audit(root=build.ROOT, conf=None, previous=None):
         for kind, host in sorted(raw[ident]):
             route = actual(host)
             reason = ('protected-service' if ancestors(host) & protected_suffix else
+                      'reviewed-ordinary-suffix-omission' if ident == 'enhanced' and kind == 'DOMAIN-SUFFIX'
+                      and host in omitted and route != 'DIRECT' else
                       'registry-filter' if kind == 'DOMAIN-SUFFIX' and host not in allowed
                       and audit_sources.registry_suffix(host, raw['registry']) else
                       'ordinary-proxy-priority' if route == 'PROXY' else 'direct')

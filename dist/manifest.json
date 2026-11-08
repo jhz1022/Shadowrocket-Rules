@@ -1,6 +1,6 @@
 {
-  "config_sha256": "df61f17535e93034c8925b07e52c91118783723fd54e0fd207fab038e8b72503",
-  "conflicts": 755,
+  "config_sha256": "2d1db442079d463611a95e07c65d416c30f1236fcb53cec298639dc76ec3fec2",
+  "conflicts": 756,
   "excluded_registry_direct": [
     "DOMAIN-SUFFIX,alibaba,DIRECT",
     "DOMAIN-SUFFIX,alipay,DIRECT",
@@ -11,7 +11,6 @@
     "DOMAIN-SUFFIX,edu.cn,DIRECT",
     "DOMAIN-SUFFIX,gov.cn,DIRECT",
     "DOMAIN-SUFFIX,icbc,DIRECT",
-    "DOMAIN-SUFFIX,in.th,DIRECT",
     "DOMAIN-SUFFIX,mil.cn,DIRECT",
     "DOMAIN-SUFFIX,shouji,DIRECT",
     "DOMAIN-SUFFIX,sina,DIRECT",
@@ -57,26 +56,36 @@
     "DOMAIN-SUFFIX,xn--zfr164b,DIRECT",
     "DOMAIN-SUFFIX,yun,DIRECT"
   ],
-  "generator_sha256": "e10b355d9a5aef347f6a385be9223e1b56ce1efeacea05939760fbaf93be28eb",
+  "generator_sha256": "0d58651957f5fbd240c310b6a420fa0aab289ee541c4811acf3567476cec967e",
   "ip_coverage": {
     "china4": 344359934,
-    "china6": 5430376939246795677572079758082048
+    "china6": 5430376936828944038342821408669696
   },
+  "omitted_ordinary_direct_suffixes": [
+    "gameitop.com",
+    "gameloop.com",
+    "mahjongai.net",
+    "mahjongcup.com",
+    "mahjongcup.net",
+    "proximabeta.com",
+    "texasholdemcup.com",
+    "texasholdemcup.net"
+  ],
   "output": {
     "dns_port_canaries": 6,
     "reviewed_route_canaries": 77,
     "routing_canaries": 31,
-    "rules": 148893,
+    "rules": 148935,
     "types": {
-      "DOMAIN": 672,
-      "DOMAIN-SUFFIX": 138571,
+      "DOMAIN": 673,
+      "DOMAIN-SUFFIX": 138609,
       "DST-PORT": 1,
       "FINAL": 1,
       "IP-CIDR": 6212,
-      "IP-CIDR6": 3436
+      "IP-CIDR6": 3439
     }
   },
-  "overrides_sha256": "2e42cf73b9c46150f8b351fea496256b640f7a20d3372bac56c5ea56bdb7a75d",
+  "overrides_sha256": "7a3df6b5315b43e32b39cdc0bec4aa7b863e8c74eed9d401bb67193be617ceef",
   "schema": 1,
   "sources": {
     "apple_cn": {
@@ -85,10 +94,10 @@
       "license": "GPL-3.0",
       "omitted_direct_regex": [],
       "records": 165,
-      "revision": "c3a0b260bd99e72305a8fca889ea42bd54c3c9bb",
+      "revision": "45eea9d461cd014b991aab53d4b4231393369d73",
       "sha256": "9fbb3bc9b6c9d81c4b1887ce4c81f816a676618592c3dbd2a8c742e14fbba32b",
       "unique": 165,
-      "url": "https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/c3a0b260bd99e72305a8fca889ea42bd54c3c9bb/apple-cn.txt"
+      "url": "https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/45eea9d461cd014b991aab53d4b4231393369d73/apple-cn.txt"
     },
     "china4": {
       "bytes": 96478,
@@ -96,24 +105,24 @@
       "license": "MIT",
       "omitted_direct_regex": [],
       "records": 6204,
-      "revision": "f162630c8cdad6ced5ef59e606cc93919123ac57",
+      "revision": "62bc1fc8b015bece77271b568e10d6337915bc96",
       "sha256": "1b7c2c74c475fd5732bb4eda9c5d82e2e99d7d62872f3ff7938550d752fb4849",
       "unique": 6204,
-      "url": "https://raw.githubusercontent.com/gaoyifan/china-operator-ip/f162630c8cdad6ced5ef59e606cc93919123ac57/china.txt"
+      "url": "https://raw.githubusercontent.com/gaoyifan/china-operator-ip/62bc1fc8b015bece77271b568e10d6337915bc96/china.txt"
     },
     "china6": {
-      "bytes": 57101,
+      "bytes": 57160,
       "duplicates": 0,
       "license": "MIT",
       "omitted_direct_regex": [],
-      "records": 3432,
-      "revision": "f162630c8cdad6ced5ef59e606cc93919123ac57",
-      "sha256": "4e5591da5efe23c9e204beb7363013b9a2e40631a5b3609be22e2f3c1040151d",
-      "unique": 3432,
-      "url": "https://raw.githubusercontent.com/gaoyifan/china-operator-ip/f162630c8cdad6ced5ef59e606cc93919123ac57/china6.txt"
+      "records": 3435,
+      "revision": "62bc1fc8b015bece77271b568e10d6337915bc96",
+      "sha256": "c293354581bb8b1294780da9ab1d2c2fc981cf68efb51aad9f9f3422e16158c7",
+      "unique": 3435,
+      "url": "https://raw.githubusercontent.com/gaoyifan/china-operator-ip/62bc1fc8b015bece77271b568e10d6337915bc96/china6.txt"
     },
     "direct": {
-      "bytes": 351413,
+      "bytes": 352786,
       "duplicates": 0,
       "license": "MIT",
       "omitted_direct_regex": [
@@ -121,14 +130,14 @@
         "regexp:.+\\.awsdns-cn-[0-9][a-e0-9]\\.cn$",
         "regexp:^.+-mihayo\\.akamaized\\.net$"
       ],
-      "records": 7962,
-      "revision": "f200e80ff9f418ae08a677d00ff5df1f6a0f3199",
-      "sha256": "d8cc84ed388bd9256cc86c163a48766e685adabc3643ef79c78094dd17eda38c",
-      "unique": 7959,
-      "url": "https://codeload.github.com/v2fly/domain-list-community/tar.gz/f200e80ff9f418ae08a677d00ff5df1f6a0f3199"
+      "records": 8064,
+      "revision": "6d14992a24e63dc9494334cc6711de363b0705c3",
+      "sha256": "d48a99b36c6f23f541377e70fed1823fa776db63cd02c92234e74e9fd48200b3",
+      "unique": 8061,
+      "url": "https://codeload.github.com/v2fly/domain-list-community/tar.gz/6d14992a24e63dc9494334cc6711de363b0705c3"
     },
     "enhanced": {
-      "bytes": 1399560,
+      "bytes": 1399552,
       "duplicates": 0,
       "license": "GPL-3.0",
       "omitted_direct_regex": [
@@ -141,11 +150,11 @@
         "regexp:^r+[0-9]+(---|\\.)sn-(2x3|ni5|j5o)\\w{5}\\.googlevideo\\.com$",
         "regexp:^r+[0-9]+(---|\\.)sn-(2x3|ni5|j5o)\\w{5}\\.xn--ngstr-lra8j\\.com$"
       ],
-      "records": 110197,
-      "revision": "c3a0b260bd99e72305a8fca889ea42bd54c3c9bb",
-      "sha256": "790563cc78af7c35fca000a3d16f692042e8cf0d9d2154685966c21d1a6e98ae",
-      "unique": 110189,
-      "url": "https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/c3a0b260bd99e72305a8fca889ea42bd54c3c9bb/direct-list.txt"
+      "records": 110196,
+      "revision": "45eea9d461cd014b991aab53d4b4231393369d73",
+      "sha256": "15cf792b8ebbc8f49eaf22d3863e2b525afc4be2f22fb6688408943e6be67f4d",
+      "unique": 110188,
+      "url": "https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/45eea9d461cd014b991aab53d4b4231393369d73/direct-list.txt"
     },
     "proxy": {
       "bytes": 623052,
@@ -153,13 +162,13 @@
       "license": "GPL-3.0",
       "omitted_direct_regex": [],
       "records": 27342,
-      "revision": "34b1f4f02b447b8ab5826f91d57d3acd1363d65b",
+      "revision": "281d74e171ba5758d9705c728683190978e4ebaa",
       "sha256": "7067d244b2e27b75a69fe0b46bd78f29a15c421c64f7183585985604013a68f5",
       "unique": 27342,
-      "url": "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/34b1f4f02b447b8ab5826f91d57d3acd1363d65b/proxy.txt"
+      "url": "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/281d74e171ba5758d9705c728683190978e4ebaa/proxy.txt"
     },
     "regional": {
-      "bytes": 351413,
+      "bytes": 352786,
       "duplicates": 0,
       "license": "MIT",
       "omitted_direct_regex": [
@@ -171,11 +180,11 @@
         "regexp:^r+[0-9]+(---|\\.)sn-(2x3|ni5|j5o)\\w{5}\\.googlevideo\\.com$",
         "regexp:^r+[0-9]+(---|\\.)sn-(2x3|ni5|j5o)\\w{5}\\.xn--ngstr-lra8j\\.com$"
       ],
-      "records": 1122,
-      "revision": "f200e80ff9f418ae08a677d00ff5df1f6a0f3199",
-      "sha256": "d8cc84ed388bd9256cc86c163a48766e685adabc3643ef79c78094dd17eda38c",
-      "unique": 1115,
-      "url": "https://codeload.github.com/v2fly/domain-list-community/tar.gz/f200e80ff9f418ae08a677d00ff5df1f6a0f3199"
+      "records": 1123,
+      "revision": "6d14992a24e63dc9494334cc6711de363b0705c3",
+      "sha256": "d48a99b36c6f23f541377e70fed1823fa776db63cd02c92234e74e9fd48200b3",
+      "unique": 1116,
+      "url": "https://codeload.github.com/v2fly/domain-list-community/tar.gz/6d14992a24e63dc9494334cc6711de363b0705c3"
     },
     "registry": {
       "bytes": 338457,

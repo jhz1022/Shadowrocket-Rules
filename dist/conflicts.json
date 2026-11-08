@@ -2095,6 +2095,12 @@
   },
   {
     "action": "whitelist-direct-override",
+    "direct": "DOMAIN,radio.itunes.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
     "direct": "DOMAIN,recaptcha-cn.net,DIRECT",
     "proxy": "DOMAIN-SUFFIX,recaptcha-cn.net,PROXY",
     "stage": "regional-policy"
