@@ -6366,9 +6366,13 @@ net.vi
 org.vi
 
 // vn : https://vnnic.vn/en/domain-name-vn/domain-name/cctldvn
+// https://vnnic.vn/sites/default/files/vn.cctld.domains.txt
+// Submitted by registry <dnsabuse-support@vnnic.vn> 2026-10-05
 vn
 ac.vn
+ad.vn
 ai.vn
+ap.vn
 biz.vn
 com.vn
 edu.vn
@@ -6380,6 +6384,7 @@ int.vn
 io.vn
 name.vn
 net.vn
+on.vn
 org.vn
 pro.vn
 
@@ -12530,6 +12535,10 @@ bnr.la
 // Submitted by Andy Ortlieb <aortlieb@atlassian.com>
 bitbucket.io
 
+// Bitgate, Inc. : https://ship.page
+// Submitted by Bitgate, Inc. <abuse@bitgate.com>
+ship.place
+
 // Blackbaud, Inc. : https://www.blackbaud.com
 // Submitted by Paul Crowder <paul.crowder@blackbaud.com>
 blackbaudcdn.net
@@ -12537,6 +12546,10 @@ blackbaudcdn.net
 // Blatech : http://www.blatech.net
 // Submitted by Luke Bratch <luke@bratch.co.uk>
 of.je
+
+// BlitzWorks : https://blitz.cloud
+// Submitted by BlitzWorks <hallo@blitzworks.io>
+prod.page
 
 // Block, Inc. : https://block.xyz
 // Submitted by Jonathan Boice <security@block.xyz>
