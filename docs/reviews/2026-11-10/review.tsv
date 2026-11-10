@@ -1,0 +1,328 @@
+分组	原始名称	旧规则及层级	v2fly原始文件	结论	改动范围	依据	来源	根域Ali_A	根域腾讯_A	根域HTTPS	www_Ali_A	www_腾讯_A	www_HTTPS
+整域	126.link	DIRECT|DIRECT|DOMAIN-SUFFIX|126.link	netease	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NXDOMAIN	NXDOMAIN	未测	NXDOMAIN	NXDOMAIN	未测
+整域	163industry.com	DIRECT|DIRECT|DOMAIN-SUFFIX|163industry.com	netease	待核		两个解析源的地址类别、应答或可用性不一致，需复测实际服务主机。		156.239.187.241 [out]	156.239.187.241 [out]	failed	156.239.187.241 [out]	请求失败	failed
+整域	51yipei.com	DIRECT|DIRECT|DOMAIN-SUFFIX|51yipei.com	jd	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+整域	51zmt.top	DIRECT|DIRECT|DOMAIN-SUFFIX|51zmt.top	category-entertainment-cn	待核		两个解析源的地址类别、应答或可用性不一致，需复测实际服务主机。		211.149.244.11 [CN]	211.149.244.11 [CN]	failed	211.149.244.11 [CN]	请求失败	未测
+入口	666pool.cn	PROXY|PROXY|DOMAIN-SUFFIX|666pool.cn	—	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NXDOMAIN	NXDOMAIN	未测	NXDOMAIN	NXDOMAIN	未测
+整域	88cha.com	DIRECT|DIRECT|DOMAIN-SUFFIX|88cha.com	alibaba	维持直连		已测入口有中国 IP 和有效 HTTPS 业务响应，未找到本组的表外应答。		59.82.29.193 [CN]	59.82.121.204 [CN]	200	NXDOMAIN	NXDOMAIN	未测
+整域	95095.com	DIRECT|DIRECT|DOMAIN-SUFFIX|95095.com	alibaba	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		SERVFAIL	SERVFAIL	未测	SERVFAIL	SERVFAIL	未测
+整域	acctdns.com	DIRECT|DIRECT|DOMAIN-SUFFIX|acctdns.com	qcloud	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+入口	airbnb.cn	PROXY|PROXY|DOMAIN-SUFFIX|airbnb.cn	airbnb	精确直连	www.airbnb.cn	两个解析源均为中国 IP，Wi-Fi 验证证书与首页或品牌跳转。	https://www.airbnb.cn/	166.117.27.62,166.117.189.176 [out]	166.117.27.62,166.117.189.176 [out]	未测	42.202.212.122,42.202.212.11 [CN]	42.202.212.11,42.202.212.122 [CN]	200
+整域	airchinalimited.com	DIRECT|DIRECT|DOMAIN-SUFFIX|airchinalimited.com	airchina	待核		根域与 www 的证据不足以判断业务范围；保留原策略。		202.96.17.37 [CN]	202.96.17.37 [CN]	failed	202.96.17.37 [CN]	202.96.17.37 [CN]	failed
+整域	alibabapictures.com	DIRECT|DIRECT|DOMAIN-SUFFIX|alibabapictures.com	alibaba	待核		有表外地址，当前证据不足以区分跨境业务、国内服务境外 CDN 或资产变化。		NODATA	NODATA	未测	65.52.168.70 [out]	65.52.168.70 [out]	200
+整域	alihive.com	DIRECT|DIRECT|DOMAIN-SUFFIX|alihive.com	alibaba	维持直连		已测入口有中国 IP 和有效 HTTPS 业务响应，未找到本组的表外应答。		101.37.45.184 [CN]	101.37.45.184 [CN]	200	NXDOMAIN	NXDOMAIN	未测
+整域	alikmd.com	DIRECT|DIRECT|DOMAIN-SUFFIX|alikmd.com	alibaba	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		SERVFAIL	SERVFAIL	未测	SERVFAIL	SERVFAIL	未测
+整域	alimei.com	DIRECT|DIRECT|DOMAIN-SUFFIX|alimei.com	alibaba	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		SERVFAIL	SERVFAIL	未测	SERVFAIL	SERVFAIL	未测
+整域	alitianji.com	DIRECT|DIRECT|DOMAIN-SUFFIX|alitianji.com	alibaba	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		SERVFAIL	SERVFAIL	未测	SERVFAIL	SERVFAIL	未测
+整域	allawnofs.com	DIRECT|DIRECT|DOMAIN-SUFFIX|allawnofs.com	oppo	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+整域	aloys233.top	DIRECT|DIRECT|DOMAIN-SUFFIX|aloys233.top	category-blog-cn	待核		有表外地址，当前证据不足以区分跨境业务、国内服务境外 CDN 或资产变化。		216.198.79.1,64.29.17.1 [out]	216.198.79.65,64.29.17.65 [out]	200	64.29.17.1,216.198.79.1 [out]	216.198.79.65,64.29.17.65 [out]	200
+整域	amap.net	DIRECT|DIRECT|DOMAIN-SUFFIX|amap.net	amap	维持直连		已测入口有中国 IP 和有效 HTTPS 业务响应，未找到本组的表外应答。		182.92.251.86,182.92.205.225 [CN]	182.92.205.225,182.92.251.86 [CN]	302 → amap.net	NXDOMAIN	NXDOMAIN	未测
+入口	amazonlumberyard.wang	PROXY|PROXY|DOMAIN-SUFFIX|amazonlumberyard.wang	amazon	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NXDOMAIN	NXDOMAIN	未测	NXDOMAIN	NXDOMAIN	未测
+入口	amd.com.cn	PROXY|PROXY|DOMAIN-SUFFIX|amd.com.cn	amd	维持代理		根域与 www 在两个解析源均只有表外公网地址，符合当前地址策略。		104.18.40.33,172.64.147.223 [out]	172.64.147.223,104.18.40.33 [out]	未测	104.18.40.33,172.64.147.223 [out]	172.64.147.223,104.18.40.33 [out]	未测
+整域	apdcdn.net	DIRECT|DIRECT|DOMAIN-SUFFIX|apdcdn.net	qcloud	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+入口	app-store.wang	PROXY|PROXY|DOMAIN-SUFFIX|app-store.wang	apple	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+入口	apple-pay.wang	PROXY|PROXY|DOMAIN-SUFFIX|apple-pay.wang	apple	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+入口	apple-store.wang	PROXY|PROXY|DOMAIN-SUFFIX|apple-store.wang	apple	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+入口	apple.xn--czr694b	PROXY|PROXY|DOMAIN-SUFFIX|apple.xn--czr694b	apple	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+入口	apple.xn--fiqs8s	PROXY|PROXY|DOMAIN-SUFFIX|apple.xn--fiqs8s	apple	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+入口	applecare.wang	PROXY|PROXY|DOMAIN-SUFFIX|applecare.wang	apple	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+入口	applemusic.wang	PROXY|PROXY|DOMAIN-SUFFIX|applemusic.wang	apple-music	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+入口	applestore.wang	PROXY|PROXY|DOMAIN-SUFFIX|applestore.wang	apple	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+入口	appletv.wang	PROXY|PROXY|DOMAIN-SUFFIX|appletv.wang	apple	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+入口	applewatch.wang	PROXY|PROXY|DOMAIN-SUFFIX|applewatch.wang	apple	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+入口	arphic.com.cn	PROXY|PROXY|DOMAIN-SUFFIX|arphic.com.cn	arphic	待核		存在大陆地址，但未证实可正常使用的业务页面或有效跳转。		121.42.192.142 [CN]	121.42.192.142 [CN]	failed	47.92.92.171 [CN]	47.92.92.171 [CN]	failed
+整域	auxwy.com	DIRECT|DIRECT|DOMAIN-SUFFIX|auxwy.com	auxgroup	待核		有表外地址，当前证据不足以区分跨境业务、国内服务境外 CDN 或资产变化。		172.67.173.37,104.21.55.210 [out]	172.67.173.37,104.21.55.210 [out]	failed	172.67.173.37,104.21.55.210 [out]	172.67.173.37,104.21.55.210 [out]	failed
+整域	awstme.top	DIRECT|DIRECT|DOMAIN-SUFFIX|awstme.top	geolocation-cn	维持直连		已测入口有中国 IP 和有效 HTTPS 业务响应，未找到本组的表外应答。		182.201.241.9,182.201.241.8,182.201.241.7,182.201.241.6 [CN]	182.201.241.7,182.201.241.8,182.201.241.9,182.201.241.6 [CN]	301 → blog.awstme.top	182.201.241.6,182.201.241.9,182.201.241.8,182.201.241.7 [CN]	182.201.241.7,182.201.241.8,182.201.241.9,182.201.241.6 [CN]	301 → blog.awstme.top
+整域	bdcat.top	DIRECT|DIRECT|DOMAIN-SUFFIX|bdcat.top	geolocation-cn	维持直连		已测入口有中国 IP 和有效 HTTPS 业务响应，未找到本组的表外应答。		211.154.30.70 [CN]	211.154.30.70 [CN]	301 → www.bdcat.top	211.154.30.70 [CN]	211.154.30.70 [CN]	200
+入口	beatsmusic.wang	PROXY|PROXY|DOMAIN-SUFFIX|beatsmusic.wang	beats	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+入口	bloomberg.cn	PROXY|PROXY|DOMAIN-SUFFIX|bloomberg.cn	bloomberg	维持代理		根域与 www 在两个解析源均只有表外公网地址，符合当前地址策略。		157.240.10.41 [out]	15.197.146.156,3.33.146.110 [out]	未测	157.240.17.36 [out]	3.33.146.110,15.197.146.156 [out]	未测
+整域	bocaviation.com	DIRECT|DIRECT|DOMAIN-SUFFIX|bocaviation.com	boc	移除普通直连后缀	bocaviation.com	新加坡总部的全球飞机租赁业务，www 两方证据含表外 A 和品牌页。	https://www.bocaviation.com/en/Careers/Graduate-Management-Associate-GMA-Program	104.18.29.58,104.18.28.58 [out]	104.18.28.58,104.18.29.58 [out]	404	104.18.28.58,104.18.29.58 [out]	104.18.28.58,104.18.29.58 [out]	200
+整域	bocgi.com	DIRECT|DIRECT|DOMAIN-SUFFIX|bocgi.com	boc	移除普通直连后缀	bocgi.com	中行资料把该域列为香港子公司网址，根域两处均返回表外 A；站点可用性待查。	https://www.boc.cn/en/investor/ir2/202503/P020250326622277080882.pdf	218.213.216.7 [out]	218.213.216.7 [out]	failed	NXDOMAIN	NXDOMAIN	未测
+整域	bocigroup.com	DIRECT|DIRECT|DOMAIN-SUFFIX|bocigroup.com	boc	移除普通直连后缀	bocigroup.com	中银国际明确为集团境外投行；www 的表外端点跳往同主机。	https://www.bocigroup.com/Web/Inner/inner/57	NODATA	NODATA	未测	202.127.170.169 [out]	202.127.170.169 [out]	302 → www.bocigroup.com
+整域	bpigagtm.com	DIRECT|DIRECT|DOMAIN-SUFFIX|bpigagtm.com	volcengine	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+整域	bplslb.com	DIRECT|DIRECT|DOMAIN-SUFFIX|bplslb.com	volcengine	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+整域	bpltm.com	DIRECT|DIRECT|DOMAIN-SUFFIX|bpltm.com	volcengine	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+整域	bsbsb.top	DIRECT|DIRECT|DOMAIN-SUFFIX|bsbsb.top	category-entertainment-cn	待核		有表外地址，当前证据不足以区分跨境业务、国内服务境外 CDN 或资产变化。		172.67.128.43,104.21.0.179 [out]	172.67.128.43,104.21.0.179 [out]	200	104.21.0.179,172.67.128.43 [out]	172.67.128.43,104.21.0.179 [out]	200
+整域	bvmlt.top	DIRECT|DIRECT|DOMAIN-SUFFIX|bvmlt.top	geolocation-cn	待核		根域与 www 的证据不足以判断业务范围；保留原策略。		47.93.126.89 [CN]	47.93.126.89 [CN]	failed	47.93.126.89 [CN]	47.93.126.89 [CN]	failed
+整域	byte7bw.net	DIRECT|DIRECT|DOMAIN-SUFFIX|byte7bw.net	bytedance	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NODATA	NODATA	未测
+整域	byteactivity13.com	DIRECT|DIRECT|DOMAIN-SUFFIX|byteactivity13.com	bytedance	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NODATA	NODATA	未测
+整域	byteactivity14.com	DIRECT|DIRECT|DOMAIN-SUFFIX|byteactivity14.com	bytedance	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NODATA	NODATA	未测
+整域	byteactivity15.com	DIRECT|DIRECT|DOMAIN-SUFFIX|byteactivity15.com	bytedance	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NODATA	NODATA	未测
+整域	byteactivity16.com	DIRECT|DIRECT|DOMAIN-SUFFIX|byteactivity16.com	bytedance	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NODATA	NODATA	未测
+整域	bytegqpo.net	DIRECT|DIRECT|DOMAIN-SUFFIX|bytegqpo.net	bytedance	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NODATA	NODATA	未测
+整域	byteintl.net	DIRECT|DIRECT|DOMAIN-SUFFIX|byteintl.net	bytedance	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+整域	bytelb.com	DIRECT|DIRECT|DOMAIN-SUFFIX|bytelb.com	bytedance	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+整域	byteplusapi-test.com	DIRECT|DIRECT|DOMAIN-SUFFIX|byteplusapi-test.com	volcengine	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+整域	byteq5k.com	DIRECT|DIRECT|DOMAIN-SUFFIX|byteq5k.com	bytedance	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NODATA	NODATA	未测
+整域	bytevcloudapi.com	DIRECT|DIRECT|DOMAIN-SUFFIX|bytevcloudapi.com	bytedance	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+整域	bytexopen.com	DIRECT|DIRECT|DOMAIN-SUFFIX|bytexopen.com	lark	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NODATA	NODATA	未测
+整域	cdnhwc7.com	DIRECT|DIRECT|DOMAIN-SUFFIX|cdnhwc7.com	huaweicloud	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+整域	cdnhwcead111.com	DIRECT|DIRECT|DOMAIN-SUFFIX|cdnhwcead111.com	huaweicloud	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+整域	cdnhwcick110.com	DIRECT|DIRECT|DOMAIN-SUFFIX|cdnhwcick110.com	huaweicloud	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+整域	cdnhwczks109.com	DIRECT|DIRECT|DOMAIN-SUFFIX|cdnhwczks109.com	huaweicloud	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+整域	cdut.top	DIRECT|DIRECT|DOMAIN-SUFFIX|cdut.top	geolocation-cn	维持直连		已测入口有中国 IP 和有效 HTTPS 业务响应，未找到本组的表外应答。		113.142.27.122,113.240.66.67 [CN]	113.142.27.122,113.240.66.67 [CN]	200	113.240.66.67,113.142.27.122 [CN]	113.142.27.122,113.240.66.67 [CN]	200
+整域	cfc108.com	DIRECT|DIRECT|DOMAIN-SUFFIX|cfc108.com	citic	维持直连		已测入口有中国 IP 和有效 HTTPS 业务响应，未找到本组的表外应答。		124.238.251.150,116.211.128.151 [CN]	116.211.128.151,124.238.251.150 [CN]	200	116.211.128.151,124.238.251.150 [CN]	116.211.128.151,124.238.251.150 [CN]	200
+整域	chaspark.com	DIRECT|DIRECT|DOMAIN-SUFFIX|chaspark.com	huawei	维持直连		已测入口有中国 IP 和有效 HTTPS 业务响应，未找到本组的表外应答。		NODATA	NODATA	未测	27.159.90.81,106.9.244.30,118.123.207.178 [CN]	118.123.207.178,27.159.90.81,106.9.244.30 [CN]	200
+整域	chat.top	DIRECT|DIRECT|DOMAIN-SUFFIX|chat.top	xiaoheihe	维持直连		已测入口有中国 IP 和有效 HTTPS 业务响应，未找到本组的表外应答。		101.43.224.138 [CN]	101.43.224.138 [CN]	302 → chat.top	101.43.224.138 [CN]	101.43.224.138 [CN]	302 → chat.top
+整域	chatdrama.net	DIRECT|DIRECT|DOMAIN-SUFFIX|chatdrama.net	yuewen	维持直连		已测入口有中国 IP 和有效 HTTPS 业务响应，未找到本组的表外应答。		NODATA	NODATA	未测	101.91.17.21,101.226.141.218 [CN]	101.226.141.218,101.91.17.21 [CN]	200
+整域	chatqidian.net	DIRECT|DIRECT|DOMAIN-SUFFIX|chatqidian.net	yuewen	维持直连		已测入口有中国 IP 和有效 HTTPS 业务响应，未找到本组的表外应答。		NODATA	NODATA	未测	101.91.17.21,101.226.141.218 [CN]	101.226.141.218,101.91.17.21 [CN]	200
+整域	chatwrite.net	DIRECT|DIRECT|DOMAIN-SUFFIX|chatwrite.net	yuewen	维持直连		已测入口有中国 IP 和有效 HTTPS 业务响应，未找到本组的表外应答。		NODATA	NODATA	未测	101.91.17.21,101.226.141.218 [CN]	101.91.17.21,101.226.141.218 [CN]	200
+整域	chatxiaoxiang.com	DIRECT|DIRECT|DOMAIN-SUFFIX|chatxiaoxiang.com	yuewen	维持直连		已测入口有中国 IP 和有效 HTTPS 业务响应，未找到本组的表外应答。		NODATA	NODATA	未测	101.226.141.218,101.91.17.21 [CN]	101.91.17.21,101.226.141.218 [CN]	200
+整域	cheng.xin	DIRECT|DIRECT|DOMAIN-SUFFIX|cheng.xin	alibaba	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		SERVFAIL	SERVFAIL	未测	SERVFAIL	SERVFAIL	未测
+整域	chinamobileltd.com	DIRECT|DIRECT|DOMAIN-SUFFIX|chinamobileltd.com	chinamobile	移除普通直连后缀	chinamobileltd.com	香港上市公司投资者门户，根域与 www 均为表外地址；仅处理上市公司网站。	https://www.chinamobileltd.com/en/ir/reports/ir2025.pdf	47.242.3.188 [out]	47.242.3.188 [out]	302 → www.chinamobileltd.com	47.242.3.188 [out]	47.242.3.188 [out]	403
+整域	chinatelecom-h.com	DIRECT|DIRECT|DOMAIN-SUFFIX|chinatelecom-h.com	chinatelecom	移除普通直连后缀	chinatelecom-h.com	H 股投资者门户，www 以表外地址返回企业站跳转。	https://www.chinatelecom-h.com/en/ir/analyst.php	208.91.197.27 [out]	208.91.197.27 [out]	failed	203.86.123.153 [out]	203.86.123.153 [out]	302 → www.chinatelecom-h.com
+整域	citiccapital.com	DIRECT|DIRECT|DOMAIN-SUFFIX|citiccapital.com	citic	移除普通直连后缀	citiccapital.com	全球投资管理业务，根域表外跳转，www 表外返回品牌页。	https://citiccapital.com/about-us/	116.251.207.26 [out]	116.251.207.26 [out]	301 → www.citiccapital.com	116.251.207.26 [out]	116.251.207.26 [out]	200
+整域	citiciam.com	DIRECT|DIRECT|DOMAIN-SUFFIX|citiciam.com	citic	待核		有表外地址，当前证据不足以区分跨境业务、国内服务境外 CDN 或资产变化。		43.154.122.84 [out]	43.154.122.84 [out]	failed	43.154.122.84 [out]	43.154.122.84 [out]	failed
+整域	citicifh.com	DIRECT|DIRECT|DOMAIN-SUFFIX|citicifh.com	citic	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+整域	clawhubmirror.com	DIRECT|DIRECT|DOMAIN-SUFFIX|clawhubmirror.com	volcengine	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+整域	clk1.top	DIRECT|DIRECT|DOMAIN-SUFFIX|clk1.top	ucloud	待核		有表外地址，当前证据不足以区分跨境业务、国内服务境外 CDN 或资产变化。		154.209.181.164 [out]	154.209.181.164 [out]	failed	154.209.181.164 [out]	154.209.181.164 [out]	failed
+整域	clsa.com	DIRECT|DIRECT|DOMAIN-SUFFIX|clsa.com	citic	移除普通直连后缀	clsa.com	境外机构投资业务，根域表外跳转，www 表外返回品牌页。	https://www.clsa.com/about/	23.47.101.57 [out]	23.42.69.12 [out]	301 → www.clsa.com	23.47.101.57 [out]	23.49.113.57 [out]	200
+整域	codeloop.top	DIRECT|DIRECT|DOMAIN-SUFFIX|codeloop.top	geolocation-cn	维持直连		已测入口有中国 IP 和有效 HTTPS 业务响应，未找到本组的表外应答。		47.117.172.236 [CN]	47.117.172.236 [CN]	200	47.117.172.236 [CN]	47.117.172.236 [CN]	200
+整域	coolab.top	DIRECT|DIRECT|DOMAIN-SUFFIX|coolab.top	aisiku	维持直连		已测入口有中国 IP 和有效 HTTPS 业务响应，未找到本组的表外应答。		121.41.89.9 [CN]	121.41.89.9 [CN]	200	121.41.89.9 [CN]	121.41.89.9 [CN]	200
+整域	ctripteam.com	DIRECT|DIRECT|DOMAIN-SUFFIX|ctripteam.com	ctrip	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+整域	cydiabc.top	DIRECT|DIRECT|DOMAIN-SUFFIX|cydiabc.top	geolocation-cn	维持直连		已测入口有中国 IP 和有效 HTTPS 业务响应，未找到本组的表外应答。		211.154.26.187 [CN]	211.154.26.187 [CN]	200	NXDOMAIN	NXDOMAIN	未测
+入口	daxa.cn	PROXY|PROXY|DOMAIN-SUFFIX|daxa.cn	—	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+整域	dcloudsp.com	DIRECT|DIRECT|DOMAIN-SUFFIX|dcloudsp.com	qcloud	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+整域	dcloudsp.net	DIRECT|DIRECT|DOMAIN-SUFFIX|dcloudsp.net	qcloud	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+整域	dcloudvod.com	DIRECT|DIRECT|DOMAIN-SUFFIX|dcloudvod.com	qcloud	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+整域	dcloudvod.net	DIRECT|DIRECT|DOMAIN-SUFFIX|dcloudvod.net	qcloud	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+整域	dewu-inc.com	DIRECT|DIRECT|DOMAIN-SUFFIX|dewu-inc.com	dewu	待核		含私网应答，需核实内网或分离 DNS 业务。		10.241.6.58 [private]	10.241.6.58 [private]	未测	10.241.6.58 [private]	10.241.6.58 [private]	未测
+整域	dewu-inner.com	DIRECT|DIRECT|DOMAIN-SUFFIX|dewu-inner.com	dewu	待核		根域与 www 的证据不足以判断业务范围；保留原策略。		47.101.34.55 [CN]	47.101.34.55 [CN]	failed	121.43.160.140 [CN]	121.43.160.140 [CN]	failed
+整域	dewu-inner.net	DIRECT|DIRECT|DOMAIN-SUFFIX|dewu-inner.net	dewu	待核		根域与 www 的证据不足以判断业务范围；保留原策略。		47.101.34.55 [CN]	47.101.34.55 [CN]	failed	47.101.34.55 [CN]	47.101.34.55 [CN]	failed
+整域	dewu.co	DIRECT|DIRECT|DOMAIN-SUFFIX|dewu.co	dewu	维持直连		已测入口有中国 IP 和有效 HTTPS 业务响应，未找到本组的表外应答。		121.199.120.225 [CN]	121.199.120.225 [CN]	308 → www.dewu.com	121.199.120.225 [CN]	121.199.120.225 [CN]	503
+整域	dewuhd.com	DIRECT|DIRECT|DOMAIN-SUFFIX|dewuhd.com	dewu	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+整域	dewuhui.com	DIRECT|DIRECT|DOMAIN-SUFFIX|dewuhui.com	dewu	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+整域	dewuyouhui.com	DIRECT|DIRECT|DOMAIN-SUFFIX|dewuyouhui.com	dewu	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+整域	diandianlife.top	DIRECT|DIRECT|DOMAIN-SUFFIX|diandianlife.top	askdiandian	维持直连		已测入口有中国 IP 和有效 HTTPS 业务响应，未找到本组的表外应答。		NODATA	NODATA	未测	118.31.5.25 [CN]	118.31.5.25 [CN]	200
+整域	dishu3.com	DIRECT|DIRECT|DOMAIN-SUFFIX|dishu3.com	yuewen	维持直连		已测入口有中国 IP 和有效 HTTPS 业务响应，未找到本组的表外应答。		NODATA	NODATA	未测	101.226.141.218,101.91.17.21 [CN]	101.226.141.218,101.91.17.21 [CN]	200
+入口	drweb.cn	PROXY|PROXY|DOMAIN-SUFFIX|drweb.cn	drweb	维持代理		根域与 www 在两个解析源均只有表外公网地址，符合当前地址策略。		195.15.214.48 [out]	195.15.214.48 [out]	未测	195.15.214.48 [out]	195.15.214.48 [out]	未测
+整域	du8.ltd	DIRECT|DIRECT|DOMAIN-SUFFIX|du8.ltd	dewu	维持直连		已测入口有中国 IP 和有效 HTTPS 业务响应，未找到本组的表外应答。		120.26.46.29 [CN]	120.26.46.29 [CN]	200	47.110.195.251 [CN]	47.110.195.251 [CN]	failed
+入口	dungeonkeeper.cn	PROXY|PROXY|DOMAIN-SUFFIX|dungeonkeeper.cn	ea	维持代理		根域与 www 在两个解析源均只有表外公网地址，符合当前地址策略。		100.56.70.182 [out]	100.56.70.182 [out]	未测	100.56.70.182 [out]	100.56.70.182 [out]	未测
+入口	dungeonkeeper.com.cn	PROXY|PROXY|DOMAIN-SUFFIX|dungeonkeeper.com.cn	ea	维持代理		根域与 www 在两个解析源均只有表外公网地址，符合当前地址策略。		100.56.70.182 [out]	100.56.70.182 [out]	未测	100.56.70.182 [out]	100.56.70.182 [out]	未测
+整域	dwhhd.com	DIRECT|DIRECT|DOMAIN-SUFFIX|dwhhd.com	dewu	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+入口	dynacw.com.cn	PROXY|PROXY|DOMAIN-SUFFIX|dynacw.com.cn	dyna	精确直连	www.dynacw.com.cn	两个解析源均为中国 IP，Wi-Fi 验证证书与首页或品牌跳转。	https://www.dynacw.com.cn/	NODATA	NODATA	未测	60.205.0.204 [CN]	60.205.0.204 [CN]	200
+入口	ebayauthenticate.com.cn	PROXY|PROXY|DOMAIN-SUFFIX|ebayauthenticate.com.cn	ebay	维持代理		根域与 www 在两个解析源均只有表外公网地址，符合当前地址策略。		3.33.139.32 [out]	3.33.139.32 [out]	未测	3.33.139.32 [out]	3.33.139.32 [out]	未测
+整域	edgemonix.top	DIRECT|DIRECT|DOMAIN-SUFFIX|edgemonix.top	geolocation-cn	待核		根域与 www 的证据不足以判断业务范围；保留原策略。		58.53.15.134 [CN]	58.53.15.134 [CN]	failed	NXDOMAIN	NXDOMAIN	未测
+入口	entrust.cn	PROXY|PROXY|DOMAIN-SUFFIX|entrust.cn	entrust	待核		存在大陆地址，但未证实可正常使用的业务页面或有效跳转。		20.75.246.180 [out]	20.75.246.180 [out]	未测	42.202.211.205 [CN]	42.202.211.205 [CN]	403
+整域	eufycn.com	DIRECT|DIRECT|DOMAIN-SUFFIX|eufycn.com	anker	待核		根域与 www 的证据不足以判断业务范围；保留原策略。		112.74.37.62 [CN]	112.74.37.62 [CN]	failed	39.96.128.3 [CN]	39.96.128.3 [CN]	failed
+入口	facebook.wang	PROXY|PROXY|DOMAIN-SUFFIX|facebook.wang	facebook	待核		两个解析源的地址类别、应答或可用性不一致，需复测实际服务主机。		57.144.216.141 [out]	57.144.200.141 [out]	未测	31.13.92.37 [out]	SERVFAIL	未测
+整域	fengniaojipei.net	DIRECT|DIRECT|DOMAIN-SUFFIX|fengniaojipei.net	eleme	维持直连		已测入口有中国 IP 和有效 HTTPS 业务响应，未找到本组的表外应答。		NODATA	NODATA	未测	59.82.23.50,59.82.23.64,59.82.158.12 [CN]	59.82.158.12,59.82.23.50,59.82.23.64 [CN]	200
+整域	fetion-portal.com	DIRECT|DIRECT|DOMAIN-SUFFIX|fetion-portal.com	chinamobile	待核		有表外地址，当前证据不足以区分跨境业务、国内服务境外 CDN 或资产变化。		168.76.254.165 [out]	168.76.254.165 [out]	failed	168.76.254.165 [out]	168.76.254.165 [out]	failed
+整域	fetionpic.com	DIRECT|DIRECT|DOMAIN-SUFFIX|fetionpic.com	chinamobile	待核		有表外地址，当前证据不足以区分跨境业务、国内服务境外 CDN 或资产变化。		179.199.253.172 [out]	179.199.253.172 [out]	403	179.199.253.172 [out]	179.199.253.172 [out]	403
+整域	fly-airchina.com	DIRECT|DIRECT|DOMAIN-SUFFIX|fly-airchina.com	airchina	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		SERVFAIL	SERVFAIL	未测	SERVFAIL	SERVFAIL	未测
+整域	functiongraph.run	DIRECT|DIRECT|DOMAIN-SUFFIX|functiongraph.run	huaweicloud	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+整域	funmob.top	DIRECT|DIRECT|DOMAIN-SUFFIX|funmob.top	geolocation-cn	待核		根域与 www 的证据不足以判断业务范围；保留原策略。		123.57.143.170 [CN]	123.57.143.170 [CN]	failed	NXDOMAIN	NXDOMAIN	未测
+入口	futu.cn	PROXY|PROXY|DOMAIN-SUFFIX|futu.cn	futu	精确直连	www.futu.cn	两个解析源均为中国 IP，Wi-Fi 验证证书与首页或品牌跳转。	https://www.futu.cn/	111.230.120.89 [CN]	111.230.120.89 [CN]	failed	119.29.122.179 [CN]	119.29.122.179 [CN]	200
+入口	futubull.cn	PROXY|PROXY|DOMAIN-SUFFIX|futubull.cn	—	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+整域	geektool.top	DIRECT|DIRECT|DOMAIN-SUFFIX|geektool.top	geolocation-cn	维持直连		已测入口有中国 IP 和有效 HTTPS 业务响应，未找到本组的表外应答。		NODATA	NODATA	未测	47.108.75.1 [CN]	47.108.75.1 [CN]	200
+整域	getfeishu.com	DIRECT|DIRECT|DOMAIN-SUFFIX|getfeishu.com	feishu	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		SERVFAIL	SERVFAIL	未测	SERVFAIL	SERVFAIL	未测
+整域	getsays.com	DIRECT|DIRECT|DOMAIN-SUFFIX|getsays.com	feishu	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NXDOMAIN	NXDOMAIN	未测	NXDOMAIN	NXDOMAIN	未测
+整域	giftatdw.com	DIRECT|DIRECT|DOMAIN-SUFFIX|giftatdw.com	dewu	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+整域	giftattoday.com	DIRECT|DIRECT|DOMAIN-SUFFIX|giftattoday.com	dewu	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+整域	gogokid.com	DIRECT|DIRECT|DOMAIN-SUFFIX|gogokid.com	bytedance	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+整域	goka.top	DIRECT|DIRECT|DOMAIN-SUFFIX|goka.top	category-entertainment-cn	待核		根域与 www 的证据不足以判断业务范围；保留原策略。		1.15.179.17 [CN]	1.15.179.17 [CN]	failed	1.15.179.17 [CN]	1.15.179.17 [CN]	failed
+整域	goodq.top	DIRECT|DIRECT|DOMAIN-SUFFIX|goodq.top	category-media-cn	待核		根域与 www 的证据不足以判断业务范围；保留原策略。		203.107.60.192 [CN]	203.107.60.192 [CN]	failed	203.107.60.192 [CN]	203.107.60.192 [CN]	failed
+整域	goselling.com	DIRECT|DIRECT|DOMAIN-SUFFIX|goselling.com	jd	待核		根域与 www 的证据不足以判断业务范围；保留原策略。		106.39.164.36,120.52.87.135,101.124.19.203 [CN]	106.39.164.36,101.124.19.203,120.52.87.135 [CN]	failed	101.124.19.203,120.52.87.135,106.39.164.36 [CN]	106.39.164.36,101.124.19.203,120.52.87.135 [CN]	failed
+整域	hapierxia.com	DIRECT|DIRECT|DOMAIN-SUFFIX|hapierxia.com	bytedance	待核		有表外地址，当前证据不足以区分跨境业务、国内服务境外 CDN 或资产变化。		NODATA	NODATA	未测	8.216.133.242 [out]	8.216.133.242 [out]	failed
+整域	hapipixia.com	DIRECT|DIRECT|DOMAIN-SUFFIX|hapipixia.com	bytedance	待核		有表外地址，当前证据不足以区分跨境业务、国内服务境外 CDN 或资产变化。		156.247.69.166 [out]	156.247.69.166 [out]	failed	156.247.69.166 [out]	156.247.69.166 [out]	failed
+整域	hapiyixia.com	DIRECT|DIRECT|DOMAIN-SUFFIX|hapiyixia.com	bytedance	待核		有表外地址，当前证据不足以区分跨境业务、国内服务境外 CDN 或资产变化。		156.247.69.165 [out]	156.247.69.165 [out]	failed	156.247.69.165 [out]	156.247.69.165 [out]	failed
+入口	hewlett-packard.com.cn	PROXY|PROXY|DOMAIN-SUFFIX|hewlett-packard.com.cn	hpe	维持代理		根域与 www 在两个解析源均只有表外公网地址，符合当前地址策略。		16.230.112.216 [out]	16.230.112.216 [out]	未测	16.230.112.216 [out]	16.230.112.216 [out]	未测
+整域	hr-welink.com	DIRECT|DIRECT|DOMAIN-SUFFIX|hr-welink.com	qcloud	待核		上游归在 qcloud，当前 www 页标题与云服务不符。需核实资产归属或持续用途。		116.204.247.199 [out]	116.204.247.199 [out]	301 → www.hr-welink.com	116.204.247.199 [out]	116.204.247.199 [out]	200
+整域	huaweicloudlive.com	DIRECT|DIRECT|DOMAIN-SUFFIX|huaweicloudlive.com	huaweicloud	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+整域	huaweiief.com	DIRECT|DIRECT|DOMAIN-SUFFIX|huaweiief.com	huawei	待核		根域与 www 的证据不足以判断业务范围；保留原策略。		NODATA	NODATA	未测	117.78.5.28 [CN]	117.78.5.28 [CN]	failed
+整域	huaweimarketplace.com	DIRECT|DIRECT|DOMAIN-SUFFIX|huaweimarketplace.com	huaweicloud	待核		有表外地址，当前证据不足以区分跨境业务、国内服务境外 CDN 或资产变化。		104.233.199.87 [out]	104.233.199.87 [out]	403	104.233.199.87 [out]	104.233.199.87 [out]	403
+整域	ibdxiguaimg.com	DIRECT|DIRECT|DOMAIN-SUFFIX|ibdxiguaimg.com	bytedance	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+整域	ibdxiguastatic.com	DIRECT|DIRECT|DOMAIN-SUFFIX|ibdxiguastatic.com	bytedance	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+整域	icbcina.com	DIRECT|DIRECT|DOMAIN-SUFFIX|icbcina.com	icbc	待核		同组官方印尼银行资料使用 icbc.co.id，本域只有跳转和 403，需核实实际用途。		38.182.131.140 [out]	38.182.131.140 [out]	301 → www.icbcina.com	38.182.131.140 [out]	38.182.131.140 [out]	403
+整域	ics.design	DIRECT|DIRECT|DOMAIN-SUFFIX|ics.design	alibaba	移除普通直连后缀	ics.design	alibaba 归集条目，根域及 www 在表外地址均跳往 ironcase.eu。	https://ics.design/	92.5.86.76 [out]	92.5.86.76 [out]	303 → ironcase.eu	92.5.86.76 [out]	92.5.86.76 [out]	303 → ironcase.eu
+整域	idonguapi.com	DIRECT|DIRECT|DOMAIN-SUFFIX|idonguapi.com	huaweicloud	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		SERVFAIL	SERVFAIL	未测	SERVFAIL	SERVFAIL	未测
+入口	ilife.wang	PROXY|PROXY|DOMAIN-SUFFIX|ilife.wang	apple	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		SERVFAIL	SERVFAIL	未测	SERVFAIL	SERVFAIL	未测
+整域	iluckysf.net	DIRECT|DIRECT|DOMAIN-SUFFIX|iluckysf.net	bytedance	待核		有表外地址，当前证据不足以区分跨境业务、国内服务境外 CDN 或资产变化。		47.91.170.222,8.218.208.240,47.76.127.217 [out]	8.218.208.240,47.76.127.217,47.91.170.222 [out]	failed	47.76.127.217,8.218.208.240,47.91.170.222 [out]	47.91.170.222,47.76.127.217,8.218.208.240 [out]	failed
+整域	im9.com	DIRECT|DIRECT|DOMAIN-SUFFIX|im9.com	bilibili	待核		有表外地址，当前证据不足以区分跨境业务、国内服务境外 CDN 或资产变化。		104.26.11.84,172.67.72.138,104.26.10.84 [out]	172.67.72.138,104.26.10.84,104.26.11.84 [out]	200	NXDOMAIN	NXDOMAIN	未测
+整域	imacos.top	DIRECT|DIRECT|DOMAIN-SUFFIX|imacos.top	geolocation-cn	维持直连		已测入口有中国 IP 和有效 HTTPS 业务响应，未找到本组的表外应答。		120.78.71.100 [CN]	120.78.71.100 [CN]	200	120.78.71.100 [CN]	120.78.71.100 [CN]	301 → imacos.top
+整域	imcapptest.com	DIRECT|DIRECT|DOMAIN-SUFFIX|imcapptest.com	huaweicloud	待核		有表外地址，当前证据不足以区分跨境业务、国内服务境外 CDN 或资产变化。		104.21.6.96,172.67.134.170 [out]	104.21.6.96,172.67.134.170 [out]	403	172.67.134.170,104.21.6.96 [out]	172.67.134.170,104.21.6.96 [out]	403
+整域	inanguapi.com	DIRECT|DIRECT|DOMAIN-SUFFIX|inanguapi.com	huaweicloud	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		SERVFAIL	SERVFAIL	未测	SERVFAIL	SERVFAIL	未测
+入口	intel.com.cn	PROXY|PROXY|DOMAIN-SUFFIX|intel.com.cn	intel	维持代理		根域与 www 在两个解析源均只有表外公网地址，符合当前地址策略。		192.198.165.191 [out]	192.198.165.191 [out]	未测	192.198.165.191 [out]	192.198.165.191 [out]	未测
+入口	intelrealsense.cn	PROXY|PROXY|DOMAIN-SUFFIX|intelrealsense.cn	intel	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		SERVFAIL	SERVFAIL	未测	SERVFAIL	SERVFAIL	未测
+入口	ipad.wang	PROXY|PROXY|DOMAIN-SUFFIX|ipad.wang	apple	维持代理		根域与 www 在两个解析源均只有表外公网地址，符合当前地址策略。		17.142.160.39,17.178.96.39,17.172.224.28 [out]	17.142.160.39,17.172.224.28,17.178.96.39 [out]	未测	17.172.224.28,17.178.96.39,17.142.160.39 [out]	17.178.96.39,17.142.160.39,17.172.224.28 [out]	未测
+入口	iphone.wang	PROXY|PROXY|DOMAIN-SUFFIX|iphone.wang	apple	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+入口	iphoneplus.wang	PROXY|PROXY|DOMAIN-SUFFIX|iphoneplus.wang	apple	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+入口	iphoto.wang	PROXY|PROXY|DOMAIN-SUFFIX|iphoto.wang	apple	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		SERVFAIL	SERVFAIL	未测	SERVFAIL	SERVFAIL	未测
+整域	isd.com	DIRECT|DIRECT|DOMAIN-SUFFIX|isd.com	qcloud	移除普通直连后缀	isd.com	qcloud 归集条目，www 在表外地址跳往新唐科技官网。	https://www.isd.com/	150.171.110.135 [out]	150.171.110.135 [out]	failed	150.171.110.133 [out]	150.171.110.133 [out]	301 → www.nuvoton.com
+整域	ivweb.io	DIRECT|DIRECT|DOMAIN-SUFFIX|ivweb.io	tencent	移除普通直连后缀	ivweb.io	tencent 归集条目，www 跳回根域，根域再跳往 hi-fidelity-forum.com。	https://ivweb.io/	104.21.8.78,172.67.188.83 [out]	104.21.8.78,172.67.188.83 [out]	301 → hi-fidelity-forum.com	104.21.8.78,172.67.188.83 [out]	172.67.188.83,104.21.8.78 [out]	301 → ivweb.io
+入口	iwork.wang	PROXY|PROXY|DOMAIN-SUFFIX|iwork.wang	apple	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		SERVFAIL	SERVFAIL	未测	SERVFAIL	SERVFAIL	未测
+整域	ixiguapi.com	DIRECT|DIRECT|DOMAIN-SUFFIX|ixiguapi.com	huaweicloud	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		SERVFAIL	SERVFAIL	未测	SERVFAIL	SERVFAIL	未测
+入口	jinrieluosi.cn	PROXY|PROXY|DOMAIN-SUFFIX|jinrieluosi.cn	rossiyasegodnya	维持代理		根域与 www 在两个解析源均只有表外公网地址，符合当前地址策略。		194.190.139.72 [out]	194.190.139.72 [out]	未测	194.190.139.72 [out]	194.190.139.72 [out]	未测
+整域	joybuy.com	DIRECT|DIRECT|DOMAIN-SUFFIX|joybuy.com	jd	移除普通直连后缀	joybuy.com	京东欧洲零售业务，根域与 www 均有表外地址及品牌站跳转。	https://about.joybuy.com/about/	1.118.33.10 [out]	1.118.33.10 [out]	308 → www.joybuy.com	8.233.11.48 [out]	18.245.86.72,18.245.86.18,18.245.86.78,18.245.86.97 [out]	301 → www.joybuy.com
+整域	joybuy.es	DIRECT|DIRECT|DOMAIN-SUFFIX|joybuy.es	jd	移除普通直连后缀	joybuy.es	表外接入，根域及 www 以有效证书跳往 www.joybuy.com。	https://about.joybuy.com/about/	3.127.104.104 [out]	3.127.104.104 [out]	302 → www.joybuy.com	3.127.104.104 [out]	3.127.104.104 [out]	302 → www.joybuy.com
+整域	jsj.top	DIRECT|DIRECT|DOMAIN-SUFFIX|jsj.top	jinshuju	维持直连		已测入口有中国 IP 和有效 HTTPS 业务响应，未找到本组的表外应答。		52.83.185.165 [CN]	52.83.185.165 [CN]	302 → jinshuju.net	52.83.185.165,52.83.193.114,52.83.39.254 [CN]	52.83.185.165,52.83.39.254,52.83.193.114 [CN]	302 → jinshuju.net
+整域	jtexpress.top	DIRECT|DIRECT|DOMAIN-SUFFIX|jtexpress.top	jtexpress	维持直连		已测入口有中国 IP 和有效 HTTPS 业务响应，未找到本组的表外应答。		106.14.153.64,101.132.185.106 [CN]	106.14.153.64,101.132.185.106 [CN]	301 → www.jtexpress.com.cn	101.132.185.106,106.14.153.64 [CN]	106.14.153.64,101.132.185.106 [CN]	301 → www.jtexpress.com.cn
+整域	juneyaotravelvolc.com	DIRECT|DIRECT|DOMAIN-SUFFIX|juneyaotravelvolc.com	volcengine	待核		有表外地址，当前证据不足以区分跨境业务、国内服务境外 CDN 或资产变化。		45.136.151.126 [out]	45.136.151.126 [out]	503	45.136.151.126 [out]	45.136.151.126 [out]	301 → juneyaotravelvolc.com
+整域	jutongbao.top	DIRECT|DIRECT|DOMAIN-SUFFIX|jutongbao.top	jutongbao	维持直连		已测入口有中国 IP 和有效 HTTPS 业务响应，未找到本组的表外应答。		NODATA	NODATA	未测	39.105.82.154 [CN]	39.105.82.154 [CN]	200
+整域	kanbox.com	DIRECT|DIRECT|DOMAIN-SUFFIX|kanbox.com	alibaba	待核		两个解析源的地址类别、应答或可用性不一致，需复测实际服务主机。		112.121.185.22 [out]	SERVFAIL	failed	SERVFAIL	SERVFAIL	未测
+整域	kuailepipixia.com	DIRECT|DIRECT|DOMAIN-SUFFIX|kuailepipixia.com	bytedance	待核		有表外地址，当前证据不足以区分跨境业务、国内服务境外 CDN 或资产变化。		154.85.199.38 [out]	154.85.199.38 [out]	failed	154.85.199.38 [out]	154.85.199.38 [out]	failed
+整域	larkmeetings.com	DIRECT|DIRECT|DOMAIN-SUFFIX|larkmeetings.com	lark-global	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		SERVFAIL	SERVFAIL	未测	SERVFAIL	SERVFAIL	未测
+整域	larkrooms.com	DIRECT|DIRECT|DOMAIN-SUFFIX|larkrooms.com	lark-global	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		SERVFAIL	SERVFAIL	未测	SERVFAIL	SERVFAIL	未测
+整域	larksuite-pre.com	DIRECT|DIRECT|DOMAIN-SUFFIX|larksuite-pre.com	lark-global	待核		有表外地址，当前证据不足以区分跨境业务、国内服务境外 CDN 或资产变化。		NODATA	NODATA	未测	23.216.153.144,23.216.153.132 [out]	23.32.91.48,23.32.91.53 [out]	404
+整域	larksuite.com.ttdns1.com	DIRECT|DIRECT|DOMAIN-SUFFIX|larksuite.com.ttdns1.com	lark-global	待核		有表外地址，当前证据不足以区分跨境业务、国内服务境外 CDN 或资产变化。		NODATA	NODATA	未测	23.59.252.195,23.59.252.202 [out]	23.32.91.21,23.32.91.6 [out]	failed
+整域	larksuite.com.ttdns2.com	DIRECT|DIRECT|DOMAIN-SUFFIX|larksuite.com.ttdns2.com	lark-global	待核		根域与 www 的证据不足以判断业务范围；保留原策略。		NODATA	NODATA	未测	42.202.219.176,42.202.219.193,42.202.219.190,42.202.219.187,42.202.219.177 [CN]	42.202.219.176,42.202.219.177,42.202.219.187,42.202.219.190,42.202.219.193 [CN]	failed
+整域	larksuitecdn.com	DIRECT|DIRECT|DOMAIN-SUFFIX|larksuitecdn.com	lark-global	移除普通直连后缀	larksuitecdn.com	Lark 官网引用的 lf-static-sg、p16-hera-sg 节点在表外，sf16-sg 节点在中国表内。Mac 实测 sf16-sg 去掉后缀后命中 FINAL,PROXY；单独保留该主机精确直连。	https://www.larksuite.com/hc/en-US/articles/235185325198-use-the-link-preview-extension-in-base	NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+整域	larksuiteimg.com	DIRECT|DIRECT|DOMAIN-SUFFIX|larksuiteimg.com	lark-global	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+整域	larkvc.com	DIRECT|DIRECT|DOMAIN-SUFFIX|larkvc.com	lark-global	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		SERVFAIL	SERVFAIL	未测	SERVFAIL	SERVFAIL	未测
+入口	launchpad.wang	PROXY|PROXY|DOMAIN-SUFFIX|launchpad.wang	apple	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+整域	lebo.top	DIRECT|DIRECT|DOMAIN-SUFFIX|lebo.top	geolocation-cn	维持直连		已测入口有中国 IP 和有效 HTTPS 业务响应，未找到本组的表外应答。		36.104.134.106,36.104.134.113,36.104.142.57,36.104.134.112,36.104.142.56,36.104.134.111,36.104.142.55,36.104.134.110 [CN]	36.104.134.109,36.104.134.106,36.104.134.107,36.104.134.113,36.104.134.112,36.104.142.54,36.104.142.58,36.104.142.55 [CN]	200	36.104.142.59,36.104.134.111,36.104.142.58,36.104.134.110,36.104.134.106,36.104.134.113,36.104.142.60,36.104.134.112 [CN]	36.104.134.107,36.104.142.57,36.104.142.56,36.104.142.53,36.104.134.113,36.104.134.112,36.104.134.110,36.104.134.111 [CN]	200
+整域	letsign.com	DIRECT|DIRECT|DOMAIN-SUFFIX|letsign.com	bytedance	维持直连		已测入口有中国 IP 和有效 HTTPS 业务响应，未找到本组的表外应答。		42.248.135.14,42.248.135.16,42.248.135.33,42.248.135.15,42.248.135.17,59.47.236.94,123.246.91.71,123.246.91.76,123.246.91.75,123.246.91.77,123.246.91.72,123.246.91.74,59.47.236.90,42.248.135.34,42.248.135.35,42.248.135.32 [CN]	42.248.135.15,123.246.91.71,42.248.135.16,123.246.91.72,42.248.135.17,123.246.91.73,42.248.135.32,123.246.91.74,42.248.135.33,123.246.91.75,42.248.135.34,42.248.135.35,59.47.236.89,42.248.135.14,123.246.91.70,59.47.236.90 [CN]	301 → www.letsign.com	42.248.135.17,42.248.135.16,42.248.135.14,42.248.135.15,42.248.135.34,123.246.91.70,123.246.91.76,123.246.91.72,123.246.91.74,123.246.91.73,123.246.91.77,42.248.135.32,59.47.236.90,59.47.236.93,42.248.135.33,42.248.135.35 [CN]	59.47.236.94,59.47.236.92,123.246.91.73,123.246.91.75,123.246.91.74,123.246.91.77,123.246.91.76,42.248.135.14,42.248.135.33,42.248.135.16,42.248.135.17,42.248.135.34,42.248.135.15,42.248.135.35,42.248.135.32,123.246.91.71 [CN]	200
+整域	lg3000.top	DIRECT|DIRECT|DOMAIN-SUFFIX|lg3000.top	category-blog-cn	维持直连		已测入口有中国 IP 和有效 HTTPS 业务响应，未找到本组的表外应答。		8.135.58.182 [CN]	8.135.58.182 [CN]	200	8.135.58.182 [CN]	8.135.58.182 [CN]	failed
+入口	lightnovel.cn	PROXY|PROXY|DOMAIN-SUFFIX|lightnovel.cn	—	维持代理		根域与 www 在两个解析源均只有表外公网地址，符合当前地址策略。		172.67.211.107,104.21.85.216 [out]	104.21.85.216,172.67.211.107 [out]	未测	172.67.211.107,104.21.85.216 [out]	172.67.211.107,104.21.85.216 [out]	未测
+整域	linglong.space	DIRECT|DIRECT|DOMAIN-SUFFIX|linglong.space	deepin	待核		有表外地址，当前证据不足以区分跨境业务、国内服务境外 CDN 或资产变化。		NODATA	NODATA	未测	172.67.175.138,104.21.83.112 [out]	172.67.175.138,104.21.83.112 [out]	301 → linyaps.org.cn
+整域	lingshoujia.com	DIRECT|DIRECT|DOMAIN-SUFFIX|lingshoujia.com	alibaba	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		SERVFAIL	SERVFAIL	未测	SERVFAIL	SERVFAIL	未测
+入口	logitech.com.cn	PROXY|PROXY|DOMAIN-SUFFIX|logitech.com.cn	logitech	精确直连	logitech.com.cn	两个解析源均为中国 IP，Wi-Fi 验证证书与首页或品牌跳转。	https://logitech.com.cn/	54.223.28.22 [CN]	54.223.28.22 [CN]	302 → www.logitech.com	118.193.97.131,118.193.97.141,118.193.97.146,118.193.97.139 [CN]	118.193.97.216,118.193.97.221,118.193.97.204,118.193.97.194 [CN]	301 → www.logitech.com.cn
+入口	logitechg.com.cn	PROXY|PROXY|DOMAIN-SUFFIX|logitechg.com.cn	logitech	精确直连	logitechg.com.cn, www.logitechg.com.cn	两个解析源均为中国 IP，Wi-Fi 验证证书与首页或品牌跳转。	https://logitechg.com.cn/	54.223.28.22 [CN]	54.223.28.22 [CN]	302 → www.logitechg.com	118.193.97.156,118.193.97.155,118.193.97.128,118.193.97.145 [CN]	118.193.97.156,118.193.97.155,118.193.97.145,118.193.97.128 [CN]	301 → www.logitechg.com
+入口	logitechio.com.cn	PROXY|PROXY|DOMAIN-SUFFIX|logitechio.com.cn	logitech	待核		存在大陆地址，但未证实可正常使用的业务页面或有效跳转。		52.82.111.244 [CN]	52.82.111.244 [CN]	failed	52.82.111.244 [CN]	52.82.111.244 [CN]	failed
+入口	longbridge.cn	PROXY|PROXY|DOMAIN-SUFFIX|longbridge.cn	longbridge	精确直连	longbridge.cn	两个解析源均为中国 IP，Wi-Fi 验证证书与首页或品牌跳转。	https://longbridge.cn/	139.196.26.110,139.196.45.165,139.196.35.5 [CN]	139.196.45.165,139.196.35.5,139.196.26.110 [CN]	200	203.107.60.192 [CN]	203.107.60.192 [CN]	failed
+入口	longportapp.cn	PROXY|PROXY|DOMAIN-SUFFIX|longportapp.cn	—	精确直连	longportapp.cn, www.longportapp.cn	两个解析源均为中国 IP，Wi-Fi 验证证书与首页或品牌跳转。	https://longportapp.cn/	139.196.35.5,139.196.45.165,139.196.26.110 [CN]	139.196.35.5,139.196.26.110,139.196.45.165 [CN]	302 → longportapp.cn	139.196.45.165,139.196.35.5,139.196.26.110 [CN]	139.196.45.165,139.196.26.110,139.196.35.5 [CN]	302 → longportapp.cn
+整域	luckysf.net	DIRECT|DIRECT|DOMAIN-SUFFIX|luckysf.net	bytedance	待核		有表外地址，当前证据不足以区分跨境业务、国内服务境外 CDN 或资产变化。		47.76.127.217,47.91.170.222,8.218.208.240 [out]	8.218.208.240,47.91.170.222,47.76.127.217 [out]	failed	47.76.127.217,47.91.170.222,8.218.208.240 [out]	47.91.170.222,47.76.127.217,8.218.208.240 [out]	failed
+整域	lwurl.to	DIRECT|DIRECT|DOMAIN-SUFFIX|lwurl.to	dingtalk	待核		有表外地址，当前证据不足以区分跨境业务、国内服务境外 CDN 或资产变化。		103.192.178.166 [out]	103.192.178.166 [out]	failed	103.192.178.166 [out]	103.192.178.166 [out]	failed
+整域	lydaas.net	DIRECT|DIRECT|DOMAIN-SUFFIX|lydaas.net	alibaba	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+整域	lydass.net	DIRECT|DIRECT|DOMAIN-SUFFIX|lydass.net	alibaba	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+入口	mac.wang	PROXY|PROXY|DOMAIN-SUFFIX|mac.wang	apple	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+入口	macbook.wang	PROXY|PROXY|DOMAIN-SUFFIX|macbook.wang	apple	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+整域	maoer.com	DIRECT|DIRECT|DOMAIN-SUFFIX|maoer.com	bilibili	维持直连		已测入口有中国 IP 和有效 HTTPS 业务响应，未找到本组的表外应答。		101.201.197.110 [CN]	101.201.197.110 [CN]	failed	101.201.197.110 [CN]	101.201.197.110 [CN]	301 → www.cewtv.com
+整域	mappcloud.com	DIRECT|DIRECT|DOMAIN-SUFFIX|mappcloud.com	alibaba	待核		根域与 www 的证据不足以判断业务范围；保留原策略。		47.92.21.245 [CN]	47.92.21.245 [CN]	failed	NXDOMAIN	NXDOMAIN	未测
+整域	misaka-net.top	DIRECT|DIRECT|DOMAIN-SUFFIX|misaka-net.top	category-blog-cn	维持直连		已测入口有中国 IP 和有效 HTTPS 业务响应，未找到本组的表外应答。		8.146.226.100 [CN]	8.146.226.100 [CN]	200	NXDOMAIN	NXDOMAIN	未测
+整域	mmarket6.com	DIRECT|DIRECT|DOMAIN-SUFFIX|mmarket6.com	chinamobile	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NXDOMAIN	NXDOMAIN	未测	NXDOMAIN	NXDOMAIN	未测
+入口	msi.cn	PROXY|PROXY|DOMAIN-SUFFIX|msi.cn	msi	精确直连	www.msi.cn	两个解析源均为中国 IP，Wi-Fi 验证证书与首页或品牌跳转。	https://www.msi.cn/	180.163.75.158 [CN]	180.163.75.158 [CN]	failed	123.246.91.76,123.246.91.71,123.246.91.74,123.246.91.72,123.246.91.77,123.246.91.70,123.246.91.75,123.246.91.73 [CN]	123.246.91.71,123.246.91.76,123.246.91.77,123.246.91.75,123.246.91.73,123.246.91.72,123.246.91.74,123.246.91.70 [CN]	200
+入口	mucinex.cn	PROXY|PROXY|DOMAIN-SUFFIX|mucinex.cn	mucinex	维持代理		根域与 www 在两个解析源均只有表外公网地址，符合当前地址策略。		3.33.139.32 [out]	3.33.139.32 [out]	未测	3.33.139.32 [out]	3.33.139.32 [out]	未测
+入口	mucinex.com.cn	PROXY|PROXY|DOMAIN-SUFFIX|mucinex.com.cn	mucinex	维持代理		根域与 www 在两个解析源均只有表外公网地址，符合当前地址策略。		3.33.139.32 [out]	3.33.139.32 [out]	未测	3.33.139.32 [out]	3.33.139.32 [out]	未测
+整域	mychinaunicom.com	DIRECT|DIRECT|DOMAIN-SUFFIX|mychinaunicom.com	chinaunicom	待核		有表外地址，当前证据不足以区分跨境业务、国内服务境外 CDN 或资产变化。		15.197.225.128,3.33.251.168 [out]	15.197.225.128,3.33.251.168 [out]	301 → www.mychinaunicom.com	47.56.87.154 [out]	47.56.87.154 [out]	200
+整域	myelasticsearch.com	DIRECT|DIRECT|DOMAIN-SUFFIX|myelasticsearch.com	qcloud	移除普通直连后缀	myelasticsearch.com	qcloud 归集条目，根域与 www 在表外地址返回注册商停放页。	https://myelasticsearch.com/	217.19.248.132 [out]	217.19.248.132 [out]	200	217.19.248.132 [out]	217.19.248.132 [out]	200
+整域	myhwcloudlive.com	DIRECT|DIRECT|DOMAIN-SUFFIX|myhwcloudlive.com	huaweicloud	待核		根域与 www 的证据不足以判断业务范围；保留原策略。		114.116.161.50,114.116.161.61,114.116.161.58,114.116.161.56 [CN]	114.116.161.50,114.116.161.56,114.116.161.58,114.116.161.61 [CN]	failed	NXDOMAIN	NXDOMAIN	未测
+整域	mzyyfck.com	DIRECT|DIRECT|DOMAIN-SUFFIX|mzyyfck.com	auxgroup	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NXDOMAIN	NXDOMAIN	未测	NXDOMAIN	NXDOMAIN	未测
+整域	mzyygb.com	DIRECT|DIRECT|DOMAIN-SUFFIX|mzyygb.com	auxgroup	待核		有表外地址，当前证据不足以区分跨境业务、国内服务境外 CDN 或资产变化。		129.227.60.198 [out]	129.227.60.198 [out]	failed	129.227.60.198 [out]	129.227.60.198 [out]	failed
+整域	mzyygk.com	DIRECT|DIRECT|DOMAIN-SUFFIX|mzyygk.com	auxgroup	待核		上游归在 auxgroup，当前页标题与医院业务不符。需核实资产归属或持续用途。		172.67.203.40,104.21.58.97 [out]	172.67.203.40,104.21.58.97 [out]	200	172.67.203.40,104.21.58.97 [out]	104.21.58.97,172.67.203.40 [out]	200
+整域	mzyyzl.com	DIRECT|DIRECT|DOMAIN-SUFFIX|mzyyzl.com	auxgroup	待核		有表外地址，当前证据不足以区分跨境业务、国内服务境外 CDN 或资产变化。		177.210.50.109 [out]	177.210.50.109 [out]	failed	177.210.50.109 [out]	177.210.50.109 [out]	failed
+整域	nbyzfeyy.com	DIRECT|DIRECT|DOMAIN-SUFFIX|nbyzfeyy.com	auxgroup	待核		两个解析源的地址类别、应答或可用性不一致，需复测实际服务主机。		SERVFAIL	38.34.179.221 [out]	200	38.34.179.221 [out]	38.34.179.221 [out]	200
+整域	neihancommunity.com	DIRECT|DIRECT|DOMAIN-SUFFIX|neihancommunity.com	bytedance	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NXDOMAIN	NXDOMAIN	未测	NXDOMAIN	NXDOMAIN	未测
+整域	netbig.top	DIRECT|DIRECT|DOMAIN-SUFFIX|netbig.top	geolocation-cn	维持直连		已测入口有中国 IP 和有效 HTTPS 业务响应，未找到本组的表外应答。		120.24.80.194 [CN]	120.24.80.194 [CN]	200	120.24.80.194 [CN]	120.24.80.194 [CN]	200
+整域	nic.xin	DIRECT|DIRECT|DOMAIN-SUFFIX|nic.xin	alibaba	待核		根域与 www 的证据不足以判断业务范围；保留原策略。		8.142.215.250,8.142.124.116 [CN]	8.142.215.250,8.142.124.116 [CN]	failed	NXDOMAIN	NXDOMAIN	未测
+入口	nike.xn--hxt814e	PROXY|PROXY|DOMAIN-SUFFIX|nike.xn--hxt814e	nike	维持代理		根域与 www 在两个解析源均只有表外公网地址，符合当前地址策略。		3.33.139.32 [out]	3.33.139.32 [out]	未测	3.33.139.32 [out]	3.33.139.32 [out]	未测
+整域	nxog.top	DIRECT|DIRECT|DOMAIN-SUFFIX|nxog.top	geolocation-cn	待核		有表外地址，当前证据不足以区分跨境业务、国内服务境外 CDN 或资产变化。		NODATA	NODATA	未测	172.64.153.208,104.18.34.48 [out]	103.85.227.105 [out]	200
+整域	oneplus.net	DIRECT|DIRECT|DOMAIN-SUFFIX|oneplus.net	oneplus	待核		含私网应答，需核实内网或分离 DNS 业务。		10.66.222.85 [private]	10.66.222.85 [private]	未测	NXDOMAIN	NXDOMAIN	未测
+整域	openkylin.top	DIRECT|DIRECT|DOMAIN-SUFFIX|openkylin.top	ubuntukylin	维持直连		已测入口有中国 IP 和有效 HTTPS 业务响应，未找到本组的表外应答。		47.94.143.190 [CN]	47.94.143.190 [CN]	301 → www.openkylin.top	36.104.142.54,36.104.134.107,36.104.142.53,36.104.134.106,36.104.134.110,36.104.134.109,36.104.142.55,36.104.134.108 [CN]	36.104.134.111,36.104.142.56,36.104.134.112,36.104.134.113,36.104.134.109,36.104.142.54,36.104.134.110,36.104.142.55 [CN]	200
+整域	oppo.mobi	DIRECT|DIRECT|DOMAIN-SUFFIX|oppo.mobi	oppo	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NXDOMAIN	NXDOMAIN	未测	NXDOMAIN	NXDOMAIN	未测
+整域	oppocolor.com	DIRECT|DIRECT|DOMAIN-SUFFIX|oppocolor.com	oppo	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+整域	oppocoloros.com	DIRECT|DIRECT|DOMAIN-SUFFIX|oppocoloros.com	oppo	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+整域	oppodigital.com	DIRECT|DIRECT|DOMAIN-SUFFIX|oppodigital.com	oppo	移除普通直连后缀	oppodigital.com	美国影音设备业务，根域与 www 均从表外地址返回产品页。	https://www.oppodigital.com/About.aspx	137.117.17.70 [out]	137.117.17.70 [out]	200	137.117.17.70 [out]	137.117.17.70 [out]	200
+整域	opstatics.com	DIRECT|DIRECT|DOMAIN-SUFFIX|opstatics.com	oneplus	待核		有表外地址，当前证据不足以区分跨境业务、国内服务境外 CDN 或资产变化。		52.76.134.234,18.139.164.107,18.138.30.23 [out]	18.138.30.23,52.76.134.234,18.139.164.107 [out]	404	NXDOMAIN	NXDOMAIN	未测
+整域	oracle-tencent.com	DIRECT|DIRECT|DOMAIN-SUFFIX|oracle-tencent.com	qcloud	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+整域	oracle-tencent.net	DIRECT|DIRECT|DOMAIN-SUFFIX|oracle-tencent.net	qcloud	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+整域	pandarzli.com	DIRECT|DIRECT|DOMAIN-SUFFIX|pandarzli.com	dewu	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+整域	pengyoudewu.com	DIRECT|DIRECT|DOMAIN-SUFFIX|pengyoudewu.com	dewu	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+整域	phoenixmiles.com	DIRECT|DIRECT|DOMAIN-SUFFIX|phoenixmiles.com	airchina	待核		根域与 www 的证据不足以判断业务范围；保留原策略。		NODATA	NODATA	未测	43.250.34.109 [CN]	43.250.34.109 [CN]	418
+整域	phpwind.com	DIRECT|DIRECT|DOMAIN-SUFFIX|phpwind.com	alibaba	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		SERVFAIL	SERVFAIL	未测	SERVFAIL	SERVFAIL	未测
+整域	phpwind.net	DIRECT|DIRECT|DOMAIN-SUFFIX|phpwind.net	alibaba	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		SERVFAIL	SERVFAIL	未测	SERVFAIL	SERVFAIL	未测
+整域	piedaochuan.top	DIRECT|DIRECT|DOMAIN-SUFFIX|piedaochuan.top	geolocation-cn	维持直连		已测入口有中国 IP 和有效 HTTPS 业务响应，未找到本组的表外应答。		8.134.38.212 [CN]	8.134.38.212 [CN]	200	8.134.38.212 [CN]	8.134.38.212 [CN]	200
+整域	pipixiaha.com	DIRECT|DIRECT|DOMAIN-SUFFIX|pipixiaha.com	bytedance	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NODATA	NODATA	未测
+整域	piyipiba.com	DIRECT|DIRECT|DOMAIN-SUFFIX|piyipiba.com	bytedance	待核		有表外地址，当前证据不足以区分跨境业务、国内服务境外 CDN 或资产变化。		207.148.37.197,207.148.37.196,147.92.37.233,147.92.37.232 [out]	147.92.37.233,147.92.37.232,207.148.37.197,207.148.37.196 [out]	failed	207.148.37.196,147.92.37.233,207.148.37.197,147.92.37.232 [out]	207.148.37.196,147.92.37.233,207.148.37.197,147.92.37.232 [out]	failed
+整域	pljzy.top	DIRECT|DIRECT|DOMAIN-SUFFIX|pljzy.top	category-blog-cn	待核		根域与 www 的证据不足以判断业务范围；保留原策略。		47.116.117.180 [CN]	47.116.117.180 [CN]	failed	47.116.117.180 [CN]	47.116.117.180 [CN]	failed
+整域	poizon-inner.com	DIRECT|DIRECT|DOMAIN-SUFFIX|poizon-inner.com	dewu	待核		根域与 www 的证据不足以判断业务范围；保留原策略。		47.101.34.55 [CN]	47.101.34.55 [CN]	failed	47.101.34.55 [CN]	47.101.34.55 [CN]	failed
+整域	poizon-inner.net	DIRECT|DIRECT|DOMAIN-SUFFIX|poizon-inner.net	dewu	待核		根域与 www 的证据不足以判断业务范围；保留原策略。		47.101.34.55 [CN]	47.101.34.55 [CN]	failed	47.101.34.55 [CN]	47.101.34.55 [CN]	failed
+整域	poizon-support.com	DIRECT|DIRECT|DOMAIN-SUFFIX|poizon-support.com	dewu	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+整域	poizon.net	DIRECT|DIRECT|DOMAIN-SUFFIX|poizon.net	dewu	维持直连		已测入口有中国 IP 和有效 HTTPS 业务响应，未找到本组的表外应答。		47.101.34.55 [CN]	47.101.34.55 [CN]	200	47.101.34.55 [CN]	47.101.34.55 [CN]	200
+整域	powerapp.io	DIRECT|DIRECT|DOMAIN-SUFFIX|powerapp.io	huaweicloud	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NXDOMAIN	NXDOMAIN	未测	NXDOMAIN	NXDOMAIN	未测
+整域	ppxhhh.com	DIRECT|DIRECT|DOMAIN-SUFFIX|ppxhhh.com	bytedance	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NODATA	NODATA	未测
+整域	qingtingtrip.com	DIRECT|DIRECT|DOMAIN-SUFFIX|qingtingtrip.com	alibaba	待核		有表外地址，当前证据不足以区分跨境业务、国内服务境外 CDN 或资产变化。		NODATA	NODATA	未测	172.67.140.238,104.21.27.24 [out]	104.21.27.24,172.67.140.238 [out]	failed
+整域	qq.cn.com	DIRECT|DIRECT|DOMAIN-SUFFIX|qq.cn.com	tencent	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+入口	qualcommventures.cn	PROXY|PROXY|DOMAIN-SUFFIX|qualcommventures.cn	qualcomm	待核		根域与 www 的证据不足以判断业务范围；保留原策略。		216.70.116.66 [out]	216.70.116.66 [out]	未测	NXDOMAIN	NXDOMAIN	未测
+整域	qualitycloud.top	DIRECT|DIRECT|DOMAIN-SUFFIX|qualitycloud.top	bytedance	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+整域	qwapp.top	DIRECT|DIRECT|DOMAIN-SUFFIX|qwapp.top	category-entertainment-cn	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+整域	realme.com	DIRECT|DIRECT|DOMAIN-SUFFIX|realme.com	oppo	维持直连		已测入口有中国 IP 和有效 HTTPS 业务响应，未找到本组的表外应答。		106.3.18.180 [CN]	106.3.18.180 [CN]	301 → www.realme.com	106.3.18.180 [CN]	106.3.18.180 [CN]	200
+整域	realme.net	DIRECT|DIRECT|DOMAIN-SUFFIX|realme.net	oppo	维持直连		已测入口有中国 IP 和有效 HTTPS 业务响应，未找到本组的表外应答。		NODATA	NODATA	未测	106.3.16.76 [CN]	106.3.16.76 [CN]	200
+入口	reutersagency.cn	PROXY|PROXY|DOMAIN-SUFFIX|reutersagency.cn	thomsonreuters	维持代理		根域与 www 在两个解析源均只有表外公网地址，符合当前地址策略。		155.46.172.254 [out]	155.46.172.254 [out]	未测	52.2.248.181,98.94.211.235,54.144.192.36 [out]	98.94.211.235,54.144.192.36,52.2.248.181 [out]	未测
+整域	ro.com	DIRECT|DIRECT|DOMAIN-SUFFIX|ro.com	xd	维持直连		已测入口有中国 IP 和有效 HTTPS 业务响应，未找到本组的表外应答。		203.107.33.10 [CN]	203.107.33.10 [CN]	200	60.205.85.2,47.95.131.136 [CN]	60.205.85.2,47.95.131.136 [CN]	301 → ro.com
+入口	rsshub.henry.wang	PROXY|PROXY|DOMAIN|rsshub.henry.wang	rsshub-3rd	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NXDOMAIN	NXDOMAIN	未测	NXDOMAIN	NXDOMAIN	未测
+整域	saduck.top	DIRECT|DIRECT|DOMAIN-SUFFIX|saduck.top	category-education-cn	维持直连		已测入口有中国 IP 和有效 HTTPS 业务响应，未找到本组的表外应答。		180.76.182.76 [CN]	180.76.182.76 [CN]	200	180.76.182.76 [CN]	180.76.182.76 [CN]	200
+入口	schwab.com.cn	PROXY|PROXY|DOMAIN-SUFFIX|schwab.com.cn	—	待核		存在大陆地址，但未证实可正常使用的业务页面或有效跳转。		162.93.211.235,162.93.223.235,162.93.235.235,162.93.231.235 [out]	162.93.223.235,162.93.211.235,162.93.231.235,162.93.235.235 [out]	未测	118.25.134.113 [CN]	118.25.134.113 [CN]	failed
+整域	sealsuite.com	DIRECT|DIRECT|DOMAIN-SUFFIX|sealsuite.com	volcengine	移除普通直连后缀	sealsuite.com	SealSuite 企业 SaaS 官网 www 的两个解析源均为表外接入且返回品牌页；其他实际节点按地址判断。	https://www.sealsuite.com/	NODATA	NODATA	未测	23.216.153.145,23.216.153.157 [out]	23.32.91.47,23.32.91.38 [out]	200
+整域	sealsuite.net	DIRECT|DIRECT|DOMAIN-SUFFIX|sealsuite.net	volcengine	待核		与已核实的 .com 不同，缺少实际业务主机。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+整域	share123.top	DIRECT|DIRECT|DOMAIN-SUFFIX|share123.top	category-netdisk-cn	维持直连		已测入口有中国 IP 和有效 HTTPS 业务响应，未找到本组的表外应答。		8.163.31.154 [CN]	8.163.31.154 [CN]	200	140.210.12.154 [CN]	115.238.196.73 [CN]	200
+整域	shizhuang-inc.net	DIRECT|DIRECT|DOMAIN-SUFFIX|shizhuang-inc.net	dewu	维持直连		已测入口有中国 IP 和有效 HTTPS 业务响应，未找到本组的表外应答。		47.101.34.55 [CN]	47.101.34.55 [CN]	200	47.101.34.55 [CN]	47.101.34.55 [CN]	200
+整域	sinajs.com	DIRECT|DIRECT|DOMAIN-SUFFIX|sinajs.com	sina	移除普通直连后缀	sinajs.com	sina 归集条目，根域和 www 均转至 Atom 出售页。	https://domains.atom.com/lpd/name/sinajs.com	52.20.84.62 [out]	52.20.84.62 [out]	302 → domains.atom.com	52.20.84.62 [out]	52.20.84.62 [out]	302 → domains.atom.com
+入口	skytigris.cn	PROXY|PROXY|DOMAIN-SUFFIX|skytigris.cn	itiger	维持代理		根域与 www 在两个解析源均只有表外公网地址，符合当前地址策略。		8.217.72.42,8.217.98.168 [out]	8.217.98.168,8.217.72.42 [out]	未测	8.217.98.168,8.217.72.42 [out]	27.111.178.121 [out]	未测
+入口	snapdragon.cn	PROXY|PROXY|DOMAIN-SUFFIX|snapdragon.cn	qualcomm	维持代理		根域与 www 在两个解析源均只有表外公网地址，符合当前地址策略。		129.46.98.196 [out]	129.46.98.196 [out]	未测	129.46.98.196 [out]	129.46.98.196 [out]	未测
+整域	solarcloud.top	DIRECT|DIRECT|DOMAIN-SUFFIX|solarcloud.top	auxgroup	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+入口	sourcingforebay.com.cn	PROXY|PROXY|DOMAIN-SUFFIX|sourcingforebay.com.cn	ebay	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NXDOMAIN	NXDOMAIN	未测	NXDOMAIN	NXDOMAIN	未测
+整域	spcloudhw.com	DIRECT|DIRECT|DOMAIN-SUFFIX|spcloudhw.com	qcloud	待核		有表外地址，当前证据不足以区分跨境业务、国内服务境外 CDN 或资产变化。		3.33.139.32 [out]	3.33.139.32 [out]	failed	3.33.139.32 [out]	3.33.139.32 [out]	failed
+整域	spcloudhw.net	DIRECT|DIRECT|DOMAIN-SUFFIX|spcloudhw.net	qcloud	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+整域	taobizhong.com	DIRECT|DIRECT|DOMAIN-SUFFIX|taobizhong.com	alibaba	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		SERVFAIL	SERVFAIL	未测	SERVFAIL	SERVFAIL	未测
+整域	tapimg.net	DIRECT|DIRECT|DOMAIN-SUFFIX|tapimg.net	taptap	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+整域	tapnow.top	DIRECT|DIRECT|DOMAIN-SUFFIX|tapnow.top	category-ai-cn	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NXDOMAIN	NXDOMAIN	未测	NXDOMAIN	NXDOMAIN	未测
+整域	taptap.com	DIRECT|DIRECT|DOMAIN-SUFFIX|taptap.com	taptap	移除普通直连后缀	taptap.com	根域两处均为表外 IP，www 两处均为大陆 IP；分别经 302/301 跳往 TapTap 中国官网。按节点分流。	https://www.taptap.cn/download	104.18.27.242,104.18.26.242 [out]	104.18.27.242,104.18.26.242 [out]	302 → www.taptap.cn	39.107.195.45 [CN]	39.107.195.45 [CN]	301 → www.taptap.cn
+整域	tcdlive.com	DIRECT|DIRECT|DOMAIN-SUFFIX|tcdlive.com	qcloud	移除普通直连后缀	tcdlive.com	qcloud 归集条目，两个表外 HTTPS 入口均转至 www.shponline.co.uk。	https://tcdlive.com/	104.21.93.41,172.67.204.102 [out]	104.21.93.41,172.67.204.102 [out]	302 → www.shponline.co.uk	104.21.93.41,172.67.204.102 [out]	172.67.204.102,104.21.93.41 [out]	302 → www.shponline.co.uk
+整域	tclai.top	DIRECT|DIRECT|DOMAIN-SUFFIX|tclai.top	tcl	维持直连		已测入口有中国 IP 和有效 HTTPS 业务响应，未找到本组的表外应答。		47.112.119.186 [CN]	47.112.119.186 [CN]	200	47.112.119.186 [CN]	47.112.119.186 [CN]	200
+整域	tdnsv15.com	DIRECT|DIRECT|DOMAIN-SUFFIX|tdnsv15.com	qcloud	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+整域	tdnsv15.net	DIRECT|DIRECT|DOMAIN-SUFFIX|tdnsv15.net	qcloud	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+整域	tencentmiying.com	DIRECT|DIRECT|DOMAIN-SUFFIX|tencentmiying.com	tencent	维持直连		已测入口有中国 IP 和有效 HTTPS 业务响应，未找到本组的表外应答。		123.151.59.64,123.151.48.107 [CN]	123.151.48.107,123.151.59.64 [CN]	301 → tencentmiying.com	123.151.48.107,123.151.59.64 [CN]	123.151.48.107,123.151.59.64 [CN]	301 → www.tencentmiying.com
+整域	tenpayglobal.com	DIRECT|DIRECT|DOMAIN-SUFFIX|tenpayglobal.com	tencent	待核		官方确认为跨境业务，两个已测入口却都在中国表内。实际支付 API 的落点待核。		106.55.90.226,1.12.137.81 [CN]	106.55.90.226,1.12.137.81 [CN]	301 → www.tenpayglobal.com	123.151.54.171,42.81.194.66 [CN]	123.151.54.171,42.81.194.66 [CN]	200
+整域	tgpro.top	DIRECT|DIRECT|DOMAIN-SUFFIX|tgpro.top	category-games-cn	维持直连		已测入口有中国 IP 和有效 HTTPS 业务响应，未找到本组的表外应答。		150.138.229.197,113.142.27.235 [CN]	124.225.27.55,171.108.216.102 [CN]	200	113.142.27.235,150.138.229.197 [CN]	124.225.27.55,171.108.216.102 [CN]	200
+入口	thomsonreuters.cn	PROXY|PROXY|DOMAIN-SUFFIX|thomsonreuters.cn	thomsonreuters	维持代理		根域与 www 在两个解析源均只有表外公网地址，符合当前地址策略。		155.46.172.255 [out]	155.46.172.255 [out]	未测	18.244.18.94,18.244.18.101,18.244.18.65,18.244.18.60 [out]	18.244.18.60,18.244.18.101,18.244.18.94,18.244.18.65 [out]	未测
+整域	threep.top	DIRECT|DIRECT|DOMAIN-SUFFIX|threep.top	geolocation-cn	维持直连		已测入口有中国 IP 和有效 HTTPS 业务响应，未找到本组的表外应答。		47.93.178.208 [CN]	47.93.178.208 [CN]	200	47.93.178.208 [CN]	47.93.178.208 [CN]	200
+整域	tianhw.top	DIRECT|DIRECT|DOMAIN-SUFFIX|tianhw.top	category-blog-cn	维持直连		已测入口有中国 IP 和有效 HTTPS 业务响应，未找到本组的表外应答。		36.104.142.100,175.31.215.19,36.104.139.1,123.246.91.188,42.101.76.73,182.201.241.7 [CN]	36.104.139.3,175.31.215.20,36.104.142.100,182.201.241.7,42.101.76.72,123.246.91.188 [CN]	301 → blog.tianhw.top	123.246.91.186,42.101.76.73,182.201.241.6,36.104.142.100,175.31.215.18,36.104.139.3 [CN]	123.246.91.186,36.104.139.1,175.31.215.19,36.104.142.102,182.201.241.9,42.101.76.74 [CN]	301 → blog.tianhw.top
+整域	tiapi.net	DIRECT|DIRECT|DOMAIN-SUFFIX|tiapi.net	bytedance	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		SERVFAIL	SERVFAIL	未测	SERVFAIL	SERVFAIL	未测
+入口	tigerbbs.cn	PROXY|PROXY|DOMAIN-SUFFIX|tigerbbs.cn	itiger	待核		存在大陆地址，但未证实可正常使用的业务页面或有效跳转。		47.95.162.193 [CN]	124.250.34.201 [CN]	failed	47.95.162.193 [CN]	47.95.162.193 [CN]	failed
+整域	tmalltv.com	DIRECT|DIRECT|DOMAIN-SUFFIX|tmalltv.com	alibaba	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		SERVFAIL	SERVFAIL	未测	SERVFAIL	SERVFAIL	未测
+整域	tmjl.ai	DIRECT|DIRECT|DOMAIN-SUFFIX|tmjl.ai	alibaba	待核		有表外地址，当前证据不足以区分跨境业务、国内服务境外 CDN 或资产变化。		165.160.15.20,165.160.13.20 [out]	165.160.15.20,165.160.13.20 [out]	failed	NXDOMAIN	NXDOMAIN	未测
+整域	toplife.com	DIRECT|DIRECT|DOMAIN-SUFFIX|toplife.com	jd	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		SERVFAIL	SERVFAIL	未测	SERVFAIL	SERVFAIL	未测
+整域	topwd.top	DIRECT|DIRECT|DOMAIN-SUFFIX|topwd.top	category-blog-cn	待核		根域与 www 的证据不足以判断业务范围；保留原策略。		118.195.240.189 [CN]	118.195.240.189 [CN]	failed	118.195.240.189 [CN]	118.195.240.189 [CN]	failed
+入口	touchid.wang	PROXY|PROXY|DOMAIN-SUFFIX|touchid.wang	apple	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+整域	tripcdn.com	DIRECT|DIRECT|DOMAIN-SUFFIX|tripcdn.com	ctrip	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+整域	ucgslb.top	DIRECT|DIRECT|DOMAIN-SUFFIX|ucgslb.top	ucloud	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NODATA	NODATA	未测
+整域	ugslb.top	DIRECT|DIRECT|DOMAIN-SUFFIX|ugslb.top	ucloud	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+入口	uupool.cn	PROXY|PROXY|DOMAIN-SUFFIX|uupool.cn	—	维持代理		根域与 www 在两个解析源均只有表外公网地址，符合当前地址策略。		69.171.242.11 [out]	157.240.17.41 [out]	未测	50.87.93.246 [out]	128.242.245.212 [out]	未测
+整域	vcbeat.top	DIRECT|DIRECT|DOMAIN-SUFFIX|vcbeat.top	category-media-cn	维持直连		已测入口有中国 IP 和有效 HTTPS 业务响应，未找到本组的表外应答。		123.56.130.31 [CN]	123.56.130.31 [CN]	301 → www.vbdata.cn	123.56.130.31 [CN]	123.56.130.31 [CN]	301 → www.vbdata.cn
+整域	vcloudapi.com	DIRECT|DIRECT|DOMAIN-SUFFIX|vcloudapi.com	bytedance	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NODATA	NODATA	未测
+整域	vcloudstc.com	DIRECT|DIRECT|DOMAIN-SUFFIX|vcloudstc.com	qcloud	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+整域	vcloudvod.com	DIRECT|DIRECT|DOMAIN-SUFFIX|vcloudvod.com	qcloud	待核		有表外地址，当前证据不足以区分跨境业务、国内服务境外 CDN 或资产变化。		3.33.139.32 [out]	3.33.139.32 [out]	failed	3.33.139.32 [out]	3.33.139.32 [out]	failed
+整域	vecdnlb.com	DIRECT|DIRECT|DOMAIN-SUFFIX|vecdnlb.com	volcengine	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+整域	vemarsweb.com	DIRECT|DIRECT|DOMAIN-SUFFIX|vemarsweb.com	volcengine	待核		根域与 www 的证据不足以判断业务范围；保留原策略。		122.246.1.139 [CN]	122.246.1.139 [CN]	failed	122.246.1.139 [CN]	122.246.1.139 [CN]	failed
+入口	verisign.com.cn	PROXY|PROXY|DOMAIN-SUFFIX|verisign.com.cn	verisign	维持代理		根域与 www 在两个解析源均只有表外公网地址，符合当前地址策略。		72.13.63.55 [out]	72.13.63.55 [out]	未测	3.173.23.153,3.173.22.153,3.173.21.153 [out]	3.173.23.153,3.173.21.153,3.173.22.153 [out]	未测
+整域	vlabimg.com	DIRECT|DIRECT|DOMAIN-SUFFIX|vlabimg.com	bytedance	维持直连		已测入口有中国 IP 和有效 HTTPS 业务响应，未找到本组的表外应答。		106.41.200.241,106.41.200.239,106.41.200.237,106.41.200.236,106.41.200.232,106.41.200.246,106.41.200.245,106.41.200.243 [CN]	42.202.219.193,42.202.219.176,42.202.219.177,42.202.219.187,42.202.219.190 [CN]	301 → www.capcut.cn	42.248.135.32,123.246.91.76,42.248.135.17,123.246.91.75,42.248.135.16,123.246.91.74,36.104.156.2,36.104.139.110,42.248.135.15,123.246.91.73,36.104.156.1,36.104.139.109,42.248.135.14,123.246.91.72,42.248.135.33,123.246.91.77 [CN]	42.202.219.177,42.202.219.187,42.202.219.190,42.202.219.193,42.202.219.176 [CN]	301 → www.capcut.cn
+整域	volcenginapi.com	DIRECT|DIRECT|DOMAIN-SUFFIX|volcenginapi.com	volcengine	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		SERVFAIL	SERVFAIL	未测	SERVFAIL	SERVFAIL	未测
+整域	volcengineapi-test.com	DIRECT|DIRECT|DOMAIN-SUFFIX|volcengineapi-test.com	volcengine	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+整域	vrzwk.top	DIRECT|DIRECT|DOMAIN-SUFFIX|vrzwk.top	vrzwk	待核		根域与 www 的证据不足以判断业务范围；保留原策略。		42.248.136.24 [CN]	42.248.136.22 [CN]	failed	42.248.136.21 [CN]	42.248.136.21 [CN]	failed
+整域	vscenevideo.com	DIRECT|DIRECT|DOMAIN-SUFFIX|vscenevideo.com	lark	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		SERVFAIL	SERVFAIL	未测	SERVFAIL	SERVFAIL	未测
+整域	warmheart.top	DIRECT|DIRECT|DOMAIN-SUFFIX|warmheart.top	geolocation-cn	维持直连		已测入口有中国 IP 和有效 HTTPS 业务响应，未找到本组的表外应答。		NODATA	NODATA	未测	116.62.39.169 [CN]	116.62.39.169 [CN]	200
+整域	wdfok.com	DIRECT|DIRECT|DOMAIN-SUFFIX|wdfok.com	jd	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+整域	webportal.top	DIRECT|DIRECT|DOMAIN-SUFFIX|webportal.top	geolocation-cn	维持直连		已测入口有中国 IP 和有效 HTTPS 业务响应，未找到本组的表外应答。		106.75.187.224,106.75.176.234,106.75.176.180 [CN]	106.75.187.224,106.75.176.180,106.75.176.234 [CN]	301 → www.webportal.top	106.75.187.224,106.75.176.234,106.75.176.180 [CN]	106.75.176.234,106.75.187.224,106.75.176.180 [CN]	200
+整域	wjx.top	DIRECT|DIRECT|DOMAIN-SUFFIX|wjx.top	wjx	维持直连		已测入口有中国 IP 和有效 HTTPS 业务响应，未找到本组的表外应答。		101.37.44.198 [CN]	101.37.44.198 [CN]	301 → www.wjx.top	47.96.196.31 [CN]	47.96.196.31 [CN]	301 → www.wjx.cn
+整域	womendedw.com	DIRECT|DIRECT|DOMAIN-SUFFIX|womendedw.com	dewu	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+整域	wxdw.top	DIRECT|DIRECT|DOMAIN-SUFFIX|wxdw.top	geolocation-cn	维持直连		已测入口有中国 IP 和有效 HTTPS 业务响应，未找到本组的表外应答。		NODATA	NODATA	未测	47.111.120.231,47.111.99.6 [CN]	47.111.99.6,47.111.120.231 [CN]	302 → www.wxdw.top
+整域	xgzb.top	DIRECT|DIRECT|DOMAIN-SUFFIX|xgzb.top	geolocation-cn	维持直连		已测入口有中国 IP 和有效 HTTPS 业务响应，未找到本组的表外应答。		101.200.194.75 [CN]	101.200.194.75 [CN]	200	101.200.194.75 [CN]	101.200.194.75 [CN]	200
+整域	xhsrcdn.com	DIRECT|DIRECT|DOMAIN-SUFFIX|xhsrcdn.com	xiaohongshu	待核		根域与 www 的证据不足以判断业务范围；保留原策略。		212.129.231.32 [CN]	212.129.231.32 [CN]	404	212.129.231.32 [CN]	212.129.231.32 [CN]	404
+整域	xiami.fm	DIRECT|DIRECT|DOMAIN-SUFFIX|xiami.fm	alibaba	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		SERVFAIL	SERVFAIL	未测	SERVFAIL	SERVFAIL	未测
+整域	xiangrikuisite.com	DIRECT|DIRECT|DOMAIN-SUFFIX|xiangrikuisite.com	sogou	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NXDOMAIN	NXDOMAIN	未测	NXDOMAIN	NXDOMAIN	未测
+整域	xiaomiprint.com	DIRECT|DIRECT|DOMAIN-SUFFIX|xiaomiprint.com	xiaomi	维持直连		已测入口有中国 IP 和有效 HTTPS 业务响应，未找到本组的表外应答。		120.92.85.234 [CN]	120.92.85.234 [CN]	200	120.92.85.234 [CN]	120.92.85.234 [CN]	200
+整域	xiaoxiaapi.com	DIRECT|DIRECT|DOMAIN-SUFFIX|xiaoxiaapi.com	bytedance	待核		有表外地址，当前证据不足以区分跨境业务、国内服务境外 CDN 或资产变化。		207.148.37.196,207.148.37.197,147.92.37.232,147.92.37.233 [out]	147.92.37.232,207.148.37.196,147.92.37.233,207.148.37.197 [out]	failed	207.148.37.197,207.148.37.196,147.92.37.232,147.92.37.233 [out]	147.92.37.232,207.148.37.197,207.148.37.196,147.92.37.233 [out]	failed
+入口	xn--74q035i.xn--hxt814e	PROXY|PROXY|DOMAIN-SUFFIX|xn--74q035i.xn--hxt814e	nike	维持代理		根域与 www 在两个解析源均只有表外公网地址，符合当前地址策略。		3.33.139.32 [out]	3.33.139.32 [out]	未测	3.33.139.32 [out]	3.33.139.32 [out]	未测
+入口	xn--fiqs8sxootzz.xn--hxt814e	PROXY|PROXY|DOMAIN-SUFFIX|xn--fiqs8sxootzz.xn--hxt814e	apple	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+入口	xn--gtvq61aiijy0b.xn--hxt814e	PROXY|PROXY|DOMAIN-SUFFIX|xn--gtvq61aiijy0b.xn--hxt814e	apple	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+入口	xn--gtvz22d.wang	PROXY|PROXY|DOMAIN-SUFFIX|xn--gtvz22d.wang	apple	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NXDOMAIN	NXDOMAIN	未测	NXDOMAIN	NXDOMAIN	未测
+入口	xn--gtvz22d.xn--hxt814e	PROXY|PROXY|DOMAIN-SUFFIX|xn--gtvz22d.xn--hxt814e	apple	维持代理		根域与 www 在两个解析源均只有表外公网地址，符合当前地址策略。		17.142.160.86,17.178.96.100,17.172.224.106 [out]	17.178.96.100,17.142.160.86,17.172.224.106 [out]	未测	17.178.96.100,17.172.224.106,17.142.160.86 [out]	17.142.160.86,17.172.224.106,17.178.96.100 [out]	未测
+入口	xn--hxtr4rozx.xn--czr694b	PROXY|PROXY|DOMAIN-SUFFIX|xn--hxtr4rozx.xn--czr694b	apple	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+入口	xn--kput3imi374g.xn--hxt814e	PROXY|PROXY|DOMAIN-SUFFIX|xn--kput3imi374g.xn--hxt814e	apple	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+入口	xn--ruq8a011kt6y.xn--hxt814e	PROXY|PROXY|DOMAIN-SUFFIX|xn--ruq8a011kt6y.xn--hxt814e	apple	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+入口	xn--ztsq84g.cn	PROXY|PROXY|DOMAIN-SUFFIX|xn--ztsq84g.cn	intel	维持代理		根域与 www 在两个解析源均只有表外公网地址，符合当前地址策略。		103.120.80.111 [out]	103.120.80.111 [out]	未测	103.120.80.111 [out]	103.120.80.111 [out]	未测
+整域	ydshengxue.com	DIRECT|DIRECT|DOMAIN-SUFFIX|ydshengxue.com	netease	维持直连		已测入口有中国 IP 和有效 HTTPS 业务响应，未找到本组的表外应答。		111.124.200.106 [CN]	111.124.200.106 [CN]	200	60.191.81.217 [CN]	60.191.81.217 [CN]	200
+整域	yo9.com	DIRECT|DIRECT|DOMAIN-SUFFIX|yo9.com	bilibili	待核		根域与 www 的证据不足以判断业务范围；保留原策略。		101.227.223.26 [CN]	101.227.223.26 [CN]	failed	NXDOMAIN	NXDOMAIN	未测
+整域	youkuhonor.com	DIRECT|DIRECT|DOMAIN-SUFFIX|youkuhonor.com	youku	维持直连		已测入口有中国 IP 和有效 HTTPS 业务响应，未找到本组的表外应答。		106.11.40.57,106.11.35.97,106.11.43.215,106.11.43.107,106.11.43.71,106.11.43.183,106.11.43.246,106.11.43.158 [CN]	106.11.43.215,106.11.43.246,106.11.43.71,106.11.40.57,106.11.35.97,106.11.43.107,106.11.43.158,106.11.43.183 [CN]	200	106.11.43.71 [CN]	106.11.43.71 [CN]	200
+整域	yowhale.com	DIRECT|DIRECT|DOMAIN-SUFFIX|yowhale.com	alibaba	移除普通直连后缀	yowhale.com	alibaba 归集条目，根域和 www 的有效 HTTPS 页均标记域名出售。	https://yowhale.com/	44.232.173.249,52.40.42.113 [out]	52.40.42.113,44.232.173.249 [out]	200	52.40.42.113,44.232.173.249 [out]	44.232.173.249,52.40.42.113 [out]	200
+整域	yto.top	DIRECT|DIRECT|DOMAIN-SUFFIX|yto.top	yto-express	待核		根域与 www 的证据不足以判断业务范围；保留原策略。		NODATA	NODATA	未测	203.107.60.192 [CN]	203.107.60.192 [CN]	failed
+整域	yyshub.top	DIRECT|DIRECT|DOMAIN-SUFFIX|yyshub.top	geolocation-cn	维持直连		已测入口有中国 IP 和有效 HTTPS 业务响应，未找到本组的表外应答。		49.235.146.123 [CN]	49.235.146.123 [CN]	200	49.235.146.123 [CN]	49.235.146.123 [CN]	200
+整域	zctnet.top	DIRECT|DIRECT|DOMAIN-SUFFIX|zctnet.top	geolocation-cn	待核		根域与 www 的证据不足以判断业务范围；保留原策略。		60.163.115.41 [CN]	60.163.115.41 [CN]	failed	203.107.45.167 [CN]	203.107.45.167 [CN]	failed
+入口	zhijianfengyi.cn	PROXY|PROXY|DOMAIN-SUFFIX|zhijianfengyi.cn	—	待核		根域及 www 均未取得可用 A，需实际业务主机或服务文档。		NODATA	NODATA	未测	NXDOMAIN	NXDOMAIN	未测
+整域	zijiedj.com	DIRECT|DIRECT|DOMAIN-SUFFIX|zijiedj.com	bytedance	待核		有表外地址，当前证据不足以区分跨境业务、国内服务境外 CDN 或资产变化。		163.181.60.201,163.181.60.203,163.181.60.205,163.181.60.207,163.181.60.206,163.181.60.202,163.181.60.204,163.181.60.208 [out]	163.181.87.67,163.181.87.71,163.181.87.87,163.181.87.50,163.181.87.88,163.181.87.70,163.181.87.69,163.181.87.68 [out]	failed	36.104.134.101,36.104.134.104,36.104.134.99,36.104.134.105,36.104.134.102,36.104.134.100,36.104.134.98,36.104.134.103 [CN]	36.104.134.105,36.104.134.98,36.104.134.99,36.104.134.100,36.104.134.101,36.104.134.102,36.104.134.103,36.104.134.104 [CN]	failed
+入口	zmw.cn	PROXY|PROXY|DOMAIN-SUFFIX|zmw.cn	—	维持代理		根域与 www 在两个解析源均只有表外公网地址，符合当前地址策略。		162.125.7.1 [out]	67.228.235.91 [out]	未测	31.13.90.33 [out]	104.244.46.186 [out]	未测
+入口	zoom.com.cn	PROXY|PROXY|DOMAIN-SUFFIX|zoom.com.cn	zoom	待核		存在大陆地址，但未证实可正常使用的业务页面或有效跳转。		221.122.88.184 [CN]	221.122.89.250 [CN]	503	221.122.88.184 [CN]	221.122.88.184 [CN]	503
+整域	ztna-dingtalk.com	DIRECT|DIRECT|DOMAIN-SUFFIX|ztna-dingtalk.com	dingtalk	维持直连		已测入口有中国 IP 和有效 HTTPS 业务响应，未找到本组的表外应答。		39.98.109.149 [CN]	39.98.109.149 [CN]	200	203.119.238.140 [CN]	203.119.204.32 [CN]	failed
+整域	zway.top	DIRECT|DIRECT|DOMAIN-SUFFIX|zway.top	category-blog-cn	维持直连		已测入口有中国 IP 和有效 HTTPS 业务响应，未找到本组的表外应答。		159.75.91.98 [CN]	159.75.91.98 [CN]	200	159.75.91.98 [CN]	159.75.91.98 [CN]	200
+整域	zzzcaculator.top	DIRECT|DIRECT|DOMAIN-SUFFIX|zzzcaculator.top	geolocation-cn	维持直连		已测入口有中国 IP 和有效 HTTPS 业务响应，未找到本组的表外应答。		121.199.21.10 [CN]	121.199.21.10 [CN]	200	121.199.21.10 [CN]	121.199.21.10 [CN]	200

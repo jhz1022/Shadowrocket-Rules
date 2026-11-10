@@ -36,14 +36,34 @@
   ],
   "schema": 2,
   "omit_ordinary_direct_suffixes": [
+    "bocaviation.com",
+    "bocgi.com",
+    "bocigroup.com",
+    "chinamobileltd.com",
+    "chinatelecom-h.com",
+    "citiccapital.com",
+    "clsa.com",
     "gameitop.com",
     "gameloop.com",
+    "ics.design",
+    "isd.com",
+    "ivweb.io",
+    "joybuy.com",
+    "joybuy.es",
+    "larksuitecdn.com",
     "mahjongai.net",
     "mahjongcup.com",
     "mahjongcup.net",
+    "myelasticsearch.com",
+    "oppodigital.com",
     "proximabeta.com",
+    "sealsuite.com",
+    "sinajs.com",
+    "taptap.com",
+    "tcdlive.com",
     "texasholdemcup.com",
-    "texasholdemcup.net"
+    "texasholdemcup.net",
+    "yowhale.com"
   ],
   "lan_domains": [
     {
@@ -320,6 +340,38 @@
       "reason": "CERNET-managed Chinese education namespace; choose local DNS/direct delivery for the category. This is not a guarantee that every host is physically in mainland China.",
       "evidence": [
         "https://www.cernet.edu.cn/xxh/yc/202508/t20250804_2684370.shtml"
+      ]
+    },
+    {
+      "id": "mainland-web-entries-20261110",
+      "type": "DOMAIN",
+      "domains": [
+        "logitech.com.cn",
+        "logitechg.com.cn",
+        "longbridge.cn",
+        "longportapp.cn",
+        "www.airbnb.cn",
+        "www.dynacw.com.cn",
+        "www.futu.cn",
+        "www.logitechg.com.cn",
+        "www.longportapp.cn",
+        "www.msi.cn"
+      ],
+      "reason": "Public web entry points verified by mainland DNS, certificate validation and content or brand redirects over Wi-Fi; exact hosts only.",
+      "evidence": [
+        "https://github.com/jhz1022/Shadowrocket-Rules/blob/main/docs/reviews/2026-11-10/README.md"
+      ]
+    },
+    {
+      "id": "lark-mainland-web-assets",
+      "type": "DOMAIN",
+      "domains": [
+        "sf16-sg.larksuitecdn.com"
+      ],
+      "reason": "Lark public web assets use a mainland CDN with system DNS on the tested Mac. Removing the parent suffix alone sent this host through FINAL,PROXY. The exact exception preserves local CDN selection.",
+      "evidence": [
+        "https://www.larksuite.com/en_us/",
+        "https://github.com/jhz1022/Shadowrocket-Rules/blob/main/docs/reviews/2026-11-10/README.md"
       ]
     }
   ]

@@ -9,6 +9,42 @@
         "docs/SOURCE_QUALITY.md"
       ],
       "expires": "2026-12-08"
+    },
+    {
+      "id": "fe1337b7f2995e63b552f3feb17bed3b3d685e4d1639b962ee2c4082d7c072c4",
+      "reason": "logitech.com.cn resolved to mainland addresses from both resolvers; verified TLS and 302 to www.logitech.com/zh-cn. Exact host only.",
+      "evidence": [
+        "docs/reviews/2026-11-10/README.md",
+        "docs/reviews/2026-11-10/review.tsv"
+      ],
+      "expires": "2026-12-10"
+    },
+    {
+      "id": "bbdd257c951ad12bc68592a31cc7b6df0a03d005401aa5b29ad53168cc92f542",
+      "reason": "logitechg.com.cn resolved to mainland addresses from both resolvers; verified TLS and 302 to www.logitechg.com/zh-cn. Exact host only.",
+      "evidence": [
+        "docs/reviews/2026-11-10/README.md",
+        "docs/reviews/2026-11-10/review.tsv"
+      ],
+      "expires": "2026-12-10"
+    },
+    {
+      "id": "6b55541ebe625a01c748dabbf4fda671f0e75d62fcabeb94a69cbb5a832f2ed5",
+      "reason": "longbridge.cn resolved to mainland addresses from both resolvers; verified TLS and 200 on the public Longbridge homepage. Exact host only.",
+      "evidence": [
+        "docs/reviews/2026-11-10/README.md",
+        "docs/reviews/2026-11-10/review.tsv"
+      ],
+      "expires": "2026-12-10"
+    },
+    {
+      "id": "549ad616587cd5dbe18bc225dae3c40b79bb0d523bda38e3367ee1ef208ded22",
+      "reason": "longportapp.cn resolved to mainland addresses from both resolvers; verified TLS and 302 to /en/ followed by 200. Exact host only.",
+      "evidence": [
+        "docs/reviews/2026-11-10/README.md",
+        "docs/reviews/2026-11-10/review.tsv"
+      ],
+      "expires": "2026-12-10"
     }
   ]
 }

@@ -1,6 +1,6 @@
 {
-  "config_sha256": "9f016cdfa247aae93f80f9daeab9521c803eb52f726c9a945d81a719cdae4c43",
-  "conflicts": 756,
+  "config_sha256": "4ca07752a7ad75e29d2106d57cb497649dc85bbdb192a1ec591f917877292c13",
+  "conflicts": 766,
   "excluded_registry_direct": [
     "DOMAIN-SUFFIX,alibaba,DIRECT",
     "DOMAIN-SUFFIX,alipay,DIRECT",
@@ -62,30 +62,50 @@
     "china6": 5430376938037869857957450583375872
   },
   "omitted_ordinary_direct_suffixes": [
+    "bocaviation.com",
+    "bocgi.com",
+    "bocigroup.com",
+    "chinamobileltd.com",
+    "chinatelecom-h.com",
+    "citiccapital.com",
+    "clsa.com",
     "gameitop.com",
     "gameloop.com",
+    "ics.design",
+    "isd.com",
+    "ivweb.io",
+    "joybuy.com",
+    "joybuy.es",
+    "larksuitecdn.com",
     "mahjongai.net",
     "mahjongcup.com",
     "mahjongcup.net",
+    "myelasticsearch.com",
+    "oppodigital.com",
     "proximabeta.com",
+    "sealsuite.com",
+    "sinajs.com",
+    "taptap.com",
+    "tcdlive.com",
     "texasholdemcup.com",
-    "texasholdemcup.net"
+    "texasholdemcup.net",
+    "yowhale.com"
   ],
   "output": {
     "dns_port_canaries": 6,
-    "reviewed_route_canaries": 77,
+    "reviewed_route_canaries": 88,
     "routing_canaries": 31,
-    "rules": 148938,
+    "rules": 148929,
     "types": {
-      "DOMAIN": 674,
-      "DOMAIN-SUFFIX": 138610,
+      "DOMAIN": 685,
+      "DOMAIN-SUFFIX": 138590,
       "DST-PORT": 1,
       "FINAL": 1,
       "IP-CIDR": 6212,
       "IP-CIDR6": 3440
     }
   },
-  "overrides_sha256": "7a3df6b5315b43e32b39cdc0bec4aa7b863e8c74eed9d401bb67193be617ceef",
+  "overrides_sha256": "67621cdbac79b170ce764742302c21e6fee759ce88984d3bf4bcb3f6703e7396",
   "schema": 1,
   "sources": {
     "apple_cn": {

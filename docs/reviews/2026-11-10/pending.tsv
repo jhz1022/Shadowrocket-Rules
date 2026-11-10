@@ -1,0 +1,221 @@
+分组	原始名称	待核范围	原始名称处置	待核原因
+整域	126.link	126.link	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	163industry.com	163industry.com	待核	两个解析源的地址类别、应答或可用性不一致，需复测实际服务主机。
+整域	51yipei.com	51yipei.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	51zmt.top	51zmt.top	待核	两个解析源的地址类别、应答或可用性不一致，需复测实际服务主机。
+入口	666pool.cn	666pool.cn	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	95095.com	95095.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	acctdns.com	acctdns.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	airchinalimited.com	airchinalimited.com	待核	根域与 www 的证据不足以判断业务范围；保留原策略。
+整域	alibabapictures.com	alibabapictures.com	待核	有表外地址，当前证据不足以区分跨境业务、国内服务境外 CDN 或资产变化。
+整域	alikmd.com	alikmd.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	alimei.com	alimei.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	alitianji.com	alitianji.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	allawnofs.com	allawnofs.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	aloys233.top	aloys233.top	待核	有表外地址，当前证据不足以区分跨境业务、国内服务境外 CDN 或资产变化。
+入口	amazonlumberyard.wang	amazonlumberyard.wang	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	apdcdn.net	apdcdn.net	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+入口	app-store.wang	app-store.wang	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+入口	apple-pay.wang	apple-pay.wang	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+入口	apple-store.wang	apple-store.wang	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+入口	apple.xn--czr694b	apple.xn--czr694b	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+入口	apple.xn--fiqs8s	apple.xn--fiqs8s	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+入口	applecare.wang	applecare.wang	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+入口	applemusic.wang	applemusic.wang	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+入口	applestore.wang	applestore.wang	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+入口	appletv.wang	appletv.wang	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+入口	applewatch.wang	applewatch.wang	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+入口	arphic.com.cn	arphic.com.cn	待核	存在大陆地址，但未证实可正常使用的业务页面或有效跳转。
+整域	auxwy.com	auxwy.com	待核	有表外地址，当前证据不足以区分跨境业务、国内服务境外 CDN 或资产变化。
+入口	beatsmusic.wang	beatsmusic.wang	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	bpigagtm.com	bpigagtm.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	bplslb.com	bplslb.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	bpltm.com	bpltm.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	bsbsb.top	bsbsb.top	待核	有表外地址，当前证据不足以区分跨境业务、国内服务境外 CDN 或资产变化。
+整域	bvmlt.top	bvmlt.top	待核	根域与 www 的证据不足以判断业务范围；保留原策略。
+整域	byte7bw.net	byte7bw.net	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	byteactivity13.com	byteactivity13.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	byteactivity14.com	byteactivity14.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	byteactivity15.com	byteactivity15.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	byteactivity16.com	byteactivity16.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	bytegqpo.net	bytegqpo.net	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	byteintl.net	byteintl.net	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	bytelb.com	bytelb.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	byteplusapi-test.com	byteplusapi-test.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	byteq5k.com	byteq5k.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	bytevcloudapi.com	bytevcloudapi.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	bytexopen.com	bytexopen.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	cdnhwc7.com	cdnhwc7.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	cdnhwcead111.com	cdnhwcead111.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	cdnhwcick110.com	cdnhwcick110.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	cdnhwczks109.com	cdnhwczks109.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	cheng.xin	cheng.xin	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	citiciam.com	citiciam.com	待核	有表外地址，当前证据不足以区分跨境业务、国内服务境外 CDN 或资产变化。
+整域	citicifh.com	citicifh.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	clawhubmirror.com	clawhubmirror.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	clk1.top	clk1.top	待核	有表外地址，当前证据不足以区分跨境业务、国内服务境外 CDN 或资产变化。
+整域	ctripteam.com	ctripteam.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+入口	daxa.cn	daxa.cn	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	dcloudsp.com	dcloudsp.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	dcloudsp.net	dcloudsp.net	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	dcloudvod.com	dcloudvod.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	dcloudvod.net	dcloudvod.net	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	dewu-inc.com	dewu-inc.com	待核	含私网应答，需核实内网或分离 DNS 业务。
+整域	dewu-inner.com	dewu-inner.com	待核	根域与 www 的证据不足以判断业务范围；保留原策略。
+整域	dewu-inner.net	dewu-inner.net	待核	根域与 www 的证据不足以判断业务范围；保留原策略。
+整域	dewuhd.com	dewuhd.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	dewuhui.com	dewuhui.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	dewuyouhui.com	dewuyouhui.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	dwhhd.com	dwhhd.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+入口	dynacw.com.cn	dynacw.com.cn	精确直连	该主机未取得与放行入口等价的可用性证据。
+整域	edgemonix.top	edgemonix.top	待核	根域与 www 的证据不足以判断业务范围；保留原策略。
+入口	entrust.cn	entrust.cn	待核	存在大陆地址，但未证实可正常使用的业务页面或有效跳转。
+整域	eufycn.com	eufycn.com	待核	根域与 www 的证据不足以判断业务范围；保留原策略。
+入口	facebook.wang	facebook.wang	待核	两个解析源的地址类别、应答或可用性不一致，需复测实际服务主机。
+整域	fetion-portal.com	fetion-portal.com	待核	有表外地址，当前证据不足以区分跨境业务、国内服务境外 CDN 或资产变化。
+整域	fetionpic.com	fetionpic.com	待核	有表外地址，当前证据不足以区分跨境业务、国内服务境外 CDN 或资产变化。
+整域	fly-airchina.com	fly-airchina.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	functiongraph.run	functiongraph.run	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	funmob.top	funmob.top	待核	根域与 www 的证据不足以判断业务范围；保留原策略。
+入口	futu.cn	futu.cn	精确直连	该主机未取得与放行入口等价的可用性证据。
+入口	futubull.cn	futubull.cn	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	getfeishu.com	getfeishu.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	getsays.com	getsays.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	giftatdw.com	giftatdw.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	giftattoday.com	giftattoday.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	gogokid.com	gogokid.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	goka.top	goka.top	待核	根域与 www 的证据不足以判断业务范围；保留原策略。
+整域	goodq.top	goodq.top	待核	根域与 www 的证据不足以判断业务范围；保留原策略。
+整域	goselling.com	goselling.com	待核	根域与 www 的证据不足以判断业务范围；保留原策略。
+整域	hapierxia.com	hapierxia.com	待核	有表外地址，当前证据不足以区分跨境业务、国内服务境外 CDN 或资产变化。
+整域	hapipixia.com	hapipixia.com	待核	有表外地址，当前证据不足以区分跨境业务、国内服务境外 CDN 或资产变化。
+整域	hapiyixia.com	hapiyixia.com	待核	有表外地址，当前证据不足以区分跨境业务、国内服务境外 CDN 或资产变化。
+整域	hr-welink.com	hr-welink.com	待核	上游归在 qcloud，当前 www 页标题与云服务不符。需核实资产归属或持续用途。
+整域	huaweicloudlive.com	huaweicloudlive.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	huaweiief.com	huaweiief.com	待核	根域与 www 的证据不足以判断业务范围；保留原策略。
+整域	huaweimarketplace.com	huaweimarketplace.com	待核	有表外地址，当前证据不足以区分跨境业务、国内服务境外 CDN 或资产变化。
+整域	ibdxiguaimg.com	ibdxiguaimg.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	ibdxiguastatic.com	ibdxiguastatic.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	icbcina.com	icbcina.com	待核	同组官方印尼银行资料使用 icbc.co.id，本域只有跳转和 403，需核实实际用途。
+整域	idonguapi.com	idonguapi.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+入口	ilife.wang	ilife.wang	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	iluckysf.net	iluckysf.net	待核	有表外地址，当前证据不足以区分跨境业务、国内服务境外 CDN 或资产变化。
+整域	im9.com	im9.com	待核	有表外地址，当前证据不足以区分跨境业务、国内服务境外 CDN 或资产变化。
+整域	imcapptest.com	imcapptest.com	待核	有表外地址，当前证据不足以区分跨境业务、国内服务境外 CDN 或资产变化。
+整域	inanguapi.com	inanguapi.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+入口	intelrealsense.cn	intelrealsense.cn	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+入口	iphone.wang	iphone.wang	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+入口	iphoneplus.wang	iphoneplus.wang	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+入口	iphoto.wang	iphoto.wang	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+入口	iwork.wang	iwork.wang	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	ixiguapi.com	ixiguapi.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	juneyaotravelvolc.com	juneyaotravelvolc.com	待核	有表外地址，当前证据不足以区分跨境业务、国内服务境外 CDN 或资产变化。
+整域	kanbox.com	kanbox.com	待核	两个解析源的地址类别、应答或可用性不一致，需复测实际服务主机。
+整域	kuailepipixia.com	kuailepipixia.com	待核	有表外地址，当前证据不足以区分跨境业务、国内服务境外 CDN 或资产变化。
+整域	larkmeetings.com	larkmeetings.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	larkrooms.com	larkrooms.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	larksuite-pre.com	larksuite-pre.com	待核	有表外地址，当前证据不足以区分跨境业务、国内服务境外 CDN 或资产变化。
+整域	larksuite.com.ttdns1.com	larksuite.com.ttdns1.com	待核	有表外地址，当前证据不足以区分跨境业务、国内服务境外 CDN 或资产变化。
+整域	larksuite.com.ttdns2.com	larksuite.com.ttdns2.com	待核	根域与 www 的证据不足以判断业务范围；保留原策略。
+整域	larksuiteimg.com	larksuiteimg.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	larkvc.com	larkvc.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+入口	launchpad.wang	launchpad.wang	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	linglong.space	linglong.space	待核	有表外地址，当前证据不足以区分跨境业务、国内服务境外 CDN 或资产变化。
+整域	lingshoujia.com	lingshoujia.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+入口	logitech.com.cn	www.logitech.com.cn	精确直连	大陆接入但同一 URL 多次 301 自循环。
+入口	logitechio.com.cn	logitechio.com.cn	待核	存在大陆地址，但未证实可正常使用的业务页面或有效跳转。
+入口	longbridge.cn	www.longbridge.cn	精确直连	该主机未取得与放行入口等价的可用性证据。
+整域	luckysf.net	luckysf.net	待核	有表外地址，当前证据不足以区分跨境业务、国内服务境外 CDN 或资产变化。
+整域	lwurl.to	lwurl.to	待核	有表外地址，当前证据不足以区分跨境业务、国内服务境外 CDN 或资产变化。
+整域	lydaas.net	lydaas.net	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	lydass.net	lydass.net	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+入口	mac.wang	mac.wang	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+入口	macbook.wang	macbook.wang	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	mappcloud.com	mappcloud.com	待核	根域与 www 的证据不足以判断业务范围；保留原策略。
+整域	mmarket6.com	mmarket6.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+入口	msi.cn	msi.cn	精确直连	该主机未取得与放行入口等价的可用性证据。
+整域	mychinaunicom.com	mychinaunicom.com	待核	有表外地址，当前证据不足以区分跨境业务、国内服务境外 CDN 或资产变化。
+整域	myhwcloudlive.com	myhwcloudlive.com	待核	根域与 www 的证据不足以判断业务范围；保留原策略。
+整域	mzyyfck.com	mzyyfck.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	mzyygb.com	mzyygb.com	待核	有表外地址，当前证据不足以区分跨境业务、国内服务境外 CDN 或资产变化。
+整域	mzyygk.com	mzyygk.com	待核	上游归在 auxgroup，当前页标题与医院业务不符。需核实资产归属或持续用途。
+整域	mzyyzl.com	mzyyzl.com	待核	有表外地址，当前证据不足以区分跨境业务、国内服务境外 CDN 或资产变化。
+整域	nbyzfeyy.com	nbyzfeyy.com	待核	两个解析源的地址类别、应答或可用性不一致，需复测实际服务主机。
+整域	neihancommunity.com	neihancommunity.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	nic.xin	nic.xin	待核	根域与 www 的证据不足以判断业务范围；保留原策略。
+整域	nxog.top	nxog.top	待核	有表外地址，当前证据不足以区分跨境业务、国内服务境外 CDN 或资产变化。
+整域	oneplus.net	oneplus.net	待核	含私网应答，需核实内网或分离 DNS 业务。
+整域	oppo.mobi	oppo.mobi	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	oppocolor.com	oppocolor.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	oppocoloros.com	oppocoloros.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	opstatics.com	opstatics.com	待核	有表外地址，当前证据不足以区分跨境业务、国内服务境外 CDN 或资产变化。
+整域	oracle-tencent.com	oracle-tencent.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	oracle-tencent.net	oracle-tencent.net	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	pandarzli.com	pandarzli.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	pengyoudewu.com	pengyoudewu.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	phoenixmiles.com	phoenixmiles.com	待核	根域与 www 的证据不足以判断业务范围；保留原策略。
+整域	phpwind.com	phpwind.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	phpwind.net	phpwind.net	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	pipixiaha.com	pipixiaha.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	piyipiba.com	piyipiba.com	待核	有表外地址，当前证据不足以区分跨境业务、国内服务境外 CDN 或资产变化。
+整域	pljzy.top	pljzy.top	待核	根域与 www 的证据不足以判断业务范围；保留原策略。
+整域	poizon-inner.com	poizon-inner.com	待核	根域与 www 的证据不足以判断业务范围；保留原策略。
+整域	poizon-inner.net	poizon-inner.net	待核	根域与 www 的证据不足以判断业务范围；保留原策略。
+整域	poizon-support.com	poizon-support.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	powerapp.io	powerapp.io	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	ppxhhh.com	ppxhhh.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	qingtingtrip.com	qingtingtrip.com	待核	有表外地址，当前证据不足以区分跨境业务、国内服务境外 CDN 或资产变化。
+整域	qq.cn.com	qq.cn.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+入口	qualcommventures.cn	qualcommventures.cn	待核	根域与 www 的证据不足以判断业务范围；保留原策略。
+整域	qualitycloud.top	qualitycloud.top	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	qwapp.top	qwapp.top	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+入口	rsshub.henry.wang	rsshub.henry.wang	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+入口	schwab.com.cn	schwab.com.cn	待核	存在大陆地址，但未证实可正常使用的业务页面或有效跳转。
+整域	sealsuite.net	sealsuite.net	待核	与已核实的 .com 不同，缺少实际业务主机。
+整域	solarcloud.top	solarcloud.top	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+入口	sourcingforebay.com.cn	sourcingforebay.com.cn	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	spcloudhw.com	spcloudhw.com	待核	有表外地址，当前证据不足以区分跨境业务、国内服务境外 CDN 或资产变化。
+整域	spcloudhw.net	spcloudhw.net	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	taobizhong.com	taobizhong.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	tapimg.net	tapimg.net	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	tapnow.top	tapnow.top	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	tdnsv15.com	tdnsv15.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	tdnsv15.net	tdnsv15.net	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	tenpayglobal.com	tenpayglobal.com	待核	官方确认为跨境业务，两个已测入口却都在中国表内。实际支付 API 的落点待核。
+整域	tiapi.net	tiapi.net	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+入口	tigerbbs.cn	tigerbbs.cn	待核	存在大陆地址，但未证实可正常使用的业务页面或有效跳转。
+整域	tmalltv.com	tmalltv.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	tmjl.ai	tmjl.ai	待核	有表外地址，当前证据不足以区分跨境业务、国内服务境外 CDN 或资产变化。
+整域	toplife.com	toplife.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	topwd.top	topwd.top	待核	根域与 www 的证据不足以判断业务范围；保留原策略。
+入口	touchid.wang	touchid.wang	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	tripcdn.com	tripcdn.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	ucgslb.top	ucgslb.top	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	ugslb.top	ugslb.top	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	vcloudapi.com	vcloudapi.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	vcloudstc.com	vcloudstc.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	vcloudvod.com	vcloudvod.com	待核	有表外地址，当前证据不足以区分跨境业务、国内服务境外 CDN 或资产变化。
+整域	vecdnlb.com	vecdnlb.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	vemarsweb.com	vemarsweb.com	待核	根域与 www 的证据不足以判断业务范围；保留原策略。
+整域	volcenginapi.com	volcenginapi.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	volcengineapi-test.com	volcengineapi-test.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	vrzwk.top	vrzwk.top	待核	根域与 www 的证据不足以判断业务范围；保留原策略。
+整域	vscenevideo.com	vscenevideo.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	wdfok.com	wdfok.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	womendedw.com	womendedw.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	xhsrcdn.com	xhsrcdn.com	待核	根域与 www 的证据不足以判断业务范围；保留原策略。
+整域	xiami.fm	xiami.fm	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	xiangrikuisite.com	xiangrikuisite.com	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	xiaoxiaapi.com	xiaoxiaapi.com	待核	有表外地址，当前证据不足以区分跨境业务、国内服务境外 CDN 或资产变化。
+入口	xn--fiqs8sxootzz.xn--hxt814e	xn--fiqs8sxootzz.xn--hxt814e	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+入口	xn--gtvq61aiijy0b.xn--hxt814e	xn--gtvq61aiijy0b.xn--hxt814e	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+入口	xn--gtvz22d.wang	xn--gtvz22d.wang	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+入口	xn--hxtr4rozx.xn--czr694b	xn--hxtr4rozx.xn--czr694b	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+入口	xn--kput3imi374g.xn--hxt814e	xn--kput3imi374g.xn--hxt814e	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+入口	xn--ruq8a011kt6y.xn--hxt814e	xn--ruq8a011kt6y.xn--hxt814e	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	yo9.com	yo9.com	待核	根域与 www 的证据不足以判断业务范围；保留原策略。
+整域	yto.top	yto.top	待核	根域与 www 的证据不足以判断业务范围；保留原策略。
+整域	zctnet.top	zctnet.top	待核	根域与 www 的证据不足以判断业务范围；保留原策略。
+入口	zhijianfengyi.cn	zhijianfengyi.cn	待核	根域及 www 均未取得可用 A，需实际业务主机或服务文档。
+整域	zijiedj.com	zijiedj.com	待核	有表外地址，当前证据不足以区分跨境业务、国内服务境外 CDN 或资产变化。
+入口	zoom.com.cn	zoom.com.cn	待核	存在大陆地址，但未证实可正常使用的业务页面或有效跳转。

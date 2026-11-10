@@ -860,5 +860,488 @@
     "answers": [
       "172.66.174.89"
     ]
+  },
+  {
+    "id": "review-nov10-logitech.com.cn",
+    "host": "logitech.com.cn",
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "review-nov10-logitechg.com.cn",
+    "host": "logitechg.com.cn",
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "review-nov10-longbridge.cn",
+    "host": "longbridge.cn",
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "review-nov10-longportapp.cn",
+    "host": "longportapp.cn",
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "review-nov10-www.airbnb.cn",
+    "host": "www.airbnb.cn",
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "review-nov10-www.dynacw.com.cn",
+    "host": "www.dynacw.com.cn",
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "review-nov10-www.futu.cn",
+    "host": "www.futu.cn",
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "review-nov10-www.logitechg.com.cn",
+    "host": "www.logitechg.com.cn",
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "review-nov10-www.longportapp.cn",
+    "host": "www.longportapp.cn",
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "review-nov10-www.msi.cn",
+    "host": "www.msi.cn",
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "review-nov10-msi.cn",
+    "host": "msi.cn",
+    "policy": "PROXY",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "review-nov10-child.www.futu.cn",
+    "host": "child.www.futu.cn",
+    "policy": "PROXY",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "review-nov10-www.logitech.com.cn",
+    "host": "www.logitech.com.cn",
+    "policy": "PROXY",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "review-nov10-other.logitechg.com.cn",
+    "host": "other.logitechg.com.cn",
+    "policy": "PROXY",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "review-nov10-www.longbridge.cn",
+    "host": "www.longbridge.cn",
+    "policy": "PROXY",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "review-nov10-api.airbnb.cn",
+    "host": "api.airbnb.cn",
+    "policy": "PROXY",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "review-nov10-bocaviation.com-abroad",
+    "host": "bocaviation.com",
+    "policy": "PROXY",
+    "routing_dns_requested": true,
+    "answers": [
+      "1.1.1.1"
+    ]
+  },
+  {
+    "id": "review-nov10-bocaviation.com-mainland",
+    "host": "cdn-test.bocaviation.com",
+    "policy": "DIRECT",
+    "routing_dns_requested": true,
+    "answers": [
+      "193.112.125.33"
+    ]
+  },
+  {
+    "id": "review-nov10-bocgi.com-abroad",
+    "host": "bocgi.com",
+    "policy": "PROXY",
+    "routing_dns_requested": true,
+    "answers": [
+      "1.1.1.1"
+    ]
+  },
+  {
+    "id": "review-nov10-bocgi.com-mainland",
+    "host": "cdn-test.bocgi.com",
+    "policy": "DIRECT",
+    "routing_dns_requested": true,
+    "answers": [
+      "193.112.125.33"
+    ]
+  },
+  {
+    "id": "review-nov10-bocigroup.com-abroad",
+    "host": "bocigroup.com",
+    "policy": "PROXY",
+    "routing_dns_requested": true,
+    "answers": [
+      "1.1.1.1"
+    ]
+  },
+  {
+    "id": "review-nov10-bocigroup.com-mainland",
+    "host": "cdn-test.bocigroup.com",
+    "policy": "DIRECT",
+    "routing_dns_requested": true,
+    "answers": [
+      "193.112.125.33"
+    ]
+  },
+  {
+    "id": "review-nov10-chinamobileltd.com-abroad",
+    "host": "chinamobileltd.com",
+    "policy": "PROXY",
+    "routing_dns_requested": true,
+    "answers": [
+      "1.1.1.1"
+    ]
+  },
+  {
+    "id": "review-nov10-chinamobileltd.com-mainland",
+    "host": "cdn-test.chinamobileltd.com",
+    "policy": "DIRECT",
+    "routing_dns_requested": true,
+    "answers": [
+      "193.112.125.33"
+    ]
+  },
+  {
+    "id": "review-nov10-chinatelecom-h.com-abroad",
+    "host": "chinatelecom-h.com",
+    "policy": "PROXY",
+    "routing_dns_requested": true,
+    "answers": [
+      "1.1.1.1"
+    ]
+  },
+  {
+    "id": "review-nov10-chinatelecom-h.com-mainland",
+    "host": "cdn-test.chinatelecom-h.com",
+    "policy": "DIRECT",
+    "routing_dns_requested": true,
+    "answers": [
+      "193.112.125.33"
+    ]
+  },
+  {
+    "id": "review-nov10-citiccapital.com-abroad",
+    "host": "citiccapital.com",
+    "policy": "PROXY",
+    "routing_dns_requested": true,
+    "answers": [
+      "1.1.1.1"
+    ]
+  },
+  {
+    "id": "review-nov10-citiccapital.com-mainland",
+    "host": "cdn-test.citiccapital.com",
+    "policy": "DIRECT",
+    "routing_dns_requested": true,
+    "answers": [
+      "193.112.125.33"
+    ]
+  },
+  {
+    "id": "review-nov10-clsa.com-abroad",
+    "host": "clsa.com",
+    "policy": "PROXY",
+    "routing_dns_requested": true,
+    "answers": [
+      "1.1.1.1"
+    ]
+  },
+  {
+    "id": "review-nov10-clsa.com-mainland",
+    "host": "cdn-test.clsa.com",
+    "policy": "DIRECT",
+    "routing_dns_requested": true,
+    "answers": [
+      "193.112.125.33"
+    ]
+  },
+  {
+    "id": "review-nov10-ics.design-abroad",
+    "host": "ics.design",
+    "policy": "PROXY",
+    "routing_dns_requested": true,
+    "answers": [
+      "1.1.1.1"
+    ]
+  },
+  {
+    "id": "review-nov10-ics.design-mainland",
+    "host": "cdn-test.ics.design",
+    "policy": "DIRECT",
+    "routing_dns_requested": true,
+    "answers": [
+      "193.112.125.33"
+    ]
+  },
+  {
+    "id": "review-nov10-isd.com-abroad",
+    "host": "isd.com",
+    "policy": "PROXY",
+    "routing_dns_requested": true,
+    "answers": [
+      "1.1.1.1"
+    ]
+  },
+  {
+    "id": "review-nov10-isd.com-mainland",
+    "host": "cdn-test.isd.com",
+    "policy": "DIRECT",
+    "routing_dns_requested": true,
+    "answers": [
+      "193.112.125.33"
+    ]
+  },
+  {
+    "id": "review-nov10-ivweb.io-abroad",
+    "host": "ivweb.io",
+    "policy": "PROXY",
+    "routing_dns_requested": true,
+    "answers": [
+      "1.1.1.1"
+    ]
+  },
+  {
+    "id": "review-nov10-ivweb.io-mainland",
+    "host": "cdn-test.ivweb.io",
+    "policy": "DIRECT",
+    "routing_dns_requested": true,
+    "answers": [
+      "193.112.125.33"
+    ]
+  },
+  {
+    "id": "review-nov10-joybuy.com-abroad",
+    "host": "joybuy.com",
+    "policy": "PROXY",
+    "routing_dns_requested": true,
+    "answers": [
+      "1.1.1.1"
+    ]
+  },
+  {
+    "id": "review-nov10-joybuy.com-mainland",
+    "host": "cdn-test.joybuy.com",
+    "policy": "DIRECT",
+    "routing_dns_requested": true,
+    "answers": [
+      "193.112.125.33"
+    ]
+  },
+  {
+    "id": "review-nov10-joybuy.es-abroad",
+    "host": "joybuy.es",
+    "policy": "PROXY",
+    "routing_dns_requested": true,
+    "answers": [
+      "1.1.1.1"
+    ]
+  },
+  {
+    "id": "review-nov10-joybuy.es-mainland",
+    "host": "cdn-test.joybuy.es",
+    "policy": "DIRECT",
+    "routing_dns_requested": true,
+    "answers": [
+      "193.112.125.33"
+    ]
+  },
+  {
+    "id": "review-nov10-larksuitecdn.com-abroad",
+    "host": "larksuitecdn.com",
+    "policy": "PROXY",
+    "routing_dns_requested": true,
+    "answers": [
+      "1.1.1.1"
+    ]
+  },
+  {
+    "id": "review-nov10-larksuitecdn.com-mainland",
+    "host": "cdn-test.larksuitecdn.com",
+    "policy": "DIRECT",
+    "routing_dns_requested": true,
+    "answers": [
+      "193.112.125.33"
+    ]
+  },
+  {
+    "id": "review-nov10-myelasticsearch.com-abroad",
+    "host": "myelasticsearch.com",
+    "policy": "PROXY",
+    "routing_dns_requested": true,
+    "answers": [
+      "1.1.1.1"
+    ]
+  },
+  {
+    "id": "review-nov10-myelasticsearch.com-mainland",
+    "host": "cdn-test.myelasticsearch.com",
+    "policy": "DIRECT",
+    "routing_dns_requested": true,
+    "answers": [
+      "193.112.125.33"
+    ]
+  },
+  {
+    "id": "review-nov10-oppodigital.com-abroad",
+    "host": "oppodigital.com",
+    "policy": "PROXY",
+    "routing_dns_requested": true,
+    "answers": [
+      "1.1.1.1"
+    ]
+  },
+  {
+    "id": "review-nov10-oppodigital.com-mainland",
+    "host": "cdn-test.oppodigital.com",
+    "policy": "DIRECT",
+    "routing_dns_requested": true,
+    "answers": [
+      "193.112.125.33"
+    ]
+  },
+  {
+    "id": "review-nov10-sealsuite.com-abroad",
+    "host": "sealsuite.com",
+    "policy": "PROXY",
+    "routing_dns_requested": true,
+    "answers": [
+      "1.1.1.1"
+    ]
+  },
+  {
+    "id": "review-nov10-sealsuite.com-mainland",
+    "host": "cdn-test.sealsuite.com",
+    "policy": "DIRECT",
+    "routing_dns_requested": true,
+    "answers": [
+      "193.112.125.33"
+    ]
+  },
+  {
+    "id": "review-nov10-sinajs.com-abroad",
+    "host": "sinajs.com",
+    "policy": "PROXY",
+    "routing_dns_requested": true,
+    "answers": [
+      "1.1.1.1"
+    ]
+  },
+  {
+    "id": "review-nov10-sinajs.com-mainland",
+    "host": "cdn-test.sinajs.com",
+    "policy": "DIRECT",
+    "routing_dns_requested": true,
+    "answers": [
+      "193.112.125.33"
+    ]
+  },
+  {
+    "id": "review-nov10-tcdlive.com-abroad",
+    "host": "tcdlive.com",
+    "policy": "PROXY",
+    "routing_dns_requested": true,
+    "answers": [
+      "1.1.1.1"
+    ]
+  },
+  {
+    "id": "review-nov10-tcdlive.com-mainland",
+    "host": "cdn-test.tcdlive.com",
+    "policy": "DIRECT",
+    "routing_dns_requested": true,
+    "answers": [
+      "193.112.125.33"
+    ]
+  },
+  {
+    "id": "review-nov10-yowhale.com-abroad",
+    "host": "yowhale.com",
+    "policy": "PROXY",
+    "routing_dns_requested": true,
+    "answers": [
+      "1.1.1.1"
+    ]
+  },
+  {
+    "id": "review-nov10-yowhale.com-mainland",
+    "host": "cdn-test.yowhale.com",
+    "policy": "DIRECT",
+    "routing_dns_requested": true,
+    "answers": [
+      "193.112.125.33"
+    ]
+  },
+  {
+    "id": "review-nov10-lark-overseas",
+    "host": "lf-static-sg.larksuitecdn.com",
+    "policy": "PROXY",
+    "routing_dns_requested": true,
+    "answers": [
+      "23.59.252.184"
+    ]
+  },
+  {
+    "id": "review-nov10-lark-mainland",
+    "host": "sf16-sg.larksuitecdn.com",
+    "policy": "DIRECT",
+    "routing_dns_requested": false,
+    "answers": [
+      "42.202.219.207"
+    ]
+  },
+  {
+    "id": "review-nov10-taptap-root",
+    "host": "taptap.com",
+    "policy": "PROXY",
+    "routing_dns_requested": true,
+    "answers": [
+      "104.18.27.242"
+    ]
+  },
+  {
+    "id": "review-nov10-taptap-www",
+    "host": "www.taptap.com",
+    "policy": "DIRECT",
+    "routing_dns_requested": true,
+    "answers": [
+      "39.107.195.45"
+    ]
+  },
+  {
+    "id": "review-nov10-lark-exact-child",
+    "host": "sub.sf16-sg.larksuitecdn.com",
+    "policy": "PROXY",
+    "routing_dns_requested": true,
+    "answers": [
+      "1.1.1.1"
+    ]
   }
 ]

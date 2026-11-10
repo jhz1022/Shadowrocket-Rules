@@ -4448,6 +4448,34 @@
   },
   {
     "action": "reviewed-direct-override",
+    "direct": "DOMAIN,logitech.com.cn,DIRECT",
+    "group": "mainland-web-entries-20261110",
+    "proxy": "DOMAIN-SUFFIX,logitech.com.cn,PROXY",
+    "stage": "reviewed-policy"
+  },
+  {
+    "action": "reviewed-direct-override",
+    "direct": "DOMAIN,logitechg.com.cn,DIRECT",
+    "group": "mainland-web-entries-20261110",
+    "proxy": "DOMAIN-SUFFIX,logitechg.com.cn,PROXY",
+    "stage": "reviewed-policy"
+  },
+  {
+    "action": "reviewed-direct-override",
+    "direct": "DOMAIN,longbridge.cn,DIRECT",
+    "group": "mainland-web-entries-20261110",
+    "proxy": "DOMAIN-SUFFIX,longbridge.cn,PROXY",
+    "stage": "reviewed-policy"
+  },
+  {
+    "action": "reviewed-direct-override",
+    "direct": "DOMAIN,longportapp.cn,DIRECT",
+    "group": "mainland-web-entries-20261110",
+    "proxy": "DOMAIN-SUFFIX,longportapp.cn,PROXY",
+    "stage": "reviewed-policy"
+  },
+  {
+    "action": "reviewed-direct-override",
     "direct": "DOMAIN,mesu.apple.com,DIRECT",
     "group": "apple-downloads",
     "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
@@ -4563,6 +4591,48 @@
     "direct": "DOMAIN,updates.cdn-apple.com,DIRECT",
     "group": "apple-downloads",
     "proxy": "DOMAIN-SUFFIX,cdn-apple.com,PROXY",
+    "stage": "reviewed-policy"
+  },
+  {
+    "action": "reviewed-direct-override",
+    "direct": "DOMAIN,www.airbnb.cn,DIRECT",
+    "group": "mainland-web-entries-20261110",
+    "proxy": "DOMAIN-SUFFIX,airbnb.cn,PROXY",
+    "stage": "reviewed-policy"
+  },
+  {
+    "action": "reviewed-direct-override",
+    "direct": "DOMAIN,www.dynacw.com.cn,DIRECT",
+    "group": "mainland-web-entries-20261110",
+    "proxy": "DOMAIN-SUFFIX,dynacw.com.cn,PROXY",
+    "stage": "reviewed-policy"
+  },
+  {
+    "action": "reviewed-direct-override",
+    "direct": "DOMAIN,www.futu.cn,DIRECT",
+    "group": "mainland-web-entries-20261110",
+    "proxy": "DOMAIN-SUFFIX,futu.cn,PROXY",
+    "stage": "reviewed-policy"
+  },
+  {
+    "action": "reviewed-direct-override",
+    "direct": "DOMAIN,www.logitechg.com.cn,DIRECT",
+    "group": "mainland-web-entries-20261110",
+    "proxy": "DOMAIN-SUFFIX,logitechg.com.cn,PROXY",
+    "stage": "reviewed-policy"
+  },
+  {
+    "action": "reviewed-direct-override",
+    "direct": "DOMAIN,www.longportapp.cn,DIRECT",
+    "group": "mainland-web-entries-20261110",
+    "proxy": "DOMAIN-SUFFIX,longportapp.cn,PROXY",
+    "stage": "reviewed-policy"
+  },
+  {
+    "action": "reviewed-direct-override",
+    "direct": "DOMAIN,www.msi.cn,DIRECT",
+    "group": "mainland-web-entries-20261110",
+    "proxy": "DOMAIN-SUFFIX,msi.cn,PROXY",
     "stage": "reviewed-policy"
   },
   {
