@@ -1,6 +1,6 @@
 {
-  "config_sha256": "da330f14aeb1e2b57399670e1f357aa2b3d59affb547914d6669e8934e85d6c3",
-  "conflicts": 767,
+  "config_sha256": "9322732076445c933fe30b3f376d31f2242c7cb75a629ed390e3a136fc25a1d8",
+  "conflicts": 768,
   "excluded_registry_direct": [
     "DOMAIN-SUFFIX,alibaba,DIRECT",
     "DOMAIN-SUFFIX,alipay,DIRECT",
@@ -93,11 +93,11 @@
   ],
   "output": {
     "dns_port_canaries": 6,
-    "reviewed_route_canaries": 89,
+    "reviewed_route_canaries": 90,
     "routing_canaries": 31,
-    "rules": 148937,
+    "rules": 148938,
     "types": {
-      "DOMAIN": 686,
+      "DOMAIN": 687,
       "DOMAIN-SUFFIX": 138596,
       "DST-PORT": 1,
       "FINAL": 1,
@@ -105,7 +105,7 @@
       "IP-CIDR6": 3433
     }
   },
-  "overrides_sha256": "9927aeb63a3266500528e9179805e3bd8c6aa5c46ba022bc839ca00c6e0c7d24",
+  "overrides_sha256": "dc48d12a693990380509416950a904a63950a2f58f4a1752b39e65b6d2c62257",
   "schema": 1,
   "sources": {
     "apple_cn": {

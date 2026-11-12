@@ -4301,6 +4301,13 @@
   },
   {
     "action": "reviewed-direct-override",
+    "direct": "DOMAIN,bpapi.apple.com,DIRECT",
+    "group": "apple-beta-enrollment",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "reviewed-policy"
+  },
+  {
+    "action": "reviewed-direct-override",
     "direct": "DOMAIN,captive.apple.com,DIRECT",
     "group": "captive-portal",
     "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",

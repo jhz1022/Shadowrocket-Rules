@@ -139,6 +139,17 @@
   ],
   "direct_exceptions": [
     {
+      "id": "apple-beta-enrollment",
+      "type": "DOMAIN",
+      "domains": [
+        "bpapi.apple.com"
+      ],
+      "reason": "Apple's beta enrollment endpoint resolved to a mainland address and passed direct HTTPS certificate validation on the tested Mac.",
+      "evidence": [
+        "https://support.apple.com/en-us/101555"
+      ]
+    },
+    {
       "id": "app-store-p20-buy",
       "type": "DOMAIN",
       "domains": [

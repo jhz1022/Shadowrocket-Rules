@@ -1,5 +1,17 @@
 [
   {
+    "id": "apple-beta-enrollment",
+    "host": "bpapi.apple.com",
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "apple-beta-enrollment-child",
+    "host": "sub.bpapi.apple.com",
+    "policy": "PROXY",
+    "routing_dns_requested": false
+  },
+  {
     "id": "app-store-purchase-p20",
     "host": "p20-buy.itunes.apple.com",
     "policy": "DIRECT",
