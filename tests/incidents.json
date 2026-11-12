@@ -1,5 +1,19 @@
 [
   {
+    "id": "mac-app-store-download",
+    "problem": "The Mac App Store displayed the mainland listing for Jianying but refused the acquisition.",
+    "evidence": [
+      "docs/APP_STORE_DOWNLOAD.md"
+    ],
+    "case_ids": [
+      "app-store-purchase-p20",
+      "app-store-purchase-other-shard",
+      "app-store-purchase-child",
+      "app-store-purchase-unprefixed"
+    ],
+    "validation_scope": "macOS logged the purchase host; download started after adding the exact DIRECT module rule. The successful attempt had no Shadowrocket connection log. Other hostnames are static boundary checks."
+  },
+  {
     "id": "icloud-storage-offer",
     "problem": "The iPhone iCloud+ offer failed to load while the mainland storage quota remained visible.",
     "evidence": [

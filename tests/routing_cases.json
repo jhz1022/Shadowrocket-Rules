@@ -1,5 +1,29 @@
 [
   {
+    "id": "app-store-purchase-p20",
+    "host": "p20-buy.itunes.apple.com",
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "app-store-purchase-other-shard",
+    "host": "p21-buy.itunes.apple.com",
+    "policy": "PROXY",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "app-store-purchase-child",
+    "host": "sub.p20-buy.itunes.apple.com",
+    "policy": "PROXY",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "app-store-purchase-unprefixed",
+    "host": "buy.itunes.apple.com",
+    "policy": "PROXY",
+    "routing_dns_requested": false
+  },
+  {
     "id": "icloud-storage-offer",
     "host": "amp-api-edge.media.apple.com",
     "policy": "DIRECT",

@@ -139,6 +139,17 @@
   ],
   "direct_exceptions": [
     {
+      "id": "app-store-p20-buy",
+      "type": "DOMAIN",
+      "domains": [
+        "p20-buy.itunes.apple.com"
+      ],
+      "reason": "The Mac App Store acquisition for Jianying succeeded after adding an exact DIRECT rule for the purchase host seen in its log.",
+      "evidence": [
+        "https://github.com/jhz1022/Shadowrocket-Rules/blob/main/docs/APP_STORE_DOWNLOAD.md"
+      ]
+    },
+    {
       "id": "icloud-storage-offer",
       "type": "DOMAIN",
       "domains": [
