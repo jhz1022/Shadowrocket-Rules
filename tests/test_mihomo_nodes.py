@@ -31,6 +31,15 @@ class PrivateNodeTests(unittest.TestCase):
         self.assertEqual(yaml.safe_load(body)['proxy-groups'][0]['proxies'],['REJECT'])
         self.assertIn('"proxy-providers"\n',text)
 
+    def test_firewall_dns_mode_uses_native_uci_not_broken_boolean_module_entry(self):
+        text=nodes.module_content('https://subscription.example/mihomo/private-token').decode()
+        general=text.split('[General]\n')[1].split('[YAML]')[0]
+        settings={k.strip():v.strip() for line in general.splitlines()
+                  if line.strip() and not line.lstrip().startswith('#') and '=' in line
+                  for k,v in [line.split('=',1)]}
+        self.assertNotIn('ENABLE_REDIRECT_DNS',settings)
+        self.assertEqual(settings['ROUTER_SELF_PROXY'],'0')
+
     def test_bad_or_legacy_urls_rejected_without_echoing_secret(self):
         for url in ('http://host/mihomo/secret','https://host/clash-legacy/secret',
                     'https://user:password@host/mihomo/x','https://host/x#fragment',

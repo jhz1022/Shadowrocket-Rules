@@ -106,6 +106,9 @@ https://raw.githubusercontent.com/jhz1022/Shadowrocket-Rules/main/dist/mihomo/Mi
 - `disable_udp_quic=0`：不新增原规则没有的 UDP/443 拒绝。
 - `enable_redirect_dns=2`、`router_self_proxy=0`：DNS 由插件防火墙接管，避免默认的
   Fake-IP + dnsmasq 转发 + 本机代理关闭组合插入额外的源地址 DIRECT 规则。
+- v0.48.002 的模块入口将 `ENABLE_REDIRECT_DNS` 误列为仅允许 0/1 的布尔量，模块不能写入 2。
+  应在面板原生选项选择“防火墙转发”，或部署时设置基础 UCI
+  `openclash.config.enable_redirect_dns=2`；本地模块不写该字段，也不降级为其他 DNS 模式。
 - `ipv6_enable=0` / `ipv6_dns=0`，UDP 透明代理保持开启，限定内网访问。
 - 私有订阅 URL 用 `ruby_cover` 从数据文件载入，不作为模块环境变量展开；保留 URL 中的字面 `$`。
 
