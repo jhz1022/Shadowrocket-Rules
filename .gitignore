@@ -6,6 +6,10 @@ __pycache__/
 *.zip.sha256
 *.local.conf
 *.private.conf
+*.private.yaml
+*.private.yml
+*.private.ini
+*.private.txt
 .env
 subscription*
 secrets*

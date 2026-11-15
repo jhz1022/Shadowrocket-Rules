@@ -20,6 +20,17 @@ https://raw.githubusercontent.com/jhz1022/Shadowrocket-Rules/main/dist/Shadowroc
 
 **这里只提供分流配置，不提供节点。** 配置计划每天北京时间 12:23 自动检查上游并更新；客户端需要刷新配置才能获取新版。更新情况可在 [Actions](https://github.com/jhz1022/Shadowrocket-Rules/actions) 查看。
 
+## Mihomo / OpenClash 输出
+
+同一组已审核源数据也生成 [`dist/mihomo/Mihomo.yaml`](dist/mihomo/Mihomo.yaml)，
+以完整内嵌规则集形成一份一致的更新快照。展开后的全部规则、顺序和解析标志与
+Shadowrocket 输出逐条核对；Mihomo 特有的 UDP 跳过行为增加拒绝保护。
+
+此输出不含节点，`PROXY` 默认选择 `REJECT`，**当前不可用作实际代理配置**。
+后续使用 3x-ui 的 Mihomo 节点订阅，通过本地私有覆写接入，不由面板合并公共规则。
+完整部署条件、DNS 路径、OpenClash 覆写限制
+及本地验证方法见 [Mihomo / OpenClash 说明](docs/MIHOMO.md)。
+
 ## 分流方式
 
 - 局域网、国内网站及上游收录的可直连服务优先直连。

@@ -1,0 +1,3 @@
+# Used only by the independent YAML/artifact/native verification tools.
+# The deterministic build itself remains Python standard-library only.
+PyYAML==6.0.3

@@ -56,11 +56,12 @@
     "DOMAIN-SUFFIX,xn--zfr164b,DIRECT",
     "DOMAIN-SUFFIX,yun,DIRECT"
   ],
-  "generator_sha256": "0d58651957f5fbd240c310b6a420fa0aab289ee541c4811acf3567476cec967e",
+  "generator_sha256": "2f16e83763c419a1d49fac2e925022136ecdbb54f7cb03d07512870f3b091b7a",
   "ip_coverage": {
     "china4": 344356349,
     "china6": 5430455272804203427084084019462144
   },
+  "mihomo_manifest_sha256": "fbd8538f3fa15dc7c1024b8ef21d3a3be770bee6d3c0b94e3410da37d501d8d1",
   "omitted_ordinary_direct_suffixes": [
     "bocaviation.com",
     "bocgi.com",

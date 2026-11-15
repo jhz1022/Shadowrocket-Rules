@@ -17,6 +17,7 @@ import tempfile
 import time
 import urllib.error
 import urllib.request
+import mihomo
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -659,7 +660,7 @@ def snapshot_name(spec):
     return spec['id'] + ('.tar.gz' if spec['format'] == 'v2fly-archive' else '.txt')
 
 
-def generate(config, template, overrides, inputs, metadata, baseline=None):
+def generate(config, template, overrides, inputs, metadata, baseline=None, mihomo_settings=None):
     all_rules, sources = {}, {}
     for spec in config['sources']:
         ident = spec['id']
@@ -767,6 +768,9 @@ def generate(config, template, overrides, inputs, metadata, baseline=None):
     files = {'Shadowrocket.conf': content.encode(), 'manifest.json': json_bytes(manifest),
              'conflicts.json': json_bytes(conflicts)}
     files.update({f'inputs/{snapshot_name(spec)}': inputs[spec['id']] for spec in config['sources']})
+    files.update(mihomo.generate(content, mihomo_settings))
+    manifest['mihomo_manifest_sha256'] = sha(files['mihomo/manifest.json'])
+    files['manifest.json'] = json_bytes(manifest)
     return files
 
 
@@ -790,10 +794,11 @@ def run(root=ROOT, output=None, offline=False, check=False):
     config = json.loads((root / 'sources/sources.json').read_text())
     template = (root / 'config/template.conf').read_text()
     overrides = json.loads((root / 'config/overrides.json').read_text())
+    mihomo_settings = json.loads((root / 'config/mihomo.json').read_text())
     old_manifest = output / 'manifest.json'
     baseline = json.loads(old_manifest.read_text()) if old_manifest.exists() else None
     inputs, metadata = offline_inputs(output, config) if offline else fetch_inputs(config)
-    files = generate(config, template, overrides, inputs, metadata, baseline)
+    files = generate(config, template, overrides, inputs, metadata, baseline, mihomo_settings)
     conf_path = output / 'Shadowrocket.conf'
     unchanged = conf_path.exists() and conf_path.read_bytes() == files['Shadowrocket.conf']
     if check:
@@ -805,7 +810,9 @@ def run(root=ROOT, output=None, offline=False, check=False):
         return False
     # Revision-only changes are not publications. Keep the last published provenance.
     if unchanged and baseline and all(baseline.get(k) == json.loads(files['manifest.json']).get(k)
-                                      for k in ('generator_sha256', 'template_sha256', 'sources_spec_sha256', 'overrides_sha256')):
+                                      for k in ('generator_sha256', 'template_sha256', 'sources_spec_sha256', 'overrides_sha256', 'mihomo_manifest_sha256')) \
+            and all((output / name).exists() and (output / name).read_bytes() == data
+                    for name, data in files.items() if name.startswith('mihomo/')):
         print('NO_CHANGE: keeping published configuration and its source snapshots')
         return False
     # No mutation occurs before ALL downloads, parsing, gates and canaries pass.

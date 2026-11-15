@@ -12,6 +12,7 @@ on:
       - 'sources/sources.json'
       - 'scripts/**'
       - 'tests/**'
+      - 'requirements-test.txt'
       - '.github/workflows/**'
   pull_request:
 
@@ -33,6 +34,8 @@ jobs:
       - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
         with:
           python-version: '3.12'
+      - name: Install independent artifact-verification dependency
+        run: python -m pip install -r requirements-test.txt
       - name: Unit and failure-safety tests
         run: python -m unittest discover -s tests -v
       - name: Verify published snapshot integrity and reproducibility
@@ -43,6 +46,8 @@ jobs:
         run: python scripts/audit.py --output .build/policy-audit.json
       - name: Check cross-service routing and DNS-trigger contracts
         run: python scripts/check_routing_contract.py --output .build/routing-contract.json
+      - name: Check Mihomo rule order, DNS paths and failure guards
+        run: python scripts/check_mihomo.py --output .build/mihomo-contract.json
       - name: Save independent policy audit
         if: ${{ !cancelled() && hashFiles('.build/source-quality.json') != '' }}
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
@@ -51,6 +56,7 @@ jobs:
           path: |
             .build/policy-audit.json
             .build/routing-contract.json
+            .build/mihomo-contract.json
             .build/source-quality.json
             .build/source-quality.md
           include-hidden-files: true
@@ -71,6 +77,8 @@ jobs:
       - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
         with:
           python-version: '3.12'
+      - name: Install independent artifact-verification dependency
+        run: python -m pip install -r requirements-test.txt
       - name: Save previous published routing policy
         run: |
           mkdir -p .build
@@ -90,6 +98,8 @@ jobs:
         run: python scripts/audit.py --compare .build/previous.conf --enforce-changes --output .build/policy-audit.json
       - name: Check candidate cross-service routing and DNS-trigger contracts
         run: python scripts/check_routing_contract.py --output .build/routing-contract.json
+      - name: Check candidate Mihomo output and fail-closed contract
+        run: python scripts/check_mihomo.py --output .build/mihomo-contract.json
       - name: Save policy coverage, exceptions and transition summary
         if: ${{ !cancelled() && (hashFiles('.build/policy-audit.json') != '' || hashFiles('.build/source-quality.json') != '') }}
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
@@ -98,6 +108,7 @@ jobs:
           path: |
             .build/policy-audit.json
             .build/routing-contract.json
+            .build/mihomo-contract.json
             .build/source-quality.json
             .build/source-quality.md
           include-hidden-files: true
