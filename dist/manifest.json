@@ -1,5 +1,5 @@
 {
-  "config_sha256": "e65d2a5393ad691fcabdd1aa1251ae9f544ebb8245968296018a6ecd8129f36a",
+  "config_sha256": "2df8e0a51906010914e6e5da74a75a88110a1493b6a987da123ff61f9e08993e",
   "conflicts": 768,
   "excluded_registry_direct": [
     "DOMAIN-SUFFIX,alibaba,DIRECT",
@@ -59,7 +59,7 @@
   "generator_sha256": "0d58651957f5fbd240c310b6a420fa0aab289ee541c4811acf3567476cec967e",
   "ip_coverage": {
     "china4": 344356349,
-    "china6": 5430455274013129246698713194168320
+    "china6": 5430455272804203427084084019462144
   },
   "omitted_ordinary_direct_suffixes": [
     "bocaviation.com",
@@ -95,14 +95,14 @@
     "dns_port_canaries": 6,
     "reviewed_route_canaries": 90,
     "routing_canaries": 31,
-    "rules": 149053,
+    "rules": 149006,
     "types": {
       "DOMAIN": 687,
-      "DOMAIN-SUFFIX": 138696,
+      "DOMAIN-SUFFIX": 138647,
       "DST-PORT": 1,
       "FINAL": 1,
       "IP-CIDR": 6227,
-      "IP-CIDR6": 3441
+      "IP-CIDR6": 3443
     }
   },
   "overrides_sha256": "dc48d12a693990380509416950a904a63950a2f58f4a1752b39e65b6d2c62257",
@@ -114,10 +114,10 @@
       "license": "GPL-3.0",
       "omitted_direct_regex": [],
       "records": 165,
-      "revision": "89b31db8c47941a0611f3da6f20ce28643b9a475",
+      "revision": "23e32aea3d79477e40fdab54706145c010b4b986",
       "sha256": "9fbb3bc9b6c9d81c4b1887ce4c81f816a676618592c3dbd2a8c742e14fbba32b",
       "unique": 165,
-      "url": "https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/89b31db8c47941a0611f3da6f20ce28643b9a475/apple-cn.txt"
+      "url": "https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/23e32aea3d79477e40fdab54706145c010b4b986/apple-cn.txt"
     },
     "china4": {
       "bytes": 96738,
@@ -125,24 +125,24 @@
       "license": "MIT",
       "omitted_direct_regex": [],
       "records": 6219,
-      "revision": "e19b7fae553e3d414cd7d1b254b8ddf258ec9cff",
+      "revision": "7d270558760e5d0e615df2196a2db2b0abadb44d",
       "sha256": "4f4c6e7f26422df8d95ac5b6394f0aefafd5ad75f85a7c9e72fce54dff96491b",
       "unique": 6219,
-      "url": "https://raw.githubusercontent.com/gaoyifan/china-operator-ip/e19b7fae553e3d414cd7d1b254b8ddf258ec9cff/china.txt"
+      "url": "https://raw.githubusercontent.com/gaoyifan/china-operator-ip/7d270558760e5d0e615df2196a2db2b0abadb44d/china.txt"
     },
     "china6": {
-      "bytes": 57210,
+      "bytes": 57248,
       "duplicates": 0,
       "license": "MIT",
       "omitted_direct_regex": [],
-      "records": 3437,
-      "revision": "e19b7fae553e3d414cd7d1b254b8ddf258ec9cff",
-      "sha256": "f32be3fe1782cbfab6277236be9b80d80f14b58d7608997f41cda56f4fc63aeb",
-      "unique": 3437,
-      "url": "https://raw.githubusercontent.com/gaoyifan/china-operator-ip/e19b7fae553e3d414cd7d1b254b8ddf258ec9cff/china6.txt"
+      "records": 3439,
+      "revision": "7d270558760e5d0e615df2196a2db2b0abadb44d",
+      "sha256": "f112994db86c3081ed6f615e969b71a3f23bf0f9d7837f5076690bbf26002089",
+      "unique": 3439,
+      "url": "https://raw.githubusercontent.com/gaoyifan/china-operator-ip/7d270558760e5d0e615df2196a2db2b0abadb44d/china6.txt"
     },
     "direct": {
-      "bytes": 353059,
+      "bytes": 353057,
       "duplicates": 0,
       "license": "MIT",
       "omitted_direct_regex": [
@@ -151,13 +151,13 @@
         "regexp:^.+-mihayo\\.akamaized\\.net$"
       ],
       "records": 8065,
-      "revision": "777d056afe68b2643c1ef15f80e7bde3dfa149b1",
-      "sha256": "94c7b67ca580fa70f005d483667537a896554a749f1247b0d06ed05900559519",
+      "revision": "3e5a6807b0f31268e96b321440564fc809996b22",
+      "sha256": "c3bd5569b0eb5245a300e81a7408703a0cace0b05db9d1ebd9b04a5e6a4c1d98",
       "unique": 8062,
-      "url": "https://codeload.github.com/v2fly/domain-list-community/tar.gz/777d056afe68b2643c1ef15f80e7bde3dfa149b1"
+      "url": "https://codeload.github.com/v2fly/domain-list-community/tar.gz/3e5a6807b0f31268e96b321440564fc809996b22"
     },
     "enhanced": {
-      "bytes": 1400867,
+      "bytes": 1400060,
       "duplicates": 0,
       "license": "GPL-3.0",
       "omitted_direct_regex": [
@@ -170,11 +170,11 @@
         "regexp:^r+[0-9]+(---|\\.)sn-(2x3|ni5|j5o)\\w{5}\\.googlevideo\\.com$",
         "regexp:^r+[0-9]+(---|\\.)sn-(2x3|ni5|j5o)\\w{5}\\.xn--ngstr-lra8j\\.com$"
       ],
-      "records": 110296,
-      "revision": "89b31db8c47941a0611f3da6f20ce28643b9a475",
-      "sha256": "b451cbfd051193587a32671835370c753757f8c65f433cd06d6a278cc7c1dfcb",
-      "unique": 110288,
-      "url": "https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/89b31db8c47941a0611f3da6f20ce28643b9a475/direct-list.txt"
+      "records": 110247,
+      "revision": "23e32aea3d79477e40fdab54706145c010b4b986",
+      "sha256": "ad07adf8eee29017d4628eabc936036174fca58ff42a6d16089b9344272e4a6e",
+      "unique": 110239,
+      "url": "https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/23e32aea3d79477e40fdab54706145c010b4b986/direct-list.txt"
     },
     "proxy": {
       "bytes": 623340,
@@ -182,13 +182,13 @@
       "license": "GPL-3.0",
       "omitted_direct_regex": [],
       "records": 27352,
-      "revision": "f67179385329f4c2c859ce56924f8a92fa7785a8",
+      "revision": "db6401de907f650714eef2927a2515192063f9b1",
       "sha256": "c903cac968a5c8ffbd8a78fa3366c9acc292c953c85b71e4b62eb6b16d059b2c",
       "unique": 27352,
-      "url": "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/f67179385329f4c2c859ce56924f8a92fa7785a8/proxy.txt"
+      "url": "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/db6401de907f650714eef2927a2515192063f9b1/proxy.txt"
     },
     "regional": {
-      "bytes": 353059,
+      "bytes": 353057,
       "duplicates": 0,
       "license": "MIT",
       "omitted_direct_regex": [
@@ -201,21 +201,21 @@
         "regexp:^r+[0-9]+(---|\\.)sn-(2x3|ni5|j5o)\\w{5}\\.xn--ngstr-lra8j\\.com$"
       ],
       "records": 1123,
-      "revision": "777d056afe68b2643c1ef15f80e7bde3dfa149b1",
-      "sha256": "94c7b67ca580fa70f005d483667537a896554a749f1247b0d06ed05900559519",
+      "revision": "3e5a6807b0f31268e96b321440564fc809996b22",
+      "sha256": "c3bd5569b0eb5245a300e81a7408703a0cace0b05db9d1ebd9b04a5e6a4c1d98",
       "unique": 1116,
-      "url": "https://codeload.github.com/v2fly/domain-list-community/tar.gz/777d056afe68b2643c1ef15f80e7bde3dfa149b1"
+      "url": "https://codeload.github.com/v2fly/domain-list-community/tar.gz/3e5a6807b0f31268e96b321440564fc809996b22"
     },
     "registry": {
-      "bytes": 340498,
+      "bytes": 341176,
       "duplicates": 0,
       "license": "MPL-2.0",
       "omitted_direct_regex": [],
       "records": 6951,
-      "revision": "c3a53eed2cc49353c5fb5c30536186795d5c451b",
-      "sha256": "7379dee58164b5f7cda5e37f2cc85b3d1754245dc313178eef5cbdcaca758650",
+      "revision": "dfe55f3548d0fe51c04b8d2903507a01fdec57ad",
+      "sha256": "c61dec506c4a1045355280a560bf66c9ee893fb1510db98510ef7fb277fb2df8",
       "unique": 6951,
-      "url": "https://raw.githubusercontent.com/publicsuffix/list/c3a53eed2cc49353c5fb5c30536186795d5c451b/public_suffix_list.dat"
+      "url": "https://raw.githubusercontent.com/publicsuffix/list/dfe55f3548d0fe51c04b8d2903507a01fdec57ad/public_suffix_list.dat"
     }
   },
   "sources_spec_sha256": "83a43a8dcf03e86282a7ebcabb1b07c6dda7cef688feac1094b6a7d9d6c4a23f",
