@@ -39,11 +39,15 @@ def module_content(url, root=ROOT):
     # catch-all/system DNS fallback for ordinary unknown/proxy destinations.
     host=urlsplit(url).hostname
     bootstrap=['https://223.5.5.5/dns-query#DIRECT','https://223.6.6.6/dns-query#DIRECT']
+    # OpenClash 0.48.002 treats #DIRECT as a proxied resolver and appends four
+    # plaintext resolvers. Modules run after that rewrite: restore the reviewed
+    # explicit bootstrap list, including when the subscription uses an IP.
+    dns_fragment={'proxy-server-nameserver':bootstrap}
     try:
         ipaddress.ip_address(host)
-        fragment=''
     except ValueError:
-        fragment=yaml_bytes({'dns':{'+nameserver-policy':{host:bootstrap}}}).decode().split('\n',1)[1].rstrip()
+        dns_fragment['+nameserver-policy']={host:bootstrap}
+    fragment=yaml_bytes({'dns':dns_fragment}).decode().split('\n',1)[1].rstrip()
     template=(root/'config/openclash-local-nodes.ini').read_text()
     return template.replace('# NODE_SUBSCRIPTION_BOOTSTRAP_POLICY',fragment).encode()
 

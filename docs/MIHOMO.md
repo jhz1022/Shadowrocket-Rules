@@ -14,6 +14,8 @@
   换网络前必须核对，不能将它改成 OpenClash 自身
   或 `system` 而制造 dnsmasq → Mihomo → dnsmasq 自环。
 - `config/openclash-local-nodes.ini`：本地覆写模块模板，不注册、不启用、不包含订阅地址。
+- `config/openclash-update-policy.sh`：调用 OpenClash 原生订阅更新器，仅为更新进程设置
+  本机混合代理；运行时读取已有认证，临时文件 mode 0600，结束即清理，不改变全机出口。
 - `scripts/prepare_mihomo_nodes.py`：读取本地私有订阅 URL 文件，生成 mode 0600 的
   节点提供者 YAML 和本地模块；不会下载订阅、操作路由器或启动代理。
 
@@ -81,6 +83,8 @@ python3 scripts/prepare_mihomo_nodes.py \
 
 1. 后续部署时，私有 YAML 对应 `/etc/openclash/custom/nodes.private.yaml`。
 2. 私有 INI 是本地覆写模块，匹配完整路径 `/etc/openclash/config/Mihomo.yaml`，注册时保持关闭。
+   v0.48.002 的 UCI 匹配字段必须是 `list config '/etc/openclash/config/Mihomo.yaml'`，
+   单个 `option config` 不会被 `config_list_foreach` 匹配，不能据此认定模块已加载。
 3. 原始公共配置更新后，本地模块仍在：它只注入 `proxy-providers.nodes` 和一个 `PROXY`
    选择组，不接收节点订阅中的规则、DNS 或 DIRECT 选项。
 4. 公开主配置默认拒绝。填入有效订阅、验证并显式选中真实节点后才准备启用。
@@ -109,11 +113,30 @@ https://raw.githubusercontent.com/jhz1022/Shadowrocket-Rules/main/dist/mihomo/Mi
 - v0.48.002 的模块入口将 `ENABLE_REDIRECT_DNS` 误列为仅允许 0/1 的布尔量，模块不能写入 2。
   应在面板原生选项选择“防火墙转发”，或部署时设置基础 UCI
   `openclash.config.enable_redirect_dns=2`；本地模块不写该字段，也不降级为其他 DNS 模式。
+- v0.48.002 的引导 DNS 检查把 `#DIRECT` 也识别为经过代理，并自动追加四个明文解析器。
+  本地模块在该处理之后恢复已审查的 `proxy-server-nameserver` 列表；部署后必须读取最终运行
+  YAML，与公开规则及 DNS 契约逐项核对，不能只验证订阅源文件或模块预处理文件。
 - `ipv6_enable=0` / `ipv6_dns=0`，UDP 透明代理保持开启，限定内网访问。
 - 私有订阅 URL 用 `ruby_cover` 从数据文件载入，不作为模块环境变量展开；保留 URL 中的字面 `$`。
 
 模块只准备本地文件，不是此刻已生效的路由器配置。真实 OpenClash 启动后的运行 YAML、
 DNS 抢答、浏览器 DoH、终端 IPv6、直接出口和节点出口都必须再次检查。
+
+### 当前旁路由的更新入口
+
+本机直连 `raw.githubusercontent.com` 实测超时，而经已验证节点可以下载公共规则。
+因此部署更新脚本为 `/etc/openclash/custom/update-policy.sh`，每日 00:00 由单独的
+`#shadowrocket-policy-update` cron 条目运行；关闭原生不带代理的 `auto_update`，避免重复任务。
+脚本继续使用原生下载、格式验证、原子替换及重启流程，不修改 OpenClash 程序文件。
+面板原生“更新”按钮仍走其原路径；在此网络上应使用上述脚本手动更新，或等待该定时任务。
+原生更新器会遍历所有已启用配置订阅，参数并非严格的单配置过滤器，因此现有 `3x-ui.yaml`
+条目也可能刷新；实际工作配置始终为 `Mihomo.yaml`，其中节点由 `nodes` 提供者独立每小时更新。
+
+2026-11-16 部署实测：最终运行 YAML 的规则、DNS 与私有节点模块契约一致；隔离网络命名空间
+仅设置网关/DNS 后，百度 DIRECT、Cloudflare/GitHub PROXY 均为 HTTPS 200，证书校验通过；
+未知域名的中国 IP 直连与默认代理分别通过真实 DoH 请求验证。抓包确认测试中的代理/未知
+域名未通过明文 DNS 查询，直连查询发往 `223.5.5.5`。节点刷新与规则原生更新均成功。
+这些结果不能替代选定真实终端的 IPv6、浏览器安全 DNS 与 App 验收。
 
 当前网络未提供可核实的私有名称 DNS 服务。原生 mDNS/局域网流量仍按本地网络旁路，
 但不能声称公共上游会解析 NAS 等私有名称；需要此功能时应提供实际可用的局域网解析器并单独验证。

@@ -40,6 +40,14 @@ class PrivateNodeTests(unittest.TestCase):
         self.assertNotIn('ENABLE_REDIRECT_DNS',settings)
         self.assertEqual(settings['ROUTER_SELF_PROXY'],'0')
 
+    def test_module_restores_bootstrap_after_openclash_automatic_plaintext_append(self):
+        expected=['https://223.5.5.5/dns-query#DIRECT','https://223.6.6.6/dns-query#DIRECT']
+        for url in ('https://subscription.example/mihomo/token','https://192.0.2.1/mihomo/token'):
+            body=nodes.module_content(url).decode().split('[YAML]\n')[1].split('[Overwrite]')[0]
+            dns=yaml.safe_load(body)['dns']
+            self.assertEqual(dns['proxy-server-nameserver'],expected)
+            self.assertEqual('+nameserver-policy' in dns,'subscription.example' in url)
+
     def test_bad_or_legacy_urls_rejected_without_echoing_secret(self):
         for url in ('http://host/mihomo/secret','https://host/clash-legacy/secret',
                     'https://user:password@host/mihomo/x','https://host/x#fragment',
