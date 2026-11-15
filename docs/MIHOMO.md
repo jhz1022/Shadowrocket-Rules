@@ -9,8 +9,9 @@
 - `dist/Shadowrocket.conf`：原有输出，分流规则及 General 设置不变。
 - `dist/mihomo/Mihomo.yaml`：完整、无节点的 YAML；八个规则集内嵌在同一个文件。
 - `dist/mihomo/manifest.json`：源配置身份、生成器身份、完整规则数与产物摘要。
-- `config/mihomo.json`：部署网络的明确本地 DNS。当前为主路由 `192.168.1.1`，
-  适配旁路由 `192.168.1.99/24`；换网络前必须核对，不能将它改成 OpenClash 自身
+- `config/mihomo.json`：部署网络的明确直连 DNS。当前使用该网络实际配置的上游 `223.5.5.5`，
+  适配旁路由 `192.168.1.99/24`；网关 `192.168.1.1` 的 DNS 端口已实测拒绝连接，不能把网关默认当作解析器。
+  换网络前必须核对，不能将它改成 OpenClash 自身
   或 `system` 而制造 dnsmasq → Mihomo → dnsmasq 自环。
 - `config/openclash-local-nodes.ini`：本地覆写模块模板，不注册、不启用、不包含订阅地址。
 - `scripts/prepare_mihomo_nodes.py`：读取本地私有订阅 URL 文件，生成 mode 0600 的
@@ -43,7 +44,7 @@ DNS 选择不依赖其 IP 条目。不要排序或合并这些有序域名层。
 
 | 查询用途 | 路径 |
 | --- | --- |
-| 已分类 DIRECT 与局域网名称 | 明确的本地网络 DNS，当前 `192.168.1.1:53#DIRECT` |
+| 已分类 DIRECT 与局域网名称 | 当前网络实际采用的直连 DNS `223.5.5.5:53#DIRECT`；不是无 DNS 服务的网关 |
 | PROXY、未分类域名 | `1.1.1.1` 与 `8.8.8.8` DoH，均指定 `#PROXY` |
 | 节点域名 | 独立阿里 DoH，指定 `#DIRECT` |
 | 私有节点订阅的域名 | 本地模块增加该**精确主机名**的独立引导解析，指定 `#DIRECT` |
@@ -110,6 +111,9 @@ https://raw.githubusercontent.com/jhz1022/Shadowrocket-Rules/main/dist/mihomo/Mi
 
 模块只准备本地文件，不是此刻已生效的路由器配置。真实 OpenClash 启动后的运行 YAML、
 DNS 抢答、浏览器 DoH、终端 IPv6、直接出口和节点出口都必须再次检查。
+
+当前网络未提供可核实的私有名称 DNS 服务。原生 mDNS/局域网流量仍按本地网络旁路，
+但不能声称公共上游会解析 NAS 等私有名称；需要此功能时应提供实际可用的局域网解析器并单独验证。
 
 ## 本地验证
 
