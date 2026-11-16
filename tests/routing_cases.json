@@ -1379,5 +1379,53 @@
     "answers": [
       "1.1.1.1"
     ]
+  },
+  {
+    "id": "apple-cn-review-captive.apple.com",
+    "host": "captive.apple.com",
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "apple-cn-review-review-child.captive.apple.com",
+    "host": "review-child.captive.apple.com",
+    "policy": "PROXY",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "apple-cn-review-configuration.ls.apple.com",
+    "host": "configuration.ls.apple.com",
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "apple-cn-review-review-child.configuration.ls.apple.com",
+    "host": "review-child.configuration.ls.apple.com",
+    "policy": "PROXY",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "apple-cn-review-musicstatus.itunes.apple.com",
+    "host": "musicstatus.itunes.apple.com",
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "apple-cn-review-review-child.musicstatus.itunes.apple.com",
+    "host": "review-child.musicstatus.itunes.apple.com",
+    "policy": "PROXY",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "apple-cn-review-mzstorekit.itunes.apple.com",
+    "host": "mzstorekit.itunes.apple.com",
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "apple-cn-review-review-child.mzstorekit.itunes.apple.com",
+    "host": "review-child.mzstorekit.itunes.apple.com",
+    "policy": "PROXY",
+    "routing_dns_requested": false
   }
 ]

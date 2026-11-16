@@ -44,6 +44,9 @@ def audit(root=build.ROOT, conf=None, previous=None):
                     audit_sources.registry_suffix(name, raw['registry']))}
     omitted = set(overrides.get('omit_ordinary_direct_suffixes', []))
     direct.difference_update(('DOMAIN-SUFFIX', host) for host in omitted)
+    for host in overrides.get('exact_only_direct_hosts', []):
+        direct.discard(('DOMAIN-SUFFIX', host))
+        regional.discard(('DOMAIN-SUFFIX', host))
     local_exact = {'localhost'} | {name for _, name in reviewed['lan_domains']}
     local_suffix = {'local', 'lan', 'home.arpa', 'in-addr.arpa', 'ip6.arpa'}
     p_exact, p_suffix = domain_sets(proxy)

@@ -355,7 +355,7 @@ def domain_overlap(a, b):
 
 def reviewed_rules(overrides, archive=None):
     """Local reviewed policy is independent of upstream minimization/classification."""
-    if set(overrides) - {'omit_ordinary_direct_suffixes'} != {'schema', 'proxy_suffix', 'lan_domains', 'direct_exceptions'} or overrides['schema'] != 2:
+    if set(overrides) - {'omit_ordinary_direct_suffixes', 'exact_only_direct_hosts'} != {'schema', 'proxy_suffix', 'lan_domains', 'direct_exceptions'} or overrides['schema'] != 2:
         raise BuildError('Unknown reviewed-policy schema')
     omitted = overrides.get('omit_ordinary_direct_suffixes', [])
     if (not isinstance(omitted, list) or any(not isinstance(h, str) or '.' not in h or domain(h) != h
@@ -426,6 +426,11 @@ def reviewed_rules(overrides, archive=None):
         result[section] = entries
     if len(seen) > 250:
         raise BuildError('Reviewed policy exceeds small-list budget')
+    exact_hosts = overrides.get('exact_only_direct_hosts', [])
+    if not isinstance(exact_hosts, list) or any(
+            not isinstance(host, str) or Rule('DOMAIN', host, 'DIRECT') not in result['direct_exceptions']
+            for host in exact_hosts) or len(set(exact_hosts)) != len(exact_hosts):
+        raise BuildError('Exact-only hosts require a reviewed exact DIRECT rule')
     return result, protected
 
 
@@ -682,9 +687,11 @@ def generate(config, template, overrides, inputs, metadata, baseline=None, mihom
     ordinary = all_rules['direct'] | all_rules['enhanced']
     # Drop only the reviewed source rows, before minimization can erase child rules.
     omitted = {Rule('DOMAIN-SUFFIX', host, 'DIRECT') for host in overrides.get('omit_ordinary_direct_suffixes', [])}
-    direct = minimize(precise_direct(ordinary - omitted, config, registry))
+    # Preserve separately listed children; discard only the unreviewed parent suffix.
+    broad = {Rule('DOMAIN-SUFFIX', host, 'DIRECT') for host in overrides.get('exact_only_direct_hosts', [])}
+    direct = minimize(precise_direct(ordinary - omitted - broad, config, registry))
     regional_raw = all_rules['regional'] | all_rules['apple_cn']
-    regional = minimize(precise_direct(regional_raw, config, registry))
+    regional = minimize(precise_direct(regional_raw - broad, config, registry))
     regional, regional_conflicts = resolve_conflicts(protected, regional)
     direct, conflicts = resolve_conflicts(protected, direct)
     for item in conflicts:

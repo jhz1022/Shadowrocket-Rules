@@ -45,6 +45,42 @@
         "docs/reviews/2026-11-10/review.tsv"
       ],
       "expires": "2026-12-10"
+    },
+    {
+      "id": "caa0a1e0679aa943b16a04e898921df617f054d4bd0355217fbd10a86bf24c1d",
+      "reason": "Only the existing exact captive portal host is approved; the upstream suffix is excluded.",
+      "evidence": [
+        "https://github.com/v2fly/domain-list-community/pull/4280",
+        "docs/SOURCE_QUALITY.md"
+      ],
+      "expires": "2026-12-16"
+    },
+    {
+      "id": "b2f878f60cee6f97cbd6821e39141c18d7565afd70bbaeee7b4f6a6e56b1535d",
+      "reason": "configuration.ls.apple.com has a mainland CDN endpoint with verified direct TLS. Only the exact upstream host is approved.",
+      "evidence": [
+        "https://github.com/v2fly/domain-list-community/pull/4287",
+        "docs/SOURCE_QUALITY.md"
+      ],
+      "expires": "2026-12-16"
+    },
+    {
+      "id": "b287b28e086047accd44726529dc4bbbb3b133cc367a021df7cb78aa1f61adbb",
+      "reason": "musicstatus.itunes.apple.com has a mainland CDN endpoint with verified direct TLS. Only the exact upstream host is approved.",
+      "evidence": [
+        "https://github.com/v2fly/domain-list-community/pull/4287",
+        "docs/SOURCE_QUALITY.md"
+      ],
+      "expires": "2026-12-16"
+    },
+    {
+      "id": "2fea2bfa4b2112fb375e6ae64199c7b8f67a50b1fcceb3dec4164bb0e84980c2",
+      "reason": "mzstorekit.itunes.apple.com has a mainland CDN endpoint with verified direct TLS. Only the exact upstream host is approved.",
+      "evidence": [
+        "https://github.com/v2fly/domain-list-community/pull/4287",
+        "docs/SOURCE_QUALITY.md"
+      ],
+      "expires": "2026-12-16"
     }
   ]
 }

@@ -595,6 +595,12 @@
   },
   {
     "action": "whitelist-direct-override",
+    "direct": "DOMAIN,configuration.ls.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
     "direct": "DOMAIN,connectivitycheck.gstatic.com,DIRECT",
     "proxy": "DOMAIN-SUFFIX,gstatic.com,PROXY",
     "stage": "regional-policy"
@@ -1765,6 +1771,12 @@
   },
   {
     "action": "whitelist-direct-override",
+    "direct": "DOMAIN,musicstatus.itunes.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
     "direct": "DOMAIN,musicstatus.music.apple.com,DIRECT",
     "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
     "stage": "regional-policy"
@@ -1785,6 +1797,12 @@
     "action": "whitelist-direct-override",
     "direct": "DOMAIN,myvs.download.prss.microsoft.com,DIRECT",
     "proxy": "DOMAIN-SUFFIX,microsoft.com,PROXY",
+    "stage": "regional-policy"
+  },
+  {
+    "action": "whitelist-direct-override",
+    "direct": "DOMAIN,mzstorekit.itunes.apple.com,DIRECT",
+    "proxy": "DOMAIN-SUFFIX,apple.com,PROXY",
     "stage": "regional-policy"
   },
   {

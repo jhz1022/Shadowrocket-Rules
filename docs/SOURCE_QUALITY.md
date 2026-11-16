@@ -53,6 +53,12 @@ Loyalsoldier 的生成器把带筛选条件的引用作为正向属性查找，`
 
 Apple Radio 保留上游的精确直连。v2fly 给 `full:radio.itunes.apple.com` 标了 `@cn`，并附有四个大陆网段的 DNS 结果。本次复查得到金山云 CDN 的 CNAME 链，返回地址在中国 IP 表内。保留主机名向 120.220.213.129 发起 HTTPS 请求，证书校验通过，根路径返回 403。已验证大陆接入点，未验证账号、节目授权或实际播放。审批只绑定本次新旧快照和这个精确主机，子域仍走原规则。[上游实测与补丁](https://github.com/v2fly/domain-list-community/pull/4266)
 
+### 2026-11-16 的 Apple 接入点
+
+11 月 16 日用 AliDNS 查询，captive.apple.com、configuration.ls.apple.com 和 mzstorekit.itunes.apple.com 返回 42.202.215.179，musicstatus.itunes.apple.com 返回 42.202.215.180。Mac 通过 Wi-Fi 向这些地址发送带原域名的 HTTPS 请求，四个证书均验证成功。联网检测路径返回 200，其余三个根路径返回 404。验证范围为大陆接入和 TLS，未测试 StoreKit 购买或音乐账户状态。
+
+三个新主机沿用区域表的精确直连。联网检测的上游说明只验证了裸域，但实际提交写为后缀。项目保留已有精确直连，并在普通和区域直连表去重前排除同名后缀；具体子域如果日后单独收录，仍能按自身规则匹配。两种发布格式均覆盖四个裸域与对应子域的回归检查。[联网检测补丁](https://github.com/v2fly/domain-list-community/pull/4280/files) · [三个精确主机](https://github.com/v2fly/domain-list-community/pull/4287)
+
 ## 正则转换缺口
 
 `config/coverage-review.json` 逐条记录暂未找到已验证等价转换的正则、处理理由和代表性回归样本。检查从已校验输入重新读取省略项，并核对 manifest，不只相信一份手写清单。

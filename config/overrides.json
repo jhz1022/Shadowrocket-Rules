@@ -396,5 +396,8 @@
         "https://github.com/jhz1022/Shadowrocket-Rules/blob/main/docs/reviews/2026-11-10/README.md"
       ]
     }
+  ],
+  "exact_only_direct_hosts": [
+    "captive.apple.com"
   ]
 }
