@@ -12878,6 +12878,10 @@ site.hosting-cluster.nl
 // Submitted by Contentful Developer Experience Team <prd-ecosystem-dx@contentful.com>
 ctfcloud.net
 
+// Converge AI Pte. Ltd. : https://converge.ai
+// Submitted by Tyler <support@enter.pro>
+prod.enter.pro
+
 // Convex : https://convex.dev/
 // Submitted by James Cowling <security@convex.dev>
 convex.app
@@ -13857,6 +13861,11 @@ futuremailing.at
 gadget.app
 gadget.host
 
+// Gcore : https://gcore.com/
+// Submitted by Maryia Miskevich <fastedge@gcore.com>
+fastedge.app
+gcorecdn.com
+
 // GDS : https://www.gov.uk/service-manual/technology/managing-domain-names
 // Submitted by Stephen Ford <hostmaster@digital.cabinet-office.gov.uk>
 campaign.gov.uk
@@ -14538,6 +14547,10 @@ kiloapps.io
 // Submitted by Felipe Keller Braz <felipebraz@kinghost.com.br>
 kinghost.net
 uni5.net
+
+// Kliv : https://kliv.dev
+// Submitted by Anders Olsson <security@kliv.dev>
+kliv.site
 
 // KoobinEvent, SL : https://www.koobin.com
 // Submitted by Iván Oliva <ivan.oliva@koobin.com>
@@ -16058,6 +16071,10 @@ mafelo.net
 // Submitted by Solana Name Service <contact@sns.id>
 sol.site
 
+// Solid Labs : https://www.solidres.com/
+// Submitted by Solid Labs <contact@solidres.com>
+solidres.page
+
 // Sony Interactive Entertainment LLC : https://sie.com/
 // Submitted by David Coles <david.coles@sony.com>
 playstation-cloud.com
@@ -16381,6 +16398,10 @@ site.transip.me
 // Submitted by Triton Data Center staff <tickets@tritondatacenter.com>
 *.triton.zone
 
+// Tuna : https://tuna.am/
+// Submitted by Tuna Support <support@tuna.am>
+*.2na.am
+
 // Tunnelmole: https://tunnelmole.com
 // Submitted by Robbie Cahill <support@tunnelmole.com>
 tunnelmole.net
@@ -16415,6 +16436,10 @@ it.com
 // Umso Software Inc. : https://www.umso.com
 // Submitted by Alexis Taylor <security@umso.com>
 umso.co
+
+// Uncloud : https://uncloud.run
+// Submitted by Pasha Sviderski <support@uncloud.run>
+uncld.dev
 
 // Unison Computing, PBC : https://unison.cloud
 // Submitted by Simon Højberg <security@unison.cloud>
