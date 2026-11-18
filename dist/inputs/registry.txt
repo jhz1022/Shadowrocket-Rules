@@ -14757,6 +14757,11 @@ magicpatternsapp.com
 // Submitted by Ilya Zaretskiy <zaretskiy@corp.mail.ru>
 hb.cldmail.ru
 
+// MailerLite : https://www.mailerlite.com
+// Submitted by Bob Gordon <public-suffix-list@mailerlite.com>
+mailerpage.io
+subscribepage.io
+
 // MathWorks : https://www.mathworks.com/
 // Submitted by Emily Reed <psl-maintainers@groups.mathworks.com>
 matlab.cloud
@@ -15120,6 +15125,10 @@ nimsite.uk
 // Ninjaneer Media : https://ninjaneer.au
 // Submitted by the Ninjaneer Media team <admin@ninjaneer.au>
 ninjaneer-sites.com
+
+// Nippy : https://nippy.host/
+// Submitted by Nippy Support <support@nippy.host>
+nippy.site
 
 // No-IP.com : https://noip.com/
 // Submitted by Deven Reza <publicsuffixlist@noip.com>
