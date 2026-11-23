@@ -1,6 +1,6 @@
 {
   "blocks": {
-    "china-ip": 9671,
+    "china-ip": 9703,
     "direct": 111496,
     "lan": 18,
     "local-names": 18,
@@ -11,8 +11,8 @@
   },
   "files": {
     "Mihomo.yaml": {
-      "bytes": 5487582,
-      "sha256": "7a620b29749f8842c8beb7aa4e85ad236b66e0055ae3a3cbcbd3184843ff1de1"
+      "bytes": 5488686,
+      "sha256": "b94339471679ccfc23b546b9486d11025e3b2f1ae6c17c9a57d351942692955d"
     }
   },
   "final_reject_guard": true,
@@ -20,7 +20,7 @@
   "node_state": "UNCONFIGURED_REJECT",
   "schema": 1,
   "settings_sha256": "ffe0a65a1f12ba3129396917ba74408bb3cc63c2ce54b9bcfba2d6adf9342d47",
-  "source_config_sha256": "03a8970a8f0f51bb02ae02eac2425f9fb381c3844d94c7d4218b091a49571d7d",
-  "source_rules": 148962,
+  "source_config_sha256": "72d16e868d09293fc978afefd2644b11827108220bfb9fecae9f59f0215b7336",
+  "source_rules": 148994,
   "unsupported_udp_guards": 2
 }
