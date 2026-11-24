@@ -4613,6 +4613,13 @@
   },
   {
     "action": "reviewed-direct-override",
+    "direct": "DOMAIN,universalbeijingresort.com,DIRECT",
+    "group": "universal-beijing-web",
+    "proxy": "DOMAIN-SUFFIX,universalbeijingresort.com,PROXY",
+    "stage": "reviewed-policy"
+  },
+  {
+    "action": "reviewed-direct-override",
     "direct": "DOMAIN,updates-http.cdn-apple.com,DIRECT",
     "group": "apple-downloads",
     "proxy": "DOMAIN-SUFFIX,cdn-apple.com,PROXY",
@@ -4665,6 +4672,13 @@
     "direct": "DOMAIN,www.msi.cn,DIRECT",
     "group": "mainland-web-entries-20261110",
     "proxy": "DOMAIN-SUFFIX,msi.cn,PROXY",
+    "stage": "reviewed-policy"
+  },
+  {
+    "action": "reviewed-direct-override",
+    "direct": "DOMAIN,www.universalbeijingresort.com,DIRECT",
+    "group": "universal-beijing-web",
+    "proxy": "DOMAIN-SUFFIX,universalbeijingresort.com,PROXY",
     "stage": "reviewed-policy"
   },
   {

@@ -395,6 +395,18 @@
         "https://www.larksuite.com/en_us/",
         "https://github.com/jhz1022/Shadowrocket-Rules/blob/main/docs/reviews/2026-11-10/README.md"
       ]
+    },
+    {
+      "id": "universal-beijing-web",
+      "type": "DOMAIN",
+      "domains": [
+        "universalbeijingresort.com",
+        "www.universalbeijingresort.com"
+      ],
+      "reason": "Mainland CDN web entry points verified over the Mac physical interface with valid TLS; the apex redirects to www and the Chinese homepage returns HTTP 200.",
+      "evidence": [
+        "https://www.universalbeijingresort.com/zh_CN/trade_partners"
+      ]
     }
   ],
   "exact_only_direct_hosts": [

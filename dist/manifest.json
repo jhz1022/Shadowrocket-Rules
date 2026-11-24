@@ -1,6 +1,6 @@
 {
-  "config_sha256": "72d16e868d09293fc978afefd2644b11827108220bfb9fecae9f59f0215b7336",
-  "conflicts": 771,
+  "config_sha256": "c9a0d10f893fc53700b8abfbc7e80c00f2775fdf0ca98ed84ffe722d181f7f9c",
+  "conflicts": 773,
   "excluded_registry_direct": [
     "DOMAIN-SUFFIX,alibaba,DIRECT",
     "DOMAIN-SUFFIX,alipay,DIRECT",
@@ -61,7 +61,7 @@
     "china4": 344343293,
     "china6": 5431014512216950597623269698830336
   },
-  "mihomo_manifest_sha256": "f6935c6e19a3558a89f51facdfb7f60d19121175d26b23425f74a017bbf384a5",
+  "mihomo_manifest_sha256": "53bf209f607258b6f0714c0fb986696b960c748cd65f7f559fbf84a0844361f8",
   "omitted_ordinary_direct_suffixes": [
     "bocaviation.com",
     "bocgi.com",
@@ -94,11 +94,11 @@
   ],
   "output": {
     "dns_port_canaries": 6,
-    "reviewed_route_canaries": 90,
+    "reviewed_route_canaries": 92,
     "routing_canaries": 31,
-    "rules": 148994,
+    "rules": 148996,
     "types": {
-      "DOMAIN": 690,
+      "DOMAIN": 692,
       "DOMAIN-SUFFIX": 138587,
       "DST-PORT": 1,
       "FINAL": 1,
@@ -106,7 +106,7 @@
       "IP-CIDR6": 3450
     }
   },
-  "overrides_sha256": "f5e9cbb41b676dbdaaffb9cc597cd774764d0775e59f30b91989623556b77c3c",
+  "overrides_sha256": "7b95a06df799e400e1714543d63eb09f96bbfa3ab2f18bf5e44976e1c1668b9f",
   "schema": 1,
   "sources": {
     "apple_cn": {

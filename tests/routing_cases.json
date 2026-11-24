@@ -1427,5 +1427,35 @@
     "host": "review-child.mzstorekit.itunes.apple.com",
     "policy": "PROXY",
     "routing_dns_requested": false
+  },
+  {
+    "id": "universal-beijing-apex",
+    "host": "universalbeijingresort.com",
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "universal-beijing-www",
+    "host": "www.universalbeijingresort.com",
+    "policy": "DIRECT",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "universal-beijing-child",
+    "host": "api.universalbeijingresort.com",
+    "policy": "PROXY",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "universal-beijing-www-child",
+    "host": "child.www.universalbeijingresort.com",
+    "policy": "PROXY",
+    "routing_dns_requested": false
+  },
+  {
+    "id": "universal-beijing-global",
+    "host": "www.universalorlando.com",
+    "policy": "PROXY",
+    "routing_dns_requested": false
   }
 ]
