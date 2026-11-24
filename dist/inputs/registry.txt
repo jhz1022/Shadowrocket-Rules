@@ -12490,8 +12490,11 @@ myasustor.com
 // Atlassian : https://atlassian.com
 // Submitted by Benjamin McAlary <edge-services@atlassian.com>
 *.atlassian-3p.com
+*.shared.atlassian-3p.com
 *.atlassian-3p-us-gov-mod.com
+*.shared.atlassian-3p-us-gov-mod.com
 *.atlassian-isolated-3p.com
+*.shared.atlassian-isolated-3p.com
 cdn.prod.atlassian-dev.net
 
 // Automattic Inc. : https://automattic.com
@@ -12570,6 +12573,11 @@ ship.place
 // Blackbaud, Inc. : https://www.blackbaud.com
 // Submitted by Paul Crowder <paul.crowder@blackbaud.com>
 blackbaudcdn.net
+
+// Blacktops, Inc. : https://blacktops.ai
+// Submitted by Ravi Kolandaiswamy <psl@blacktops.ai>
+blacktops.app
+blacktops.page
 
 // Blatech : http://www.blatech.net
 // Submitted by Luke Bratch <luke@bratch.co.uk>
@@ -13486,6 +13494,11 @@ twmail.org
 mymailer.com.tw
 url.tw
 
+// EFM Networks (ipTIME) : https://iptime.com
+// Submitted by EFM Networks Development Team <server@iptime.com>
+ipdisk.co.kr
+iptime.org
+
 // Electromagnetic Field : https://www.emfcamp.org
 // Submitted by <noc@emfcamp.org>
 at.emf.camp
@@ -14205,6 +14218,10 @@ homesklep.pl
 *.id.pub
 *.kin.pub
 
+// Homemade : https://homemade.dev
+// Submitted by Homemade Support <support@homemade.dev>
+onhomemade.com
+
 // HOOC AG : https://www.hooc.ch
 // Submitted by Fabrizio Steiner <info@hooc.ch>
 seprox.hooc.me
@@ -14412,7 +14429,6 @@ cloud.interhostsolutions.be
 alp1.ae.flow.ch
 appengine.flow.ch
 es-1.axarnet.cloud
-diadem.cloud
 vip.jelastic.cloud
 jele.cloud
 it1.eur.aruba.jenv-aruba.cloud
@@ -14444,7 +14460,6 @@ j.scaleforce.com.cy
 jelastic.dogado.eu
 fi.cloudplatform.fi
 jele.host
-mircloud.host
 paas.beebyte.io
 sekd1.beebyteapp.io
 jele.io
@@ -14474,7 +14489,6 @@ jelastic.team
 orangecloud.tn
 j.layershift.co.uk
 phx.enscaled.us
-mircloud.us
 
 // Jino : https://www.jino.ru
 // Submitted by Sergey Ulyashin <ulyashin@jino.ru>
@@ -14602,8 +14616,6 @@ lpusercontent.com
 // Leapcell : https://leapcell.io/
 // Submitted by Leapcell Team <support@leapcell.io>
 leapcell.app
-leapcell.dev
-leapcell.online
 
 // Liara : https://liara.ir
 // Submitted by Amirhossein Badinloo <info@liara.ir>
@@ -16014,6 +16026,10 @@ zicp.fun
 // Sheezy.Art : https://sheezy.art
 // Submitted by Nyoom <admin@sheezy.art>
 sheezy.games
+
+// ShipStatic : https://www.shipstatic.com
+// Submitted by ShipStatic Team <hello@shipstatic.com>
+shipstatic.com
 
 // Shopblocks : http://www.shopblocks.com/
 // Submitted by Alex Bowers <alex@shopblocks.com>
