@@ -5,14 +5,14 @@
     "lan": 18,
     "local-names": 18,
     "protected": 33,
-    "proxy": 26567,
+    "proxy": 26568,
     "regional": 1085,
     "reviewed-direct": 74
   },
   "files": {
     "Mihomo.yaml": {
-      "bytes": 5488778,
-      "sha256": "efeae501f85320b1cdbeaf5b7cbb0338f1b58b092bd22bfe73e8250775f96f12"
+      "bytes": 5488811,
+      "sha256": "745fe628af562198e38d0caf4be8af8dd5b498ea445604f1d5f4ab0596878a88"
     }
   },
   "final_reject_guard": true,
@@ -20,7 +20,7 @@
   "node_state": "UNCONFIGURED_REJECT",
   "schema": 1,
   "settings_sha256": "ffe0a65a1f12ba3129396917ba74408bb3cc63c2ce54b9bcfba2d6adf9342d47",
-  "source_config_sha256": "c9a0d10f893fc53700b8abfbc7e80c00f2775fdf0ca98ed84ffe722d181f7f9c",
-  "source_rules": 148996,
+  "source_config_sha256": "12dd415c8aac54bfb762d8abc16315f4c96b611dfdf21b5f6f35086985173b41",
+  "source_rules": 148997,
   "unsupported_udp_guards": 2
 }
