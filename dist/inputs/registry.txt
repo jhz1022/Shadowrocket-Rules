@@ -702,10 +702,13 @@ bv
 // bw : https://nic.net.bw/bw-name-structure
 bw
 ac.bw
+agric.bw
 co.bw
 gov.bw
+me.bw
 net.bw
 org.bw
+shop.bw
 
 // by : https://www.iana.org/domains/root/db/by.html
 // http://tld.by/rules_2006_en.html
@@ -13536,6 +13539,10 @@ objects.lp.dev
 // Submitted by Marcel Daus <cloudops@encoway.de>
 eu.encoway.cloud
 
+// Entry : https://entry.fyi/
+// Submitted by Francis Luz <hello@entry.fyi>
+entrypages.net
+
 // EU.org : https://eu.org/
 // Submitted by Pierre Beyssac <hostmaster@eu.org>
 eu.org
@@ -13622,6 +13629,10 @@ expo.app
 on.expo.app
 staging.expo.app
 on.staging.expo.app
+
+// Faable : https://faable.com/
+// Submitted by Marc Pomar <support@faable.com>
+faable.link
 
 // fachschaften.org: https://fachschaften.org/
 // Submitted by Felix Schäfer <security@fachschaften.org>
@@ -14124,6 +14135,10 @@ grayjayleagues.com
 // Submitted by Catherine Zotova <admin@grebedoc.dev>
 grebedoc.dev
 
+// Greybull : https://greybull.cloud/
+// Submitted by Nick Bouwhuis <security@greybull.cloud>
+greybull.site
+
 // GünstigBestellen : https://günstigbestellen.de
 // Submitted by Furkan Akkoc <info@hendelzon.de>
 günstigbestellen.de
@@ -14250,6 +14265,11 @@ plc.ng
 // Submitted by Valentinas Cirba <domains@hostinger.com>
 hstgr.cloud
 
+// Hostney : https://www.hostney.com
+// Submitted by Gabor Leszlauer <hostmaster@hostney.com>
+hostney.app
+hostney.cloud
+
 // HostyHosting : https://hostyhosting.com
 hostyhosting.io
 
@@ -14316,6 +14336,10 @@ oninferno.net
 // info.cx : http://info.cx
 // Submitted by June Slater <whois@igloo.to>
 info.cx
+
+// Infusion : https://infusion.cloud
+// Submitted by Ana Pessoa <suporte@infusion.cloud>
+infusion-ai.cloud
 
 // Interlegis : http://www.interlegis.leg.br
 // Submitted by Gabriel Ferreira <registrobr@interlegis.leg.br>
@@ -15018,6 +15042,10 @@ pp.ru
 // Submitted by Stephane Bouvard <support@myown.eu>
 my.be
 
+// Mythex : https://mythex.ai
+// Submitted by Mythex Support <support@mythex.ai>
+mythex.app
+
 // Mythic Beasts : https://www.mythic-beasts.com
 // Submitted by Paul Cammish <kelduum@mythic-beasts.com>
 hostedpi.com
@@ -15603,6 +15631,10 @@ puter.app
 puter.site
 puter.work
 
+// Pymaia : https://pymaia.com
+// Submitted by Martin <info@pymaia.com>
+pymaia.app
+
 // PythonAnywhere LLP : https://www.pythonanywhere.com
 // Submitted by Giles Thomas <giles@pythonanywhere.com>
 pythonanywhere.com
@@ -15742,10 +15774,6 @@ devices.resinstaging.io
 // Retool : https://retool.com
 // Submitted by Andrew Guan <security@retool.com>
 retool.app
-
-// Rico Developments Limited : https://adimo.co
-// Submitted by Colin Brown <hello@adimo.co>
-adimo.co.uk
 
 // Riseup Networks : https://riseup.net
 // Submitted by Micah Anderson <micah@riseup.net>
@@ -16646,6 +16674,10 @@ localcert.net
 // Submitted by Douglas Chen <psl@windsurf.com>
 windsurf.app
 windsurf.build
+
+// Wirechunk, Inc. : https://wirechunk.com/
+// Submitted by Wirechunk Support <support@wirechunk.com>
+wirechunk.site
 
 // WirelessCar : https://wirelesscar.com
 // Submitted by Martin Lindberg <drive-platform@wirelesscar.com>
